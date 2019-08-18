@@ -1,7 +1,7 @@
 # TODO
 
 - [x] GitBook
-- [x] GitPitch ([slides](https://github.com/NoriSte/reactjsday-2019-testing-course?p=slides))
+- [x] GitPitch ([slides](https://gitpitch.com/NoriSte/reactjsday-2019-testing-course?p=slides))
 - [x] code integration
 - [x] publish process test
 - [x] autoredirect from https://noriste.github.io/reactjsday-2019-testing-course to https://noriste.github.io/reactjsday-2019-testing-course/index.html
