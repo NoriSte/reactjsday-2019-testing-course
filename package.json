@@ -1,0 +1,25 @@
+{
+  "name": "reactjsday-2019-testing-course",
+  "version": "1.0.0",
+  "description": "The \\\"Testing React\\\" course of the Italian ReactJSDay 2019",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoriSte/reactjsday-2019-testing-course.git"
+  },
+  "keywords": [
+    "course",
+    "testing",
+    "react-testing",
+    "e2e"
+  ],
+  "author": "Stefano Magni <nori.ste.magni@gmail.com> (https://github.com/NoriSte)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/NoriSte/reactjsday-2019-testing-course/issues"
+  },
+  "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme"
+}
