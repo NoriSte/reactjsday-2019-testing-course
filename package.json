@@ -4,7 +4,11 @@
   "description": "The \\\"Testing React\\\" course of the Italian ReactJSDay 2019",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "gitbook install",
+    "test": "echo \"TODO: no test specified\" && exit 1",
+    "// BOOK ///////////": "run them inside the book/ directory",
+    "book:serve": "npx gitbook serve",
+    "book:build": "npx gitbook build"
   },
   "repository": {
     "type": "git",
@@ -21,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/NoriSte/reactjsday-2019-testing-course/issues"
   },
-  "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme"
+  "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2"
+  },
+  "dependencies": {
+    "gitbook-plugin-include-codeblock": "^3.2.2"
+  }
 }
