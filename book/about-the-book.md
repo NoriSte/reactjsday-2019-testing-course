@@ -12,3 +12,7 @@ The book can be configured with the `book.json` file, some of the options can be
 - `npx gitbook install`: automatically managed with the `postintall` script
 - `npm run book:serve`: alias for `npx storybook serve`
 - `npm run book:build`: alias for `npx storybook build`, the artifact is placed into the `docs` directory to be used with [GitHub pages](https://pages.github.com)
+
+### Slides
+
+The slides are managed through [GitPitch](https://gitpitch.com) and are in the `slides/` directory.

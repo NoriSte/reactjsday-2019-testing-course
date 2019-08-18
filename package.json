@@ -8,7 +8,8 @@
     "test": "echo \"TODO: no test specified\" && exit 1",
     "// BOOK ///////////": "run them inside the book/ directory",
     "book:serve": "npx gitbook serve",
-    "book:build": "npx gitbook build"
+    "book:build": "npx gitbook build",
+    "book:publish": "npm run book:build && git add docs && git commit -a -m \"Publish the book\" && git push"
   },
   "repository": {
     "type": "git",
