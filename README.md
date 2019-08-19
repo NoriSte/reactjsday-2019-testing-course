@@ -5,10 +5,10 @@
 TODO:
 
 `npm install`
+`npm run book:serve`
 
 TODO: to run all the apps and play with the exercises...
 TODO: TOC a la cypress workshop
-
 
 <!--
 to include code into the book...

@@ -1,6 +1,6 @@
 # About us
 
-[Jaga Santagostino](#jaga-santagostino) - [Stefano Magni](#stefano-magni)
+[Jaga Santagostino](#jaga-santagostino) and [Stefano Magni](#stefano-magni)
 
 <a href="#jaga-santagostino"><img src="../assets/images/jaga-santagostino.jpg" alt="Jaga Santagostino" style="max-width: 40%;"/></a>
 <a href="#stefano-magni"><img src="../assets/images/stefano-magni.jpg" alt="Stefano Magni" style="max-width: 40%;"/></a>
