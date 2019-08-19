@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>About us · GitBook</title>
+        <title>Testing rules TODO: · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,8 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="having-fun-while-testing.html" />
     
-    <link rel="prev" href="what-are-you-going-to-learn.html" />
+    
+    <link rel="prev" href="testing-advantages.html" />
     
 
     </head>
@@ -115,7 +117,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.2" data-path="about-us.html">
+        <li class="chapter " data-level="1.1.2" data-path="about-us.html">
             
                 <a href="about-us.html">
             
@@ -193,7 +195,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4" data-path="testing-rules.html">
+        <li class="chapter active" data-level="2.1.4" data-path="testing-rules.html">
             
                 <a href="testing-rules.html">
             
@@ -339,7 +341,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >About us</a>
+        <a href=".." >Testing rules TODO:</a>
     </h1>
 </div>
 
@@ -354,22 +356,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="about-us">About us</h1>
-<p><a href="#jaga-santagostino">Jaga Santagostino</a> and <a href="#stefano-magni">Stefano Magni</a></p>
-<p><a href="#jaga-santagostino"><img src="../assets/images/jaga-santagostino.jpg" alt="Jaga Santagostino" style="max-width: 40%;"></a>
-<a href="#stefano-magni"><img src="../assets/images/stefano-magni.jpg" alt="Stefano Magni" style="max-width: 40%;"></a></p>
-<h3 id="jaga-santagostino">Jaga Santagostino</h3>
-<p>Jaga loves automation and anything that can make a developer&apos;s life easier and more enjoyable, from building CLIs to deploy on k8s to Browser Extensions and everything in between.</p>
-<p>He lives by &quot;sharing is caring&#x201D; motto.</p>
-<p>He&apos;s the organizer of <a href="https://www.meetup.com/it-IT/React-JS-Milano/" target="_blank">ReactJS meetup in Milan</a>.</p>
-<p>He works as an independent consultant, focused on TypeScript, GraphQL and React ecosystems.</p>
-<p><a href="https://github.com/kandros" target="_blank">GitHub</a> - <a href="https://www.linkedin.com/in/jaga-santagostino-500676b0/" target="_blank">LinkedIn</a> - <a href="https://twitter.com/kandros5591" target="_blank">Twitter</a></p>
-<h3 id="stefano-magni">Stefano Magni</h3>
-<p>Stefano is a front-end developer and a <a href="https://www.cypress.io" target="_blank">Cypress</a> ambassador passionate about for testing, automation, and learning. He&apos;s developed every kind of UI: games, product configurators, drawing tools, highly responsive websites, and mobile apps. He loves creating quality products, good testing confidence, sharing his knowledge and working with passionate teams.</p>
-<p>He&apos;s currently focused on React, TypeScript and all their ecosystems.</p>
-<p>Stefano&apos;s working on a big <a href="https://github.com/NoriSte/ui-testing-best-practices" target="_blank">UI Testing Best Practices</a> project on GitHub and speak regularly at meetups and conferences.</p>
-<p>He works for <a href="https://conio.com" target="_blank">Conio</a>, a bitcoin startup based in Milan.</p>
-<p><a href="https://github.com/NoriSte" target="_blank">GitHub</a> - <a href="https://www.linkedin.com/in/noriste/" target="_blank">LinkedIn</a> - <a href="https://twitter.com/NoriSte" target="_blank">Twitter</a></p>
+                                <h1 id="testing-rules">Testing rules</h1>
+<p>TODO:</p>
+<ul>
+<li><p>you must write the test as soon as you write the code. Writing the test some days after the code is useless, you have forgotten half of the choices you made (choices that you need to test)</p>
+</li>
+<li><p>the tests must not fail for nothing. False negative tests are the worst ones, you do not why they fail and you stop trusting them</p>
+</li>
+<li><p>obviously, the opposite is important too: the tests must fail if the app does not work, otherwise what are they testing?</p>
+</li>
+<li><p>the tests must be simple. Super simple. They must be simple to be read, simple to be understood, simple to changed. The tests must be an ally, a simple scripts that perform some checks in place of you. Complex and unclear tests are an enemy, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. Last but not least: debugging a failing test is way harder that debugging an application (example: write a test with lot of before hooks, variables outside the tests etc)</p>
+</li>
+<li><p>if the tests fail, they must give useful feedback. They must tell you what failed and why, without re-launching or debugging them (example: <code>expect([1, 2, 3]).toHaveLength(3);</code> instead of <code>expect([1, 2, 3].length === 3).toBe(true);</code>)</p>
+</li>
+<li><p>the tests must be deterministic: if you run them hundred times, the result must be the same. If they are not deterministic, you must think what influences them and how to write better tests (example: testing a unit based on date?)</p>
+</li>
+<li><p>the tests must fail before you write the code and succeed when you have written the code. Otherwise, you can not be sure that the tests are testing your code and that is your code that get them pass. You risk to be have a useless test (example: Ste has an example of a coding challenge with a useless test)</p>
+</li>
+<li><p>the tests must be fast, as fast as possible. You can not sacrifice speed for reliability, but the speed is really important because the faster the tests are, the faster you have feeddback, the higher the chance you run them frequently, the sooner you discover regressions. Slow tests make you move your mind to another task, make you waste your time, make you hungry when they fail after a 30-minutes pipeline, and, sooner or later, they make you think about removing them... (example: jest/cypress clock management)</p>
+</li>
+<li><p>skip and only are good friends (jest.todo too)</p>
+</li>
+<li><p>never do whitebox testing. You have to test APIs, contracts and behaviours, not internal details (example: enzyme with state tests)</p>
+</li>
+<li><p>as much as you can, you should avoid that the tests feil because of some slight code changes. Import constants (example: RTL acting on a button with an imported string)</p>
+</li>
+<li><p>the tests must be indipendent, they must not share the state (example: a shared variable)</p>
+</li>
+<li><p>you can not interact manually with the tests. It&apos;s easier when doing functional tests but it&apos;s a generic rule, the tests must not depend on human changes (example: clicking on a button in a functional test)</p>
+</li>
+<li><p>different test types provide different feedback, get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works</p>
+</li>
+<li><p>code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -397,10 +417,14 @@
 
             
                 
-                <a href="what-are-you-going-to-learn.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: What you are going to learn (TODO:)">
+                <a href="testing-advantages.html" class="navigation navigation-prev " aria-label="Previous page: Testing advantages? TODO:">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="having-fun-while-testing.html" class="navigation navigation-next " aria-label="Next page: Having fun while testing TODO:">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -409,7 +433,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"About us","level":"1.1.2","depth":2,"next":{"title":"Testing introduction","level":"2.1","depth":1,"ref":"","articles":[{"title":"What is a test? TODO:","level":"2.1.1","depth":2,"ref":"","articles":[]},{"title":"Why Testing? TODO:","level":"2.1.2","depth":2,"path":"book/why-testing.md","ref":"book/why-testing.md","articles":[]},{"title":"Testing advantages? TODO:","level":"2.1.3","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},{"title":"Testing rules TODO:","level":"2.1.4","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},{"title":"Having fun while testing TODO:","level":"2.1.5","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},{"title":"What should I not test? TODO:","level":"2.1.6","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},{"title":"Testing disadvantages TODO:","level":"2.1.7","depth":2,"path":"book/testing-disadvantages.md","ref":"book/testing-disadvantages.md","articles":[]},{"title":"Testing types TODO:","level":"2.1.8","depth":2,"ref":"","articles":[]}]},"previous":{"title":"What you are going to learn (TODO:)","level":"1.1.1","depth":2,"path":"book/what-are-you-going-to-learn.md","ref":"book/what-are-you-going-to-learn.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/about-us.md","mtime":"2019-08-18T13:09:16.494Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-19T15:42:43.953Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Testing rules TODO:","level":"2.1.4","depth":2,"next":{"title":"Having fun while testing TODO:","level":"2.1.5","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"previous":{"title":"Testing advantages? TODO:","level":"2.1.3","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/testing-rules.md","mtime":"2019-08-19T15:34:17.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-19T15:42:43.953Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
