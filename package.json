@@ -15,9 +15,11 @@
     "realworld:install": "npm run realworld:frontend:install && npm run realworld:backend:install",
     "realworld:frontend:install": "cd realworld/frontend && npm install",
     "realworld:backend:install": "cd realworld/backend && npm install",
-    "realworld:start": "concurrently --kill-others \"npm run realworld:backend:start\" \"npm run realworld:frontend:start\"",
+    "realworld:start": "npm run realworld:db:start && concurrently --kill-others \"npm run realworld:backend:start\" \"npm run realworld:frontend:start\"",
     "realworld:frontend:start": "cd realworld/frontend && npm run start",
-    "realworld:backend:start": "cd realworld/backend && npm run dev"
+    "realworld:backend:start": "cd realworld/backend && npm run start",
+    "realworld:db:stop": "cd realworld/backend && npm run mongo:stop",
+    "realworld:db:start": "cd realworld/backend && npm run mongo:start"
   },
   "repository": {
     "type": "git",
