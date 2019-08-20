@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>What should I not test? TODO: · GitBook</title>
+        <title>What is a test? TODO: · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="testing-disadvantages.html" />
+    <link rel="next" href="testing-pyramid.html" />
     
-    
-    <link rel="prev" href="having-fun-while-testing.html" />
     
 
     </head>
@@ -156,7 +154,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="what-is-a-test.html">
+        <li class="chapter active" data-level="2.1.1" data-path="what-is-a-test.html">
             
                 <a href="what-is-a-test.html">
             
@@ -266,7 +264,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.5" data-path="what-not-to-test.html">
+        <li class="chapter " data-level="2.2.5" data-path="what-not-to-test.html">
             
                 <a href="what-not-to-test.html">
             
@@ -380,7 +378,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >What should I not test? TODO:</a>
+        <a href=".." >What is a test? TODO:</a>
     </h1>
 </div>
 
@@ -395,20 +393,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="what-should-i-not-test">What should I not test</h1>
-<p>TODO: transform this file into some slides</p>
-<ul>
-<li><p>external services, you should test how you consume them, not if they work (has gmail sent the email?)</p>
-</li>
-<li><p>anything that you do not control (cache? network? justo to make an example)</p>
-</li>
-<li><p>native APIs (example: document.cookie?)</p>
-</li>
-<li><p>third party scripts (react itself or redux)</p>
-</li>
-<li><p>you must not test everything, E2E tests are good for happy paths only</p>
-</li>
-</ul>
+                                <h1 id="what-is-a-test">What is a test?</h1>
+<p>TODO: transform this file into some slides and complete writing it</p>
+<p>A test is code that throws an error when the actual result of something does not match the expected output.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> { sum, subtract } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./math&quot;</span>);
+
+<span class="hljs-keyword">let</span> result, expected;
+
+result = sum(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>);
+expected = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">if</span> (result !== expected) {
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`<span class="hljs-subst">${result}</span> is not equal to <span class="hljs-subst">${expected}</span>`</span>);
+}
+
+result = subtract(<span class="hljs-number">7</span>, <span class="hljs-number">3</span>);
+expected = <span class="hljs-number">4</span>;
+<span class="hljs-keyword">if</span> (result !== expected) {
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`<span class="hljs-subst">${result}</span> is not equal to <span class="hljs-subst">${expected}</span>`</span>);
+}
+</code></pre>
+<p>The part that says actual !== expected is called an &quot;assertion.&quot;</p>
+<p>example</p>
+<p>from <a href="https://www.javascriptjanuary.com/blog/but-really-what-is-a-javascript-test" target="_blank">https://www.javascriptjanuary.com/blog/but-really-what-is-a-javascript-test</a></p>
 
                                 
                                 </section>
@@ -436,12 +442,8 @@
 
             
                 
-                <a href="having-fun-while-testing.html" class="navigation navigation-prev " aria-label="Previous page: Having fun while testing TODO:">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="testing-disadvantages.html" class="navigation navigation-next " aria-label="Next page: Testing disadvantages TODO:">
+                <a href="testing-pyramid.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Testing Pyramid TODO:">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -452,7 +454,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What should I not test? TODO:","level":"2.2.5","depth":2,"next":{"title":"Testing disadvantages TODO:","level":"2.2.6","depth":2,"path":"book/testing-disadvantages.md","ref":"book/testing-disadvantages.md","articles":[]},"previous":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/what-not-to-test.md","mtime":"2019-08-20T05:03:42.943Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-20T07:00:16.546Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"What is a test? TODO:","level":"2.1.1","depth":2,"next":{"title":"Testing Pyramid TODO:","level":"2.1.2","depth":2,"path":"book/testing-pyramid.md","ref":"book/testing-pyramid.md","articles":[]},"previous":{"title":"Testing definitions","level":"2.1","depth":1,"ref":"","articles":[{"title":"What is a test? TODO:","level":"2.1.1","depth":2,"path":"book/what-is-a-test.md","ref":"book/what-is-a-test.md","articles":[]},{"title":"Testing Pyramid TODO:","level":"2.1.2","depth":2,"path":"book/testing-pyramid.md","ref":"book/testing-pyramid.md","articles":[]},{"title":"Testing types TODO:","level":"2.1.3","depth":2,"path":"book/testing-types.md","ref":"book/testing-types.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/what-is-a-test.md","mtime":"2019-08-20T05:21:41.372Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-20T07:00:16.546Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

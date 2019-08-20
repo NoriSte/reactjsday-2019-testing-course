@@ -147,6 +147,64 @@
                 <span>
             
                     
+                    Testing definitions
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="what-is-a-test.html">
+            
+                <a href="what-is-a-test.html">
+            
+                    
+                    What is a test? TODO:
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="testing-pyramid.html">
+            
+                <a href="testing-pyramid.html">
+            
+                    
+                    Testing Pyramid TODO:
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="testing-types.html">
+            
+                <a href="testing-types.html">
+            
+                    
+                    Testing types TODO:
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
                     Testing introduction
             
                 </span>
@@ -156,20 +214,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" >
-            
-                <span>
-            
-                    
-                    What is a test? TODO:
-            
-                </span>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2" data-path="why-testing.html">
+        <li class="chapter " data-level="2.2.1" data-path="why-testing.html">
             
                 <a href="why-testing.html">
             
@@ -182,7 +227,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3" data-path="testing-advantages.html">
+        <li class="chapter " data-level="2.2.2" data-path="testing-advantages.html">
             
                 <a href="testing-advantages.html">
             
@@ -195,7 +240,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.4" data-path="testing-rules.html">
+        <li class="chapter active" data-level="2.2.3" data-path="testing-rules.html">
             
                 <a href="testing-rules.html">
             
@@ -208,7 +253,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.5" data-path="having-fun-while-testing.html">
+        <li class="chapter " data-level="2.2.4" data-path="having-fun-while-testing.html">
             
                 <a href="having-fun-while-testing.html">
             
@@ -221,7 +266,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.6" data-path="what-not-to-test.html">
+        <li class="chapter " data-level="2.2.5" data-path="what-not-to-test.html">
             
                 <a href="what-not-to-test.html">
             
@@ -234,7 +279,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.7" data-path="testing-disadvantages.html">
+        <li class="chapter " data-level="2.2.6" data-path="testing-disadvantages.html">
             
                 <a href="testing-disadvantages.html">
             
@@ -247,30 +292,24 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.8" >
-            
-                <span>
-            
-                    
-                    Testing types TODO:
-            
-                </span>
-            
-
-            
-        </li>
-    
 
             </ul>
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="conclusions.html">
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="conclusions.html">
             
                 <a href="conclusions.html">
             
                     
-                    Conclusion
+                    Conclusions
             
                 </a>
             
@@ -278,7 +317,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" >
+        <li class="chapter " data-level="3.2" >
             
                 <span>
             
@@ -298,7 +337,7 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="about-the-book.html">
+        <li class="chapter " data-level="4.1" data-path="about-the-book.html">
             
                 <a href="about-the-book.html">
             
@@ -357,16 +396,22 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="testing-rules">Testing rules</h1>
-<p>TODO:</p>
+<p>TODO: transform this file into some slides</p>
 <ul>
 <li><p>you must write the test as soon as you write the code. Writing the test some days after the code is useless, you have forgotten half of the choices you made (choices that you need to test)</p>
 </li>
-<li><p>the tests must not fail for nothing. False negative tests are the worst ones, you do not why they fail and you stop trusting them</p>
+<li><p>a test fails is a good thing, really! Because it&apos;s preventing a regression! The important thing is that...</p>
+</li>
+<li><p>... the tests must not fail for nothing. False negative tests are the worst ones, you do not why they fail and you stop trusting them</p>
 </li>
 <li><p>obviously, the opposite is important too: the tests must fail if the app does not work, otherwise what are they testing?</p>
 </li>
-<li><p>the tests must be simple. Super simple. They must be simple to be read, simple to be understood, simple to changed. The tests must be an ally, a simple scripts that perform some checks in place of you. Complex and unclear tests are an enemy, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. Last but not least: debugging a failing test is way harder that debugging an application (example: write a test with lot of before hooks, variables outside the tests etc)</p>
+<li><p>the tests must be simple. Super simple. They must be simple to be read, simple to be understood, simple to changed. The tests must be an ally, a simple scripts that perform some checks in place of you. Complex and unclear tests are an enemy, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. Last but not least: debugging a failing test is way harder that debugging an application (example: write a test with lot of before hooks, variables outside the tests etc).
+Think twice before DRYing a test code. While testing, you need to change more less every line of code to simulate the different cases. Complex DRY increases the test complexity and makes you add a lot of conditions to the DRYed code. Wrong abstraction in tests costs more than wrong abstraction in your code. Avoid conditions too if you can, the test code must be straightforward</p>
 </li>
+</ul>
+<p>cognitive load image <a href="https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/assets/headspace.png" target="_blank">https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/assets/headspace.png</a></p>
+<ul>
 <li><p>if the tests fail, they must give useful feedback. They must tell you what failed and why, without re-launching or debugging them (example: <code>expect([1, 2, 3]).toHaveLength(3);</code> instead of <code>expect([1, 2, 3].length === 3).toBe(true);</code>)</p>
 </li>
 <li><p>the tests must be deterministic: if you run them hundred times, the result must be the same. If they are not deterministic, you must think what influences them and how to write better tests (example: testing a unit based on date?)</p>
@@ -377,7 +422,7 @@
 </li>
 <li><p>skip and only are good friends (jest.todo too)</p>
 </li>
-<li><p>never do whitebox testing. You have to test APIs, contracts and behaviours, not internal details (example: enzyme with state tests)</p>
+<li><p>never do whitebox testing. You have to test APIs, contracts and behaviours, not internal details. You must test as the consumer, not as the developer (example: enzyme with state tests)</p>
 </li>
 <li><p>as much as you can, you should avoid that the tests feil because of some slight code changes. Import constants (example: RTL acting on a button with an imported string)</p>
 </li>
@@ -385,9 +430,11 @@
 </li>
 <li><p>you can not interact manually with the tests. It&apos;s easier when doing functional tests but it&apos;s a generic rule, the tests must not depend on human changes (example: clicking on a button in a functional test)</p>
 </li>
-<li><p>different test types provide different feedback, get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works</p>
+<li><p>different test types provide different feedback (and cost), get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works</p>
 </li>
 <li><p>code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)</p>
+</li>
+<li><p>E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it&apos;s true, but thay are super brittle, so forget about their importance (TODO: move this part where speaking about e2e tests)</p>
 </li>
 </ul>
 
@@ -433,7 +480,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Testing rules TODO:","level":"2.1.4","depth":2,"next":{"title":"Having fun while testing TODO:","level":"2.1.5","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"previous":{"title":"Testing advantages? TODO:","level":"2.1.3","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/testing-rules.md","mtime":"2019-08-19T15:34:17.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-19T15:42:43.953Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"next":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"previous":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/testing-rules.md","mtime":"2019-08-20T06:14:24.990Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-20T07:00:16.546Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
