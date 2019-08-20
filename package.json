@@ -4,13 +4,20 @@
   "description": "The \\\"Testing React\\\" course of the Italian ReactJSDay 2019",
   "main": "index.js",
   "scripts": {
-    "postinstall": "gitbook install",
+    "postinstall": "gitbook install && npm run realworld:install",
     "test": "echo \"TODO: no test specified\" && exit 1",
     "// BOOK ///////////": "",
     "book:serve": "npx gitbook serve",
     "book:build": "npx gitbook build . docs",
     "book:publish": "npm run book:build && git add docs && git commit -a -m \"Publish the book\" && git push",
-    "postbook:publish": "node utils/print-ghpages-url.js"
+    "postbook:publish": "node utils/print-ghpages-url.js",
+    "// REALWORLD ///////////": "",
+    "realworld:install": "npm run realworld:frontend:install && npm run realworld:backend:install",
+    "realworld:frontend:install": "cd realworld/frontend && npm install",
+    "realworld:backend:install": "cd realworld/backend && npm install",
+    "realworld:start": "concurrently --kill-others \"npm run realworld:backend:start\" \"npm run realworld:frontend:start\"",
+    "realworld:frontend:start": "cd realworld/frontend && npm run start",
+    "realworld:backend:start": "cd realworld/backend && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -29,9 +36,12 @@
   },
   "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme",
   "devDependencies": {
+    "concurrently": "^4.1.2",
+    "cross-env": "^5.2.0",
     "gitbook-cli": "^2.3.2"
   },
   "dependencies": {
+    "gitbook-plugin-include": "^0.1.0",
     "gitbook-plugin-include-codeblock": "^3.2.2"
   }
 }
