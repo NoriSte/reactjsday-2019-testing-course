@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "gitbook install && npm run realworld:install",
-    "test": "echo \"TODO: no test specified\" && exit 1",
+    "test": "start-server-and-test realworld:start http://localhost:4100 cy:run",
     "// BOOK ///////////": "",
     "book:serve": "npx gitbook serve",
     "book:build": "npx gitbook build . docs",
     "book:publish": "npm run book:build && git add docs && git commit -a -m \"Publish the book\" && git push",
     "postbook:publish": "node utils/print-ghpages-url.js",
+    "// CYPRESS ///////////": "",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "// REALWORLD ///////////": "",
     "realworld:install": "npm run realworld:frontend:install && npm run realworld:backend:install",
     "realworld:frontend:install": "cd realworld/frontend && npm install",
@@ -18,7 +21,6 @@
     "realworld:start": "npm run realworld:db:start && concurrently --kill-others \"npm run realworld:backend:start\" \"npm run realworld:frontend:start\"",
     "realworld:frontend:start": "cd realworld/frontend && npm run start",
     "realworld:backend:start": "cd realworld/backend && npm run start",
-    "realworld:db:stop": "cd realworld/backend && npm run mongo:stop",
     "realworld:db:start": "cd realworld/backend && npm run mongo:start"
   },
   "repository": {
@@ -40,7 +42,9 @@
   "devDependencies": {
     "concurrently": "^4.1.2",
     "cross-env": "^5.2.0",
-    "gitbook-cli": "^2.3.2"
+    "cypress": "^3.4.1",
+    "gitbook-cli": "^2.3.2",
+    "start-server-and-test": "^1.10.0"
   },
   "dependencies": {
     "gitbook-plugin-include": "^0.1.0",
