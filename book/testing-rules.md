@@ -4,7 +4,9 @@ TODO:
 
 - you must write the test as soon as you write the code. Writing the test some days after the code is useless, you have forgotten half of the choices you made (choices that you need to test)
 
-- the tests must not fail for nothing. False negative tests are the worst ones, you do not why they fail and you stop trusting them
+- a test fails is a good thing, really! Because it's preventing a regression! The important thing is that...
+
+- ... the tests must not fail for nothing. False negative tests are the worst ones, you do not why they fail and you stop trusting them
 
 - obviously, the opposite is important too: the tests must fail if the app does not work, otherwise what are they testing?
 
@@ -20,7 +22,7 @@ TODO:
 
 - skip and only are good friends (jest.todo too)
 
-- never do whitebox testing. You have to test APIs, contracts and behaviours, not internal details (example: enzyme with state tests)
+- never do whitebox testing. You have to test APIs, contracts and behaviours, not internal details. You must test as the consumer, not as the developer (example: enzyme with state tests)
 
 - as much as you can, you should avoid that the tests feil because of some slight code changes. Import constants (example: RTL acting on a button with an imported string)
 
@@ -31,3 +33,5 @@ TODO:
 - different test types provide different feedback, get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works
 
 - code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)
+
+- E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it's true, but thay are super brittle, so forget about their importance
