@@ -1,6 +1,6 @@
 # Testing advantages
 
-TODO:
+TODO: transform this file into some slides
 
 - protects us by "direct" regressions: we change our code to add a new feature but you change the behaviour of the code. Breaking everything is way too much easy (example: adding a second parameter to a function, a destructured object without a default value, it will break if the second parameter is not passed)
 

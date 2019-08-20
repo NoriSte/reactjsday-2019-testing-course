@@ -1,6 +1,6 @@
 # Testing rules
 
-TODO:
+TODO: transform this file into some slides
 
 - you must write the test as soon as you write the code. Writing the test some days after the code is useless, you have forgotten half of the choices you made (choices that you need to test)
 
@@ -10,7 +10,10 @@ TODO:
 
 - obviously, the opposite is important too: the tests must fail if the app does not work, otherwise what are they testing?
 
-- the tests must be simple. Super simple. They must be simple to be read, simple to be understood, simple to changed. The tests must be an ally, a simple scripts that perform some checks in place of you. Complex and unclear tests are an enemy, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. Last but not least: debugging a failing test is way harder that debugging an application (example: write a test with lot of before hooks, variables outside the tests etc)
+- the tests must be simple. Super simple. They must be simple to be read, simple to be understood, simple to changed. The tests must be an ally, a simple scripts that perform some checks in place of you. Complex and unclear tests are an enemy, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. Last but not least: debugging a failing test is way harder that debugging an application (example: write a test with lot of before hooks, variables outside the tests etc).
+  Think twice before DRYing a test code. While testing, you need to change more less every line of code to simulate the different cases. Complex DRY increases the test complexity and makes you add a lot of conditions to the DRYed code. Wrong abstraction in tests costs more than wrong abstraction in your code. Avoid conditions too if you can, the test code must be straightforward
+
+cognitive load image https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/assets/headspace.png
 
 - if the tests fail, they must give useful feedback. They must tell you what failed and why, without re-launching or debugging them (example: `expect([1, 2, 3]).toHaveLength(3);` instead of `expect([1, 2, 3].length === 3).toBe(true);`)
 
@@ -30,8 +33,8 @@ TODO:
 
 - you can not interact manually with the tests. It's easier when doing functional tests but it's a generic rule, the tests must not depend on human changes (example: clicking on a button in a functional test)
 
-- different test types provide different feedback, get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works
+- different test types provide different feedback (and cost), get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works
 
 - code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)
 
-- E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it's true, but thay are super brittle, so forget about their importance
+- E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it's true, but thay are super brittle, so forget about their importance (TODO: move this part where speaking about e2e tests)

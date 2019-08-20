@@ -4,6 +4,7 @@ This book has been built with [GitBook](https://github.com/GitbookIO/gitbook/blo
 
 - `-sharing`: allows to manage (ore remove at all) the sharing buttons
 - `include-codeblock`: allows to import a block of code directly from a file
+- `include`: allows to import and reuse a MD file
 
 The book can be configured with the `book.json` file, some of the options can be found [here](https://janicezhw.github.io/gitbook/startusegitbook/configInfo/bookjson.html).
 

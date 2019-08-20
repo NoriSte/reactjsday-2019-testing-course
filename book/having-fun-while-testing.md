@@ -1,6 +1,6 @@
 # Having fun while testing
 
-TODO:
+TODO: transform this file into some slides
 
 - testing allows you to learn, in two ways:
 

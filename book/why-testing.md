@@ -1,6 +1,6 @@
 # Why Testing?
 
-TODO:
+TODO: transform this file into some slides
 
 - to control that the code does what we expect, now and when we refactor/modify it. (exmple: `string.replace` with single occurrence to replace) At the beginning it could sounds annoying but...
 

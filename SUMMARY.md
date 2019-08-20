@@ -4,16 +4,19 @@
   - [What you are going to learn (TODO:)](book/what-are-you-going-to-learn.md)
   - [About us](book/about-us.md)
 - ***
+- Testing definitions
+  - [What is a test? TODO:](book/what-is-a-test.md)
+  - [Testing Pyramid TODO:](book/testing-pyramid.md)
+  - [Testing types TODO:](book/testing-types.md)
 - Testing introduction
-  - [What is a test? TODO:]()
   - [Why Testing? TODO:](book/why-testing.md)
   - [Testing advantages? TODO:](book/testing-advantages.md)
   - [Testing rules TODO:](book/testing-rules.md)
   - [Having fun while testing TODO:](book/having-fun-while-testing.md)
   - [What should I not test? TODO:](book/what-not-to-test.md)
   - [Testing disadvantages TODO:](book/testing-disadvantages.md)
-  - [Testing types TODO:]()
-- [Conclusion](book/conclusions.md)
+- ***
+- [Conclusions](book/conclusions.md)
 - Resources
 - ***
 - [About this book](book/about-the-book.md)
