@@ -25,6 +25,7 @@ We leveraged both the React frontend and the Node.js backend of the [RealWorld](
 
 - we shared some constants between the source code and the tests code
 - we delayed every backend operation to simulate E2E testing bottlenecks
+- we made the execrices network-independent by storing all the assets locally
 
 The RealWorld projects are stored into the `realworld` directory. To run them you need to have installed
 
