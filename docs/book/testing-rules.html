@@ -304,27 +304,14 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="conclusions.html">
+        <li class="chapter " data-level="3.1" data-path="top-to-bottom.html">
             
-                <a href="conclusions.html">
+                <a href="top-to-bottom.html">
             
                     
-                    Conclusions
+                    Top to bottom
             
                 </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2" >
-            
-                <span>
-            
-                    
-                    Resources
-            
-                </span>
             
 
             
@@ -337,7 +324,40 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="about-the-book.html">
+        <li class="chapter " data-level="4.1" data-path="conclusions.html">
+            
+                <a href="conclusions.html">
+            
+                    
+                    Conclusions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="resources.html">
+            
+                <a href="resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="about-the-book.html">
             
                 <a href="about-the-book.html">
             
@@ -416,7 +436,7 @@ Think twice before DRYing a test code. While testing, you need to change more le
 </li>
 <li><p>the tests must be deterministic: if you run them hundred times, the result must be the same. If they are not deterministic, you must think what influences them and how to write better tests (example: testing a unit based on date?)</p>
 </li>
-<li><p>the tests must fail before you write the code and succeed when you have written the code. Otherwise, you can not be sure that the tests are testing your code and that is your code that get them pass. You risk to be have a useless test (example: Ste has an example of a coding challenge with a useless test)</p>
+<li><p>the tests must fail before you write the code and succeed when you have written the code. Otherwise, you can not be sure that the tests are testing your code and that is your code that get them pass. You could neither be sure you have sistematically replicated the bug. You risk to be have a useless test (example: Ste has an example of a coding challenge with a useless test)</p>
 </li>
 <li><p>the tests must be fast, as fast as possible. You can not sacrifice speed for reliability, but the speed is really important because the faster the tests are, the faster you have feeddback, the higher the chance you run them frequently, the sooner you discover regressions. Slow tests make you move your mind to another task, make you waste your time, make you hungry when they fail after a 30-minutes pipeline, and, sooner or later, they make you think about removing them... (example: jest/cypress clock management)</p>
 </li>
@@ -435,6 +455,8 @@ Think twice before DRYing a test code. While testing, you need to change more le
 <li><p>code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)</p>
 </li>
 <li><p>E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it&apos;s true, but thay are super brittle, so forget about their importance (TODO: move this part where speaking about e2e tests)</p>
+</li>
+<li><p>if you&apos;re not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them? (example: Ste while implementing the roles in the webapp setting all he old tests with admin users to avoid changing them)</p>
 </li>
 </ul>
 
@@ -480,7 +502,7 @@ Think twice before DRYing a test code. While testing, you need to change more le
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"next":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"previous":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/testing-rules.md","mtime":"2019-08-20T06:14:24.990Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-23T07:06:26.394Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"next":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"previous":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/testing-rules.md","mtime":"2019-08-23T15:56:07.378Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-23T16:19:45.568Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
