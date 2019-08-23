@@ -394,12 +394,21 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="reactjsday-2019-testing-course">reactjsday-2019-testing-course</h1>
-<p><a href="https://github.com/NoriSte/reactjsday-2019-testing-course/blob/master/README.md#license" target="_blank"><img src="https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square" alt="GPL 3.0 License"></a></p>
+<p><a href="https://github.com/NoriSte/reactjsday-2019-testing-course/blob/master/README.md#license" target="_blank"><img src="https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square" alt="GPL 3.0 License"></a>
+<a href="http://realworld.io" target="_blank"><img src="https://img.shields.io/badge/realworld-frontend-%23783578.svg" alt="RealWorld Frontend"></a>
+<a href="http://realworld.io" target="_blank"><img src="https://img.shields.io/badge/realworld-backend-%23783578.svg" alt="RealWorld Backend"></a></p>
+<p><a href="https://renovatebot.com/" target="_blank"><img src="https://img.shields.io/badge/renovate-enabled-brightgreen.svg" alt="Renovate enabled"></a> &lt;-- is it working? replace it with libraries.io?</p>
+<p>TODO: additional requisites to run the tests on your local machine:</p>
+<ul>
+<li>Node.js 10+</li>
+<li><a href="https://docs.mongodb.com/manual/installation/#tutorials" target="_blank">MongoDB</a></li>
+<li><a href="https://docs.docker.com/install/" target="_blank">Docker</a></li>
+</ul>
 <p>TODO:</p>
-<p><code>npm install</code>
-<code>npm run book:serve</code></p>
-<p>TODO: to run all the apps and play with the exercises...
-TODO: TOC a la cypress workshop</p>
+<p><code>npm install</code></p>
+<p><code>npm run book:serve</code></p>
+<p>TODO: to run all the apps and play with the exercises...</p>
+<p>TODO: TOC a la cypress workshop</p>
 <!--
 to include code into the book...
 ``` javascript
@@ -407,6 +416,13 @@ Error: file not found: /Users/noriste/Sites/noriste/__tests__/index.test.js
 ```
 ``` javascript
 Error: file not found: /Users/noriste/Sites/noriste/__tests__/index.test.js
+```
+or git diff
+```diff
+const a = "ciao";
+-let message = 'hello world!'
++let message = 'hello stackoverflow!'
+const a = "ciao";
 ```
 -->
 
@@ -448,7 +464,7 @@ Error: file not found: /Users/noriste/Sites/noriste/__tests__/index.test.js
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React Testing Course","level":"1.1","depth":1,"next":{"title":"What you are going to learn (TODO:)","level":"1.1.1","depth":2,"path":"book/what-are-you-going-to-learn.md","ref":"book/what-are-you-going-to-learn.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2019-08-19T05:12:15.750Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-20T07:00:16.546Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React Testing Course","level":"1.1","depth":1,"next":{"title":"What you are going to learn (TODO:)","level":"1.1.1","depth":2,"path":"book/what-are-you-going-to-learn.md","ref":"book/what-are-you-going-to-learn.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2019-08-23T07:06:06.160Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-23T07:06:26.394Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

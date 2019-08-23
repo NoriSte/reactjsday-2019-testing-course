@@ -392,7 +392,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="about-this-book">About this book</h1>
-<p>This book has been built with <a href="https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md" target="_blank">GitBook</a> and some plugins:</p>
+<p>We built this book with <a href="https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md" target="_blank">GitBook</a> and some plugins:</p>
 <ul>
 <li><code>-sharing</code>: allows to manage (ore remove at all) the sharing buttons</li>
 <li><code>include-codeblock</code>: allows to import a block of code directly from a file</li>
@@ -407,7 +407,21 @@
 <li><code>npm run book:publish</code>: pushes the latest changes to the <a href="https://noriste.github.io/reactjsday-2019-testing-course/" target="_blank">GitHub page</a></li>
 </ul>
 <h3 id="slides">Slides</h3>
-<p>The slides are managed through <a href="https://gitpitch.com" target="_blank">GitPitch</a> and are in the <code>slides/</code> directory.</p>
+<p>We managed the slides through <a href="https://gitpitch.com" target="_blank">GitPitch</a> and are in the <code>slides/</code> directory.</p>
+<h3 id="code">Code</h3>
+<p>We leveraged both the React frontend and the Node.js backend of the <a href="http://realworld.io" target="_blank">RealWorld</a> project. We cloned both the repositories and adapted them for the purpose of this course:</p>
+<ul>
+<li>we shared some constants between the source code and the tests code</li>
+<li>we delayed every backend operation to simulate E2E testing bottlenecks</li>
+<li>we added the option to wipe out the entire DB</li>
+<li>we made the execrices network-independent by storing all the assets locally</li>
+</ul>
+<p>The RealWorld projects are stored into the <code>realworld</code> directory. To run them you need to have installed</p>
+<p>Some notes:</p>
+<ul>
+<li>you need to have <a href="https://docs.docker.com/install/" target="_blank">Docker</a> and <a href="https://docs.mongodb.com/manual/installation/#tutorials" target="_blank">MongoDB</a> installed to run the projects and the tests locally (not for the book itself)</li>
+<li>the DB data could not be persisted. If you stop the Mongo process the frontend was logged in, you need to <a href="https://developers.google.com/web/tools/chrome-devtools/storage/localstorage" target="_blank">manually delete</a> the stored JWT. Otherwise, the frontend will not work anymore. The Cypress tests already managed it by clearing every local state before every test.</li>
+</ul>
 
                                 
                                 </section>
@@ -443,7 +457,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"About this book","level":"4.1","depth":1,"previous":{"title":"Resources","level":"3.2","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/about-the-book.md","mtime":"2019-08-20T06:41:55.473Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-20T07:00:16.546Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"About this book","level":"4.1","depth":1,"previous":{"title":"Resources","level":"3.2","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/about-the-book.md","mtime":"2019-08-23T07:06:06.161Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-23T07:06:26.394Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
