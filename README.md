@@ -4,6 +4,8 @@
 [![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
 [![RealWorld Backend](https://img.shields.io/badge/realworld-backend-%23783578.svg)](http://realworld.io)
 
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/) <-- is it working? replace it with libraries.io?
+
 TODO: additional requisites to run the tests on your local machine:
 
 - Node.js 10+
@@ -24,6 +26,13 @@ TODO: TOC a la cypress workshop
 to include code into the book...
 [include](../__tests__/index.test.js)
 [include](./../__tests__/index.test.js)
+or git diff
+```diff
+const a = "ciao";
+-let message = 'hello world!'
++let message = 'hello stackoverflow!'
+const a = "ciao";
+```
 -->
 
 [license]: https://github.com/NoriSte/reactjsday-2019-testing-course/blob/master/README.md#license
