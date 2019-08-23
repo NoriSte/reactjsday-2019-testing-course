@@ -19,7 +19,7 @@ cognitive load image https://github.com/goldbergyoni/javascript-testing-best-pra
 
 - the tests must be deterministic: if you run them hundred times, the result must be the same. If they are not deterministic, you must think what influences them and how to write better tests (example: testing a unit based on date?)
 
-- the tests must fail before you write the code and succeed when you have written the code. Otherwise, you can not be sure that the tests are testing your code and that is your code that get them pass. You risk to be have a useless test (example: Ste has an example of a coding challenge with a useless test)
+- the tests must fail before you write the code and succeed when you have written the code. Otherwise, you can not be sure that the tests are testing your code and that is your code that get them pass. You could neither be sure you have sistematically replicated the bug. You risk to be have a useless test (example: Ste has an example of a coding challenge with a useless test)
 
 - the tests must be fast, as fast as possible. You can not sacrifice speed for reliability, but the speed is really important because the faster the tests are, the faster you have feeddback, the higher the chance you run them frequently, the sooner you discover regressions. Slow tests make you move your mind to another task, make you waste your time, make you hungry when they fail after a 30-minutes pipeline, and, sooner or later, they make you think about removing them... (example: jest/cypress clock management)
 
@@ -38,3 +38,5 @@ cognitive load image https://github.com/goldbergyoni/javascript-testing-best-pra
 - code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)
 
 - E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it's true, but thay are super brittle, so forget about their importance (TODO: move this part where speaking about e2e tests)
+
+- if you're not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them? (example: Ste while implementing the roles in the webapp setting all he old tests with admin users to avoid changing them)

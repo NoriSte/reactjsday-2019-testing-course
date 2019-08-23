@@ -16,7 +16,9 @@
   - [What should I not test? TODO:](book/what-not-to-test.md)
   - [Testing disadvantages TODO:](book/testing-disadvantages.md)
 - ***
+- [Top to bottom](book/top-to-bottom.md)
+- ***
 - [Conclusions](book/conclusions.md)
-- Resources
+- [Resources](book/resources.md)
 - ***
 - [About this book](book/about-the-book.md)
