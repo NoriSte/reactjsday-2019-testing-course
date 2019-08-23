@@ -16,6 +16,11 @@ var app = express();
 
 app.use(cors());
 
+// intentional delay simulating E2E testing bottlenecks
+app.use((req, res, next) => {
+  setTimeout(next, Math.floor(Math.random() * 2000 + 300));
+});
+
 // Normal express config defaults
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,7 +38,17 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('mongodb://localhost/conduit');
+  mongoose.connect('mongodb://localhost/conduit').then(() => {
+    if (process.env.PERSIST_DB !== "true") {
+      console.log('The DB is going to be cleared');
+      // see https://gist.github.com/ecasilla/20f3a82398f0aa97d260
+      for (let collection in mongoose.connection.collections) {
+        mongoose.connection.collections[collection].remove(function() {});
+      }
+    } else {
+      console.log('The DB has not been cleared');
+    }
+  });
   mongoose.set('debug', true);
 }
 

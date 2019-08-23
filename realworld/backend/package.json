@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "mongo:start": "docker run --name realworld-mongo -p 27017:27017 mongo & sleep 5",
-    "start": "node ./app.js",
+    "start": "cross-env PERSIST_DB=false node ./app.js",
     "dev": "nodemon ./app.js",
     "test": "newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json",
     "stop": "lsof -ti :3100 | xargs kill",
@@ -37,6 +37,7 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "newman": "^3.8.2",
     "nodemon": "^1.11.0"
   }
