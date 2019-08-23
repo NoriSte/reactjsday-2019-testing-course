@@ -40,11 +40,11 @@
   },
   "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme",
   "devDependencies": {
-    "concurrently": "^4.1.2",
-    "cross-env": "^5.2.0",
-    "cypress": "^3.4.1",
-    "gitbook-cli": "^2.3.2",
-    "start-server-and-test": "^1.10.0"
+    "concurrently": "4.1.2",
+    "cross-env": "5.2.0",
+    "cypress": "3.4.1",
+    "gitbook-cli": "2.3.2",
+    "start-server-and-test": "1.10.0"
   },
   "dependencies": {
     "gitbook-plugin-include": "^0.1.0",
