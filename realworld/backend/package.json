@@ -25,7 +25,7 @@
     "express-jwt": "3.3.0",
     "express-session": "1.16.2",
     "jsonwebtoken": "7.1.9",
-    "method-override": "2.3.5",
+    "method-override": "2.3.10",
     "methods": "1.1.2",
     "mongoose": "4.4.10",
     "mongoose-unique-validator": "1.0.2",
