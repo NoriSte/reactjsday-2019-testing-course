@@ -19,7 +19,7 @@
   "dependencies": {
     "body-parser": "1.19.0",
     "cors": "2.8.5",
-    "ejs": "2.5.5",
+    "ejs": "2.6.2",
     "errorhandler": "1.5.1",
     "express": "4.13.4",
     "express-jwt": "3.3.0",
