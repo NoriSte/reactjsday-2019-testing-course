@@ -16,7 +16,9 @@
   - [What should I not test? TODO:](book/what-not-to-test.md)
   - [Testing disadvantages TODO:](book/testing-disadvantages.md)
 - ***
-- [Top to bottom](book/top-to-bottom.md)
+- [An easier trip: top to bottom](book/top-to-bottom.md)
+- E2E Testing
+  - [Headless browser](book/headless-browser.md)
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)

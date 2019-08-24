@@ -12,7 +12,7 @@ The book can be configured with the `book.json` file, some of the options can be
 
 - `npx gitbook install`: automatically managed with the `postintall` script
 - `npm run book:serve`: alias for `npx storybook serve`
-- `npm run book:build`: alias for `npx storybook build`, the artifact is placed into the `docs` directory to be used with [GitHub pages](https://pages.github.com)
+- `npm run book:build`: alias for `npx storybook build`, the artifact is placed into the `docs` directory to be used with [GitHub pages](https://pages.github.com). ATTENTION: you need to run `npm test` before it to create some assets for the book
 - `npm run book:publish`: pushes the latest changes to the [GitHub page](https://noriste.github.io/reactjsday-2019-testing-course/)
 
 ### Slides

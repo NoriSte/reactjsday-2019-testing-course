@@ -1,4 +1,4 @@
-# Top to bottom
+# An easier trip: top to bottom
 
 When you are an experienced tester, approaching a test suite is nice road. But learning how to test properly, what to test and what to avoid, which kind of tests choosing etc. is not a satisfactional trip.
 

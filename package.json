@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "gitbook install && npm run realworld:install",
-    "test": "start-server-and-test realworld:start http://localhost:4100 cy:run",
+    "test": "start-server-and-test realworld:start http://localhost:4100 test:everything",
+    "test:everything": "npm run cy:run && npm run run:examples",
     "// BOOK ///////////": "",
     "book:serve": "npx gitbook serve",
     "book:build": "npx gitbook build . docs",
@@ -21,7 +22,10 @@
     "realworld:start": "node utils/start-mongod.js & npm run realworld:db:start && concurrently --kill-others \"npm run realworld:backend:start\" \"npm run realworld:frontend:start\"",
     "realworld:frontend:start": "cd realworld/frontend && npm run start",
     "realworld:backend:start": "cd realworld/backend && npm run start",
-    "realworld:db:start": "cd realworld/backend && npm run mongo:start"
+    "realworld:db:start": "cd realworld/backend && npm run mongo:start",
+    "// EXAMPLES ///////////": "",
+    "run:examples": "npm-run-all -s example:**",
+    "example:headless-browser": "cypress run --config video=false --spec \"cypress/integration/**/headless-browser.*\""
   },
   "repository": {
     "type": "git",
@@ -44,6 +48,7 @@
     "cross-env": "5.2.0",
     "cypress": "3.4.1",
     "gitbook-cli": "2.3.2",
+    "npm-run-all": "^4.1.5",
     "start-server-and-test": "1.10.0"
   },
   "dependencies": {
