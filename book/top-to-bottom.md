@@ -1,6 +1,6 @@
-# An easier trip: top to bottom
+# An easier journey: top to bottom
 
-When you are an experienced tester, approaching a test suite is nice road. But learning how to test properly, what to test and what to avoid, which kind of tests choosing etc. is not a satisfactional trip.
+When you are an experienced tester, approaching a test suite is nice road. But learning how to test properly, what to test and what to avoid, which kind of tests choosing etc. is not a satisfactional journey.
 
 More: **testing is expensive at the beginning**. Everything is new, the examples you are try to implement do not work, debugging a test could be hard...
 

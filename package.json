@@ -10,7 +10,7 @@
     "// BOOK ///////////": "",
     "book:serve": "npx gitbook serve",
     "book:build": "npx gitbook build . docs",
-    "book:publish": "npm run book:build && git add docs && git commit -a -m \"Publish the book\" && git push",
+    "book:publish": "npm run book:build && git add docs && git commit -a -m \"Publish the book\" && git pull --rebase && git push",
     "postbook:publish": "node utils/print-ghpages-url.js",
     "// CYPRESS ///////////": "",
     "cy:open": "cypress open",

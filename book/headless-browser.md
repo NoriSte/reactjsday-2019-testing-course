@@ -1,5 +1,7 @@
 # Headless browser
 
+TODO: transform it in slides
+
 A headless browser is a standard web browser without a GUI. You instrument it with some APIs that replicate the user actions (navigating, clicking, typing, etc.) and you can leverage it to automate everything that requires a running browser.
 
 [Selenium](https://www.seleniumhq.org/projects/webdriver/) and [Puppeteer](https://pptr.dev) are the most used browser automation tools while [Cypress](https://cypress.io), [TestCafé](TestCafé), [Protractor](https://www.protractortest.org/#/), etc. leverage the same mechanism with the purpose of testing a web app.
