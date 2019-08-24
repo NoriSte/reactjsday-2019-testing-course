@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>What is an E2E test? · GitBook</title>
+        <title>Headless browser · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -15,10 +15,6 @@
     <link rel="stylesheet" href="../gitbook/style.css">
 
     
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
-                
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
@@ -55,8 +51,6 @@
     
     <link rel="next" href="conclusions.html" />
     
-    
-    <link rel="prev" href="top-to-bottom.html" />
     
 
     </head>
@@ -321,16 +315,35 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="what-is-e2e-test.html">
+        <li class="chapter " data-level="3.2" >
             
-                <a href="what-is-e2e-test.html">
+                <span>
             
                     
-                    What is an E2E test?
+                    E2E Testing
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="3.2.1" data-path="headless-browser.html">
+            
+                <a href="headless-browser.html">
+            
+                    
+                    Headless browser
             
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -417,7 +430,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >What is an E2E test?</a>
+        <a href=".." >Headless browser</a>
     </h1>
 </div>
 
@@ -432,24 +445,71 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="what-is-an-e2e-test">What is an E2E test?</h1>
-<p>TODO: transform it in slides
-TODO: add a video of the e2e tests with the realworld app</p>
-<h3 id="headless-browser">Headless browser</h3>
-<p>An headless browser is a standard web browser without a GUI. You instrument it with some APIs that replicate the user actions (navigating, clicking, typing, etc.) an you can leverage it to automate everything that requires a running browser.</p>
-<p>Selenium and Puppeteer are the most used browser automation tools while Cypress, TestCaf&#xE9;, Protractor, etc. leverage the same mechanism with the purpose of testing a webapp.</p>
-<p><strong>End-to-end (E2E) tests</strong>: they run the whole app interacting with the real server. From the user interactions (one of the &quot;end&quot;) to the business data (the other &quot;end&quot;): everything must work as designed. E2E tests are typically slow because</p>
+                                <h1 id="headless-browser">Headless browser</h1>
+<p>A headless browser is a standard web browser without a GUI. You instrument it with some APIs that replicate the user actions (navigating, clicking, typing, etc.) and you can leverage it to automate everything that requires a running browser.</p>
+<p><a href="https://www.seleniumhq.org/projects/webdriver/" target="_blank">Selenium</a> and <a href="https://pptr.dev" target="_blank">Puppeteer</a> are the most used browser automation tools while <a href="https://cypress.io" target="_blank">Cypress</a>, <a href="TestCaf&#xE9;">TestCaf&#xE9;</a>, <a href="https://www.protractortest.org/#/" target="_blank">Protractor</a>, etc. leverage the same mechanism with the purpose of testing a web app.</p>
+<p>Let&apos;s take a look at what a &quot;browser without GUI&quot; means with the first example using Cypress (we&apos;re going to speak later about why we choose Cypress).</p>
+<pre><code class="lang-javascript">context(<span class="hljs-string">&quot;Headless browser&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;Must visit the site and take a screenshot&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;https://2019.reactjsday.it&quot;</span>);
+    cy.screenshot();
+  });
+});
+</code></pre>
+<p>Cypress is going to run this test, visit the specified page and take a screenshot.</p>
+<p>And try to run it through the terminal</p>
+<pre><code>$ npx cypress run --spec \&quot;cypress/integration/**/headless-browser.*\&quot;
+</code></pre><p>what does it do?</p>
 <ul>
-<li>they need a <strong>working back-end</strong> application, typically launched alongside the front-end application. You can&apos;t launch them without a server, so you depend on the back-end developers to work</li>
-<li>they need <strong>reliable data</strong>, seeding and cleaning it before every test</li>
+<li>it runs <a href="https://docs.cypress.io/guides/guides/command-line.html#cypress-run" target="_blank">Cypress in headless mode</a> (without a GUI)</li>
+<li>it asks <a href="https://docs.cypress.io/guides/guides/command-line.html#cypress-run-spec-lt-spec-gt" target="_blank">cypress to run only</a> the test with the filename containing <code>headless-browser</code></li>
 </ul>
-<p>That&apos;s why E2E tests are not feasible to be used as the only/main test type. They are pretty important because they are testing everything (front-end + back-end) but they must be used carefully to avoid brittle and hour-long test suites.</p>
-<p>In a complete suite with a lot of UI Integration tests, you can think about E2E tests as &quot;back-end tests&quot;. What flows should you test through them?</p>
-<ul>
-<li>the Happy Path flows: you need to be sure that, at least, the users are able to complete the basic operations</li>
-<li>everything valuable for your business: happy path or not, test whatever your business cares about (prioritizing them, obviously)</li>
-<li>everything that breaks often: weak areas of the system must be monitored too</li>
-</ul>
+<p>For your convenience, you can run directly</p>
+<pre><code>$ npm run example:headless-browser
+</code></pre><p>that&apos;s the output...</p>
+<pre><code>
+====================================================================================================
+
+  (Run Starting)
+
+  &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+  &#x2502; Cypress:    3.4.1                                                                              &#x2502;
+  &#x2502; Browser:    Electron 61 (headless)                                                             &#x2502;
+  &#x2502; Specs:      1 found (examples/headless-browser.spec.js)                                        &#x2502;
+  &#x2502; Searched:   cypress/integration/**/headless-browser.*                                          &#x2502;
+  &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+
+
+&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;
+
+  Running: examples/headless-browser.spec.js...                                            (1 of 1)
+
+
+  Headless browser
+
+    &#x2713; Must visit the site and take a screenshot (15375ms)
+
+...
+</code></pre><p>... and the screenshot took by Cypress.</p>
+<!-- TODO: replicate the same shadow of the below mac screenshot -->
+<div style="max-height: 500px; overflow:hidden;">
+    <img src="../cypress/screenshots/examples/headless-browser.spec.js/Headless browser -- Must visit the site and take a screenshot.png" alt="Headless browser screenshot" style="width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+
+<p><br><br></p>
+<p>As you can see, it&apos;s the screenshot of the <a href="https://2019.reactjsday.it" target="_blank">ReactJSDay website</a>.</p>
+<p>Take a look at the Cypress log, it launched Electron (a sort of soft version of Chrome) in headless mode, it launched the test and the test saved the screenshot. While Electron is a real browser, you have not seen anything about it: that&apos;s how a headless browser works!</p>
+<p>Every headless browser could be launched in non-headless mode (with a GUI, like the standard browsers we use to browse the web) and you can do the same with Cypress too.
+<br>
+Try running</p>
+<pre><code>$ npx cypress open
+</code></pre><p>or</p>
+<pre><code>$ npm run cy:open
+</code></pre><p>The Cypress UI pops up, look for the <code>headless-browser.spec.js</code> test and launch it</p>
+<p><img src="../assets/images/headless-browser-spec.png" alt="Headless browser"></p>
+<p>Cypress launch the Electron browser and run the test inside it</p>
+<p><img src="../assets/images/headless-browser-screenshot.png" alt="Headless browser"></p>
+<p>That&apos;s what &quot;leveraging a headless browser&quot; means: automating some actions inside a browser that can be launched without a GUI (or with it if needed).</p>
 
                                 
                                 </section>
@@ -477,12 +537,8 @@ TODO: add a video of the e2e tests with the realworld app</p>
 
             
                 
-                <a href="top-to-bottom.html" class="navigation navigation-prev " aria-label="Previous page: An easier trip: top to bottom">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="conclusions.html" class="navigation navigation-next " aria-label="Next page: Conclusions">
+                <a href="conclusions.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Conclusions">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -493,7 +549,7 @@ TODO: add a video of the e2e tests with the realworld app</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What is an E2E test?","level":"3.2","depth":1,"next":{"title":"Conclusions","level":"4.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"An easier trip: top to bottom","level":"3.1","depth":1,"path":"book/top-to-bottom.md","ref":"book/top-to-bottom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","ace"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"ace":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/what-is-e2e-test.md","mtime":"2019-08-24T13:04:12.911Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-24T13:07:26.379Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Headless browser","level":"3.2.1","depth":2,"next":{"title":"Conclusions","level":"4.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"E2E Testing","level":"3.2","depth":1,"ref":"","articles":[{"title":"Headless browser","level":"3.2.1","depth":2,"path":"book/headless-browser.md","ref":"book/headless-browser.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/headless-browser.md","mtime":"2019-08-24T14:24:02.889Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-24T14:33:56.497Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -501,14 +557,6 @@ TODO: add a video of the e2e tests with the realworld app</p>
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-ace/ace.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
