@@ -17,9 +17,14 @@
   - [Testing disadvantages TODO:](book/testing-disadvantages.md)
 - ***
 - [An easier journey: top to bottom](book/top-to-bottom.md)
+- ***
 - E2E Testing
   - [Headless browser](book/headless-browser.md)
   - [What is an E2E test](book/what-is-an-e2e-test.md)
+- The first E2E test
+  - [The Realworld project](book/the-realworld-project.md)
+  - [Testing the signup flow: challenges](book/signup-flow-challenges.md)
+  - [Interacting with the page](book/interacting-with-the-page.md)
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)

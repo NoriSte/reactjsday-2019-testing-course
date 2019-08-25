@@ -16,7 +16,9 @@ E2E tests are typically slow because:
 
 - they need a lot of **reliable data**. The tests must be deterministic (do not forget about the [testing rules](testing-rules.md)) and so, they need always the same data
 
-### What flows should you test through them?
+An important note: the front-end application is not deployed in advance and then tested. Instead, it needs to be built on the fly, launched (usually with Docker) and then, if the tests pass, the new front-end app is going to be deployed. That's how the CI/CD pipelines work.
+
+### What flows should be E2E tested?
 
 - the Happy Path flows: you need to be sure that, at least, the users are able to complete the basic operations
 
