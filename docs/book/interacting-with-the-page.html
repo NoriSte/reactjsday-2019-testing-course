@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Having fun while testing TODO: · GitBook</title>
+        <title>Interacting with the page · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="what-not-to-test.html" />
+    <link rel="next" href="conclusions.html" />
     
     
-    <link rel="prev" href="testing-rules.html" />
+    <link rel="prev" href="signup-flow-challenges.html" />
     
 
     </head>
@@ -253,7 +253,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.4" data-path="having-fun-while-testing.html">
+        <li class="chapter " data-level="2.2.4" data-path="having-fun-while-testing.html">
             
                 <a href="having-fun-while-testing.html">
             
@@ -409,7 +409,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.3" data-path="interacting-with-the-page.html">
+        <li class="chapter active" data-level="4.2.3" data-path="interacting-with-the-page.html">
             
                 <a href="interacting-with-the-page.html">
             
@@ -510,7 +510,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Having fun while testing TODO:</a>
+        <a href=".." >Interacting with the page</a>
     </h1>
 </div>
 
@@ -525,24 +525,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="having-fun-while-testing">Having fun while testing</h1>
-<p>TODO: transform this file into some slides</p>
+                                <h1 id="interacting-with-the-page">Interacting with the page</h1>
+<p>Let&apos;s start with a real Cypress test:</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-1.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-1.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;/&quot;</span>);
+    <span class="hljs-comment">// ... we are going to write the rest of the test</span>
+  });
+});
+</code></pre>
+<p>A closer look line by line:</p>
 <ul>
-<li><p>testing allows you to learn, in two ways:</p>
+<li><p><code>/// &lt;reference types=&quot;Cypress&quot; /&gt;</code> allows us to leverage <a href="https://code.visualstudio.com/docs/editor/intellisense" target="_blank">VS Code Intellisense</a> for the autocompletion
+<img src="../assets/gifs/reference-types-cypress.gif" alt="VSCode Intellisense"></p>
+</li>
+<li><p><code>context(&quot;...</code> is the same of <code>describe(&quot;...</code>, it helps grouping some related tests</p>
+</li>
+<li><p><code>it(&quot;...</code> is the same of <code>test(&quot;...</code>, it contains the test instructions</p>
+</li>
+<li><p>about the name of the file (<code>signup-1.e2e.spec.js</code>):</p>
 <ul>
-<li>when you start building an application with a new framework or library, you can not be sure that what you do today does not break what you did yesterday. Afterall, you are practicing with something new, there is nothing strange. If you test your code while you write it, you avoid it (example: Vue.JS for SuperMoney)</li>
-<li>you do not understand how a library works? Try writing the tests for an existing demo/app, it will help you understanding how it works (example: Redux Saga with Conio)</li>
+<li><code>xxx.spec.js</code> (or <code>xxx.test.js</code>, it&apos;s the same) helps identifying in a while the purpose of the test</li>
+<li><code>xxx.e2e.xxx</code> helps identifying the type of the test, it allows you to run only some kind of tests with a single command (ex. <code>npx cypress run --spec \&quot;cypress/integration/**/*.e2e.*\&quot;</code>)</li>
 </ul>
 </li>
-<li><p>you will automate everything</p>
-</li>
-<li><p>testing throw responsibility away (in the good meaning) because you are no more an elephant in a glass shop. Instead, while touching some code, you are part of a protected-by-tests sandbox, working becomes easier</p>
-</li>
-<li><p>you realize soon that you can not live without testing anymore</p>
-</li>
-<li><p>Kent C. Dodds tests &#x1F601;</p>
-</li>
 </ul>
+<p>TODO: to be continued</p>
+<hr>
+<p>The signup page (here the <a href="http://localhost:4100/register" target="_blank">local one</a> and the <a href="https://react-redux.realworld.io/#/register" target="_blank">online hosted one</a>) has a</p>
 
                                 
                                 </section>
@@ -570,12 +583,12 @@
 
             
                 
-                <a href="testing-rules.html" class="navigation navigation-prev " aria-label="Previous page: Testing rules TODO:">
+                <a href="signup-flow-challenges.html" class="navigation navigation-prev " aria-label="Previous page: Testing the signup flow: challenges">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="what-not-to-test.html" class="navigation navigation-next " aria-label="Next page: What should I not test? TODO:">
+                <a href="conclusions.html" class="navigation navigation-next " aria-label="Next page: Conclusions">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -586,7 +599,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"next":{"title":"What should I not test? TODO:","level":"2.2.5","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},"previous":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/having-fun-while-testing.md","mtime":"2019-08-20T05:03:55.940Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.3","depth":2,"next":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-08-25T14:04:08.653Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

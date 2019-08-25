@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Having fun while testing TODO: · GitBook</title>
+        <title>Testing the signup flow: challenges · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="what-not-to-test.html" />
+    <link rel="next" href="interacting-with-the-page.html" />
     
     
-    <link rel="prev" href="testing-rules.html" />
+    <link rel="prev" href="the-realworld-project.html" />
     
 
     </head>
@@ -253,7 +253,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.4" data-path="having-fun-while-testing.html">
+        <li class="chapter " data-level="2.2.4" data-path="having-fun-while-testing.html">
             
                 <a href="having-fun-while-testing.html">
             
@@ -396,7 +396,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.2" data-path="signup-flow-challenges.html">
+        <li class="chapter active" data-level="4.2.2" data-path="signup-flow-challenges.html">
             
                 <a href="signup-flow-challenges.html">
             
@@ -510,7 +510,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Having fun while testing TODO:</a>
+        <a href=".." >Testing the signup flow: challenges</a>
     </h1>
 </div>
 
@@ -525,24 +525,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="having-fun-while-testing">Having fun while testing</h1>
-<p>TODO: transform this file into some slides</p>
+                                <h1 id="the-first-e2e-test-signup">The first E2E test: signup</h1>
+<p>There is a lot to tell and care when writing E2E tests, we are goign to use one of the most famous example: the signup flow. Testing this kind of flow is useful because:</p>
 <ul>
-<li><p>testing allows you to learn, in two ways:</p>
-<ul>
-<li>when you start building an application with a new framework or library, you can not be sure that what you do today does not break what you did yesterday. Afterall, you are practicing with something new, there is nothing strange. If you test your code while you write it, you avoid it (example: Vue.JS for SuperMoney)</li>
-<li>you do not understand how a library works? Try writing the tests for an existing demo/app, it will help you understanding how it works (example: Redux Saga with Conio)</li>
-</ul>
+<li><p>it fills a form</p>
 </li>
-<li><p>you will automate everything</p>
+<li><p>it contains an AJAX request</p>
 </li>
-<li><p>testing throw responsibility away (in the good meaning) because you are no more an elephant in a glass shop. Instead, while touching some code, you are part of a protected-by-tests sandbox, working becomes easier</p>
+<li><p>it contains some error flows to be tested</p>
 </li>
-<li><p>you realize soon that you can not live without testing anymore</p>
-</li>
-<li><p>Kent C. Dodds tests &#x1F601;</p>
+<li><p>most of the flows need a registered user (speaking about)</p>
 </li>
 </ul>
+<p>Please note: you need to have the <a href="about-the-book.html#code">RealWorld</a> example running, be sure that you have <code>$ npm run realworld:start</code> running (if something does not worl, take a look at the <a href="../">installation instructions</a>).</p>
+<!-- TODO: write the instructions in the README and point to the specific block -->
+<h3 id="challenges">Challenges</h3>
+<p>If you want to test the signup flow we need:</p>
+<ul>
+<li><p>to identify the HTML elements we need to interact with</p>
+</li>
+<li><p>to be sure that the test always pass, regardless of the user we are registering already exists or not</p>
+</li>
+<li><p>to create a simplified and fast version of the whole signup flow, other tests will need a registered user too</p>
+</li>
+</ul>
+<p>Let&apos;s face them one by one in the next chapters.</p>
 
                                 
                                 </section>
@@ -570,12 +577,12 @@
 
             
                 
-                <a href="testing-rules.html" class="navigation navigation-prev " aria-label="Previous page: Testing rules TODO:">
+                <a href="the-realworld-project.html" class="navigation navigation-prev " aria-label="Previous page: The Realworld project">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="what-not-to-test.html" class="navigation navigation-next " aria-label="Next page: What should I not test? TODO:">
+                <a href="interacting-with-the-page.html" class="navigation navigation-next " aria-label="Next page: Interacting with the page">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -586,7 +593,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"next":{"title":"What should I not test? TODO:","level":"2.2.5","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},"previous":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/having-fun-while-testing.md","mtime":"2019-08-20T05:03:55.940Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"next":{"title":"Interacting with the page","level":"4.2.3","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"previous":{"title":"The Realworld project","level":"4.2.1","depth":2,"path":"book/the-realworld-project.md","ref":"book/the-realworld-project.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/signup-flow-challenges.md","mtime":"2019-08-25T13:36:51.977Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

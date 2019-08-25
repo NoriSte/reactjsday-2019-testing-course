@@ -49,8 +49,6 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="conclusions.html" />
-    
     
     <link rel="prev" href="headless-browser.html" />
     
@@ -317,7 +315,14 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" >
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
             
                 <span>
             
@@ -331,7 +336,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.2.1" data-path="headless-browser.html">
+        <li class="chapter " data-level="4.1.1" data-path="headless-browser.html">
             
                 <a href="headless-browser.html">
             
@@ -344,12 +349,70 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2.2" data-path="what-is-an-e2e-test.html">
+        <li class="chapter active" data-level="4.1.2" data-path="what-is-an-e2e-test.html">
             
                 <a href="what-is-an-e2e-test.html">
             
                     
                     What is an E2E test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    The first E2E test
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="the-realworld-project.html">
+            
+                <a href="the-realworld-project.html">
+            
+                    
+                    The Realworld project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="signup-flow-challenges.html">
+            
+                <a href="signup-flow-challenges.html">
+            
+                    
+                    Testing the signup flow: challenges
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="interacting-with-the-page.html">
+            
+                <a href="interacting-with-the-page.html">
+            
+                    
+                    Interacting with the page
             
                 </a>
             
@@ -369,7 +432,7 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="conclusions.html">
+        <li class="chapter " data-level="5.1" data-path="conclusions.html">
             
                 <a href="conclusions.html">
             
@@ -382,7 +445,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="resources.html">
+        <li class="chapter " data-level="5.2" data-path="resources.html">
             
                 <a href="resources.html">
             
@@ -402,7 +465,7 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="about-the-book.html">
+        <li class="chapter " data-level="6.1" data-path="about-the-book.html">
             
                 <a href="about-the-book.html">
             
@@ -477,7 +540,8 @@ The back-end could be:</p>
 <li><p>they need a lot of <strong>reliable data</strong>. The tests must be deterministic (do not forget about the <a href="testing-rules.html">testing rules</a>) and so, they need always the same data</p>
 </li>
 </ul>
-<h3 id="what-flows-should-you-test-through-them">What flows should you test through them?</h3>
+<p>An important note: the front-end application is not deployed in advance and then tested. Instead, it needs to be built on the fly, launched (usually with Docker) and then, if the tests pass, the new front-end app is going to be deployed. That&apos;s how the CI/CD pipelines work.</p>
+<h3 id="what-flows-should-be-e2e-tested">What flows should be E2E tested?</h3>
 <ul>
 <li><p>the Happy Path flows: you need to be sure that, at least, the users are able to complete the basic operations</p>
 </li>
@@ -516,14 +580,10 @@ The back-end could be:</p>
 
             
                 
-                <a href="headless-browser.html" class="navigation navigation-prev " aria-label="Previous page: Headless browser">
+                <a href="headless-browser.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Headless browser">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="conclusions.html" class="navigation navigation-next " aria-label="Next page: Conclusions">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -532,7 +592,7 @@ The back-end could be:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What is an E2E test","level":"3.2.2","depth":2,"next":{"title":"Conclusions","level":"4.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Headless browser","level":"3.2.1","depth":2,"path":"book/headless-browser.md","ref":"book/headless-browser.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/what-is-an-e2e-test.md","mtime":"2019-08-24T15:32:54.220Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-24T15:34:17.483Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"What is an E2E test","level":"4.1.2","depth":2,"next":{"title":"The first E2E test","level":"4.2","depth":1,"ref":"","articles":[{"title":"The Realworld project","level":"4.2.1","depth":2,"path":"book/the-realworld-project.md","ref":"book/the-realworld-project.md","articles":[]},{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},{"title":"Interacting with the page","level":"4.2.3","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]}]},"previous":{"title":"Headless browser","level":"4.1.1","depth":2,"path":"book/headless-browser.md","ref":"book/headless-browser.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/what-is-an-e2e-test.md","mtime":"2019-08-25T13:00:09.417Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

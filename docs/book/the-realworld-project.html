@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Having fun while testing TODO: · GitBook</title>
+        <title>The Realworld project · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="what-not-to-test.html" />
+    <link rel="next" href="signup-flow-challenges.html" />
     
-    
-    <link rel="prev" href="testing-rules.html" />
     
 
     </head>
@@ -253,7 +251,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.4" data-path="having-fun-while-testing.html">
+        <li class="chapter " data-level="2.2.4" data-path="having-fun-while-testing.html">
             
                 <a href="having-fun-while-testing.html">
             
@@ -383,7 +381,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.2.1" data-path="the-realworld-project.html">
+        <li class="chapter active" data-level="4.2.1" data-path="the-realworld-project.html">
             
                 <a href="the-realworld-project.html">
             
@@ -510,7 +508,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Having fun while testing TODO:</a>
+        <a href=".." >The Realworld project</a>
     </h1>
 </div>
 
@@ -525,23 +523,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="having-fun-while-testing">Having fun while testing</h1>
-<p>TODO: transform this file into some slides</p>
+                                <h1 id="the-realworld-project">The Realworld project</h1>
+<p>We leveraged both the React frontend and the Node.js backend of the <a href="http://realworld.io" target="_blank">RealWorld</a> project. You can play with it with an <a href="https://react-redux.realworld.io" target="_blank">online hosted demo</a>. We cloned both the repositories and adapted them for the purpose of this course:</p>
 <ul>
-<li><p>testing allows you to learn, in two ways:</p>
-<ul>
-<li>when you start building an application with a new framework or library, you can not be sure that what you do today does not break what you did yesterday. Afterall, you are practicing with something new, there is nothing strange. If you test your code while you write it, you avoid it (example: Vue.JS for SuperMoney)</li>
-<li>you do not understand how a library works? Try writing the tests for an existing demo/app, it will help you understanding how it works (example: Redux Saga with Conio)</li>
+<li>we shared some constants between the source code and the tests code</li>
+<li>we delayed every backend operation to simulate E2E testing bottlenecks</li>
+<li>we added the option to wipe out the entire DB</li>
+<li>we made the execrices network-independent by storing all the assets locally</li>
 </ul>
-</li>
-<li><p>you will automate everything</p>
-</li>
-<li><p>testing throw responsibility away (in the good meaning) because you are no more an elephant in a glass shop. Instead, while touching some code, you are part of a protected-by-tests sandbox, working becomes easier</p>
-</li>
-<li><p>you realize soon that you can not live without testing anymore</p>
-</li>
-<li><p>Kent C. Dodds tests &#x1F601;</p>
-</li>
+<p>The RealWorld projects are stored into the <code>realworld</code> directory. To run them you need to have installed</p>
+<p>Some notes:</p>
+<ul>
+<li>you need to have <a href="https://docs.docker.com/install/" target="_blank">Docker</a> and <a href="https://docs.mongodb.com/manual/installation/#tutorials" target="_blank">MongoDB</a> installed to run the projects and the tests locally (not for the book itself)</li>
+<li>the DB data could not be persisted. If you stop the Mongo process the frontend was logged in, you need to <a href="https://developers.google.com/web/tools/chrome-devtools/storage/localstorage" target="_blank">manually delete</a> the stored JWT. Otherwise, the frontend will not work anymore. The Cypress tests already managed it by clearing every local state before every test.</li>
 </ul>
 
                                 
@@ -570,12 +564,8 @@
 
             
                 
-                <a href="testing-rules.html" class="navigation navigation-prev " aria-label="Previous page: Testing rules TODO:">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="what-not-to-test.html" class="navigation navigation-next " aria-label="Next page: What should I not test? TODO:">
+                <a href="signup-flow-challenges.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Testing the signup flow: challenges">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -586,7 +576,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"next":{"title":"What should I not test? TODO:","level":"2.2.5","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},"previous":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/having-fun-while-testing.md","mtime":"2019-08-20T05:03:55.940Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The Realworld project","level":"4.2.1","depth":2,"next":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},"previous":{"title":"The first E2E test","level":"4.2","depth":1,"ref":"","articles":[{"title":"The Realworld project","level":"4.2.1","depth":2,"path":"book/the-realworld-project.md","ref":"book/the-realworld-project.md","articles":[]},{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},{"title":"Interacting with the page","level":"4.2.3","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/the-realworld-project.md","mtime":"2019-08-25T13:26:39.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

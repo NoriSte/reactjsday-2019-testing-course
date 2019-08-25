@@ -315,7 +315,14 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" >
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
             
                 <span>
             
@@ -329,7 +336,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="3.2.1" data-path="headless-browser.html">
+        <li class="chapter active" data-level="4.1.1" data-path="headless-browser.html">
             
                 <a href="headless-browser.html">
             
@@ -342,12 +349,70 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.2" data-path="what-is-an-e2e-test.html">
+        <li class="chapter " data-level="4.1.2" data-path="what-is-an-e2e-test.html">
             
                 <a href="what-is-an-e2e-test.html">
             
                     
                     What is an E2E test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    The first E2E test
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="the-realworld-project.html">
+            
+                <a href="the-realworld-project.html">
+            
+                    
+                    The Realworld project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="signup-flow-challenges.html">
+            
+                <a href="signup-flow-challenges.html">
+            
+                    
+                    Testing the signup flow: challenges
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="interacting-with-the-page.html">
+            
+                <a href="interacting-with-the-page.html">
+            
+                    
+                    Interacting with the page
             
                 </a>
             
@@ -367,7 +432,7 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="conclusions.html">
+        <li class="chapter " data-level="5.1" data-path="conclusions.html">
             
                 <a href="conclusions.html">
             
@@ -380,7 +445,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="resources.html">
+        <li class="chapter " data-level="5.2" data-path="resources.html">
             
                 <a href="resources.html">
             
@@ -400,7 +465,7 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="about-the-book.html">
+        <li class="chapter " data-level="6.1" data-path="about-the-book.html">
             
                 <a href="about-the-book.html">
             
@@ -463,6 +528,7 @@
 <p>A headless browser is a standard web browser without a GUI. You instrument it with some APIs that replicate the user actions (navigating, clicking, typing, etc.) and you can leverage it to automate everything that requires a running browser.</p>
 <p><a href="https://www.seleniumhq.org/projects/webdriver/" target="_blank">Selenium</a> and <a href="https://pptr.dev" target="_blank">Puppeteer</a> are the most used browser automation tools while <a href="https://cypress.io" target="_blank">Cypress</a>, <a href="TestCaf&#xE9;">TestCaf&#xE9;</a>, <a href="https://www.protractortest.org/#/" target="_blank">Protractor</a>, etc. leverage the same mechanism with the purpose of testing a web app.</p>
 <p>Let&apos;s take a look at what a &quot;browser without GUI&quot; means with the first example using Cypress (we&apos;re going to speak later about why we choose Cypress).</p>
+<p><i>File: <a href="../cypress/integration/examples/headless-browser.spec.js" target="_blank">cypress/integration/examples/headless-browser.spec.js</a></i></p>
 <pre><code class="lang-javascript">context(<span class="hljs-string">&quot;Headless browser&quot;</span>, () =&gt; {
   it(<span class="hljs-string">&quot;Must visit the site and take a screenshot&quot;</span>, () =&gt; {
     cy.visit(<span class="hljs-string">&quot;https://2019.reactjsday.it&quot;</span>);
@@ -563,7 +629,7 @@ Try running</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Headless browser","level":"3.2.1","depth":2,"next":{"title":"What is an E2E test","level":"3.2.2","depth":2,"path":"book/what-is-an-e2e-test.md","ref":"book/what-is-an-e2e-test.md","articles":[]},"previous":{"title":"E2E Testing","level":"3.2","depth":1,"ref":"","articles":[{"title":"Headless browser","level":"3.2.1","depth":2,"path":"book/headless-browser.md","ref":"book/headless-browser.md","articles":[]},{"title":"What is an E2E test","level":"3.2.2","depth":2,"path":"book/what-is-an-e2e-test.md","ref":"book/what-is-an-e2e-test.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/headless-browser.md","mtime":"2019-08-24T14:47:14.696Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-24T15:34:17.483Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Headless browser","level":"4.1.1","depth":2,"next":{"title":"What is an E2E test","level":"4.1.2","depth":2,"path":"book/what-is-an-e2e-test.md","ref":"book/what-is-an-e2e-test.md","articles":[]},"previous":{"title":"E2E Testing","level":"4.1","depth":1,"ref":"","articles":[{"title":"Headless browser","level":"4.1.1","depth":2,"path":"book/headless-browser.md","ref":"book/headless-browser.md","articles":[]},{"title":"What is an E2E test","level":"4.1.2","depth":2,"path":"book/what-is-an-e2e-test.md","ref":"book/what-is-an-e2e-test.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/headless-browser.md","mtime":"2019-08-25T12:17:03.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
