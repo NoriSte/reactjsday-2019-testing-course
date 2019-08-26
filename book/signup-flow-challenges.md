@@ -1,6 +1,6 @@
 # The first E2E test: signup
 
-There is a lot to tell and care when writing E2E tests, we are goign to use one of the most famous example: the signup flow. Testing this kind of flow is useful because:
+There is a lot to tell and care when writing E2E tests, we are goign to use one of the most famous examples: the signup flow. Testing this kind of flow is useful because:
 
 - it fills a form
 

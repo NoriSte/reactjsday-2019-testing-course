@@ -1,6 +1,8 @@
-# The Realworld project
+# Conduit: the Realworld project
 
-We leveraged both the React frontend and the Node.js backend of the [RealWorld](http://realworld.io) project. You can play with it with an [online hosted demo](https://react-redux.realworld.io). We cloned both the repositories and adapted them for the purpose of this course:
+We leveraged both the React frontend and the Node.js backend of the [RealWorld](http://realworld.io) project. You can play with it with an [online hosted demo](https://react-redux.realworld.io). THe project is a clone of [Medium](https://medium.com), the popular blogging platform, called Conduit.
+
+We cloned both the repositories and adapted them for the purpose of this course:
 
 - we shared some constants between the source code and the tests code
 - we delayed every backend operation to simulate E2E testing bottlenecks

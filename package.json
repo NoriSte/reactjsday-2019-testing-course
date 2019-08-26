@@ -14,7 +14,7 @@
     "postbook:publish": "node utils/print-ghpages-url.js",
     "// CYPRESS ///////////": "",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --config video=false --spec \"cypress/integration/realworld/**/*\"",
     "// REALWORLD ///////////": "",
     "realworld:install": "npm run realworld:frontend:install && npm run realworld:backend:install",
     "realworld:frontend:install": "cd realworld/frontend && npm install",

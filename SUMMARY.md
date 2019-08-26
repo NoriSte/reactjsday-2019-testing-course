@@ -3,6 +3,7 @@
 - [React Testing Course](README.md)
   - [What you are going to learn (TODO:)](book/what-are-you-going-to-learn.md)
   - [About us](book/about-us.md)
+  - [Files and directories](book/files-and-directories.md)
 - ***
 - Testing definitions
   - [What is a test? TODO:](book/what-is-a-test.md)
@@ -22,8 +23,9 @@
   - [Headless browser](book/headless-browser.md)
   - [What is an E2E test](book/what-is-an-e2e-test.md)
 - The first E2E test
-  - [The Realworld project](book/the-realworld-project.md)
+  - [Conduit: the Realworld project](book/the-realworld-project.md)
   - [Testing the signup flow: challenges](book/signup-flow-challenges.md)
+  - [Opening Cypress](book/opening-cypress.md)
   - [Interacting with the page](book/interacting-with-the-page.md)
 - ***
 - [Conclusions](book/conclusions.md)
