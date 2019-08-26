@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Headless browser · GitBook</title>
+        <title>Opening Cypress · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,8 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="what-is-an-e2e-test.html" />
+    <link rel="next" href="interacting-with-the-page.html" />
     
+    
+    <link rel="prev" href="signup-flow-challenges.html" />
     
 
     </head>
@@ -349,7 +351,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="4.1.1" data-path="headless-browser.html">
+        <li class="chapter " data-level="4.1.1" data-path="headless-browser.html">
             
                 <a href="headless-browser.html">
             
@@ -420,7 +422,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.3" data-path="opening-cypress.html">
+        <li class="chapter active" data-level="4.2.3" data-path="opening-cypress.html">
             
                 <a href="opening-cypress.html">
             
@@ -534,7 +536,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Headless browser</a>
+        <a href=".." >Opening Cypress</a>
     </h1>
 </div>
 
@@ -549,73 +551,60 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="headless-browser">Headless browser</h1>
-<p>TODO: transform it in slides</p>
-<p>A headless browser is a standard web browser without a GUI. You instrument it with some APIs that replicate the user actions (navigating, clicking, typing, etc.) and you can leverage it to automate everything that requires a running browser.</p>
-<p><a href="https://www.seleniumhq.org/projects/webdriver/" target="_blank">Selenium</a> and <a href="https://pptr.dev" target="_blank">Puppeteer</a> are the most used browser automation tools while <a href="https://cypress.io" target="_blank">Cypress</a>, <a href="TestCaf&#xE9;">TestCaf&#xE9;</a>, <a href="https://www.protractortest.org/#/" target="_blank">Protractor</a>, etc. leverage the same mechanism with the purpose of testing a web app.</p>
-<p>Let&apos;s take a look at what a &quot;browser without GUI&quot; means with the first example using Cypress (we&apos;re going to speak later about why we choose Cypress).</p>
-<p><i>File: <a href="../cypress/integration/examples/headless-browser.spec.js" target="_blank">cypress/integration/examples/headless-browser.spec.js</a></i></p>
-<pre><code class="lang-javascript">context(<span class="hljs-string">&quot;Headless browser&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;Must visit the site and take a screenshot&quot;</span>, () =&gt; {
-    cy.visit(<span class="hljs-string">&quot;https://2019.reactjsday.it&quot;</span>);
-    cy.screenshot();
+                                <h1 id="opening-cypress">Opening Cypress</h1>
+<p>Let&apos;s start with a real Cypress test:</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-1.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-1.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;/&quot;</span>);
+    <span class="hljs-comment">// ... we are going to write the rest of the test</span>
   });
 });
 </code></pre>
-<p>Cypress is going to run this test, visit the specified page and take a screenshot.</p>
-<p>And try to run it through the terminal</p>
-<pre><code>$ npx cypress run --spec \&quot;cypress/integration/**/headless-browser.*\&quot;
-</code></pre><p>what does it do?</p>
+<p>A closer look line by line:</p>
 <ul>
-<li>it runs <a href="https://docs.cypress.io/guides/guides/command-line.html#cypress-run" target="_blank">Cypress in headless mode</a> (without a GUI)</li>
-<li>it asks <a href="https://docs.cypress.io/guides/guides/command-line.html#cypress-run-spec-lt-spec-gt" target="_blank">cypress to run only</a> the test with the filename containing <code>headless-browser</code></li>
+<li><p><code>/// &lt;reference types=&quot;Cypress&quot; /&gt;</code> allows us to leverage <a href="https://code.visualstudio.com/docs/editor/intellisense" target="_blank">VS Code Intellisense</a> for the autocompletion
+<img src="../assets/gifs/reference-types-cypress.gif" alt="VSCode Intellisense"></p>
+</li>
+<li><p><code>context(&quot;...</code> is the same of <code>describe(&quot;...</code>, it helps to group some related tests</p>
+</li>
+<li><p><code>it(&quot;...</code> is the same of <code>test(&quot;...</code>, it contains the test instructions</p>
+</li>
+<li><p>about the name of the file (<code>signup-1.e2e.spec.js</code>):</p>
+<ul>
+<li><code>xxx.spec.js</code> (or <code>xxx.test.js</code>, it&apos;s the same) helps identifying in a while the purpose of the test</li>
+<li><code>xxx.e2e.xxx</code> helps identifying the type of the test, it allows you to run only some kind of tests with a single command (ex. <code>npx cypress run --spec \&quot;cypress/integration/**/*.e2e.*\&quot;</code>)</li>
 </ul>
-<p>For your convenience, you can run directly</p>
-<pre><code>$ npm run example:headless-browser
-</code></pre><p>that&apos;s the output...</p>
-<pre><code>
-====================================================================================================
-
-  (Run Starting)
-
-  &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
-  &#x2502; Cypress:    3.4.1                                                                              &#x2502;
-  &#x2502; Browser:    Electron 61 (headless)                                                             &#x2502;
-  &#x2502; Specs:      1 found (examples/headless-browser.spec.js)                                        &#x2502;
-  &#x2502; Searched:   cypress/integration/**/headless-browser.*                                          &#x2502;
-  &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
-
-
-&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;
-
-  Running: examples/headless-browser.spec.js...                                            (1 of 1)
-
-
-  Headless browser
-
-    &#x2713; Must visit the site and take a screenshot (15375ms)
-
-...
-</code></pre><p>... and the screenshot took by Cypress.</p>
+</li>
+<li><p><code>cy.visit(&quot;/&quot;);</code> is the first line of the test itself, it visits the home page of <a href="the-realworld-project.html">Conduit</a></p>
+</li>
+</ul>
+<p>How could Cypress know which is the URL of the whole site? Take a look at Cypress config file</p>
+<p><i>File: <a href="../cypress.json" target="_blank">cypress.json</a></i></p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;baseUrl&quot;</span>: <span class="hljs-string">&quot;http://localhost:4100&quot;</span>
+}
+</code></pre>
+<p>the <code>baseUrl</code> property tells Cypress the domain the site is available. This property can be overwritten through the <a href="https://docs.cypress.io/guides/references/configuration.html#Command-Line" target="_blank">command line</a> and allows the Cypress tests to load faster.</p>
+<h3 id="cypress-open">Cypress open</h3>
+<p>In order to see the test running, we must now open Cypress. Run <code>$ npm run cy:open</code> in your terminal and the list of Cypress tests comes up. Click on the <code>examples/signup/signup-1.e2e.spec.js</code></p>
+<p>If Cypress prompts you with an alert like the following one, it&apos;s because you have not the Conduit website running</p>
+<!-- TODO: take a look at the image below that does not work -->
+<p><img src="../assets/images/cypress-no-working-website.png" alt="Cypress tells that the website is not running"></p>
+<p>Launch <code>npm run realworld:start</code> in the terminal and everything is going to work. In case of troubles take a look at the <a href="the-realworld-project.html">Conduit</a> chapter.</p>
+<p>Now you can see the page launched by the test</p>
 <!-- TODO: replicate the same shadow of the below mac screenshot -->
-<div style="max-height: 500px; overflow:hidden;">
-    <img src="../cypress/screenshots/examples/headless-browser.spec.js/Headless browser -- Must visit the site and take a screenshot.png" alt="Headless browser screenshot" style="width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+<p><img src="../assets/images/cypress-signup-conduit.png" alt="Cypress Conduit" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"></p>
+<h3 id="the-test-runner">The Test Runner</h3>
+<p>On the left you can see the Test Runner, it&apos;s one of the greatest features of Cypress. It allows you to analyze what&apos;s happening in the front-end application.</p>
+<p><div>
+  <img src="../assets/images/test-runner.png" alt="The Test Runner" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-left: auto; margin-right: auto;">
 </div>
-
-<p><br><br></p>
-<p>As you can see, it&apos;s the screenshot of the <a href="https://2019.reactjsday.it" target="_blank">ReactJSDay website</a>.</p>
-<p>Take a look at the Cypress log, it launched Electron (a sort of soft version of Chrome) in headless mode, it launched the test and the test saved the screenshot. While Electron is a real browser, you have not seen anything about it: that&apos;s how a headless browser works!</p>
-<p>Every headless browser could be launched in non-headless mode (with a GUI, like the standard browsers we use to browse the web) and you can do the same with Cypress too.
-<br>
-Try running</p>
-<pre><code>$ npx cypress open
-</code></pre><p>or</p>
-<pre><code>$ npm run cy:open
-</code></pre><p>The Cypress UI pops up, look for the <code>headless-browser.spec.js</code> test and launch it</p>
-<p><img src="../assets/images/headless-browser-spec.png" alt="Headless browser"></p>
-<p>Cypress launch the Electron browser and run the test inside it</p>
-<p><img src="../assets/images/headless-browser-screenshot.png" alt="Headless browser"></p>
-<p>That&apos;s what &quot;leveraging a headless browser&quot; means: automating some actions inside a browser that can be launched without a GUI (or with it if needed).</p>
+<br><br>
+Being able to read what&apos;s happening in the front-end app is amazing because you have most of the needed feedback while developing/debugging/testing. <strong>You know all the details</strong> about the AJAX calls the front-end is doing, you know if some errors happened in the front-end code, you know what Cypress is doing, you know the result of the assertions...</p>
+<p>We are going to deepen some of the Test Runner capabilities but we can find everything about it on the <a href="https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments" target="_blank">official Cypress Documentation</a>.</p>
 
                                 
                                 </section>
@@ -643,8 +632,12 @@ Try running</p>
 
             
                 
+                <a href="signup-flow-challenges.html" class="navigation navigation-prev " aria-label="Previous page: Testing the signup flow: challenges">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="what-is-an-e2e-test.html" class="navigation navigation-next navigation-unique" aria-label="Next page: What is an E2E test">
+                
+                <a href="interacting-with-the-page.html" class="navigation navigation-next " aria-label="Next page: Interacting with the page">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -655,7 +648,7 @@ Try running</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Headless browser","level":"4.1.1","depth":2,"next":{"title":"What is an E2E test","level":"4.1.2","depth":2,"path":"book/what-is-an-e2e-test.md","ref":"book/what-is-an-e2e-test.md","articles":[]},"previous":{"title":"E2E Testing","level":"4.1","depth":1,"ref":"","articles":[{"title":"Headless browser","level":"4.1.1","depth":2,"path":"book/headless-browser.md","ref":"book/headless-browser.md","articles":[]},{"title":"What is an E2E test","level":"4.1.2","depth":2,"path":"book/what-is-an-e2e-test.md","ref":"book/what-is-an-e2e-test.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/headless-browser.md","mtime":"2019-08-26T05:39:04.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-26T06:28:30.175Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Opening Cypress","level":"4.2.3","depth":2,"next":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"previous":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/opening-cypress.md","mtime":"2019-08-26T06:25:58.520Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-26T06:28:30.175Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

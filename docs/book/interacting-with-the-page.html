@@ -52,7 +52,7 @@
     <link rel="next" href="conclusions.html" />
     
     
-    <link rel="prev" href="signup-flow-challenges.html" />
+    <link rel="prev" href="opening-cypress.html" />
     
 
     </head>
@@ -123,6 +123,19 @@
             
                     
                     About us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="files-and-directories.html">
+            
+                <a href="files-and-directories.html">
+            
+                    
+                    Files and directories
             
                 </a>
             
@@ -388,7 +401,7 @@
                 <a href="the-realworld-project.html">
             
                     
-                    The Realworld project
+                    Conduit: the Realworld project
             
                 </a>
             
@@ -409,7 +422,20 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.2.3" data-path="interacting-with-the-page.html">
+        <li class="chapter " data-level="4.2.3" data-path="opening-cypress.html">
+            
+                <a href="opening-cypress.html">
+            
+                    
+                    Opening Cypress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.2.4" data-path="interacting-with-the-page.html">
             
                 <a href="interacting-with-the-page.html">
             
@@ -526,36 +552,22 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="interacting-with-the-page">Interacting with the page</h1>
-<p>Let&apos;s start with a real Cypress test:</p>
-<p><i>File: <a href="../cypress/integration/examples/signup/signup-1.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-1.e2e.spec.js</a></i></p>
-<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
-
-context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
-    cy.visit(<span class="hljs-string">&quot;/&quot;</span>);
-    <span class="hljs-comment">// ... we are going to write the rest of the test</span>
-  });
-});
-</code></pre>
-<p>A closer look line by line:</p>
-<ul>
-<li><p><code>/// &lt;reference types=&quot;Cypress&quot; /&gt;</code> allows us to leverage <a href="https://code.visualstudio.com/docs/editor/intellisense" target="_blank">VS Code Intellisense</a> for the autocompletion
-<img src="../assets/gifs/reference-types-cypress.gif" alt="VSCode Intellisense"></p>
-</li>
-<li><p><code>context(&quot;...</code> is the same of <code>describe(&quot;...</code>, it helps grouping some related tests</p>
-</li>
-<li><p><code>it(&quot;...</code> is the same of <code>test(&quot;...</code>, it contains the test instructions</p>
-</li>
-<li><p>about the name of the file (<code>signup-1.e2e.spec.js</code>):</p>
-<ul>
-<li><code>xxx.spec.js</code> (or <code>xxx.test.js</code>, it&apos;s the same) helps identifying in a while the purpose of the test</li>
-<li><code>xxx.e2e.xxx</code> helps identifying the type of the test, it allows you to run only some kind of tests with a single command (ex. <code>npx cypress run --spec \&quot;cypress/integration/**/*.e2e.*\&quot;</code>)</li>
-</ul>
-</li>
-</ul>
-<p>TODO: to be continued</p>
-<hr>
 <p>The signup page (here the <a href="http://localhost:4100/register" target="_blank">local one</a> and the <a href="https://react-redux.realworld.io/#/register" target="_blank">online hosted one</a>) has a</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-lg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Username&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-lg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Email&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-lg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-lg btn-primary pull-xs-right&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Sign up<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -583,7 +595,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 
             
                 
-                <a href="signup-flow-challenges.html" class="navigation navigation-prev " aria-label="Previous page: Testing the signup flow: challenges">
+                <a href="opening-cypress.html" class="navigation navigation-prev " aria-label="Previous page: Opening Cypress">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -599,7 +611,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.3","depth":2,"next":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-08-25T14:04:08.653Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-25T14:05:35.821Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.4","depth":2,"next":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-08-26T06:14:49.930Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-26T06:28:30.175Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
