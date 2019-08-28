@@ -27,6 +27,7 @@
   - [Testing the signup flow: challenges](book/signup-flow-challenges.md)
   - [Opening Cypress](book/opening-cypress.md)
   - [Interacting with the page](book/interacting-with-the-page.md)
+  - [Cypress waitings and execution order](book/cypress-waitings-and-execution-order.md)
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)
