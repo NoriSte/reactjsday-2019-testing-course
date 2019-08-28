@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="conclusions.html" />
+    <link rel="next" href="cypress-waitings-and-execution-order.html" />
     
     
     <link rel="prev" href="opening-cypress.html" />
@@ -448,6 +448,19 @@
             
         </li>
     
+        <li class="chapter " data-level="4.2.5" data-path="cypress-waitings-and-execution-order.html">
+            
+                <a href="cypress-waitings-and-execution-order.html">
+            
+                    
+                    Cypress waitings and execution order
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -552,7 +565,18 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="interacting-with-the-page">Interacting with the page</h1>
-<p>The signup page (here the <a href="http://localhost:4100/register" target="_blank">local one</a> and the <a href="https://react-redux.realworld.io/#/register" target="_blank">online hosted one</a>) has a</p>
+<p>First of all: we need to automate the Cypress test to fill the form and click the &quot;Sign up&quot; button for us. How could we accomplish that?</p>
+<p><img src="../assets/images/signup-page.png" alt="The signup page"></p>
+<p>Well, we need to:</p>
+<ul>
+<li><p>&quot;identify&quot; (from a technical point of view) the input fields</p>
+</li>
+<li><p>identify the button</p>
+</li>
+<li><p>click the button</p>
+</li>
+</ul>
+<p>Identifying elements and interacting with a web page have some hidden challenges that are all but easy to be faced. We are going to discover why looking at the markup of the signup form (here the <a href="http://localhost:4100/register" target="_blank">local one</a> and the <a href="https://react-redux.realworld.io/#/register" target="_blank">online hosted one</a>):</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
@@ -568,6 +592,83 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 </code></pre>
+<p>The three input fields are pretty identical except for:</p>
+<ul>
+<li><p>the order: we know that the email field comes first, then the email and password fields</p>
+</li>
+<li><p>the type: text, email and password</p>
+</li>
+<li><p>the placeholder</p>
+</li>
+<li><p>other ideas?...</p>
+</li>
+</ul>
+<h3 id="order-of-elements">Order of elements</h3>
+<p><em>Please note: the following is not the best E2E test on earth, you are going to discover why step by step &#x1F609;</em></p>
+<p>The Cypress test could be the following</p>
+<pre><code class="lang-js">context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+      cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">&quot;Tester&quot;</span>);
+      cy.get($els[<span class="hljs-number">1</span>]).type(<span class="hljs-string">&quot;user@realworld.io&quot;</span>);
+      cy.get($els[<span class="hljs-number">2</span>]).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    });
+    cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
+    cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p><code>cy.get</code> is the Cypress command you leverage to consume a DOM element in the test. Please note that, as the <a href="https://docs.cypress.io/api/commands/get.html" target="_blank">documentation</a> says:</p>
+<blockquote>
+<p>The querying behavior of this command matches exactly how $(&#x2026;) works in jQuery.</p>
+</blockquote>
+<p>It sounds strange to leverage JQuery nowadays... But do not forget one of the <a href="testing-rules.html">testing rules</a>: the test must be simple. The less code the test is made of, the more the test is readable and understandable. And JQuery surely improves both the simplicity and productivity.</p>
+<p>What about the following snippet</p>
+<pre><code class="lang-js">cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+  cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">&quot;Tester&quot;</span>);
+  cy.get($els[<span class="hljs-number">1</span>]).type(<span class="hljs-string">&quot;user@realworld.io&quot;</span>);
+  cy.get($els[<span class="hljs-number">2</span>]).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+});
+</code></pre>
+<ul>
+<li><p><code>cy.get(&quot;.form-control&quot;).then($els =&gt; ...</code> is necessary because almost every Cypress command can be leveraged synchronously (we are going to learn why later)</p>
+</li>
+<li><p><code>$els</code>, like every JQuery selector, is an array containing all the DOM elements that respond to the given selector (<code>.form-control</code>)</p>
+</li>
+<li><p><code>cy.get($els[&lt;INDEX&gt;])</code> select the element and <code>.type(&quot;Tester&quot;)</code> types, as the user would do, into the input field</p>
+</li>
+</ul>
+<p>Then, we can go ahead and click the buttons</p>
+<pre><code class="lang-js">it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+  cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+  cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+    cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">&quot;Tester&quot;</span>);
+    cy.get($els[<span class="hljs-number">1</span>]).type(<span class="hljs-string">&quot;user@realworld.io&quot;</span>);
+    cy.get($els[<span class="hljs-number">2</span>]).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
+    cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<ul>
+<li><p><code>cy.get(&quot;button&quot;).click()</code> speaks for itself</p>
+</li>
+<li><p>&quot;<em>No articles are here... yet.</em>&quot; is the string that the home pages shows when the signup flow ends. After successful registration, the user is redirected to the home page, the &quot;Your Feed&quot; does not contain any posts yet. Think about it as the proof that everything worked (while testing the signup flow, obviously)</p>
+</li>
+</ul>
+<!-- TODO: replicate the same shadow of the below mac screenshot -->
+<p><img src="../assets/images/signup-feedback.png" alt="Cypress Conduit" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"></p>
+<ul>
+<li><p>the <a href="https://docs.cypress.io/api/commands/contains.html#Syntax" target="_blank"><code>cy.contains()</code></a> API gets the DOM element containing the text</p>
+</li>
+<li><p><code>cy.contains(&quot;No articles are here&quot;)</code> gets the DOM element containing the text &quot;<em>No articles are here</em>&quot;</p>
+</li>
+<li><p><code>cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);</code> asserts about the element itself. This is the end of our test, we want to be sure that the text is visible because it means that the test is finished, the signup flow has worked! (if you want to know more about the available assertions, take a look at the <a href="https://docs.cypress.io/guides/references/assertions.html" target="_blank">official documentation</a>)</p>
+</li>
+</ul>
+<p>As you can see from the screenshot above, the test worked! &#x1F389;</p>
+<p>Now: are we sure that the test follows the <a href="testing-rules.html">testing rules</a>? This test is <strong>neither deterministic nor useful</strong> if it fails! The next chapters are going to explain the reasons why.</p>
 
                                 
                                 </section>
@@ -600,7 +701,7 @@
                 </a>
                 
                 
-                <a href="conclusions.html" class="navigation navigation-next " aria-label="Next page: Conclusions">
+                <a href="cypress-waitings-and-execution-order.html" class="navigation navigation-next " aria-label="Next page: Cypress waitings and execution order">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -611,7 +712,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.4","depth":2,"next":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-08-26T06:14:49.930Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-26T06:28:30.175Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.4","depth":2,"next":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"path":"book/cypress-waitings-and-execution-order.md","ref":"book/cypress-waitings-and-execution-order.md","articles":[]},"previous":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-08-28T15:29:26.818Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-28T15:31:25.838Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
