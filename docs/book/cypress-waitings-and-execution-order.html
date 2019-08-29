@@ -565,13 +565,157 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="cypress-waitings-and-execution-order">Cypress waitings and execution order</h1>
-<p>TODO:</p>
-<p>scroll automatico fino all&apos;elemento desiderato
-You can find all the info about <code>cy.get</code> in its <a href="https://docs.cypress.io/api/commands/get.html" target="_blank">official documentation</a>.</p>
-<p>primo problema: l&apos;utente al secondo tentativo esiste gi&#xE0;
-parla di automatic waiting da parte di cypress, magari nel prossimo capitolo
-come funziona l&apos;ordine delle cose per il &quot;then&quot; in cypress
-retryability</p>
+<p>In the previous chapter, we&apos;ve written this initial test</p>
+<pre><code class="lang-js">it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+  cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+  cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+    cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">&quot;Tester&quot;</span>);
+    cy.get($els[<span class="hljs-number">1</span>]).type(<span class="hljs-string">&quot;user@realworld.io&quot;</span>);
+    cy.get($els[<span class="hljs-number">2</span>]).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
+    cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>Without noting it, we&apos;ve leveraged some interesting features of Cypress.</p>
+<h3 id="automatic-scroll">Automatic scroll</h3>
+<p>When interacting with a DOM element (<code>cy.get($els[0]).type(&quot;Tester&quot;)</code>), Cypress automatically scrolls the page like the user would do before interacting with the element. You can try it changing the test code with the following changes:</p>
+<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
+<span class="hljs-addition">+ cy.viewport(300, 300);</span>
+  cy.visit(&quot;/register&quot;);
+  cy.get(&quot;.form-control&quot;).then($els =&gt; {
+    cy.get($els[0]).type(&quot;Tester&quot;);
+<span class="hljs-addition">+   cy.pause();</span>
+    cy.get($els[1]).type(&quot;user@realworld.io&quot;);
+    cy.get($els[2]).type(&quot;mysupersecretpassword&quot;);
+    cy.get(&quot;button&quot;).click();
+    cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);
+  });
+});
+</code></pre>
+<ul>
+<li><p><code>cy.viewport(300, 300)</code> makes the window extremely small, even interacting with the first input element requires scrolling until it</p>
+</li>
+<li><p><code>cy.pause();</code> pauses the test execution (you can restore it later with the &quot;play&quot; button at the <a href="https://docs.cypress.io/api/commands/pause.html#Pause-and-step-through-each-click-command" target="_blank">top of the Test Runner</a>)</p>
+</li>
+</ul>
+<p>As you can see, Cypress scrolled the page until the username input field is at the top of the page, almost the same thing that the user would do in order to fill it.</p>
+<p><img src="../assets/images/automatic-scroll.png" alt="Cypress automatic scroll" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"></p>
+<p>This is necessary because an E2E test needs to simulate, as much as it can, the exact user behavior.</p>
+<p>Please note: automatic scrolling is a feature of almost every UI testing tool, it&apos;s not a Cypress-specific feature like the next ones.</p>
+<h3 id="automatic-waiting">Automatic waiting</h3>
+<p>This is a mind-blowing feature: did you notice that the test seems a synchronous flow? Think about what happens between a command and the next one:</p>
+<pre><code class="lang-javascript">cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+<span class="hljs-comment">// what does &quot;visit&quot; mean? When is Cypress going to execute the next commands? Is JavaScript ready?</span>
+cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+  cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">&quot;Tester&quot;</span>);
+  <span class="hljs-comment">// typing is an asynchronous task, when will the next task start?</span>
+  cy.get($els[<span class="hljs-number">1</span>]).type(<span class="hljs-string">&quot;user@realworld.io&quot;</span>);
+  cy.get($els[<span class="hljs-number">2</span>]).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+  cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
+  <span class="hljs-comment">// the web app makes an AJAX call, a lot of time passes before the &quot;No articles are here&quot; text becomes visible</span>
+  cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+});
+</code></pre>
+<p>Well: in every UI test, <strong>everything</strong> is asynchronous. The JavaScript execution is asynchronous, the DOM update is asynchronous, the actions of the user are asynchronous... A synchronous approach is a failure by definition.</p>
+<p>Most of the existing browser automation tools (like Selenium or Puppeteer) force you to manually manage a lot of asynchronous situations, while Cypress is asynchronous at its core (read more about a detailed comparison with the <a href="https://medium.com/@NoriSte/await-do-not-sleep-your-e2e-tests-df67e051b409" target="_blank">Await, do not make your E2E tests sleep</a> post). Cypress has been created with UI testing in mind.</p>
+<p>Automatic waitings are so important because:</p>
+<ul>
+<li><p>they allow you to do not care about a lot of asynchronous updates</p>
+</li>
+<li><p>they make the test as fast as possible, avoiding fixed (and slow, and brittle) test pauses (we are going to deepen the topic in the next chapters)</p>
+</li>
+</ul>
+<p>Answering the questions added as comments to the above snippet:</p>
+<ul>
+<li><p><code>cy.visit</code> waits for the window dispatches the <code>load</code> event</p>
+</li>
+<li><p>event if typing is a &quot;long&quot; task (every letter is typed one by one) the next command is not executed until the typing ends</p>
+</li>
+<li><p>Cypress retries <code>cy.contains</code>, <code>cy.get</code>, and other commands by default. The commands have <a href="https://docs.cypress.io/api/commands/contains.html#Arguments" target="_blank">customizable timeout</a> and when Cypress is not able to find the requested elements, they are retried until the elements are added to the page (or throw an error if the timeout is not respected). You can read <a href="https://docs.cypress.io/guides/core-concepts/retry-ability.html" target="_blank">everything about Cypress retry-ability in the official documentation</a></p>
+</li>
+</ul>
+<h3 id="test-runner-interactivity">Test Runner interactivity</h3>
+<p>The Test Runner shows you what&apos;s happening in the front-end application, every executed Cypress command, and the result of all the assertions. And it&apos;s interactive, too! Take a look at the following video</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/C62rYlmKLho?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>it shows how the Test Runner allows you to &quot;time travel&quot; the various phases and check the state of the front-end before and after the execution of every command. As usual, take a look at the @Test Runner documentation](<a href="https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments" target="_blank">https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments</a>) to discover more about it.</p>
+<h3 id="test-code-execution-order">Test code execution order</h3>
+<p>That&apos;s the weird thing you need to get used with Cypress. As we told in advance, every Cypress command is asynchronous by default. That means that Cypress executes the test code twice:</p>
+<ul>
+<li><p>the first time Cypress executes the test code to read and queue all the commands it needs to execute</p>
+</li>
+<li><p>then Cypress loads the page, and executes, one by one, all the command previously queued</p>
+</li>
+</ul>
+<p>Even the commands execution order is not what could seem at a first sight. Try changing the test code to</p>
+<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
+  cy.visit(&quot;/register&quot;);
+  cy.get(&quot;.form-control&quot;).then($els =&gt; {
+    cy.get($els[0]).type(&quot;Tester&quot;);
+    cy.get($els[1]).type(&quot;user@realworld.io&quot;);
+    cy.get($els[2]).type(&quot;mysupersecretpassword&quot;);
+<span class="hljs-deletion">-   cy.get(&quot;button&quot;).click();</span>
+<span class="hljs-deletion">-   cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);</span>
+  });
+<span class="hljs-addition">+ cy.get(&quot;button&quot;).click();</span>
+<span class="hljs-addition">+ cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);</span>
+});
+</code></pre>
+<p>Run the test and you will see that nothing changes. That&apos;s because, independently from the nesting level, Cypress waits for the previous commands (like <code>cy.get($els[2]).type(&quot;...&quot;)</code>) to be completed before running the next ones (like <code>cy.get(&quot;button&quot;).click();</code>). This unique feature allows writing more readable tests.</p>
+<p>The downside is that you can not leverage commands returning variables the way you expect. Something like</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> button = cy.get(<span class="hljs-string">&quot;button&quot;</span>);
+button.click(); <span class="hljs-comment">// nope</span>
+</code></pre>
+<p>will not work as expected. Every Cypress command yields a value and you must <code>.then()</code> it to consume the value.</p>
+<pre><code class="lang-js">cy.get(<span class="hljs-string">&quot;button&quot;</span>).then($button =&gt; button.click());
+<span class="hljs-comment">// or simply</span>
+cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
+</code></pre>
+<p>the latter is possible because every command is executed on the previous yielded value.</p>
+<p>Last but not least: commands can be chained on the <code>cy</code> object:</p>
+<pre><code class="lang-javascript">cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+  cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">&quot;Tester&quot;</span>);
+  cy.get($els[<span class="hljs-number">1</span>]).type(<span class="hljs-string">&quot;user@realworld.io&quot;</span>);
+  cy.get($els[<span class="hljs-number">2</span>]).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+  cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
+  cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+});
+<span class="hljs-comment">// is equivalent to</span>
+cy.visit(<span class="hljs-string">&quot;/register&quot;</span>)
+  .get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+    cy.get($els[<span class="hljs-number">0</span>])
+      .type(<span class="hljs-string">&quot;Tester&quot;</span>)
+      .get($els[<span class="hljs-number">1</span>])
+      .type(<span class="hljs-string">&quot;user@realworld.io&quot;</span>)
+      .get($els[<span class="hljs-number">2</span>])
+      .type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>)
+      .get(<span class="hljs-string">&quot;button&quot;</span>)
+      .click();
+  })
+  cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>)
+    .should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+</code></pre>
+<p>You can choose the syntax you&apos;re more comfortable with. Read more about <a href="https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values" target="_blank">the asynchronicity nature of Cypress in the official documentation</a>.
+<br><br><br>
+p.s. out of curiosity: you can log the Cypress queued commands with a slight change to the code</p>
+<pre><code class="lang-diff"><span class="hljs-deletion">-it(&quot;The happy path should work&quot;, () =&gt; {</span>
+<span class="hljs-addition">+it(&quot;The happy path should work&quot;, function() {</span>
+  cy.visit(&quot;/register&quot;);
+  cy.get(&quot;.form-control&quot;).then($els =&gt; {
+    cy.get($els[0]).type(&quot;Tester&quot;);
+    cy.get($els[1]).type(&quot;user@realworld.io&quot;);
+    cy.get($els[2]).type(&quot;mysupersecretpassword&quot;);
+    cy.get(&quot;button&quot;).click();
+    cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);
+<span class="hljs-addition">+   console.log(this.test.commands);</span>
+  });
+});
+</code></pre>
+<p>That&apos;s the result
+<img src="../assets/images/cy-commands-log.png" alt="Cypress queued commands" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"></p>
+<p>read <a href="https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Avoiding-the-use-of-this" target="_blank">here</a> why you need to use the standard <code>function() {}</code> syntax instead of the arrow function <code>() =&gt; {}</code> syntax.</p>
 
                                 
                                 </section>
@@ -615,7 +759,7 @@ retryability</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"next":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-waitings-and-execution-order.md","mtime":"2019-08-28T15:15:33.412Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-28T15:31:25.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"next":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-waitings-and-execution-order.md","mtime":"2019-08-29T07:16:24.630Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-29T07:17:35.046Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
