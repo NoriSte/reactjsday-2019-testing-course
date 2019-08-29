@@ -115,4 +115,4 @@ it("The happy path should work", () => {
 
 As you can see from the screenshot above, the test worked! 🎉
 
-Now: are we sure that the test follows the [testing rules](testing-rules.md)? This test is **neither deterministic nor useful** if it fails! The next chapters are going to explain the reasons why.
+Now: are we sure that the test follows the [testing rules](testing-rules.md)? This test is **neither deterministic nor stable nor useful** if it fails! The next chapters are going to explain the reasons why.
