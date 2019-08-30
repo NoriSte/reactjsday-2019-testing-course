@@ -57,7 +57,7 @@ context("Signup flow", () => {
       cy.get($els[2]).type("mysupersecretpassword");
     });
     cy.get("button").click();
-    cy.contains("No articles are here", { timeout: 10000 }).should("be.visible");
+    cy.contains("No articles are here").should("be.visible");
   });
 });
 ```
