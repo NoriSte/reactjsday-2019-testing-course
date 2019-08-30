@@ -5,8 +5,8 @@ context("Signup flow", () => {
     cy.visit("/register");
     cy.get(".form-control").then($els => {
       const random = Math.floor(Math.random() * 100000);
-      cy.get($els[0]).type(`Tester`);
-      cy.get($els[1]).type(`user+@realworld.io`);
+      cy.get($els[0]).type(`Tester${random}`);
+      cy.get($els[1]).type(`user+${random}@realworld.io`);
       cy.get($els[2]).type("mysupersecretpassword");
     });
     cy.get("button").click();
