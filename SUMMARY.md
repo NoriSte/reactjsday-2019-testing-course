@@ -29,7 +29,7 @@
   - [Interacting with the page](book/interacting-with-the-page.md)
   - [Cypress waitings and execution order](book/cypress-waitings-and-execution-order.md)
   - Main E2E test defects
-    - [Determinicity](book/e2e-test-defects-determinicity.md)
+    - [Determinism](book/e2e-test-defects-determinism.md)
     - [Stability](book/e2e-test-defects-stability.md)
     - [Useful on failure](book/e2e-test-defects-useful-on-failure.md)
 - ***

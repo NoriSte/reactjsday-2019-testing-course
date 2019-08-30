@@ -1,6 +1,6 @@
 Main E2E test defects
 
-# Determinicity
+# Determinism
 
 Come back to the very first signup E2E test
 
@@ -19,31 +19,31 @@ context("Signup flow", () => {
 });
 ```
 
-This test has a lot of problems, first of all: it's not deterministic (**its behavior is not the same everytime we launch it**). This limitation is obvious, even if the RealWorld database starts pristine, the test is going to succeed only once. The second time, the user will be already registered and the result will be different.
+This test has a lot of problems, first of all: it's not deterministic (**its behavior is not the same every time we launch it**). This limitation is obvious, even if the RealWorld database starts pristine, the test is going to succeed only once. The second time, the user will be already registered and the result will be different.
 
-<img src="../assets/images/failure-second-time.png" alt="The test fails the second time"/>
+<img src="../assets/images/failure-second-time.jpg" alt="The test fails the second time" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
 
 There are more solutions, we could:
 
 - randomize the username and the email to create a unique user for every test run
 
-    **Pros**: the test remains almost the same
+  **Pros**: the test remains almost the same
 
-    **Cons**: can not think of any
+  **Cons**: can not think of any
 
 - reset the whole DB after the test execution
 
-    **Pros**: the test uses always the same data
+  **Pros**: the test uses always the same data
 
-    **Cons**: it could be a problem in case the tests are parallelized and it could be slow (it's one more AJAX call)
+  **Cons**: it could be a problem in case the tests are parallelized and it could be slow (it's one more AJAX call)
 
 - manually make a call to the "delete user" API
 
-    **Pros**: it clears only the data created by the test
+  **Pros**: it clears only the data created by the test
 
-    **Cons**: a delete API could not be available (because the proces could be not so simple) and it could be slow (it's one more AJAX call)
+  **Cons**: a delete API could not be available (because the process could be not so simple) and it could be slow (it's one more AJAX call)
 
-Pros and cons must always be evaluated by you, your back-end coleagues, the project, etc. but, for the sake of the RealWorld project, we leverage the first solution: randomizing the user:
+Pros and cons must always be evaluated by you, your back-end colleagues, the project, etc. but, for the sake of the RealWorld project, we leverage the first solution: randomizing the user:
 
 ```js
 const random = Math.floor(Math.random() * 100000);
