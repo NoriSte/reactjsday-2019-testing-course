@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Why Testing? TODO: · GitBook</title>
+        <title>Stability · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,8 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="testing-advantages.html" />
+    <link rel="next" href="e2e-test-defects-useful-on-failure.md" />
     
+    
+    <link rel="prev" href="e2e-test-defects-determinism.html" />
     
 
     </head>
@@ -225,7 +227,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.2.1" data-path="why-testing.html">
+        <li class="chapter " data-level="2.2.1" data-path="why-testing.html">
             
                 <a href="why-testing.html">
             
@@ -486,7 +488,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.6.2" data-path="e2e-test-defects-stability.html">
+        <li class="chapter active" data-level="4.2.6.2" data-path="e2e-test-defects-stability.html">
             
                 <a href="e2e-test-defects-stability.html">
             
@@ -605,7 +607,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Why Testing? TODO:</a>
+        <a href=".." >Stability</a>
     </h1>
 </div>
 
@@ -620,30 +622,41 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="why-testing">Why Testing?</h1>
-<p>TODO: transform this file into some slides</p>
-<ul>
-<li><p>to control that the code does what we expect, now and when we refactor/modify it. (exmple: <code>string.replace</code> with single occurrence to replace) At the beginning it could sounds annoying but...</p>
-</li>
-<li><p>but the code does not do what we expect all the times, the tests allow us to find bugs and unexpected corner cases (example: <code>string.replace</code> with multiple occurrencies but without the <code>g</code> flag)</p>
-</li>
-<li><p>with the tests we fix some corner cases that, if underestimated, could lead to big headaches (example: <code>array.length &amp;&amp; array[0]</code> in jsx that could print <code>0</code>)</p>
-</li>
-<li><p>the tests do the same things you should do manully... but at a blazing speed!...</p>
-</li>
-<li><p>... And, once written, they will do that forever in your place</p>
-</li>
-<li><p>it&apos;s impossible to test everything manually everytime, incrementally written tests do!</p>
-</li>
-<li><p>the tests tell a story about our code, an easier to maintain story compared to documentation and comments. A good storytelling test suite could allow everyone to jump into a project easily (example: look for a good example)</p>
-</li>
-<li><p>replicating some states is pretty impossible without a made on purpose environment runner. Without it you end up adding some strange conditions, returns, default states, etc. that are not reliable and that you must remember to remove (example: input field default states, simulating axios return data). With the tests, you act from the outside instead of from the inside</p>
-</li>
-<li><p>with tests you prevent problems, you won&apos;t face it</p>
-</li>
-<li><p>because you could have faced yourself what means to work with untested code... &#x1F60A;</p>
-</li>
-</ul>
+                                <p>Main E2E test defects</p>
+<h1 id="stability">Stability</h1>
+<p>If you run the test multiple times you can encounter some failures like this</p>
+<p><img src="../assets/images/test-stability.png" alt="Test stability" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"></p>
+<p>that&apos;s what the Cypress Test Runner says</p>
+<div>
+    <img src="../assets/images/test-stability-feedback.png" alt="Test stability feedback" style="width: 100%; max-width: 144px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+
+<p>it tells us that the &quot;<em>No articles are here</em>&quot; string does not exist in the page, but why? The first screenshot shows that the signup process worked, why did the test fail?</p>
+<p>Do you remember that <a href="cypress-waitings-and-execution-order.html#automatic-waiting">Cypress waits automatically</a>? Well, it&apos;s true, but it does not wait forever, <code>cy.get</code> and <code>cy.contains</code> wait up to 4 seconds (by default) but if the AJAX call lasts more than 4 seconds we are out of luck.</p>
+<p>The fastest (but not the robust) solution is to increase the <code>cy.contains</code> timeout with the following change</p>
+<pre><code class="lang-diff"><span class="hljs-deletion">-cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);</span>
+<span class="hljs-addition">+cy.contains(&quot;No articles are here&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);</span>
+</code></pre>
+<p>Now the test is going to succeed most of the times.</p>
+<p>The complete test is the following:</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-2.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-2.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+      <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+      cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
+      cy.get($els[<span class="hljs-number">1</span>]).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
+      cy.get($els[<span class="hljs-number">2</span>]).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    });
+    cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
+    cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>Anyway: this test started smelling a while ago, go ahead to read why should we improve it.</p>
 
                                 
                                 </section>
@@ -671,8 +684,12 @@
 
             
                 
+                <a href="e2e-test-defects-determinism.html" class="navigation navigation-prev " aria-label="Previous page: Determinism">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="testing-advantages.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Testing advantages? TODO:">
+                
+                <a href="e2e-test-defects-useful-on-failure.md" class="navigation navigation-next " aria-label="Next page: Useful on failure">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -683,7 +700,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Why Testing? TODO:","level":"2.2.1","depth":2,"next":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"previous":{"title":"Testing introduction","level":"2.2","depth":1,"ref":"","articles":[{"title":"Why Testing? TODO:","level":"2.2.1","depth":2,"path":"book/why-testing.md","ref":"book/why-testing.md","articles":[]},{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},{"title":"What should I not test? TODO:","level":"2.2.5","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},{"title":"Testing disadvantages TODO:","level":"2.2.6","depth":2,"path":"book/testing-disadvantages.md","ref":"book/testing-disadvantages.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/why-testing.md","mtime":"2019-08-20T05:03:35.179Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-30T06:40:36.471Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Stability","level":"4.2.6.2","depth":3,"next":{"title":"Useful on failure","level":"4.2.6.3","depth":3,"path":"book/e2e-test-defects-useful-on-failure.md","ref":"book/e2e-test-defects-useful-on-failure.md","articles":[]},"previous":{"title":"Determinism","level":"4.2.6.1","depth":3,"path":"book/e2e-test-defects-determinism.md","ref":"book/e2e-test-defects-determinism.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/e2e-test-defects-stability.md","mtime":"2019-08-30T06:39:08.865Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-30T06:40:36.471Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
