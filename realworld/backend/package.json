@@ -37,7 +37,7 @@
     "underscore": "1.9.1"
   },
   "devDependencies": {
-    "cross-env": "5.2.0",
+    "cross-env": "5.2.1",
     "newman": "4.5.4",
     "nodemon": "1.19.1"
   }
