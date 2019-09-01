@@ -31,7 +31,7 @@
   - Main E2E test defects
     - [Determinism](book/e2e-test-defects-determinism.md)
     - [Stability](book/e2e-test-defects-stability.md)
-    - [Useful on failure](book/e2e-test-defects-useful-on-failure.md)
+    - [Utility in case of failure](book/utility-in-case-of-failure.md)
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)

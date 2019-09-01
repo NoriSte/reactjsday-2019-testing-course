@@ -41,4 +41,4 @@ cognitive load image https://github.com/goldbergyoni/javascript-testing-best-pra
 
 - E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it's true, but thay are super brittle, so forget about their importance (TODO: move this part where speaking about e2e tests)
 
-- if you're not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them? (example: Ste while implementing the roles in the webapp setting all he old tests with admin users to avoid changing them)
+- if you're not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them? (example: Ste while implementing the roles in the web app setting all he old tests with admin users to avoid changing them)
