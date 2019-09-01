@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Why Testing? TODO: · GitBook</title>
+        <title>Utility in case of failure · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,8 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="testing-advantages.html" />
+    <link rel="next" href="conclusions.html" />
     
+    
+    <link rel="prev" href="e2e-test-defects-stability.html" />
     
 
     </head>
@@ -225,7 +227,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.2.1" data-path="why-testing.html">
+        <li class="chapter " data-level="2.2.1" data-path="why-testing.html">
             
                 <a href="why-testing.html">
             
@@ -499,7 +501,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.6.3" data-path="utility-in-case-of-failure.html">
+        <li class="chapter active" data-level="4.2.6.3" data-path="utility-in-case-of-failure.html">
             
                 <a href="utility-in-case-of-failure.html">
             
@@ -605,7 +607,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Why Testing? TODO:</a>
+        <a href=".." >Utility in case of failure</a>
     </h1>
 </div>
 
@@ -620,30 +622,133 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="why-testing">Why Testing?</h1>
-<p>TODO: transform this file into some slides</p>
+                                <p>Main E2E test defects</p>
+<h1 id="utility-in-case-of-failure">Utility in case of failure</h1>
+<p>Last but not least, another big defect of the written test is that it&apos;s useless when it fails. The are tens of reasons that could make the test (or, better, the signup flow) fail, we try to list some of them:</p>
+<ol>
+<li>the host does not work</li>
+<li>the page does not respond</li>
+<li>one of the input fields is not rendered</li>
+<li>the button is not rendered</li>
+<li>the button does not trigger the right Redux action</li>
+<li>the AJAX call does not start</li>
+<li>the AJAX call has the wrong request payload</li>
+<li>the API does not work and it does not respond</li>
+<li>the API returns the wrong payload</li>
+<li>the functions that manage the authentication do not the expected job</li>
+<li>the user already exists</li>
+<li>everything is managed correctly but the redirect to the home does not work</li>
+<li>the home page does not show the &quot;<em>No articles are here</em>&quot; text</li>
+<li>the home page shows a slight different message to the user, something like, &quot;<em>Click on &apos;New Post&apos; to add your first contribution</em>&quot;</li>
+</ol>
+<p>They are not all the possible ones but it&apos;s a starting list.</p>
+<h3 id="implementation-details-errors">Implementation details errors</h3>
+<p>First of all, we need to remove some of the possible errors since the beginning. The following ones</p>
+<ol>
+<li>the button does not trigger the right Redux action</li>
+<li>the functions that manage the authentication do not do the expected job</li>
+</ol>
+<p>could be listed in the so-called &quot;<em>implementation details</em>&quot;. We&apos;re testing the whole front-end application from an outer perspective, not from an inner one. <strong>We are testing that</strong> the user signup <strong>works</strong>, <strong>not how</strong> the signup works.</p>
+<p>A more practical example: if you need to test that pushing the accelerator get the car move, you push the accelerator and you check that... the car move! If the accelerator is a wired or electronic one does not matter! You will test the connection between the accelerator and the engine with other types of test.</p>
+<p>Remember that the subject under test must be treated as a black box (see the <a href="testing-rules.html">testing rules</a>). About the signup flow: we are not testing why the form component did not receive the right dispatch prop or why it does not call dispatch it. We are just checking that the form works and allows the user to register! <strong>Do the users care about Redux actions? No!</strong> They just want to register!</p>
+<h3 id="error-feedback">Error feedback</h3>
+<p>Imagine this scenario: you&apos;re working at a new feature. You have inadvertently broken the signup flow and you discover that as soon as you run the existing E2E tests. Tests can fail, it happens! <strong>Tests are not meant to be always green</strong>, they are meant to help us discover regressions as soon as possible! Apart from failing, what have we broken in the signup flow? Is the test useful to identify what we need to fix?</p>
+<p>Take a look at the feedback the Test Runner gives us for all the above-listed errors.</p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Test Runner feedback</th>
+<th>Is it useful?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. the host does not work</td>
+<td><img src="../assets/images/feedback-in-case-of-failure/1-host-not-work.jpg" alt=""></td>
+<td>&#x2705;</td>
+</tr>
+<tr>
+<td>2. the page does not respond</td>
+<td><img src="../assets/images/feedback-in-case-of-failure/2-page-not-respond.jpg" alt=""></td>
+<td>&#x26A0;&#xFE0F;</td>
+</tr>
+<tr>
+<td>3. one of the input fields is not rendered</td>
+<td><img src="../assets/images/feedback-in-case-of-failure/3-input-not-rendered.jpg" alt=""></td>
+<td>&#x274C;</td>
+</tr>
+<tr>
+<td>4. the button is not rendered</td>
+<td><img src="../assets/images/feedback-in-case-of-failure/4-button-not-rendered.jpg" alt=""></td>
+<td>&#x2705;&#xFE0F;</td>
+</tr>
+<tr>
+<td>All the remaining errors:<br><br>6. the AJAX call does not start<br><br>7. the AJAX call has the wrong request payload<br><br>8. the API does not work and it does not respond<br><br>9. the API returns the wrong payload<br><br>11. the user already exists<br><br>12. everything is managed correctly but the redirect to the home does not work<br><br>13. the home page does not show the &quot;<em>No articles are here</em>&quot; text<br><br>14. the home page shows a slight different message to the user</td>
+<td><img src="../assets/images/feedback-in-case-of-failure/5-no-ajax-call-etc.jpg" alt=""></td>
+<td>&#x274C;</td>
+</tr>
+</tbody>
+</table>
+<p>Take the most useless two errors and inverting the comparison, do you think that the feedback on the first column allows you to understand what happened (the second column)? &#x1F914;</p>
+<table>
+<thead>
+<tr>
+<th>Test Runner feedback</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../assets/images/feedback-in-case-of-failure/3-input-not-rendered-error.jpg" alt=""></td>
+<td>3. one of the input fields is not rendered</td>
+</tr>
+<tr>
+<td><img src="../assets/images/feedback-in-case-of-failure/5-no-ajax-call-etc-error.jpg" alt=""></td>
+<td>One of <br><br>6. the AJAX call does not start<br><br>7. the AJAX call has the wrong request payload<br><br>8. the API does not work and it does not respond<br><br>9. the API returns the wrong payload<br><br>11. the user already exists<br><br>12. everything is managed correctly but the redirect to the home does not work<br><br>13. the home page does not show the &quot;<em>No articles are here</em>&quot; text<br><br>14. the home page shows a slight different message to the user</td>
+</tr>
+</tbody>
+</table>
+<p>The answert is obviously No. The errors in the table tell us nothing about what happened.</p>
+<h3 id="stuff-to-do-in-case-of-failures">Stuff to do in case of failures</h3>
+<p>It&apos;s not only about utility but also about preventing useless and long debugging processes. How do you proceed when a test fails? Usually you:</p>
 <ul>
-<li><p>to control that the code does what we expect, now and when we refactor/modify it. (exmple: <code>string.replace</code> with single occurrence to replace) At the beginning it could sounds annoying but...</p>
+<li><p>read the logs of the tests</p>
 </li>
-<li><p>but the code does not do what we expect all the times, the tests allow us to find bugs and unexpected corner cases (example: <code>string.replace</code> with multiple occurrencies but without the <code>g</code> flag)</p>
+<li><p>look for the failing test and read the output error</p>
 </li>
-<li><p>with the tests we fix some corner cases that, if underestimated, could lead to big headaches (example: <code>array.length &amp;&amp; array[0]</code> in jsx that could print <code>0</code>)</p>
+<li><p>it the output speaks for itself you can fix the regression you introduces, otherwise, you open the test file</p>
 </li>
-<li><p>the tests do the same things you should do manully... but at a blazing speed!...</p>
+<li><p>identify the failing test and you run only it <!-- TODO: add a link to the page that speaks about the "only" function --> (if you have violated the &quot;tests must not share the state&quot; <a href="testing-rules.html">rule</a> you are going to waste a lot of time at this step)</p>
 </li>
-<li><p>... And, once written, they will do that forever in your place</p>
+<li><p>re-run the test looking at the web app</p>
 </li>
-<li><p>it&apos;s impossible to test everything manually everytime, incrementally written tests do!</p>
-</li>
-<li><p>the tests tell a story about our code, an easier to maintain story compared to documentation and comments. A good storytelling test suite could allow everyone to jump into a project easily (example: look for a good example)</p>
-</li>
-<li><p>replicating some states is pretty impossible without a made on purpose environment runner. Without it you end up adding some strange conditions, returns, default states, etc. that are not reliable and that you must remember to remove (example: input field default states, simulating axios return data). With the tests, you act from the outside instead of from the inside</p>
-</li>
-<li><p>with tests you prevent problems, you won&apos;t face it</p>
-</li>
-<li><p>because you could have faced yourself what means to work with untested code... &#x1F60A;</p>
+<li><p>based on the error</p>
+<ul>
+<li>if the error is a &quot;visual one&quot; (something not rendered etc.) you know where do you have to check<sup> <a href="#footnote1">1</a></sup></li>
+<li>If the error is not visual one (wrong DOM selectors, wrong AJAX payloads, etc.) you need to open the DevTools, re-run the test, inspect the DOM or the network activities, etc. until you find the error itself</li>
+</ul>
 </li>
 </ul>
+<p>It&apos;s a ton of work! The test we&apos;re talking about is not helpful at all! It has no meaningful feedback and it requires you debugging it (remember: debugging a test is harder than debugging a standard script/app) on failure. These are the basis for test blaming, hate and exclusion. Always remember: <strong>if you are blaming the tests, you must stop and re-think them</strong>. Go ahead to re-think the E2E test.</p>
+<p><br><br><br>
+Footnotes:</p>
+<p><a id="footnote1">1</a>: for visual errors, a look at the <a href="https://docs.cypress.io/guides/guides/screenshots-and-videos.html#Screenshots" target="_blank">screenshots and videos that Cypress saves automatically</a> could be enough.</p>
+<!--
+- one by one the failures
+- someone are implementation details
+- testing redux or not is opinable, do not worry too much if you want to check the redux output state, you have to understand blackbox testing... but testing that the user is registered FOR THE APP not for redux is better
+
+the following errors will be treated as out of the scope errors in the UI integration tests, remember them
+---------------
+### Out of the scope error
+
+The last points of the test are the following
+1.  everything is managed correctly but the redirect to the home does not work
+2.  the home page does not show the "*No articles are here*" text
+3.  the home page shows a slight different message to the user, something like, "*Click on \"New Post\"to add your first contribution*"
+
+should be removed too. Why? Because they out of the scope of the signup flow.  -->
 
                                 
                                 </section>
@@ -671,8 +776,12 @@
 
             
                 
+                <a href="e2e-test-defects-stability.html" class="navigation navigation-prev " aria-label="Previous page: Stability">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="testing-advantages.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Testing advantages? TODO:">
+                
+                <a href="conclusions.html" class="navigation navigation-next " aria-label="Next page: Conclusions">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -683,7 +792,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Why Testing? TODO:","level":"2.2.1","depth":2,"next":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"previous":{"title":"Testing introduction","level":"2.2","depth":1,"ref":"","articles":[{"title":"Why Testing? TODO:","level":"2.2.1","depth":2,"path":"book/why-testing.md","ref":"book/why-testing.md","articles":[]},{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},{"title":"What should I not test? TODO:","level":"2.2.5","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},{"title":"Testing disadvantages TODO:","level":"2.2.6","depth":2,"path":"book/testing-disadvantages.md","ref":"book/testing-disadvantages.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/why-testing.md","mtime":"2019-08-20T05:03:35.179Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T09:58:20.524Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Utility in case of failure","level":"4.2.6.3","depth":3,"next":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"previous":{"title":"Stability","level":"4.2.6.2","depth":3,"path":"book/e2e-test-defects-stability.md","ref":"book/e2e-test-defects-stability.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/utility-in-case-of-failure.md","mtime":"2019-09-01T09:56:53.669Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T09:58:20.524Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
