@@ -6,13 +6,13 @@ If you run the test multiple times you can encounter some failures like this
 
 <img src="../assets/images/test-stability.png" alt="Test stability" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
 
-that's what the Cypress Test Runner says
+In detail, the Cypress Test Runner says
 
 <div>
-    <img src="../assets/images/test-stability-feedback.png" alt="Test stability feedback" style="width: 100%; max-width: 144px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/test-stability-feedback.png" alt="Test stability feedback" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
 </div>
 
-it tells us that the "_No articles are here_" string does not exist in the page, but why? The first screenshot shows that the signup process worked, why did the test fail?
+it means that the "_No articles are here_" string does not exist in the page, but why? The first screenshot shows that the signup process worked, why did the test fail?
 
 Do you remember that [Cypress waits automatically](cypress-waitings-and-execution-order.md#automatic-waiting)? Well, it's true, but it does not wait forever, `cy.get` and `cy.contains` wait up to 4 seconds (by default) but if the AJAX call lasts more than 4 seconds we are out of luck.
 

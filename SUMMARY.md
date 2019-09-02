@@ -32,6 +32,16 @@
     - [Determinism](book/e2e-test-defects-determinism.md)
     - [Stability](book/e2e-test-defects-stability.md)
     - [Utility in case of failure](book/utility-in-case-of-failure.md)
+- Polishing the E2E test
+  - DOM elements selection
+    - [data-testid](book/dom-elements-selection.md)
+    - cypress-testing-library
+  - AJAX requests assertions
+  - Less false negatives sharing app constants
+<!-- - Other test
+  - Register new user
+  - Login new User
+  - App actions -->
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)
