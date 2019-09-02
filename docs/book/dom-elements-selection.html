@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Stability · GitBook</title>
+        <title>data-testid · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,6 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="utility-in-case-of-failure.html" />
-    
-    
-    <link rel="prev" href="e2e-test-defects-determinism.html" />
     
 
     </head>
@@ -488,7 +484,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.2.6.2" data-path="e2e-test-defects-stability.html">
+        <li class="chapter " data-level="4.2.6.2" data-path="e2e-test-defects-stability.html">
             
                 <a href="e2e-test-defects-stability.html">
             
@@ -552,7 +548,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.3.1.1" data-path="dom-elements-selection.html">
+        <li class="chapter active" data-level="4.3.1.1" data-path="dom-elements-selection.html">
             
                 <a href="dom-elements-selection.html">
             
@@ -737,7 +733,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Stability</a>
+        <a href=".." >data-testid</a>
     </h1>
 </div>
 
@@ -752,23 +748,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Main E2E test defects</p>
-<h1 id="stability">Stability</h1>
-<p>If you run the test multiple times you can encounter some failures like this</p>
-<p><img src="../assets/images/test-stability.png" alt="Test stability" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"></p>
-<p>In detail, the Cypress Test Runner says</p>
-<div>
-    <img src="../assets/images/test-stability-feedback.png" alt="Test stability feedback" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
-</div>
-
-<p>it means that the &quot;<em>No articles are here</em>&quot; string does not exist in the page, but why? The first screenshot shows that the signup process worked, why did the test fail?</p>
-<p>Do you remember that <a href="cypress-waitings-and-execution-order.html#automatic-waiting">Cypress waits automatically</a>? Well, it&apos;s true, but it does not wait forever, <code>cy.get</code> and <code>cy.contains</code> wait up to 4 seconds (by default) but if the AJAX call lasts more than 4 seconds we are out of luck.</p>
-<p>The fastest (but not the robust) solution is to increase the <code>cy.contains</code> timeout with the following change</p>
-<pre><code class="lang-diff"><span class="hljs-deletion">-cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);</span>
-<span class="hljs-addition">+cy.contains(&quot;No articles are here&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);</span>
-</code></pre>
-<p>Now the test is going to succeed most of the times.</p>
-<p>The complete test is the following:</p>
+                                <h1 id="data-testid">data-testid</h1>
+<p>We managed to have a deterministic event test like the following</p>
 <p><i>File: <a href="../cypress/integration/examples/signup/signup-2.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-2.e2e.spec.js</a></i></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
@@ -786,7 +767,177 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
   });
 });
 </code></pre>
-<p>Anyway: this test started smelling a while ago, go ahead to read why should we improve it.</p>
+<p>but, as we&apos;ve seen, one of the defects of the above test is its uselessness while something goes wrong by retrieving the elements to interact with.</p>
+<div>
+    <img src="../assets/images/feedback-in-case-of-failure/3-input-not-rendered-error.jpg" alt="Test uselessness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+
+<p><br><br>
+The HTML of the form is the following</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-lg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Username&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-lg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Email&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-lg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-lg btn-primary pull-xs-right&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Sign up<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>If we want to avoid basing the test on the order, we can leverage</p>
+<ul>
+<li><p>the type: text, email, and password</p>
+</li>
+<li><p>the placeholder</p>
+</li>
+</ul>
+<p>The test could become the following</p>
+<pre><code class="lang-diff">context(&quot;Signup flow&quot;, () =&gt; {
+  it(&quot;The happy path should work&quot;, () =&gt; {
+    cy.visit(&quot;/register&quot;);
+<span class="hljs-deletion">-    cy.get(&quot;.form-control&quot;).then($els =&gt; {</span>
+<span class="hljs-deletion">-      const random = Math.floor(Math.random() * 100000);</span>
+<span class="hljs-deletion">-      cy.get($els[0]).type(`Tester${random}`);</span>
+<span class="hljs-deletion">-      cy.get($els[1]).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-deletion">-      cy.get($els[2]).type(&quot;mysupersecretpassword&quot;);</span>
+<span class="hljs-deletion">-    });</span>
+<span class="hljs-addition">+   const random = Math.floor(Math.random() * 100000);</span>
+<span class="hljs-addition">+   cy.get(&quot;[type=text]&quot;).type(`Tester${random}`);</span>
+<span class="hljs-addition">+   cy.get(&quot;[type=email]&quot;).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-addition">+   cy.get(&quot;[type=password]&quot;).type(&quot;mysupersecretpassword&quot;);</span>
+    cy.get(&quot;button&quot;).click();
+    cy.contains(&quot;No articles are here&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);
+  });
+});
+</code></pre>
+<p>or, leveraging the placeholder</p>
+<pre><code class="lang-diff">context(&quot;Signup flow&quot;, () =&gt; {
+  it(&quot;The happy path should work&quot;, () =&gt; {
+    cy.visit(&quot;/register&quot;);
+<span class="hljs-deletion">-    cy.get(&quot;.form-control&quot;).then($els =&gt; {</span>
+<span class="hljs-deletion">-      const random = Math.floor(Math.random() * 100000);</span>
+<span class="hljs-deletion">-      cy.get($els[0]).type(`Tester${random}`);</span>
+<span class="hljs-deletion">-      cy.get($els[1]).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-deletion">-      cy.get($els[2]).type(&quot;mysupersecretpassword&quot;);</span>
+<span class="hljs-deletion">-    });</span>
+<span class="hljs-addition">+   const random = Math.floor(Math.random() * 100000);</span>
+<span class="hljs-addition">+   cy.get(&quot;[placeholder=Username]&quot;).type(`Tester${random}`);</span>
+<span class="hljs-addition">+   cy.get(&quot;[placeholder=Email]&quot;).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-addition">+   cy.get(&quot;[placeholder=Password]&quot;).type(&quot;mysupersecretpassword&quot;);</span>
+    cy.get(&quot;button&quot;).click();
+    cy.contains(&quot;No articles are here&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);
+  });
+});
+</code></pre>
+<p>Both of them work as expected when everything is ok, but if the email input field is not rendered they allow us to understand what&apos;s wrong</p>
+<div>
+    <img src="../assets/images/feedback-in-case-of-failure/dom-element-type.png" alt="Test usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<div>
+    <img src="../assets/images/feedback-in-case-of-failure/dom-element-placeholder.png" alt="Test usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+
+<p>You get the same feedback if you run Cypress through <code>cypress run</code> (most of the times you&apos;ll find broken tests in the terminal or reading the logs)</p>
+<p><img src="../assets/images/feedback-in-case-of-failure/dom-element-placeholder-terminal.jpg" alt="Terminal feedback"></p>
+<h3 id="what-not-to-do">What not to do</h3>
+<p>Forget for a while the RealWorld form, there are a ton of selectors we can use when finding DOM elements, but most of them could change because of different purposes (and then break the test inadvertently):</p>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>classes</td>
+<td>Style</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>JavaScript</td>
+</tr>
+<tr>
+<td>HTML tags</td>
+<td>standardization/SEO</td>
+</tr>
+<tr>
+<td>type</td>
+<td>User experience</td>
+</tr>
+<tr>
+<td>ARIA attributes</td>
+<td>User experience</td>
+</tr>
+</tbody>
+</table>
+<p>These selectors do not have testing purposes, the more the tests use them, the more they&apos;re unstable. You could not blame yourself or a colleague of your when, after 20 minutes of watching the pipeline and debugging the app, you discover that the test broke because of a class is changed. The problem is not in the web app, the problem is in the test.</p>
+<p>You need to use a dedicated attribute, one that will not change because of other needs, and this is <code>data-testid</code> (or <code>data-test</code>, or <code>data-cy</code>, etc.). No one is going to change a <code>data-testid</code> attribute, even if he/she does not know what it means.</p>
+<p>The markup of the form must be changed with the new attribute</p>
+<pre><code class="lang-diff">&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;fieldset class=&quot;form-group&quot;&gt;
+<span class="hljs-deletion">-     &lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Username&quot; value=&quot;&quot; /&gt;</span>
+<span class="hljs-addition">+     &lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Username&quot; value=&quot;&quot; data-testid=&quot;username&quot;/&gt;</span>
+    &lt;/fieldset&gt;
+    &lt;fieldset class=&quot;form-group&quot;&gt;
+<span class="hljs-deletion">-     &lt;input class=&quot;form-control form-control-lg&quot; type=&quot;email&quot; placeholder=&quot;Email&quot; value=&quot;&quot; /&gt;</span>
+<span class="hljs-addition">+     &lt;input class=&quot;form-control form-control-lg&quot; type=&quot;email&quot; placeholder=&quot;Email&quot; value=&quot;&quot; data-testid=&quot;email&quot;/&gt;</span>
+    &lt;/fieldset&gt;
+    &lt;fieldset class=&quot;form-group&quot;&gt;
+<span class="hljs-deletion">-     &lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; value=&quot;&quot; /&gt;</span>
+<span class="hljs-addition">+     &lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; value=&quot;&quot; data-testid=&quot;password&quot;/&gt;</span>
+    &lt;/fieldset&gt;
+<span class="hljs-deletion">-   &lt;button class=&quot;btn btn-lg btn-primary pull-xs-right&quot; type=&quot;submit&quot;&gt;Sign up&lt;/button&gt;</span>
+<span class="hljs-addition">+   &lt;button class=&quot;btn btn-lg btn-primary pull-xs-right&quot; type=&quot;submit&quot; data-testid=&quot;signup-button&quot;&gt;Sign up&lt;/button&gt;</span>
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+<p>and the test must be adapted too</p>
+<pre><code class="lang-diff">context(&quot;Signup flow&quot;, () =&gt; {
+  it(&quot;The happy path should work&quot;, () =&gt; {
+    cy.visit(&quot;/register&quot;);
+    const random = Math.floor(Math.random() * 100000);
+<span class="hljs-deletion">-   cy.get(&quot;[placeholder=Username]&quot;).type(`Tester${random}`);</span>
+<span class="hljs-deletion">-   cy.get(&quot;[placeholder=Email]&quot;).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-deletion">-   cy.get(&quot;[placeholder=Password]&quot;).type(&quot;mysupersecretpassword&quot;);</span>
+<span class="hljs-deletion">-   cy.get(&quot;button&quot;).click();</span>
+<span class="hljs-deletion">-   cy.contains(&quot;No articles are here&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);</span>
+<span class="hljs-addition">+   cy.get(&quot;[data-testid=username]&quot;).type(`Tester${random}`);</span>
+<span class="hljs-addition">+   cy.get(&quot;[data-testid=email]&quot;).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-addition">+   cy.get(&quot;[data-testid=password]&quot;).type(&quot;mysupersecretpassword&quot;);</span>
+<span class="hljs-addition">+   cy.get(&quot;[data-testid=signup-button]&quot;).click();</span>
+<span class="hljs-addition">+   cy.get(&quot;[data-testid=no-articles-here]&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);</span>
+  });
+});
+</code></pre>
+<p>This way the test leverages dedicated attributes and selectors, ones that do not change for non-testing purposes. The feedback in case of failure is almost the same as the previous test (good).</p>
+<p><div>
+    <img src="../assets/images/feedback-in-case-of-failure/dom-element-data-testid.png" alt="Attribute usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<br><br>
+The test is now resilient, well done. The following is the complete test</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-3.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-3.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+    cy.get(<span class="hljs-string">&quot;[data-testid=username]&quot;</span>).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
+    cy.get(<span class="hljs-string">&quot;[data-testid=email]&quot;</span>).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
+    cy.get(<span class="hljs-string">&quot;[data-testid=password]&quot;</span>).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;[data-testid=signup-button]&quot;</span>).click();
+    cy.get(<span class="hljs-string">&quot;[data-testid=no-articles-here]&quot;</span>, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>Compared to the previous version, in case of failures related to the DOM elements, the test helps us to identify precisely what breaks &#x1F44D;</p>
 
                                 
                                 </section>
@@ -814,14 +965,6 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 
             
                 
-                <a href="e2e-test-defects-determinism.html" class="navigation navigation-prev " aria-label="Previous page: Determinism">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="utility-in-case-of-failure.html" class="navigation navigation-next " aria-label="Next page: Utility in case of failure">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -830,7 +973,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Stability","level":"4.2.6.2","depth":3,"next":{"title":"Utility in case of failure","level":"4.2.6.3","depth":3,"path":"book/utility-in-case-of-failure.md","ref":"book/utility-in-case-of-failure.md","articles":[]},"previous":{"title":"Determinism","level":"4.2.6.1","depth":3,"path":"book/e2e-test-defects-determinism.md","ref":"book/e2e-test-defects-determinism.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/e2e-test-defects-stability.md","mtime":"2019-09-01T10:10:04.224Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-02T07:52:23.423Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"data-testid","level":"4.3.1.1","depth":3,"next":{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"ref":"","articles":[]},"previous":{"title":"DOM elements selection","level":"4.3.1","depth":2,"ref":"","articles":[{"title":"data-testid","level":"4.3.1.1","depth":3,"path":"book/dom-elements-selection.md","ref":"book/dom-elements-selection.md","articles":[]},{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/dom-elements-selection.md","mtime":"2019-09-02T07:50:48.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-02T07:52:23.423Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

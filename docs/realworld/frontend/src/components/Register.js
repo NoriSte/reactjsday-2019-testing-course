@@ -67,17 +67,12 @@ class Register extends React.Component {
                       type="text"
                       placeholder="Username"
                       value={this.props.username}
-                      onChange={this.changeUsername} />
+                      onChange={this.changeUsername}
+                      data-testid="username"
+                      />
                   </fieldset>
 
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="email"
-                      placeholder="Email"
-                      value={this.props.email}
-                      onChange={this.changeEmail} />
-                  </fieldset>
+
 
                   <fieldset className="form-group">
                     <input
@@ -85,13 +80,17 @@ class Register extends React.Component {
                       type="password"
                       placeholder="Password"
                       value={this.props.password}
-                      onChange={this.changePassword} />
+                      onChange={this.changePassword}
+                      data-testid="password"
+                      />
                   </fieldset>
 
                   <button
                     className="btn btn-lg btn-primary pull-xs-right"
                     type="submit"
-                    disabled={this.props.inProgress}>
+                    disabled={this.props.inProgress}
+                    data-testid="signup-button"
+                    >
                     Sign up
                   </button>
 
