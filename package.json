@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme",
   "devDependencies": {
-    "@testing-library/cypress": "^4.2.0",
+    "@testing-library/cypress": "4.2.0",
     "concurrently": "4.1.2",
     "cross-env": "5.2.1",
     "cypress": "3.4.1",
