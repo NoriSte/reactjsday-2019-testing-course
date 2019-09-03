@@ -39,6 +39,6 @@
   "devDependencies": {
     "cross-env": "5.2.1",
     "newman": "4.5.4",
-    "nodemon": "1.19.1"
+    "nodemon": "1.19.2"
   }
 }
