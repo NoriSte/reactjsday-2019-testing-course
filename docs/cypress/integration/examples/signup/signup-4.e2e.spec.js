@@ -7,7 +7,9 @@ context("Signup flow", () => {
     cy.getByPlaceholderText("Username").type(`Tester${random}`);
     cy.getByPlaceholderText("Email").type(`user+${random}@realworld.io`);
     cy.getByPlaceholderText("Password").type("mysupersecretpassword");
-    cy.get("button").click();
-    cy.contains("No articles are here", { timeout: 10000 }).should("be.visible");
+    cy.get("form")
+      .within(() => cy.getByText("Sign up"))
+      .click();
+    cy.getByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
   });
 });
