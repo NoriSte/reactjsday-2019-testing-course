@@ -37,7 +37,7 @@
     - [data-testid](book/dom-elements-selection.md)
     - [cypress-testing-library](book/cypress-testing-library.md)
       AJAX requests assertions
-  - Less false negatives sharing app constants
+  - [Sharing app constants](book/app-constants.md)
     <!-- - Other test
   - Register new user
   - Login new User

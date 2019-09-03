@@ -2,6 +2,8 @@ import ArticlePreview from './ArticlePreview';
 import ListPagination from './ListPagination';
 import React from 'react';
 
+export const noArticles = "No articles are here... yet.";
+
 const ArticleList = props => {
   if (!props.articles) {
     return (
@@ -12,7 +14,7 @@ const ArticleList = props => {
   if (props.articles.length === 0) {
     return (
       <div className="article-preview" data-testid="no-articles-here">
-        No articles are here... yet.
+        {noArticles}
       </div>
     );
   }

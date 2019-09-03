@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { paths } from './App';
 
 const LoggedOutView = props => {
   if (!props.currentUser) {
@@ -19,7 +20,7 @@ const LoggedOutView = props => {
         </li>
 
         <li className="nav-item">
-          <Link to="/register" className="nav-link">
+          <Link to={paths.register} className="nav-link">
             Sign up
           </Link>
         </li>

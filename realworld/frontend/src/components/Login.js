@@ -8,6 +8,7 @@ import {
   LOGIN,
   LOGIN_PAGE_UNLOADED
 } from '../constants/actionTypes';
+import { paths } from './App';
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -48,7 +49,7 @@ class Login extends React.Component {
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h1 className="text-xs-center">Sign In</h1>
               <p className="text-xs-center">
-                <Link to="/register">
+                <Link to={paths.register}>
                   Need an account?
                 </Link>
               </p>

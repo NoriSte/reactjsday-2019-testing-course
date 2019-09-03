@@ -5,6 +5,13 @@ import agent from '../agent';
 import { REGISTER, REGISTER_PAGE_UNLOADED, UPDATE_FIELD_AUTH } from '../constants/actionTypes';
 import ListErrors from './ListErrors';
 
+export const strings = {
+  username: "Username",
+  email: "Email",
+  password: "Password",
+  signUp: "Sign up",
+}
+
 const mapStateToProps = state => ({ ...state.auth });
 
 const mapDispatchToProps = dispatch => ({
@@ -65,7 +72,7 @@ class Register extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="text"
-                      placeholder="Username"
+                      placeholder={strings.username}
                       value={this.props.username}
                       onChange={this.changeUsername}
                       data-testid="username"
@@ -76,7 +83,7 @@ class Register extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="email"
-                      placeholder="Email"
+                      placeholder={strings.email}
                       value={this.props.email}
                       onChange={this.changeEmail}
                       data-testid="email"
@@ -87,7 +94,7 @@ class Register extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="password"
-                      placeholder="Password"
+                      placeholder={strings.password}
                       value={this.props.password}
                       onChange={this.changePassword}
                       data-testid="password"
@@ -100,7 +107,7 @@ class Register extends React.Component {
                     disabled={this.props.inProgress}
                     data-testid="signup-button"
                     >
-                    Sign up
+                    {strings.signUp}
                   </button>
 
                 </fieldset>
