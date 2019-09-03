@@ -79,3 +79,14 @@ The same logic could be applied to the `/register` route and the "_No articles a
 [include](../cypress/integration/examples/signup/signup-5.e2e.spec.js)
 
 The result is that if you update some of the above-cited constants because of whatever reasons... You do not have to update the test accordingly and they still work as expected, one less thing to care about.
+
+### Absolute imports
+
+In order to leverage [Webpack's aliases](https://webpack.js.org/configuration/resolve/#resolvealias) to transform the relative imports into absolute ones
+
+```diff
+-import { strings } from "../../../../realworld/frontend/src/components/Register";
++import { strings } from "@/components/Register";
+```
+
+you should install and setup the [cypress-webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor) plugin (do not forget that Cypress is all written in JavaScript and can be tweaked in a lot of different ways).
