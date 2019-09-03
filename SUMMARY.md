@@ -35,10 +35,10 @@
 - Polishing the E2E test
   - DOM elements selection
     - [data-testid](book/dom-elements-selection.md)
-    - cypress-testing-library
-  - AJAX requests assertions
+    - [cypress-testing-library](book/cypress-testing-library.md)
+      AJAX requests assertions
   - Less false negatives sharing app constants
-<!-- - Other test
+    <!-- - Other test
   - Register new user
   - Login new User
   - App actions -->

@@ -72,7 +72,16 @@ class Register extends React.Component {
                       />
                   </fieldset>
 
-
+                  <fieldset className="form-group">
+                    <input
+                      className="form-control form-control-lg"
+                      type="email"
+                      placeholder="Email"
+                      value={this.props.email}
+                      onChange={this.changeEmail}
+                      data-testid="email"
+                    />
+                  </fieldset>
 
                   <fieldset className="form-group">
                     <input
