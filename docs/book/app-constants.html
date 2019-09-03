@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>What is a test? TODO: · GitBook</title>
+        <title>Sharing app constants · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,8 +49,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="testing-pyramid.html" />
     
+    <link rel="prev" href="cypress-testing-library.html" />
     
 
     </head>
@@ -167,7 +167,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.1.1" data-path="what-is-a-test.html">
+        <li class="chapter " data-level="2.1.1" data-path="what-is-a-test.html">
             
                 <a href="what-is-a-test.html">
             
@@ -581,7 +581,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3.2" data-path="app-constants.html">
+        <li class="chapter active" data-level="4.3.2" data-path="app-constants.html">
             
                 <a href="app-constants.html">
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >What is a test? TODO:</a>
+        <a href=".." >Sharing app constants</a>
     </h1>
 </div>
 
@@ -736,29 +736,111 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="what-is-a-test">What is a test?</h1>
-<p>TODO: transform this file into some slides and complete writing it
-TODO: speak about the hooks, only, skip, the testing anatomy etc.</p>
-<p>A test is code that throws an error when the actual result of something does not match the expected output.</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> { sum, subtract } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./math&quot;</span>);
+                                <h1 id="sharing-app-constants">Sharing app constants</h1>
+<p>When the app works but the tests fail, we have a false negative. <strong>False negatives could happen</strong>, especially when the tests rely on something external (like the E2E tests do). Anyway, <strong>we must reduce them</strong> as much as possible. False negatives are a smell of bad tests and, sooner or later, is one of the reasons that make you a test-hater.</p>
+<p>A lot of things can cause false negatives, one of them is the difference between the constants used by the web app and the ones used by the tests. What are the constants used by the actual test?</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-4.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-4.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
-<span class="hljs-keyword">let</span> result, expected;
-
-result = sum(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>);
-expected = <span class="hljs-number">10</span>;
-<span class="hljs-keyword">if</span> (result !== expected) {
-  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`<span class="hljs-subst">${result}</span> is not equal to <span class="hljs-subst">${expected}</span>`</span>);
-}
-
-result = subtract(<span class="hljs-number">7</span>, <span class="hljs-number">3</span>);
-expected = <span class="hljs-number">4</span>;
-<span class="hljs-keyword">if</span> (result !== expected) {
-  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`<span class="hljs-subst">${result}</span> is not equal to <span class="hljs-subst">${expected}</span>`</span>);
-}
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+    cy.getByPlaceholderText(<span class="hljs-string">&quot;Username&quot;</span>).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
+    cy.getByPlaceholderText(<span class="hljs-string">&quot;Email&quot;</span>).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
+    cy.getByPlaceholderText(<span class="hljs-string">&quot;Password&quot;</span>).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.getByText(<span class="hljs-string">&quot;Sign up&quot;</span>))
+      .click();
+    cy.getByText(<span class="hljs-string">&quot;No articles are here... yet.&quot;</span>, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
 </code></pre>
-<p>The part that says actual !== expected is called an &quot;assertion.&quot;</p>
-<p>example</p>
-<p>from <a href="https://www.javascriptjanuary.com/blog/but-really-what-is-a-javascript-test" target="_blank">https://www.javascriptjanuary.com/blog/but-really-what-is-a-javascript-test</a></p>
+<p>The route and all the contents</p>
+<ul>
+<li>&quot;/register&quot;</li>
+<li>&quot;Username&quot;</li>
+<li>&quot;Email&quot;</li>
+<li>&quot;Password&quot;</li>
+<li>&quot;Sign up&quot;</li>
+<li>&quot;No articles are here... yet.&quot;</li>
+</ul>
+<p>could change because of a lot of reasons. If some of them change the app still works but the tests would break. How we can solve the problem? Importing them right from the source code!</p>
+<p>We adapted the <code>realworld/frontend/src/components/Register.js</code> file exporting all the strings used internally</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> strings = {
+  username: <span class="hljs-string">&quot;Username&quot;</span>,
+  email: <span class="hljs-string">&quot;Email&quot;</span>,
+  password: <span class="hljs-string">&quot;Password&quot;</span>,
+  signUp: <span class="hljs-string">&quot;Sign up&quot;</span>
+};
+</code></pre>
+<p>and we need to update the test too</p>
+<pre><code class="lang-diff"><span class="hljs-addition">+import { strings } from &quot;../../../../realworld/frontend/src/components/Register&quot;;</span>
+
+context(&quot;Signup flow&quot;, () =&gt; {
+  it(&quot;The happy path should work&quot;, () =&gt; {
+    cy.visit(&quot;/register&quot;);
+    const random = Math.floor(Math.random() * 100000);
+<span class="hljs-deletion">-   cy.getByPlaceholderText(&quot;Username&quot;).type(`Tester${random}`);</span>
+<span class="hljs-addition">+   cy.getByPlaceholderText(strings.username).type(`Tester${random}`);</span>
+<span class="hljs-deletion">-   cy.getByPlaceholderText(&quot;Email&quot;).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-addition">+   cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);</span>
+<span class="hljs-deletion">-   cy.getByPlaceholderText(&quot;Password&quot;).type(&quot;mysupersecretpassword&quot;);</span>
+<span class="hljs-addition">+   cy.getByPlaceholderText(strings.password).type(&quot;mysupersecretpassword&quot;);</span>
+    cy.get(&quot;form&quot;)
+<span class="hljs-deletion">-     .within(() =&gt; cy.getByText(&quot;Sign up&quot;))</span>
+<span class="hljs-addition">+     .within(() =&gt; cy.getByText(strings.signUp))</span>
+      .click();
+    cy.getByText(&quot;No articles are here... yet.&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);
+  });
+});
+</code></pre>
+<p>The updated test looks like this</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
+    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+    cy.getByPlaceholderText(strings.username).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
+    cy.getByPlaceholderText(strings.email).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
+    cy.getByPlaceholderText(strings.password).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.getByText(strings.signUp))
+      .click();
+    cy.getByText(<span class="hljs-string">&quot;No articles are here... yet.&quot;</span>, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>The same logic could be applied to the <code>/register</code> route and the &quot;<em>No articles are here... yet.</em>&quot; string, the final test is the following</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-5.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-5.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/ArticleList&quot;</span>;
+<span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    cy.visit(paths.register);
+    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+    cy.getByPlaceholderText(strings.username).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
+    cy.getByPlaceholderText(strings.email).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
+    cy.getByPlaceholderText(strings.password).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.getByText(strings.signUp))
+      .click();
+    cy.getByText(noArticles, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>The result is that if you update some of the above-cited constants because of whatever reasons... You do not have to update the test accordingly and they still work as expected, one less thing to care about.</p>
+<h3 id="absolute-imports">Absolute imports</h3>
+<p>In order to leverage <a href="https://webpack.js.org/configuration/resolve/#resolvealias" target="_blank">Webpack&apos;s aliases</a> to transform the relative imports into absolute ones</p>
+<pre><code class="lang-diff"><span class="hljs-deletion">-import { strings } from &quot;../../../../realworld/frontend/src/components/Register&quot;;</span>
+<span class="hljs-addition">+import { strings } from &quot;@/components/Register&quot;;</span>
+</code></pre>
+<p>you should install and setup the <a href="https://github.com/cypress-io/cypress-webpack-preprocessor" target="_blank">cypress-webpack-preprocessor</a> plugin (do not forget that Cypress is all written in JavaScript and can be tweaked in a lot of different ways).</p>
 
                                 
                                 </section>
@@ -786,10 +868,10 @@ expected = <span class="hljs-number">4</span>;
 
             
                 
-                
-                <a href="testing-pyramid.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Testing Pyramid TODO:">
-                    <i class="fa fa-angle-right"></i>
+                <a href="cypress-testing-library.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: cypress-testing-library">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -798,7 +880,7 @@ expected = <span class="hljs-number">4</span>;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What is a test? TODO:","level":"2.1.1","depth":2,"next":{"title":"Testing Pyramid TODO:","level":"2.1.2","depth":2,"path":"book/testing-pyramid.md","ref":"book/testing-pyramid.md","articles":[]},"previous":{"title":"Testing definitions","level":"2.1","depth":1,"ref":"","articles":[{"title":"What is a test? TODO:","level":"2.1.1","depth":2,"path":"book/what-is-a-test.md","ref":"book/what-is-a-test.md","articles":[]},{"title":"Testing Pyramid TODO:","level":"2.1.2","depth":2,"path":"book/testing-pyramid.md","ref":"book/testing-pyramid.md","articles":[]},{"title":"Testing types TODO:","level":"2.1.3","depth":2,"path":"book/testing-types.md","ref":"book/testing-types.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/what-is-a-test.md","mtime":"2019-09-01T09:58:26.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-03T14:27:46.870Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sharing app constants","level":"4.3.2","depth":2,"next":{"title":"Register new user","level":"4.3.3","depth":2,"ref":"","articles":[]},"previous":{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"path":"book/cypress-testing-library.md","ref":"book/cypress-testing-library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-constants.md","mtime":"2019-09-03T14:25:20.764Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-03T14:27:46.870Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

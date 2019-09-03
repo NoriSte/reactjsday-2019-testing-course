@@ -49,6 +49,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="app-constants.html" />
+    
     
     <link rel="prev" href="dom-elements-selection.html" />
     
@@ -581,15 +583,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3.2" >
+        <li class="chapter " data-level="4.3.2" data-path="app-constants.html">
             
-                <span>
+                <a href="app-constants.html">
             
                     
-                    Less false negatives sharing app constants
-<!-- - Other test
+                    Sharing app constants
             
-                </span>
+                </a>
             
 
             
@@ -738,8 +739,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="cypress-testing-library">cypress-testing-library</h1>
-<p>Have you probably heard about the amazing <a href="https://testing-library.com" target="_blank">Testing Library</a> of <a href="https://kentcdodds.com" target="_blank">Kent C. Dodds</a> (and if you have not, do not worry, you are in the right place). Without anticipating too much, Testing Library is based on the assumption that the tests must consume the web app the same way the consumer uses it.</p>
-<p>What does it mean? Well, try thinking about how your users consume a web app: you look for contents, labels, placeholders, buttons, etc. to interact with them. They do not care about selectors, they care about contents.</p>
+<p>Have you probably heard about the amazing <a href="https://testing-library.com" target="_blank">Testing Library</a> of <a href="https://kentcdodds.com" target="_blank">Kent C. Dodds</a> (and if you have not, do not worry, you are in the right place). Without anticipating too much, Testing Library is based on the assumption that <strong>the tests must consume the web app the same way the consumer does</strong>.</p>
+<p>What does it mean? Well, try thinking about how your users consume a web app: they look for contents, labels, placeholders, buttons, etc. to interact with them. They do not care about selectors, <strong>they care about contents</strong>.</p>
 <p>Take a look at the test we wrote</p>
 <p><i>File: <a href="../cypress/integration/examples/signup/signup-3.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-3.e2e.spec.js</a></i></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
@@ -917,10 +918,14 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 
             
                 
-                <a href="dom-elements-selection.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: data-testid">
+                <a href="dom-elements-selection.html" class="navigation navigation-prev " aria-label="Previous page: data-testid">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="app-constants.html" class="navigation navigation-next " aria-label="Next page: Sharing app constants">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -929,7 +934,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"next":{"title":"Less false negatives sharing app constants\n<!-- - Other test","level":"4.3.2","depth":2,"ref":"","articles":[]},"previous":{"title":"data-testid","level":"4.3.1.1","depth":3,"path":"book/dom-elements-selection.md","ref":"book/dom-elements-selection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-testing-library.md","mtime":"2019-09-03T06:09:26.155Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-03T06:11:13.648Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"next":{"title":"Sharing app constants","level":"4.3.2","depth":2,"path":"book/app-constants.md","ref":"book/app-constants.md","articles":[]},"previous":{"title":"data-testid","level":"4.3.1.1","depth":3,"path":"book/dom-elements-selection.md","ref":"book/dom-elements-selection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-testing-library.md","mtime":"2019-09-03T06:59:41.635Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-03T14:27:46.870Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
