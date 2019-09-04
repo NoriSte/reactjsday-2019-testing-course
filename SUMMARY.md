@@ -38,10 +38,13 @@
     - [cypress-testing-library](book/cypress-testing-library.md)
       AJAX requests assertions
   - [Sharing app constants](book/app-constants.md)
-    <!-- - Other test
-  - Register new user
-  - Login new User
-  - App actions -->
+- AJAX requests
+  - [Waiting for an AJAX request](book/waiting-for-ajax-request.md)
+  - [Payload assertions](book/payload-assertions.md)
+- Other test TODO
+- Register new user TODO
+- Login new User TODO
+- App actions TODO
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)

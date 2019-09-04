@@ -22,19 +22,6 @@ TODO: to run all the apps and play with the exercises...
 
 TODO: TOC a la cypress workshop
 
-<!--
-to include code into the book...
-[include](../__tests__/index.test.js)
-[include](./../__tests__/index.test.js)
-or git diff
-```diff
-const a = "ciao";
--let message = 'hello world!'
-+let message = 'hello stackoverflow!'
-const a = "ciao";
-```
--->
-
 [license]: https://github.com/NoriSte/reactjsday-2019-testing-course/blob/master/README.md#license
 [license-badge]: https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square
 

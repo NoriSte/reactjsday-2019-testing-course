@@ -6,8 +6,8 @@ What does it mean? Well, try thinking about how your users consume a web app: th
 
 Take a look at the test we wrote
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-3.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-3.e2e.spec.js</a></i>
-[include](../cypress/integration/examples/signup/signup-3.e2e.spec.js)
+<i>File: <a href="../cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js</a></i>
+[include](../cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js)
 
 After all, an input field with that responds to the `[data-testid=username]` selector do not give us the confidence that the user can consume it, nor that the right element has the `data-testid` attribute.
 
@@ -151,8 +151,8 @@ There is an important difference between how `cy.contains` and `cy.getByText` wo
 
 Using Testing Library, the test becomes the following
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-4.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-4.e2e.spec.js</a></i>
-[include](../cypress/integration/examples/signup/signup-4.e2e.spec.js)
+<i>File: <a href="../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js</a></i>
+[include](../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js)
 
 <!-- TODO: not always can be used -->
 <!-- TODO: i18n -->

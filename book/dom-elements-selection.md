@@ -162,7 +162,7 @@ This way the test leverages dedicated attributes and selectors, ones that do not
 <br /><br />
 The test is now resilient, well done. The following is the complete test
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-3.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-3.e2e.spec.js</a></i>
-[include](../cypress/integration/examples/signup/signup-3.e2e.spec.js)
+<i>File: <a href="../cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js</a></i>
+[include](../cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js)
 
 Compared to the previous version, in case of failures related to the DOM elements, the test helps us to identify precisely what does not work (if it's related to the DOM elements) 👍
