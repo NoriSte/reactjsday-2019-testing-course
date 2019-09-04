@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>About this book · GitBook</title>
+        <title>Waiting for an AJAX request · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,8 +49,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="payload-assertions.md" />
     
-    <link rel="prev" href="resources.html" />
     
 
     </head>
@@ -613,7 +613,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.4.1" data-path="waiting-for-ajax-request.html">
+        <li class="chapter active" data-level="4.4.1" data-path="waiting-for-ajax-request.html">
             
                 <a href="waiting-for-ajax-request.html">
             
@@ -736,7 +736,7 @@
         
         
     
-        <li class="chapter active" data-level="6.1" data-path="about-the-book.html">
+        <li class="chapter " data-level="6.1" data-path="about-the-book.html">
             
                 <a href="about-the-book.html">
             
@@ -779,7 +779,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >About this book</a>
+        <a href=".." >Waiting for an AJAX request</a>
     </h1>
 </div>
 
@@ -794,25 +794,137 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="about-this-book">About this book</h1>
-<p>We built this book with <a href="https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md" target="_blank">GitBook</a> and some plugins:</p>
+                                <h1 id="waiting-for-an-ajax-request">Waiting for an AJAX request</h1>
+<p>Do you remember the <a href="utility-in-case-of-failure.html#error-feedback">list of problems</a> that could make the signup flow break? We &quot;fixed&quot; the DOM-related ones by retrieving the elements based on the contents instead of the order, but there were <strong>a lot of problems related to the AJAX request</strong> itself. They were the following ones:</p>
 <ul>
-<li><code>-sharing</code>: allows to manage (ore remove at all) the sharing buttons</li>
-<li><code>include-codeblock</code>: allows to import a block of code directly from a file</li>
-<li><code>include</code>: allows to import and reuse a MD file</li>
+<li><p>the AJAX call does not start</p>
+</li>
+<li><p>the AJAX call has the wrong request payload</p>
+</li>
+<li><p>the API does not work and it does not respond</p>
+</li>
+<li><p>the API returns the wrong payload</p>
+</li>
+<li><p>the user already exists</p>
+</li>
 </ul>
-<p>The book can be configured with the <code>book.json</code> file, some of the options can be found <a href="https://janicezhw.github.io/gitbook/startusegitbook/configInfo/bookjson.html" target="_blank">here</a>.</p>
-<h3 id="how-to-use-it">How to use it</h3>
+<p>The test still does not help us with these errors. When it fails, we need to spend some time debugging what&apos;s happening in the web app (while it&apos;s under test) to discover that the issue was related to a wrong AJAX request... Do not despair, Cypress is here to improve the E2E testing experience!</p>
+<h3 id="server-contract">Server contract</h3>
+<p>When we test the front-end of our web app, we need to consider it a closed block (blackbox testing) and we need to check <strong>how it interacts with the external world</strong>. We need to test the contracts between the front-end and all the involved entities. What are the contracts to be respected by the front-end app?</p>
 <ul>
-<li><code>npx gitbook install</code>: automatically managed with the <code>postintall</code> script</li>
-<li><code>npm run book:serve</code>: alias for <code>npx storybook serve</code></li>
-<li><code>npm run book:build</code>: alias for <code>npx storybook build</code>, the artifact is placed into the <code>docs</code> directory to be used with <a href="https://pages.github.com" target="_blank">GitHub pages</a>. ATTENTION: you need to run <code>npm test</code> before it to create some assets for the book</li>
-<li><code>npm run book:publish</code>: pushes the latest changes to the <a href="https://noriste.github.io/reactjsday-2019-testing-course/" target="_blank">GitHub page</a></li>
+<li><p>functional contract with the user</p>
+</li>
+<li><p>presentational contract with the user</p>
+</li>
+<li><p>contract with the server</p>
+</li>
 </ul>
-<h3 id="slides">Slides</h3>
-<p>We managed the slides through <a href="https://gitpitch.com" target="_blank">GitPitch</a> and are in the <code>slides/</code> directory.</p>
-<h3 id="code">Code</h3>
-<p>We leveraged both the React frontend and the Node.js backend of the <a href="http://realworld.io" target="_blank">RealWorld</a> project. Read more about it in the <a href="the-realworld-project.html">dedicated chapter</a>.</p>
+<p>The first one is the subject of the all the E2E tests, the second one is the subject for the visual regression tests (we are going to speak about it later<!-- TODO: remember to speak abut it -->), but we need to concentrate on the last one. A lot of times the front-end stops working because of a misaligned communication with the back-end.</p>
+<h3 id="ajax-request-waiting">AJAX request waiting</h3>
+<p>If we know that an AJAX request happens systematically (it is going to happen every time) we need to consider it in our Cypress test. The signup flow is a good example. We are going to see what are the APIs that allow us to do that.</p>
+<p>First of all, we need to set up AJAX call interception:</p>
+<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
+<span class="hljs-addition">+ cy.server();</span>
+<span class="hljs-addition">+ cy.route(&quot;POST&quot;, &quot;**/api/users&quot;);</span>
+
+  cy.visit(paths.register);
+  // the rest of the test code
+});
+</code></pre>
+<ul>
+<li><p><a href="https://docs.cypress.io/api/commands/server.html" target="_blank"><code>cy.server()</code></a> tells Cypress to act as a proxy, intercepting and allowing to wait for AJAX requests</p>
+</li>
+<li><p><a href="https://docs.cypress.io/api/commands/route.html" target="_blank"><code>cy.route</code></a> tells Cypress to intercept some AJAX requests. We can use <a href="https://docs.cypress.io/api/commands/route.html#Arguments" target="_blank">a lot of options</a> to match precisely which AJAX request we want to intercept. <code>cy.route(&quot;POST&quot;, &quot;**/api/users&quot;)</code> tells Cypress to intercept every <code>POST</code> request to every URL that ends with <code>**/api/users</code> (the signup form makes a request to the <code>http://localhost:3100/api/users</code>, Cypress uses <a href="https://github.com/isaacs/minimatch" target="_blank">minimatch</a> to take advantage of * and ** glob support).</p>
+</li>
+</ul>
+<p>Second: we need to set a <a href="https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html" target="_blank">Cypress alias</a> to reference it later on</p>
+<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
+  cy.server();
+  cy.route(&quot;POST&quot;, &quot;**/api/users&quot;)
+<span class="hljs-addition">+   .as(&quot;signup-request&quot;);</span>
+
+  cy.visit(paths.register);
+  // the rest of the test code
+});
+</code></pre>
+<p>Third: we must &quot;wait&quot; the AJAX request triggered by the front-end app</p>
+<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
+  cy.server();
+  cy.route(&quot;POST&quot;, &quot;**/api/users&quot;)
+    .as(&quot;signup-request&quot;);
+  cy.visit(paths.register);
+  // form filling code
+  cy.get(&quot;form&quot;)
+    .within(() =&gt; cy.getByText(strings.signUp))
+    .click();
+<span class="hljs-addition">+ cy.wait(&quot;@signup-request&quot;);</span>
+  cy.getByText(noArticles, { timeout: 10000 }).should(&quot;be.visible&quot;);
+});
+</code></pre>
+<p>What does &quot;waiting&quot; main for an AJAX request? Here we can see the advantages of automatic Cypress waitings mixed with AJAX requests management! By asking Cypress to <code>cy.wait(&quot;@signup-request&quot;);</code>, it&apos;s going to <strong>wait up to 5 seconds for the front-end to start the request and up to 30 seconds for the back-end</strong> to fulfill the request (both of the timeouts are customizable).</p>
+<p>Last change: do you remember why did we add the custom timeout to the <code>cy.getByText(noArticles, { timeout: 10000 })</code> call? We added it while speaking about the <a href="e2e-test-defects-stability.html">stability</a> of the test because we faced the problem that <code>cy.contain</code> (later replaced by <code>cy.getByText</code>) sometimes failed because the AJAX request took too long (and the default <code>cy.contain</code>/<code>cy.getByText</code> timeout is 4000 milliseconds). Now we do not need it anymore because the <code>cy.wait</code> knows that an AJAX request could take a really long time!</p>
+<pre><code class="lang-diff"><span class="hljs-deletion">- cy.getByText(noArticles, { timeout: 10000 }).should(&quot;be.visible&quot;);</span>
+<span class="hljs-addition">+ cy.getByText(noArticles).should(&quot;be.visible&quot;);</span>
+</code></pre>
+<p>That&apos;s all the changes we applied to the test</p>
+<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
+<span class="hljs-addition">+ cy.server();</span>
+<span class="hljs-addition">+ cy.route(&quot;POST&quot;, &quot;**/api/users&quot;)</span>
+<span class="hljs-addition">+   .as(&quot;signup-request&quot;);</span>
+  cy.visit(paths.register);
+  const random = Math.floor(Math.random() * 100000);
+  cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
+  cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+  cy.getByPlaceholderText(strings.password).type(&quot;mysupersecretpassword&quot;);
+  cy.get(&quot;form&quot;)
+    .within(() =&gt; cy.getByText(strings.signUp))
+    .click();
+<span class="hljs-addition">+ cy.wait(&quot;@signup-request&quot;);</span>
+<span class="hljs-deletion">- cy.getByText(noArticles, { timeout: 10000 }).should(&quot;be.visible&quot;);</span>
+<span class="hljs-addition">+ cy.getByText(noArticles).should(&quot;be.visible&quot;);</span>
+});
+</code></pre>
+<p>and that&apos;s the test with some comments</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/ArticleList&quot;</span>;
+<span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    <span class="hljs-comment">// set up AJAX call interception</span>
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+    cy.visit(paths.register);
+
+    <span class="hljs-comment">// form filling</span>
+    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+    cy.getByPlaceholderText(strings.username).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
+    cy.getByPlaceholderText(strings.email).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
+    cy.getByPlaceholderText(strings.password).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+
+    <span class="hljs-comment">// form submit...</span>
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.getByText(strings.signUp))
+      .click();
+    <span class="hljs-comment">// ... and AJAX call waiting</span>
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>);
+
+    <span class="hljs-comment">// end of the flow</span>
+    cy.getByText(noArticles).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>The test is now way more robust because</p>
+<ul>
+<li><p>we do not wait only for something that &quot;reflects&quot; the result of the AJAX request (the &quot;<em>No articles are here</em>&quot; string) but for the AJAX request itself</p>
+</li>
+<li><p>we do not wait up to a &quot;random&quot; (the previous <code>{timeout: 10000}</code>) amount of time but up to a longer time. <strong>10 seconds could not be enough</strong> (if you have every consumed some AWS Lambdas you know what I&apos;m talking about) because of the back-end wakeup/caching times</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -840,10 +952,10 @@
 
             
                 
-                <a href="resources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Resources">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="payload-assertions.md" class="navigation navigation-next navigation-unique" aria-label="Next page: Payload assertions">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -852,7 +964,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"About this book","level":"6.1","depth":1,"previous":{"title":"Resources","level":"5.2","depth":1,"path":"book/resources.md","ref":"book/resources.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/about-the-book.md","mtime":"2019-08-25T14:05:41.462Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-04T06:19:12.286Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"next":{"title":"Payload assertions","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]},"previous":{"title":"AJAX requests","level":"4.4","depth":1,"ref":"","articles":[{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},{"title":"Payload assertions","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/waiting-for-ajax-request.md","mtime":"2019-09-04T06:17:58.838Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-04T06:19:12.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
