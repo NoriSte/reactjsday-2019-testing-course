@@ -40,11 +40,12 @@
   - [Sharing app constants](book/app-constants.md)
 - AJAX requests
   - [Waiting for an AJAX request](book/waiting-for-ajax-request.md)
-  - [Payload assertions](book/payload-assertions.md)
+  - [Asserting about the payloads](book/payload-assertions.md)
 - Other test TODO
 - Register new user TODO
 - Login new User TODO
 - App actions TODO
+- [Other things about Cypress TODO](book/other-things-about-cypress.md)
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)
