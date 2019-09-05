@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Sharing app constants · GitBook</title>
+        <title>Asserting about the payloads · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -50,7 +50,7 @@
 
     
     
-    <link rel="prev" href="cypress-testing-library.html" />
+    <link rel="prev" href="waiting-for-ajax-request.html" />
     
 
     </head>
@@ -581,7 +581,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.3.2" data-path="app-constants.html">
+        <li class="chapter " data-level="4.3.2" data-path="app-constants.html">
             
                 <a href="app-constants.html">
             
@@ -626,7 +626,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.2" data-path="payload-assertions.html">
+        <li class="chapter active" data-level="4.4.2" data-path="payload-assertions.html">
             
                 <a href="payload-assertions.html">
             
@@ -792,7 +792,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Sharing app constants</a>
+        <a href=".." >Asserting about the payloads</a>
     </h1>
 </div>
 
@@ -807,84 +807,54 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sharing-app-constants">Sharing app constants</h1>
-<p>When the app works but the tests fail, we have a false negative. <strong>False negatives could happen</strong>, especially when the tests rely on something external (like the E2E tests do). Anyway, <strong>we must reduce them</strong> as much as possible. False negatives are a smell of bad tests and, sooner or later, is one of the reasons that make you a test-hater.</p>
-<p>A lot of things can cause false negatives, one of them is the difference between the constants used by the web app and the ones used by the tests. What are the constants used by the actual test?</p>
-<p><i>File: <a href="../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js</a></i></p>
-<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
-
-context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
-    cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
-    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
-    cy.getByPlaceholderText(<span class="hljs-string">&quot;Username&quot;</span>).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
-    cy.getByPlaceholderText(<span class="hljs-string">&quot;Email&quot;</span>).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
-    cy.getByPlaceholderText(<span class="hljs-string">&quot;Password&quot;</span>).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
-    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
-      .within(() =&gt; cy.getByText(<span class="hljs-string">&quot;Sign up&quot;</span>))
-      .click();
-    cy.getByText(<span class="hljs-string">&quot;No articles are here... yet.&quot;</span>, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
-  });
-});
-</code></pre>
-<p>The route and all the contents</p>
+                                <h1 id="asserting-about-the-payloads">Asserting about the payloads</h1>
+<p>Here we are again: before summing up all the improvements we made to the original test, we need to speak about AJAX payloads assertions. The original <a href="utility-in-case-of-failure.html#error-feedback">list of problems</a> listed two possible errors related to payloads</p>
 <ul>
-<li>&quot;/register&quot;</li>
-<li>&quot;Username&quot;</li>
-<li>&quot;Email&quot;</li>
-<li>&quot;Password&quot;</li>
-<li>&quot;Sign up&quot;</li>
-<li>&quot;No articles are here... yet.&quot;</li>
+<li><p>the AJAX call has the wrong request payload</p>
+</li>
+<li><p>the API returns the wrong payload</p>
+</li>
 </ul>
-<p>could change because of a lot of reasons. If some of them change the app still works but the tests would break. How we can solve the problem? Importing them right from the source code!</p>
-<p>We adapted the <code>realworld/frontend/src/components/Register.js</code> file exporting all the strings used internally</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> strings = {
-  username: <span class="hljs-string">&quot;Username&quot;</span>,
-  email: <span class="hljs-string">&quot;Email&quot;</span>,
-  password: <span class="hljs-string">&quot;Password&quot;</span>,
-  signUp: <span class="hljs-string">&quot;Sign up&quot;</span>
-};
+<p>Both of them could break the app without any meaningful feedback at the moment. Cypress provides us all the APIs to check them.</p>
+<p>First of all, the request payload looks like this (I found it inspecting the front-end requests)</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;user&quot;</span>: {
+    <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;Tester92306&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;user+92306@realworld.io&quot;</span>,
+    <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+  }
+}
 </code></pre>
-<p>and we need to update the test too</p>
-<pre><code class="lang-diff"><span class="hljs-addition">+import { strings } from &quot;../../../../realworld/frontend/src/components/Register&quot;;</span>
-
-context(&quot;Signup flow&quot;, () =&gt; {
-  it(&quot;The happy path should work&quot;, () =&gt; {
-    cy.visit(&quot;/register&quot;);
-    const random = Math.floor(Math.random() * 100000);
-<span class="hljs-deletion">-   cy.getByPlaceholderText(&quot;Username&quot;).type(`Tester${random}`);</span>
-<span class="hljs-addition">+   cy.getByPlaceholderText(strings.username).type(`Tester${random}`);</span>
-<span class="hljs-deletion">-   cy.getByPlaceholderText(&quot;Email&quot;).type(`user+${random}@realworld.io`);</span>
-<span class="hljs-addition">+   cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);</span>
-<span class="hljs-deletion">-   cy.getByPlaceholderText(&quot;Password&quot;).type(&quot;mysupersecretpassword&quot;);</span>
-<span class="hljs-addition">+   cy.getByPlaceholderText(strings.password).type(&quot;mysupersecretpassword&quot;);</span>
-    cy.get(&quot;form&quot;)
-<span class="hljs-deletion">-     .within(() =&gt; cy.getByText(&quot;Sign up&quot;))</span>
-<span class="hljs-addition">+     .within(() =&gt; cy.getByText(strings.signUp))</span>
-      .click();
-    cy.getByText(&quot;No articles are here... yet.&quot;, { timeout: 10000 }).should(&quot;be.visible&quot;);
-  });
-});
+<p>and the response payload looks like the following</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;user&quot;</span>: {
+    <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;tester92306&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;user+92306@realworld.io&quot;</span>,
+    <span class="hljs-string">&quot;token&quot;</span>: <span class="hljs-string">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNzA5NmY3MWM2YTQ5MDVjM2VhMGM3NSIsInVzZXJuYW1lIjoidGVzdGVyOTIzMDYiLCJleHAiOjE1NzI4NDczNjcsImlhdCI6MTU2NzY1OTc2N30.uT9qGkT4FPCHwkV2A_7rbRFb_YqJN3cyncdbKOC3xNY&quot;</span>
+  }
+}
 </code></pre>
-<p>The updated test looks like this</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
-
-context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
-    cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
-    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
-    cy.getByPlaceholderText(strings.username).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
-    cy.getByPlaceholderText(strings.email).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
-    cy.getByPlaceholderText(strings.password).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
-    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
-      .within(() =&gt; cy.getByText(strings.signUp))
-      .click();
-    cy.getByText(<span class="hljs-string">&quot;No articles are here... yet.&quot;</span>, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
-  });
-});
-</code></pre>
-<p>The same logic could be applied to the <code>/register</code> route and the &quot;<em>No articles are here... yet.</em>&quot; string, the final test is the following</p>
-<p><i>File: <a href="../cypress/integration/examples/signup/signup-5-app-constants.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-5-app-constants.e2e.spec.js</a></i></p>
+<p>We note that:</p>
+<ul>
+<li><p>the <code>username</code> property are the same but the second one is converted to lower case</p>
+</li>
+<li><p>the <code>email</code> is obviously the same</p>
+</li>
+<li><p>the <code>token</code> is a string that changes everytime</p>
+</li>
+</ul>
+<p>Asserting about them means checking that:</p>
+<ul>
+<li><p>the request payload contains a <code>user</code> object that contains the data used to fill the form</p>
+</li>
+<li><p>the response payload contains both the <code>email</code> and the <code>username</code>, the <code>token</code> is a string that&apos;s 204 characters long (it&apos;s a JSON Web Token)</p>
+</li>
+</ul>
+<p>Do we need to verify the <code>token</code> is syntactically correct?
+<br>
+The right question is: does the front-end app parse and use it? <strong>Does the front-end break if the token is not valid</strong>? If the answer is Yes, assert about it! Otherwise, it&apos;s not necessary! Soft assertions (formal ones: it&apos;s not empty and has a length of 204 characters) do not cost but deep checks (decrypting it and checking the content) do not make sense if you think about how the front-end consumes it.</p>
+<p>Starting from the most recent test</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js</a></i></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
 <span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
@@ -893,25 +863,230 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 
 context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
   it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    <span class="hljs-comment">// set up AJAX call interception</span>
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
     cy.visit(paths.register);
+
+    <span class="hljs-comment">// form filling</span>
     <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
     cy.getByPlaceholderText(strings.username).type(<span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>);
     cy.getByPlaceholderText(strings.email).type(<span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>);
     cy.getByPlaceholderText(strings.password).type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>);
+
+    <span class="hljs-comment">// form submit...</span>
     cy.get(<span class="hljs-string">&quot;form&quot;</span>)
       .within(() =&gt; cy.getByText(strings.signUp))
       .click();
-    cy.getByText(noArticles, { timeout: <span class="hljs-number">10000</span> }).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+    <span class="hljs-comment">// ... and AJAX call waiting</span>
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>);
+
+    <span class="hljs-comment">// end of the flow</span>
+    cy.getByText(noArticles).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
   });
 });
 </code></pre>
-<p>The result is that if you update some of the above-cited constants because of whatever reasons... You do not have to update the test accordingly and they still work as expected, one less thing to care about.</p>
-<h3 id="absolute-imports">Absolute imports</h3>
-<p>In order to leverage <a href="https://webpack.js.org/configuration/resolve/#resolvealias" target="_blank">Webpack&apos;s aliases</a> to transform the relative imports into absolute ones</p>
-<pre><code class="lang-diff"><span class="hljs-deletion">-import { strings } from &quot;../../../../realworld/frontend/src/components/Register&quot;;</span>
-<span class="hljs-addition">+import { strings } from &quot;@/components/Register&quot;;</span>
+<p>The <code>cy.wait(&quot;@signup-request&quot;)</code> call yields the whole XHR object. We can inspect its content doing</p>
+<pre><code class="lang-javascript">cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>).should(xhr =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(xhr));
+});
 </code></pre>
-<p>you should install and setup the <a href="https://github.com/cypress-io/cypress-webpack-preprocessor" target="_blank">cypress-webpack-preprocessor</a> plugin (do not forget that Cypress is all written in JavaScript and can be tweaked in a lot of different ways).</p>
+<p>the result is the following</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;xhr&quot;</span>: {
+    <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;POST&quot;</span>,
+    <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:3100/api/users&quot;</span>,
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;xhr1737&quot;</span>
+  },
+  <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;xhr1737&quot;</span>,
+  <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:3100/api/users&quot;</span>,
+  <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;POST&quot;</span>,
+  <span class="hljs-string">&quot;status&quot;</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-string">&quot;statusMessage&quot;</span>: <span class="hljs-string">&quot;200 (OK)&quot;</span>,
+  <span class="hljs-string">&quot;request&quot;</span>: {
+    <span class="hljs-string">&quot;headers&quot;</span>: {
+      <span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span>
+    },
+    <span class="hljs-string">&quot;body&quot;</span>: {
+      <span class="hljs-string">&quot;user&quot;</span>: {
+        <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;Tester6588&quot;</span>,
+        <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;user+6588@realworld.io&quot;</span>,
+        <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+      }
+    }
+  },
+  <span class="hljs-string">&quot;response&quot;</span>: {
+    <span class="hljs-string">&quot;headers&quot;</span>: {
+      <span class="hljs-string">&quot;content-type&quot;</span>: <span class="hljs-string">&quot;application/json; charset=utf-8&quot;</span>
+    },
+    <span class="hljs-string">&quot;body&quot;</span>: {
+      <span class="hljs-string">&quot;user&quot;</span>: {
+        <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;tester6588&quot;</span>,
+        <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;user+6588@realworld.io&quot;</span>,
+        <span class="hljs-string">&quot;token&quot;</span>: <span class="hljs-string">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNzA5ZTIyMWM2YTQ5MDVjM2VhMGM3ZCIsInVzZXJuYW1lIjoidGVzdGVyNjU4OCIsImV4cCI6MTU3Mjg0OTIwMiwiaWF0IjoxNTY3NjYxNjAyfQ.neUhshavvhwEUd4Tjf5Wo2xrmKUSVVRMJmlZEhIRp8c&quot;</span>
+      }
+    }
+  },
+  <span class="hljs-string">&quot;duration&quot;</span>: <span class="hljs-number">1598</span>
+}
+</code></pre>
+<p>Let&apos;s assert about the payloads: we could chain assertions (the same we did with the <code>.should(&quot;be.visible&quot;)</code> assertion) to the AJAX request waiting. Beginning with the <code>username</code> property</p>
+<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
+    // set up AJAX call interception
+    cy.server();
+    cy.route(&quot;POST&quot;, &quot;**/api/users&quot;).as(&quot;signup-request&quot;);
+
+    cy.visit(paths.register);
+
+    // form filling
+    const random = Math.floor(Math.random() * 100000);
+    cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
+    cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+    cy.getByPlaceholderText(strings.password).type(&quot;mysupersecretpassword&quot;);
+
+    // form submit...
+    cy.get(&quot;form&quot;)
+      .within(() =&gt; cy.getByText(strings.signUp))
+      .click();
+    // ... and AJAX call waiting
+<span class="hljs-deletion">-   cy.wait(&quot;@signup-request&quot;);</span>
+<span class="hljs-addition">+   cy.wait(&quot;@signup-request&quot;)</span>
+<span class="hljs-addition">+     .its(&quot;request.body&quot;)</span>
+<span class="hljs-addition">+     .should(&quot;have.property&quot;, &quot;user&quot;)</span>
+<span class="hljs-addition">+     .and(&quot;be.a&quot;, &quot;object&quot;)</span>
+<span class="hljs-addition">+     .should(&quot;have.property&quot;, &quot;username&quot;, user.username);</span>
+
+    // end of the flow
+    cy.getByText(noArticles).should(&quot;be.visible&quot;);
+  });
+</code></pre>
+<p>We return on that later, but that&apos;s the actual feedback of the Test Runner</p>
+<div>
+    <img src="../assets/images/request-payload-assertion.png" alt="Request payload assertions" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+
+
+<p><br><br>Chaining the assertions this way is nice but it does not give us all the freedom we need. What I mean: I try to analyze the yielded subject for every line of code</p>
+<pre><code class="lang-javascript">cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>) <span class="hljs-comment">// yields the whole `xhr` object</span>
+  .its(<span class="hljs-string">&quot;request.body&quot;</span>) <span class="hljs-comment">// yields `xhr.request.body`</span>
+  .should(<span class="hljs-string">&quot;have.property&quot;</span>, <span class="hljs-string">&quot;user&quot;</span>) <span class="hljs-comment">// yields `xhr.request.body.user`</span>
+  .and(<span class="hljs-string">&quot;be.a&quot;</span>, <span class="hljs-string">&quot;object&quot;</span>) <span class="hljs-comment">// (still) yields `xhr.request.body.user`</span>
+  .should(<span class="hljs-string">&quot;have.property&quot;</span>, <span class="hljs-string">&quot;username&quot;</span>, user.username) <span class="hljs-comment">// yields `xhr.request.body.user.username`</span>
+  <span class="hljs-comment">// ... how we can assert about `xhr.request.body.user.email`?</span>
+  .and(<span class="hljs-string">&quot;have.property&quot;</span>, <span class="hljs-string">&quot;email&quot;</span>, user.email); <span class="hljs-comment">// will fail because `xhr.request.body.user.username` does not have an `email` property</span>
+</code></pre>
+<p>Asserting directly on <code>cy.wait(&quot;@signup-request&quot;)</code> will not work, that&apos;s why we need to take advantage of another assertion syntax, the following one</p>
+<pre><code class="lang-javascript">cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>).should(xhr =&gt; {
+  expect(xhr.request.body)
+    .to.have.property(<span class="hljs-string">&quot;user&quot;</span>)
+    .and.to.be.a(<span class="hljs-string">&quot;object&quot;</span>);
+  expect(xhr.request.body.user).to.have.property(<span class="hljs-string">&quot;username&quot;</span>, user.username);
+  expect(xhr.request.body.user).to.have.property(<span class="hljs-string">&quot;email&quot;</span>, user.email);
+});
+</code></pre>
+<p>this way you always have a reference the original <code>xhr</code> object and its data. Since we have a list of all the things we need to assert about, writing all the assertions is easy:</p>
+<ul>
+<li>request payload assertions</li>
+</ul>
+<pre><code class="lang-javascript">expect(xhr.request.body)
+  .to.have.property(<span class="hljs-string">&quot;user&quot;</span>)
+  .and.to.be.a(<span class="hljs-string">&quot;object&quot;</span>);
+<span class="hljs-keyword">let</span> payload = xhr.request.body.user;
+expect(payload).to.have.property(<span class="hljs-string">&quot;username&quot;</span>, user.username);
+expect(payload).to.have.property(<span class="hljs-string">&quot;email&quot;</span>, user.email);
+expect(payload).to.have.property(<span class="hljs-string">&quot;password&quot;</span>, user.password);
+</code></pre>
+<ul>
+<li>response payload assertions</li>
+</ul>
+<pre><code class="lang-javascript">expect(xhr.response.body)
+  .to.have.property(<span class="hljs-string">&quot;user&quot;</span>)
+  .and.to.be.a(<span class="hljs-string">&quot;object&quot;</span>);
+payload = xhr.response.body.user;
+expect(payload).to.have.property(<span class="hljs-string">&quot;username&quot;</span>, user.username.toLowerCase());
+expect(payload).to.have.property(<span class="hljs-string">&quot;email&quot;</span>, user.email);
+expect(payload)
+  .to.have.property(<span class="hljs-string">&quot;token&quot;</span>)
+  .and.to.be.a(<span class="hljs-string">&quot;string&quot;</span>)
+  .and.to.have.length.of(<span class="hljs-number">204</span>);
+</code></pre>
+<ul>
+<li>response status assertion (it&apos;s important too)</li>
+</ul>
+<pre><code class="lang-javascript">expect(xhr.status).to.equal(<span class="hljs-number">200</span>);
+</code></pre>
+<p>The whole file is the following</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-7-ajax-payload-assertion.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-7-ajax-payload-assertion.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/ArticleList&quot;</span>;
+<span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+    <span class="hljs-keyword">const</span> user = {
+      username: <span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>,
+      email: <span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>,
+      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+    };
+    <span class="hljs-comment">// set up AJAX call interception</span>
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+    cy.visit(paths.register);
+
+    <span class="hljs-comment">// form filling</span>
+    cy.getByPlaceholderText(strings.username).type(user.username);
+    cy.getByPlaceholderText(strings.email).type(user.email);
+    cy.getByPlaceholderText(strings.password).type(user.password);
+
+    <span class="hljs-comment">// form submit...</span>
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.getByText(strings.signUp))
+      .click();
+
+    <span class="hljs-comment">// ... and AJAX call waiting</span>
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>).should(xhr =&gt; {
+      <span class="hljs-keyword">let</span> payload;
+
+      <span class="hljs-comment">// request check</span>
+      expect(xhr.request.body)
+        .to.have.property(<span class="hljs-string">&quot;user&quot;</span>)
+        .and.to.be.a(<span class="hljs-string">&quot;object&quot;</span>);
+      payload = xhr.request.body.user;
+      expect(payload).to.have.property(<span class="hljs-string">&quot;username&quot;</span>, user.username);
+      expect(payload).to.have.property(<span class="hljs-string">&quot;email&quot;</span>, user.email);
+      expect(payload).to.have.property(<span class="hljs-string">&quot;password&quot;</span>, user.password);
+
+      <span class="hljs-comment">// status check</span>
+      expect(xhr.status).to.equal(<span class="hljs-number">200</span>);
+
+      <span class="hljs-comment">// response check</span>
+      expect(xhr.response.body)
+        .to.have.property(<span class="hljs-string">&quot;user&quot;</span>)
+        .and.to.be.a(<span class="hljs-string">&quot;object&quot;</span>);
+      payload = xhr.response.body.user;
+      expect(payload).to.have.property(<span class="hljs-string">&quot;username&quot;</span>, user.username.toLowerCase());
+      expect(payload).to.have.property(<span class="hljs-string">&quot;email&quot;</span>, user.email);
+      expect(payload)
+        .to.have.property(<span class="hljs-string">&quot;token&quot;</span>)
+        .and.to.be.a(<span class="hljs-string">&quot;string&quot;</span>)
+        .and.to.have.length.of(<span class="hljs-number">204</span>);
+    });
+
+    <span class="hljs-comment">// end of the flow</span>
+    cy.getByText(noArticles).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>You can read more about the Cypress assertions in the <a href="https://docs.cypress.io/guides/references/assertions.html" target="_blank">official documentation</a>.</p>
+<p>In the next screenshot you can find (one of) the result of so much assertions: a punctual feedback in case of an error with the AJAX request</p>
+<div>
+    <img src="../assets/images/feedback-in-case-of-failure/request-payload-error.png" alt="Request payload error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
 
                                 
                                 </section>
@@ -939,7 +1114,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 
             
                 
-                <a href="cypress-testing-library.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: cypress-testing-library">
+                <a href="waiting-for-ajax-request.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Waiting for an AJAX request">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -951,7 +1126,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sharing app constants","level":"4.3.2","depth":2,"next":{"title":"AJAX requests","level":"4.4","depth":1,"ref":"","articles":[{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},{"title":"Asserting about the payloads","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]}]},"previous":{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"path":"book/cypress-testing-library.md","ref":"book/cypress-testing-library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-constants.md","mtime":"2019-09-04T06:19:18.035Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-05T16:07:25.941Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Asserting about the payloads","level":"4.4.2","depth":2,"next":{"title":"Other test TODO","level":"4.5","depth":1,"ref":"","articles":[]},"previous":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/payload-assertions.md","mtime":"2019-09-05T16:05:23.499Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-05T16:07:25.941Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
