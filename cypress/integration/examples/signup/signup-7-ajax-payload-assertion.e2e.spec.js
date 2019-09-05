@@ -27,19 +27,22 @@ context("Signup flow", () => {
     cy.get("form")
       .within(() => cy.getByText(strings.signUp))
       .click();
+
     // ... and AJAX call waiting
     cy.wait("@signup-request").should(xhr => {
+      let payload;
+
       // request check
       expect(xhr.request.body)
         .to.have.property("user")
         .and.to.be.a("object");
-      let payload = xhr.request.body.user;
+      payload = xhr.request.body.user;
       expect(payload).to.have.property("username", user.username);
       expect(payload).to.have.property("email", user.email);
       expect(payload).to.have.property("password", user.password);
 
       // status check
-      expect(xhr).to.have.property("status", 200);
+      expect(xhr.status).to.equal(200);
 
       // response check
       expect(xhr.response.body)
