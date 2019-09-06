@@ -14,7 +14,10 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import chaiSubset from "chai-subset";
+import "./commands";
+
+chai.use(chaiSubset);
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
