@@ -1651,9 +1651,9 @@ mongoose-unique-validator@2.0.3:
     lodash.foreach "^4.1.0"
     lodash.get "^4.0.2"
 
-mongoose@5.6.12:
-  version "5.6.12"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.12.tgz#c40abe8ffdec5cb69c493b8fdab27d1ebaea7e2d"
+mongoose@5.6.13:
+  version "5.6.13"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.13.tgz#de562ba1699b1eb7012fb1692c5d5a99aed7bea8"
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
