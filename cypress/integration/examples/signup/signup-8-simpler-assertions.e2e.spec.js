@@ -30,30 +30,28 @@ context("Signup flow", () => {
 
     // ... and AJAX call waiting
     cy.wait("@signup-request").should(xhr => {
-      let payload;
+      expect(xhr.request.body).deep.equal({
+        user: {
+          username: user.username,
+          email: user.email,
+          password: user.password
+        }
+      });
 
-      // request check
-      expect(xhr.request.body)
-        .to.have.property("user")
-        .and.to.be.a("object");
-      payload = xhr.request.body.user;
-      expect(payload).to.have.property("username", user.username);
-      expect(payload).to.have.property("email", user.email);
-      expect(payload).to.have.property("password", user.password);
-
-      // status check
       expect(xhr.status).to.equal(200);
 
-      // response check
-      expect(xhr.response.body)
-        .to.have.property("user")
-        .and.to.be.a("object");
-      payload = xhr.response.body.user;
-      expect(payload).to.have.property("username", user.username.toLowerCase());
-      expect(payload).to.have.property("email", user.email);
-      expect(payload)
-        .to.have.property("token")
-        .and.to.be.a("string").and.not.to.be.empty;
+      cy.wrap(xhr.response.body)
+        .should("have.property", "user")
+        .and(
+          user =>
+            expect(user)
+              .to.have.property("token")
+              .and.to.be.a("string").and.not.to.be.empty
+        )
+        .and("deep.include", {
+          username: user.username.toLowerCase(),
+          email: user.email
+        });
     });
 
     // end of the flow

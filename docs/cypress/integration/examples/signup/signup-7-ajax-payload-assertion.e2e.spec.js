@@ -53,8 +53,7 @@ context("Signup flow", () => {
       expect(payload).to.have.property("email", user.email);
       expect(payload)
         .to.have.property("token")
-        .and.to.be.a("string")
-        .and.to.have.length.of(204);
+        .and.to.be.a("string").and.not.to.be.empty;
     });
 
     // end of the flow

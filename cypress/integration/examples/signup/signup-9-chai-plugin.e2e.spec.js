@@ -30,28 +30,28 @@ context("Signup flow", () => {
 
     // ... and AJAX call waiting
     cy.wait("@signup-request").should(xhr => {
-      let payload;
+      expect(xhr).to.containSubset({
+        status: 200,
+        request: {
+          body: {
+            user: {
+              username: user.username,
+              email: user.email,
+              password: user.password
+            }
+          }
+        },
+        response: {
+          body: {
+            user: {
+              username: user.username.toLowerCase(),
+              email: user.email
+            }
+          }
+        }
+      });
 
-      // request check
-      expect(xhr.request.body)
-        .to.have.property("user")
-        .and.to.be.a("object");
-      payload = xhr.request.body.user;
-      expect(payload).to.have.property("username", user.username);
-      expect(payload).to.have.property("email", user.email);
-      expect(payload).to.have.property("password", user.password);
-
-      // status check
-      expect(xhr.status).to.equal(200);
-
-      // response check
-      expect(xhr.response.body)
-        .to.have.property("user")
-        .and.to.be.a("object");
-      payload = xhr.response.body.user;
-      expect(payload).to.have.property("username", user.username.toLowerCase());
-      expect(payload).to.have.property("email", user.email);
-      expect(payload)
+      expect(xhr.response.body.user)
         .to.have.property("token")
         .and.to.be.a("string").and.not.to.be.empty;
     });

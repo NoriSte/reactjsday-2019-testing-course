@@ -44,11 +44,11 @@ Asserting about them means checking that:
 
 - the request payload contains a `user` object that contains the data used to fill the form
 
-- the response payload contains both the `email` and the `username`, the `token` is a string that's 204 characters long (it's a JSON Web Token)
+- the response payload contains both the `email` and the `username`, the `token` is a string that's 200-210 characters long (it's a JSON Web Token)
 
 Do we need to verify the `token` is syntactically correct?
 <br />
-The right question is: does the front-end app parse and use it? **Does the front-end break if the token is not valid**? If the answer is Yes, assert about it! Otherwise, it's not necessary! Soft assertions (formal ones: it's not empty and has a length of 204 characters) do not cost but deep checks (decrypting it and checking the content) do not make sense if you think about how the front-end consumes it.
+The right question is: does the front-end app parse and use it? **Does the front-end break if the token is not valid**? If the answer is Yes, assert about it! Otherwise, it's not necessary! Soft assertions ("it's not empty") do not cost but deep checks (decrypting it and checking the content) do not make sense if you think about how the front-end consumes it.
 
 Starting from the most recent test
 
@@ -196,7 +196,7 @@ expect(payload).to.have.property("email", user.email);
 expect(payload)
   .to.have.property("token")
   .and.to.be.a("string")
-  .and.to.have.length.of(204);
+  .and.not.to.be.empty;
 ```
 
 - response status assertion (it's important too)
@@ -217,3 +217,102 @@ In the next screenshot you can find (one of) the result of so much assertions: a
 <div>
     <img src="../assets/images/feedback-in-case-of-failure/request-payload-error.png" alt="Request payload error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
 </div>
+
+### Smarter assertions
+
+The assertions show above are precise but not so smart. Their feedback is not smart neither, take a look at the next screenshot
+
+<div>
+    <img src="../assets/images/extremely-long-feedback.png" alt="Extremely long feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+</div>
+<br /><br />
+We can maintain all the usefulness of the feedback while making them a little smarter leveraging one of the combinations offered by Cypress to write assertions. The next code asserts the same things in a more concise mode and with more concise feedback too
+
+```javascript
+cy.wait("@signup-request").should(xhr => {
+  expect(xhr.request.body).deep.equal({
+    user: {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    }
+  });
+
+  expect(xhr.status).to.equal(200);
+
+  cy.wrap(xhr.response.body)
+    .should("have.property", "user")
+    .and(
+      user =>
+        expect(user)
+          .to.have.property("token")
+          .and.to.be.a("string").and.not.to.be.empty
+    )
+    .and("deep.include", {
+      username: user.username.toLowerCase(),
+      email: user.email
+    });
+});
+```
+
+<div>
+    <img src="../assets/images/concise-feedback.png" alt="More concise feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+</div>
+<br /><br />
+
+You can find the whole test code in the [signup-8-simpler-assertions.e2e.spec.js](../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js) file.
+
+### Chai plugins
+
+For the sake of curiosity, we can condense the previous assertions again. For example, with the [`chai-subset`](https://www.npmjs.com/package/chai-subset) plugin ([Chai](https://www.chaijs.com) is a famous assertion library included by Cypress) we can write a giant assertion that checks everything: the status and the payloads
+
+```javascript
+cy.wait("@signup-request").should(xhr => {
+  expect(xhr).to.containSubset({
+    status: 200,
+    request: {
+      body: {
+        user: {
+          username: user.username,
+          email: user.email,
+          password: user.password
+        }
+      }
+    },
+    response: {
+      body: {
+        user: {
+          username: user.username.toLowerCase(),
+          email: user.email
+        }
+      }
+    }
+  });
+});
+```
+
+but it's not recommended because, in case of failure, the feedback is too much generic:
+
+<div>
+    <img src="../assets/images/feedback-in-case-of-failure/chai-subset-error.png" alt="Chai subset error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+</div>
+<br /><br />
+
+If you'd like to know how you can install a Chai plugin and use it in Cypress:
+
+- open the `cypress/support/index.js` file
+
+- import the plugin with `import chaiSubset from "chai-subset";`
+
+- add it to Chai with `chai.use(chaiSubset);`
+
+
+The test code is in the [signup-9-chai-plugin.e2e.spec.js](../cypress/integration/examples/signup/signup-9-chai-plugin.e2e.spec.js) file.
+
+<!-- sostituite i getByPlaceholderText -->
+<!--
+what e2e tests do not
+- slow
+- dependes on the server (😱)
+- manages data is slow and hard
+ -->
