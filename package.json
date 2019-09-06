@@ -25,7 +25,8 @@
     "realworld:db:start": "cd realworld/backend && npm run mongo:start",
     "// EXAMPLES ///////////": "",
     "run:examples": "npm-run-all -s example:**",
-    "example:headless-browser": "cypress run --config video=false --spec \"cypress/integration/**/headless-browser.*\""
+    "example:headless-browser": "cypress run --config video=false --spec \"cypress/integration/**/headless-browser.*\"",
+    "example:signup": "cypress run --config video=false --spec \"cypress/integration/examples/signup/*\""
   },
   "repository": {
     "type": "git",

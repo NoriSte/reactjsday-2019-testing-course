@@ -117,13 +117,13 @@ it("The happy path should work", () => {
 
     // form filling
     const random = Math.floor(Math.random() * 100000);
-    cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
-    cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
-    cy.getByPlaceholderText(strings.password).type("mysupersecretpassword");
+    cy.findByPlaceholderText(strings.username).type(`Tester${random}`);
+    cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+    cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
 
     // form submit...
     cy.get("form")
-      .within(() => cy.getByText(strings.signUp))
+      .within(() => cy.findByText(strings.signUp))
       .click();
     // ... and AJAX call waiting
 -   cy.wait("@signup-request");
@@ -134,7 +134,7 @@ it("The happy path should work", () => {
 +     .should("have.property", "username", user.username);
 
     // end of the flow
-    cy.getByText(noArticles).should("be.visible");
+    cy.findByText(noArticles).should("be.visible");
   });
 
 ```
@@ -309,7 +309,7 @@ If you'd like to know how you can install a Chai plugin and use it in Cypress:
 
 The test code is in the [signup-9-chai-plugin.e2e.spec.js](../cypress/integration/examples/signup/signup-9-chai-plugin.e2e.spec.js) file.
 
-<!-- sostituite i getByPlaceholderText -->
+<!-- sostituite i findByPlaceholderText -->
 <!--
 what e2e tests do not
 - slow

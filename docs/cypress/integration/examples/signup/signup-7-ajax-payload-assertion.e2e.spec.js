@@ -19,13 +19,13 @@ context("Signup flow", () => {
     cy.visit(paths.register);
 
     // form filling
-    cy.getByPlaceholderText(strings.username).type(user.username);
-    cy.getByPlaceholderText(strings.email).type(user.email);
-    cy.getByPlaceholderText(strings.password).type(user.password);
+    cy.findByPlaceholderText(strings.username).type(user.username);
+    cy.findByPlaceholderText(strings.email).type(user.email);
+    cy.findByPlaceholderText(strings.password).type(user.password);
 
     // form submit...
     cy.get("form")
-      .within(() => cy.getByText(strings.signUp))
+      .within(() => cy.findByText(strings.signUp))
       .click();
 
     // ... and AJAX call waiting
@@ -57,6 +57,6 @@ context("Signup flow", () => {
     });
 
     // end of the flow
-    cy.getByText(noArticles).should("be.visible");
+    cy.findByText(noArticles).should("be.visible");
   });
 });

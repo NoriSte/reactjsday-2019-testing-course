@@ -69,20 +69,20 @@ it("The happy path should work", () => {
   cy.visit(paths.register);
   // form filling code
   cy.get("form")
-    .within(() => cy.getByText(strings.signUp))
+    .within(() => cy.findByText(strings.signUp))
     .click();
 + cy.wait("@signup-request");
-  cy.getByText(noArticles, { timeout: 10000 }).should("be.visible");
+  cy.findByText(noArticles, { timeout: 10000 }).should("be.visible");
 });
 ```
 
 What does "waiting" main for an AJAX request? Here we can see the advantages of automatic Cypress waitings mixed with AJAX requests management! By asking Cypress to `cy.wait("@signup-request");`, it's going to **wait up to 5 seconds for the front-end to start the request and up to 30 seconds for the back-end** to fulfill the request (both of the timeouts are customizable).
 
-Last change: do you remember why did we add the custom timeout to the `cy.getByText(noArticles, { timeout: 10000 })` call? We added it while speaking about the [stability](e2e-test-defects-stability.md) of the test because we faced the problem that `cy.contain` (later replaced by `cy.getByText`) sometimes failed because the AJAX request took too long (and the default `cy.contain`/`cy.getByText` timeout is 4000 milliseconds). Now we do not need it anymore because the `cy.wait` knows that an AJAX request could take a really long time!
+Last change: do you remember why did we add the custom timeout to the `cy.findByText(noArticles, { timeout: 10000 })` call? We added it while speaking about the [stability](e2e-test-defects-stability.md) of the test because we faced the problem that `cy.contain` (later replaced by `cy.findByText`) sometimes failed because the AJAX request took too long (and the default `cy.contain`/`cy.findByText` timeout is 4000 milliseconds). Now we do not need it anymore because the `cy.wait` knows that an AJAX request could take a really long time!
 
 ```diff
-- cy.getByText(noArticles, { timeout: 10000 }).should("be.visible");
-+ cy.getByText(noArticles).should("be.visible");
+- cy.findByText(noArticles, { timeout: 10000 }).should("be.visible");
++ cy.findByText(noArticles).should("be.visible");
 ```
 
 That's all the changes we applied to the test
@@ -94,15 +94,15 @@ it("The happy path should work", () => {
 +   .as("signup-request");
   cy.visit(paths.register);
   const random = Math.floor(Math.random() * 100000);
-  cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
-  cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
-  cy.getByPlaceholderText(strings.password).type("mysupersecretpassword");
+  cy.findByPlaceholderText(strings.username).type(`Tester${random}`);
+  cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+  cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
   cy.get("form")
-    .within(() => cy.getByText(strings.signUp))
+    .within(() => cy.findByText(strings.signUp))
     .click();
 + cy.wait("@signup-request");
-- cy.getByText(noArticles, { timeout: 10000 }).should("be.visible");
-+ cy.getByText(noArticles).should("be.visible");
+- cy.findByText(noArticles, { timeout: 10000 }).should("be.visible");
++ cy.findByText(noArticles).should("be.visible");
 });
 ```
 

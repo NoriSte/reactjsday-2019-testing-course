@@ -14,18 +14,18 @@ context("Signup flow", () => {
 
     // form filling
     const random = Math.floor(Math.random() * 100000);
-    cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
-    cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
-    cy.getByPlaceholderText(strings.password).type("mysupersecretpassword");
+    cy.findByPlaceholderText(strings.username).type(`Tester${random}`);
+    cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+    cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
 
     // form submit...
     cy.get("form")
-      .within(() => cy.getByText(strings.signUp))
+      .within(() => cy.findByText(strings.signUp))
       .click();
     // ... and AJAX call waiting
     cy.wait("@signup-request");
 
     // end of the flow
-    cy.getByText(noArticles).should("be.visible");
+    cy.findByText(noArticles).should("be.visible");
   });
 });

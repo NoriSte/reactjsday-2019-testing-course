@@ -38,17 +38,17 @@ context("Signup flow", () => {
   it("The happy path should work", () => {
     cy.visit("/register");
     const random = Math.floor(Math.random() * 100000);
--   cy.getByPlaceholderText("Username").type(`Tester${random}`);
-+   cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
--   cy.getByPlaceholderText("Email").type(`user+${random}@realworld.io`);
-+   cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
--   cy.getByPlaceholderText("Password").type("mysupersecretpassword");
-+   cy.getByPlaceholderText(strings.password).type("mysupersecretpassword");
+-   cy.findByPlaceholderText("Username").type(`Tester${random}`);
++   cy.findByPlaceholderText(strings.username).type(`Tester${random}`);
+-   cy.findByPlaceholderText("Email").type(`user+${random}@realworld.io`);
++   cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+-   cy.findByPlaceholderText("Password").type("mysupersecretpassword");
++   cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
     cy.get("form")
--     .within(() => cy.getByText("Sign up"))
-+     .within(() => cy.getByText(strings.signUp))
+-     .within(() => cy.findByText("Sign up"))
++     .within(() => cy.findByText(strings.signUp))
       .click();
-    cy.getByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
+    cy.findByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
   });
 });
 ```
@@ -62,13 +62,13 @@ context("Signup flow", () => {
   it("The happy path should work", () => {
     cy.visit("/register");
     const random = Math.floor(Math.random() * 100000);
-    cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
-    cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
-    cy.getByPlaceholderText(strings.password).type("mysupersecretpassword");
+    cy.findByPlaceholderText(strings.username).type(`Tester${random}`);
+    cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+    cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
     cy.get("form")
-      .within(() => cy.getByText(strings.signUp))
+      .within(() => cy.findByText(strings.signUp))
       .click();
-    cy.getByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
+    cy.findByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
   });
 });
 ```

@@ -8,12 +8,12 @@ context("Signup flow", () => {
   it("The happy path should work", () => {
     cy.visit(paths.register);
     const random = Math.floor(Math.random() * 100000);
-    cy.getByPlaceholderText(strings.username).type(`Tester${random}`);
-    cy.getByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
-    cy.getByPlaceholderText(strings.password).type("mysupersecretpassword");
+    cy.findByPlaceholderText(strings.username).type(`Tester${random}`);
+    cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
+    cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
     cy.get("form")
-      .within(() => cy.getByText(strings.signUp))
+      .within(() => cy.findByText(strings.signUp))
       .click();
-    cy.getByText(noArticles, { timeout: 10000 }).should("be.visible");
+    cy.findByText(noArticles, { timeout: 10000 }).should("be.visible");
   });
 });
