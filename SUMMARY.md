@@ -40,7 +40,7 @@
   - [Sharing app constants](book/app-constants.md)
 - AJAX requests
   - [Waiting for an AJAX request](book/waiting-for-ajax-request.md)
-  - [Asserting about the payloads](book/payload-assertions.md)
+  - [Asserting on payloads](book/payload-assertions.md)
 - Other test TODO
 - Register new user TODO
 - Login new User TODO

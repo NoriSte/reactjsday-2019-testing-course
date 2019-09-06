@@ -1,4 +1,4 @@
-# Asserting about the payloads
+# Asserting on payloads
 
 Here we are again: before summing up all the improvements we made to the original test, we need to speak about AJAX payloads assertions. The original [list of problems](utility-in-case-of-failure.md#error-feedback) listed two possible errors related to payloads
 
