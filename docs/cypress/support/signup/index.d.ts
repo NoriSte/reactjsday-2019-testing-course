@@ -1,13 +1,22 @@
-/// <reference types="cypress" />
+/// <reference types="Cypress" />
 
 declare namespace Cypress {
   interface Chainable<Subject> {
     /**
-     * Signup a user
+     * Register a new user
      * @example
      * cy.signupv1()
-     * cy.signupv1({email: "foo@bar.io", username: "Foo", password: "ar"})
+     * cy.signupv1({email: "foo[AT]bar.io", username: "Foo", password: "ar"})
+     * cy.signupv1().then(user => { ... })
      */
-    signupv1(user: { email?: string; username?: string; password?: string }): Chainable<any>;
+    signupV1(user?: {
+      email?: string;
+      username?: string;
+      password?: string;
+    }): Chainable<{
+      email: string;
+      username: string;
+      password: string;
+    }>;
   }
 }

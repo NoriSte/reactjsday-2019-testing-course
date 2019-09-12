@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Resources · GitBook</title>
+        <title>Intellisense · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="about-the-book.html" />
+    <link rel="next" href="app-actions.md" />
     
     
-    <link rel="prev" href="conclusions.html" />
+    <link rel="prev" href="signup-custom-command.html" />
     
 
     </head>
@@ -673,7 +673,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.5.2" data-path="custom-command-intellisense.html">
+        <li class="chapter active" data-level="4.5.2" data-path="custom-command-intellisense.html">
             
                 <a href="custom-command-intellisense.html">
             
@@ -789,7 +789,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.2" data-path="resources.html">
+        <li class="chapter " data-level="5.2" data-path="resources.html">
             
                 <a href="resources.html">
             
@@ -852,7 +852,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Resources</a>
+        <a href=".." >Intellisense</a>
     </h1>
 </div>
 
@@ -867,7 +867,79 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="intellisense">Intellisense</h1>
+<p>The developers (included the future you) that are going to use the custom command could be helped with some autosuggestions. How could we leverage VS Code Intellisense to document our custom command?</p>
+<p>We need to use a TypeScript definition file to add them, you just need to:</p>
+<ul>
+<li><p>create an <code>index.d.ts</code> file into the <code>cypress/support/signup</code> directory (where the <code>signup-v1.js</code> file is)</p>
+</li>
+<li><p>add the typing itself. We are not going to speak about TypeScript itself, just take a look at the result in terms of the file itself</p>
+</li>
+</ul>
+<p><i>File: <a href="../cypress/support/signup/index.d.ts" target="_blank">cypress/support/signup/index.d.ts</a></i></p>
+<pre><code class="lang-typescript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">declare</span> <span class="hljs-keyword">namespace</span> Cypress {
+  <span class="hljs-keyword">interface</span> Chainable&lt;Subject&gt; {
+    <span class="hljs-comment">/**
+     * Register a new user
+     * @example
+     * cy.signupv1()
+     * cy.signupv1({email: &quot;foo[AT]bar.io&quot;, username: &quot;Foo&quot;, password: &quot;ar&quot;})
+     * cy.signupv1().then(user =&gt; { ... })
+     */</span>
+    signupV1(user?: {
+      email?: <span class="hljs-built_in">string</span>;
+      username?: <span class="hljs-built_in">string</span>;
+      password?: <span class="hljs-built_in">string</span>;
+    }): Chainable&lt;{
+      email: <span class="hljs-built_in">string</span>;
+      username: <span class="hljs-built_in">string</span>;
+      password: <span class="hljs-built_in">string</span>;
+    }&gt;;
+  }
+}
+</code></pre>
+<p>and the hints that it gives you while coding your test:</p>
+<p><div>
+    <img src="../assets/images/custom-command-intellisense/autocompletion.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div></p>
+<p><div>
+    <img src="../assets/images/custom-command-intellisense/suggestion.png" alt="Suggestion" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div></p>
+<p><div>
+    <img src="../assets/images/custom-command-intellisense/documentation.png" alt="Documentation" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<br><br>
+<a href="https://www.typescriptlang.org" target="_blank">TypeScript</a> can do more than documenting your function utilities, but for the sake of our goal just remember that:</p>
+<ul>
+<li>almost every Cypress command must be defined into the <code>namespace Cypress</code> block</li>
+</ul>
+<pre><code class="lang-typescript"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">namespace</span> Cypress {
+  <span class="hljs-keyword">interface</span> Chainable&lt;Subject&gt; {
+    <span class="hljs-comment">// ...</span>
+  }
+}
+</code></pre>
+<ul>
+<li>the question marks before the type definition make the variable optional (you are not forced to pass the user data to the custom command)</li>
+</ul>
+<pre><code class="lang-typescript">signupV1(user?: {
+  email?: <span class="hljs-built_in">string</span>;
+  username?: <span class="hljs-built_in">string</span>;
+  password?: <span class="hljs-built_in">string</span>;
+})
+</code></pre>
+<ul>
+<li>the commands chained after the <code>cy.signupV1</code> command are going to receive the registered user details, that&apos;s why the return type of the function is</li>
+</ul>
+<pre><code class="lang-typescript">Chainable&lt;{
+  email: <span class="hljs-built_in">string</span>;
+  username: <span class="hljs-built_in">string</span>;
+  password: <span class="hljs-built_in">string</span>;
+}&gt;
+</code></pre>
+
                                 
                                 </section>
                             
@@ -894,12 +966,12 @@
 
             
                 
-                <a href="conclusions.html" class="navigation navigation-prev " aria-label="Previous page: Conclusions">
+                <a href="signup-custom-command.html" class="navigation navigation-prev " aria-label="Previous page: Signup">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="about-the-book.html" class="navigation navigation-next " aria-label="Next page: About this book">
+                <a href="app-actions.md" class="navigation navigation-next " aria-label="Next page: App actions">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -910,7 +982,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Resources","level":"5.2","depth":1,"next":{"title":"About this book","level":"6.1","depth":1,"path":"book/about-the-book.md","ref":"book/about-the-book.md","articles":[]},"previous":{"title":"Conclusions","level":"5.1","depth":1,"path":"book/conclusions.md","ref":"book/conclusions.md","articles":[]},"dir":"neutral"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/resources.md","mtime":"2019-08-23T16:19:54.917Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-12T15:04:08.136Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Intellisense","level":"4.5.2","depth":2,"next":{"title":"App actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},"previous":{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/custom-command-intellisense.md","mtime":"2019-09-12T06:53:34.235Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-12T15:04:08.136Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
