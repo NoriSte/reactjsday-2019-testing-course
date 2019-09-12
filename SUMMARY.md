@@ -41,6 +41,10 @@
 - AJAX requests
   - [Waiting for an AJAX request](book/waiting-for-ajax-request.md)
   - [Asserting on payloads](book/payload-assertions.md)
+- Custom Commands
+  - [Signup](book/signup-custom-command.md)
+  - [Intellisense](book/custom-command-intellisense.md)
+  - [App actions](book/app-actions.md)
 - Other test TODO
 - Register new user TODO
 - Login new User TODO
