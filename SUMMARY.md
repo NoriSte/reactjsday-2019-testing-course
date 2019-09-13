@@ -44,7 +44,8 @@
 - Custom Commands
   - [Signup](book/signup-custom-command.md)
   - [Intellisense](book/custom-command-intellisense.md)
-  - [App actions](book/app-actions.md)
+  - [App Actions](book/app-actions.md)
+  - [A smarter solution](book/smarter-solution.md)
 - Other test TODO
 - Register new user TODO
 - Login new User TODO

@@ -39,6 +39,11 @@ class Register extends React.Component {
       ev.preventDefault();
       this.props.onSubmit(username, email, password);
     }
+
+    if(window.Cypress) {
+      window.appActions = window.appActions || {};
+      window.appActions.signup = ({username, email, password}) => this.props.onSubmit(username, email, password);
+    }
   }
 
   componentWillUnmount() {
