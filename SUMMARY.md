@@ -45,7 +45,7 @@
   - [Signup](book/signup-custom-command.md)
   - [Intellisense](book/custom-command-intellisense.md)
   - [App Actions](book/app-actions.md)
-  - [A smarter solution](book/smarter-solution.md)
+  - [Sharing authentication state](book/sharing-authentication-state.md)
 - Other test TODO
 - Register new user TODO
 - Login new User TODO

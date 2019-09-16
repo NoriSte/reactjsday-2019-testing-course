@@ -28,7 +28,7 @@ context("The custom command could be run before the test code with a test hook",
 });
 
 context("The custom command could be customized", () => {
-  it("Should leverage the custom registration command with a test hook", () => {
+  it("Should leverage the custom registration command", () => {
     const user = {
       username: "CustomTester",
       email: "specialtester@realworld.io",

@@ -18,7 +18,8 @@ app.use(cors());
 
 // intentional delay simulating E2E testing bottlenecks
 app.use((req, res, next) => {
-  setTimeout(next, Math.floor(Math.random() * 2000 + 300));
+  const isGet = req.method === 'GET';
+  setTimeout(next, Math.floor(Math.random() * (500 * (isGet ? 1 : 4)) + 300));
 });
 
 // Normal express config defaults

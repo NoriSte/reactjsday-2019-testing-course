@@ -60,5 +60,5 @@ Cypress.Commands.add("signupV1", ({ email, username, password } = {}) => {
   // restore the original cy.server behavior
   cy.server({ enable: false });
 
-  cy.wrap(user);
+  cy.then(() => user);
 });

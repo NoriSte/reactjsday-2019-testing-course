@@ -105,9 +105,6 @@ App Actions sometimes can not be used but the more we leverage them, the more ro
 Just for your information: [PageObject](https://martinfowler.com/bliki/PageObject.html) is the common pattern used widely before the concept of App Actions borned. The problem with the PageObject pattern is that you create one more abstraction to manage that could lose its effectiveness in a while causing more problems than advantages. If you want to deepen the comparison between the two approaches you could read the [Stop using Page Objects and Start using App Actions](https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/) post.
 
 <!--
-there are other options, see the docs
- -->
-<!--
 
 variables? to keep the user data stored?
  -->
