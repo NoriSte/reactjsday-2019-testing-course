@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="smarter-solution.md" />
+    <link rel="next" href="sharing-authentication-state.html" />
     
     
     <link rel="prev" href="custom-command-intellisense.html" />
@@ -699,12 +699,12 @@
             
         </li>
     
-        <li class="chapter " data-level="4.5.4" data-path="smarter-solution.md">
+        <li class="chapter " data-level="4.5.4" data-path="sharing-authentication-state.html">
             
-                <span>
+                <a href="sharing-authentication-state.html">
             
                     
-                    A smarter solution
+                    Sharing authentication state
             
                 </a>
             
@@ -918,7 +918,7 @@ context(<span class="hljs-string">&quot;The custom command could be run before t
 });
 
 context(<span class="hljs-string">&quot;The custom command could be customized&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;Should leverage the custom registration command with a test hook&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;Should leverage the custom registration command&quot;</span>, () =&gt; {
     <span class="hljs-keyword">const</span> user = {
       username: <span class="hljs-string">&quot;CustomTester&quot;</span>,
       email: <span class="hljs-string">&quot;specialtester@realworld.io&quot;</span>,
@@ -1033,7 +1033,7 @@ Cypress.Commands.add(<span class="hljs-string">&quot;signupV2&quot;</span>, ({ e
   <span class="hljs-comment">// restore the original cy.server behavior</span>
   cy.server({ enable: <span class="hljs-literal">false</span> });
 
-  cy.wrap(user);
+  cy.then(() =&gt; user);
 });
 </code></pre>
 <p>The <code>signupV2</code> custom command is used by the <i><a href="../cypress/integration/examples/signup-command/signup-command-2.e2e.spec.js" target="_blank">signup-command-2.e2e.spec.js</a></i> test and the performance improvement is notable compared to the previous <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> one</p>
@@ -1059,9 +1059,6 @@ Cypress.Commands.add(<span class="hljs-string">&quot;signupV2&quot;</span>, ({ e
 <p>App Actions sometimes can not be used but the more we leverage them, the more robust and fast the tests are.</p>
 <h3 id="pageobject">PageObject</h3>
 <p>Just for your information: <a href="https://martinfowler.com/bliki/PageObject.html" target="_blank">PageObject</a> is the common pattern used widely before the concept of App Actions borned. The problem with the PageObject pattern is that you create one more abstraction to manage that could lose its effectiveness in a while causing more problems than advantages. If you want to deepen the comparison between the two approaches you could read the <a href="https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/" target="_blank">Stop using Page Objects and Start using App Actions</a> post.</p>
-<!--
-there are other options, see the docs
- -->
 <!--
 
 variables? to keep the user data stored?
@@ -1098,7 +1095,7 @@ variables? to keep the user data stored?
                 </a>
                 
                 
-                <a href="smarter-solution.md" class="navigation navigation-next " aria-label="Next page: A smarter solution">
+                <a href="sharing-authentication-state.html" class="navigation navigation-next " aria-label="Next page: Sharing authentication state">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1109,7 +1106,7 @@ variables? to keep the user data stored?
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"App Actions","level":"4.5.3","depth":2,"next":{"title":"A smarter solution","level":"4.5.4","depth":2,"path":"book/smarter-solution.md","ref":"book/smarter-solution.md","articles":[]},"previous":{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-actions.md","mtime":"2019-09-13T06:53:27.401Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-13T06:54:25.445Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"App Actions","level":"4.5.3","depth":2,"next":{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]},"previous":{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-actions.md","mtime":"2019-09-13T14:45:00.410Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-16T08:22:11.899Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

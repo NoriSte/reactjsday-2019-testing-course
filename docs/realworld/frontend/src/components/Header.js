@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { paths } from './App';
 
+export const newPost = 'New Post';
+
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
@@ -44,7 +46,7 @@ const LoggedInView = props => {
 
         <li className="nav-item">
           <Link to="/editor" className="nav-link">
-            <i className="ion-compose"></i>&nbsp;New Post
+            <i className="ion-compose"></i>&nbsp;{newPost}
           </Link>
         </li>
 

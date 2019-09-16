@@ -699,12 +699,12 @@
             
         </li>
     
-        <li class="chapter " data-level="4.5.4" data-path="smarter-solution.md">
+        <li class="chapter " data-level="4.5.4" data-path="sharing-authentication-state.html">
             
-                <span>
+                <a href="sharing-authentication-state.html">
             
                     
-                    A smarter solution
+                    Sharing authentication state
             
                 </a>
             
@@ -910,6 +910,33 @@
       username: <span class="hljs-built_in">string</span>;
       password: <span class="hljs-built_in">string</span>;
     }&gt;;
+
+    <span class="hljs-comment">/**
+     * Register a new user or leverage the previously registered one (if possible)
+     * @example
+     * cy.signupv3()
+     * cy.signupv3({email: &quot;foo[AT]bar.io&quot;, username: &quot;Foo&quot;, password: &quot;ar&quot;})
+     * cy.signupv3().then(user =&gt; { ... })
+     * @example
+     * // the second call with the same (or empty) user data gets the user authenticated without
+     * // registering a new one
+     * cy.signupv3()
+     * cy.signupv3() // the user will not be registered twice
+     * cy.signupv3({ignoreLocalStorage: true}) // force the user be registered
+     * cy.signupv3({email: &quot;foo[AT]bar.io&quot;, username: &quot;Foo&quot;, password: &quot;ar&quot;})
+     * cy.signupv3({email: &quot;foo[AT]bar.io&quot;, username: &quot;Foo&quot;, password: &quot;ar&quot;}) // the user will not be registered twice
+     * cy.signupv3({email: &quot;foo[AT]bar.io&quot;, username: &quot;Foo&quot;, password: &quot;ar&quot;}, ignoreLocalStorage: true) // force the user be registered
+     */</span>
+    signupV3(user?: {
+      email?: <span class="hljs-built_in">string</span>;
+      username?: <span class="hljs-built_in">string</span>;
+      password?: <span class="hljs-built_in">string</span>;
+      ignoreLocalStorage?: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+    }): Chainable&lt;{
+      email: <span class="hljs-built_in">string</span>;
+      username: <span class="hljs-built_in">string</span>;
+      password: <span class="hljs-built_in">string</span>;
+    }&gt;;
   }
 }
 </code></pre>
@@ -995,7 +1022,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Intellisense","level":"4.5.2","depth":2,"next":{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},"previous":{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/custom-command-intellisense.md","mtime":"2019-09-12T06:53:34.235Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-13T06:54:25.445Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Intellisense","level":"4.5.2","depth":2,"next":{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},"previous":{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/custom-command-intellisense.md","mtime":"2019-09-12T06:53:34.235Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-16T08:22:11.899Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

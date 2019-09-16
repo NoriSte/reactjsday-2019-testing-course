@@ -27,3 +27,4 @@
 import "@testing-library/cypress/add-commands";
 import "./signup/signup-v1";
 import "./signup/signup-v2";
+import "./signup/signup-v3";
