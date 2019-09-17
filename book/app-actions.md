@@ -73,7 +73,7 @@ What's the final goal of the `window.appActions.signup` app action? Simply, call
 You can find the whole code of the custom command into the `signup-v2.js` custom command
 
 <i>File: <a href="../cypress/support/signup/signup-v2.js" target="_blank">cypress/support/signup/signup-v2.js</a></i>
-[include,lang:"typescript"](../cypress/support/signup/signup-v2.js)
+[include](../cypress/support/signup/signup-v2.js)
 
 The `signupV2` custom command is used by the <i><a href="../cypress/integration/examples/signup-command/signup-command-2.e2e.spec.js" target="_blank">signup-command-2.e2e.spec.js</a></i> test and the performance improvement is notable compared to the previous <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> one
 

@@ -46,10 +46,13 @@
   - [Intellisense](book/custom-command-intellisense.md)
   - [App Actions](book/app-actions.md)
   - [Sharing authentication state](book/sharing-authentication-state.md)
+- UI Integration Tests
+  - [Stubbing the Back-end](book/stubbing-the-backend.md)
+  - [Fixtures](book/fixtures.md)
+  - [Custom command](book/fixtures.md)
+  - [Front-end testing](book/fixtures.md)
+  - [Cypress as a development tool](book/fixtures.md)
 - Other test TODO
-- Register new user TODO
-- Login new User TODO
-- App actions TODO
 - [Other things about Cypress TODO](book/other-things-about-cypress.md)
 - ***
 - [Conclusions](book/conclusions.md)
