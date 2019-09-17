@@ -742,9 +742,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.2" data-path="fixtures.md">
+        <li class="chapter " data-level="4.6.2" data-path="fixtures.html">
             
-                <span>
+                <a href="fixtures.html">
             
                     
                     Fixtures
@@ -755,9 +755,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.3" data-path="fixtures.md">
+        <li class="chapter " data-level="4.6.3" data-path="fixtures.html">
             
-                <span>
+                <a href="fixtures.html">
             
                     
                     Custom command
@@ -768,9 +768,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.4" data-path="fixtures.md">
+        <li class="chapter " data-level="4.6.4" data-path="fixtures.html">
             
-                <span>
+                <a href="fixtures.html">
             
                     
                     Front-end testing
@@ -781,9 +781,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.5" data-path="fixtures.md">
+        <li class="chapter " data-level="4.6.5" data-path="fixtures.html">
             
-                <span>
+                <a href="fixtures.html">
             
                     
                     Cypress as a development tool
@@ -1122,7 +1122,7 @@ let previousUserData = {};
 <pre><code class="lang-javascript">localStorage.setItem(<span class="hljs-string">&quot;jwt&quot;</span>, previousUserData.jwt);
 </code></pre>
 <ul>
-<li>then, we must check that the token is still valid for the back-end application. It should not be a problem (unless the tests last for hours) but you never know, test independence and stability must not be mined by a missing control. Obviously, this check must be from the user perspective, as we read in the <a href="cypress-testing-library.html">cypress-testing-library</a> chapter</li>
+<li>then, we must check that the token is still valid for the back-end application. It should not be a problem (unless the tests last for hours) but you never know, <strong>test independence and stability must not be mined by a missing control</strong>. Obviously, this check must be from the user perspective, as we read in the <a href="cypress-testing-library.html">cypress-testing-library</a> chapter</li>
 </ul>
 <pre><code class="lang-javascript">cy.visit(<span class="hljs-string">&quot;/&quot;</span>)
   <span class="hljs-comment">// use the &quot;New Post&quot; string to detect if the user is authenticated or not</span>
@@ -1326,7 +1326,7 @@ Cypress.Commands.add(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sharing authentication state","level":"4.5.4","depth":2,"next":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Front-end testing","level":"4.6.4","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]}]},"previous":{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/sharing-authentication-state.md","mtime":"2019-09-16T08:22:17.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-17T07:05:19.750Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sharing authentication state","level":"4.5.4","depth":2,"next":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Front-end testing","level":"4.6.4","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]}]},"previous":{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/sharing-authentication-state.md","mtime":"2019-09-17T15:40:17.736Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-17T15:42:15.843Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
