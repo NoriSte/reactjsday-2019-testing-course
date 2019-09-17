@@ -58,8 +58,8 @@ const user = {
 +}).as("signup-request");
 ```
 
-  where does the `{user: {...}}` response come from? From inspecting the response of the back-end to the `POST` JAJAX call to the `/api/users` API
-  <img src="../assets/images/signup-call-response.png" alt="The signup call response"/>
+where does the `{user: {...}}` response come from? From inspecting the response of the back-end to the `POST` JAJAX call to the `/api/users` API
+<img src="../assets/images/signup-call-response.png" alt="The signup call response"/>
 
 - we need to stub (the process of intercepting and responding with static data) even more AJAX calls because, once the signup flow is complete, the home page calls some more APIs to populate the page.
 
@@ -75,6 +75,7 @@ The test Runner helps us a lot identifying the unstubbed AJAX calls
 <br />
 
 as you can see:
+
 - the first AJAX call is a `POST` to `/api/users`, it's stubbed and the alias is `signup-request`
 - the second AJAX call is a `GET` to `/api/tags` and it's unstubbed (it hits the back-end application)
 - the third AJAX call is a `GET` to `/api/articles/feed` and it's unstubbed
@@ -82,6 +83,7 @@ as you can see:
 The Test Runner is a precious ally while trying to understand why the front-end behaves an unexpected way...
 
 We can stub both the second and the third AJAX calls with
+
 ```javascript
 cy.route("GET", "**/api/tags", { tags: [] }).as("tags");
 cy.route("GET", "**/api/articles/feed**", { articles: [], articlesCount: 0 }).as("feed");
@@ -107,6 +109,7 @@ cy.route("GET", "**/api/articles/feed**", { articles: [], articlesCount: 0 }).as
 ```
 
 - we should wait for the two AJAX calls
+
 ```diff
 cy.wait("@signup-request")
 .should(xhr =>
@@ -126,17 +129,10 @@ And we're done! You can take a look at the whole test and run it, it's the
 [include](../cypress/integration/examples/signup-integration/signup-1.integration.spec.js)
 
 The most astonishing result is the speed of the test 😱
+
 <div>
     <img src="../assets/images/integration-test-performance.png" alt="Integration test performance" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
 </div>
 <br />
 
 Now we know how to have fast tests and how to test the whole front-end application without a back-end, well done!
-
-<!--
-fixtures
-simulazione di tutti i casi di errore
-controllo dela payload di richiesta
-e2e solo per happy path
-metti un pò di bold qui e nel capitolo precedente
- -->
