@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Testing rules TODO: · GitBook</title>
+        <title>Stubbing the Back-end · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="having-fun-while-testing.html" />
+    <link rel="next" href="fixtures.md" />
     
-    
-    <link rel="prev" href="testing-advantages.html" />
     
 
     </head>
@@ -253,7 +251,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.3" data-path="testing-rules.html">
+        <li class="chapter " data-level="2.2.3" data-path="testing-rules.html">
             
                 <a href="testing-rules.html">
             
@@ -731,7 +729,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.6.1" data-path="stubbing-the-backend.html">
+        <li class="chapter active" data-level="4.6.1" data-path="stubbing-the-backend.html">
             
                 <a href="stubbing-the-backend.html">
             
@@ -910,7 +908,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Testing rules TODO:</a>
+        <a href=".." >Stubbing the Back-end</a>
     </h1>
 </div>
 
@@ -925,52 +923,253 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="testing-rules">Testing rules</h1>
-<p>TODO: transform this file into some slides</p>
+                                <h1 id="stubbing-the-back-end">Stubbing the back-end</h1>
+<p>What&apos;s the matter with <strong>E2E tests</strong>? Well, they:</p>
 <ul>
-<li><p>you must write the test as soon as you write the code. Writing the test some days after the code is useless, you have forgotten half of the choices you made (choices that you need to test)</p>
+<li><p>are<strong> slow</strong>: in the previous chapter we dedicated a lot of attention to reduce the test duration but we three/four/five seconds are still too much. It&apos;s not a good result because we run just a few tests but a front-end application requires a lot more tests</p>
 </li>
-<li><p>a test fails is a good thing, really! Because it&apos;s preventing a regression! The important thing is that...</p>
+<li><p>do not allow the frot-ender to work without a back-ender: this is a huge limit. We all know that we can not count on all the infrastructure 24/7, nor on our devops/back-end colleagues. Often, the front-end development and the back-end one do not proceed side by side either</p>
 </li>
-<li><p>... the tests must not fail for nothing. False negative tests are the worst ones, you do not why they fail and you stop trusting them</p>
-</li>
-<li><p>obviously, the opposite is important too: the tests must fail if the app does not work, otherwise what are they testing?</p>
-</li>
-<li><p>the tests must be simple. Super simple. They must be simple to be read, simple to be understood, simple to changed. The tests must be an ally, a simple scripts that perform some checks in place of you. Complex and unclear tests are an enemy, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. Last but not least: debugging a failing test is way harder that debugging an application (example: write a test with lot of before hooks, variables outside the tests etc).
-Think twice before DRYing a test code. While testing, you need to change more less every line of code to simulate the different cases. Complex DRY increases the test complexity and makes you add a lot of conditions to the DRYed code. Wrong abstraction in tests costs more than wrong abstraction in your code. Avoid conditions too if you can, the test code must be straightforward</p>
+<li><p>they make <strong>corner cases replication hard</strong>: if we work with real data, we are going to spend most of the time dealing with it with a 20-40% of the time remaining for the front-end tests themselves</p>
 </li>
 </ul>
-<p>cognitive load image <a href="https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/assets/headspace.png" target="_blank">https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/assets/headspace.png</a></p>
+<p>So: <strong>E2E tests are not feasible for front-end testing</strong>. They are important, obviously, but we cannot rely on them too much. That&apos;s the reason why E2E testing is at the top of the testing pyramid<!--TODO: link the pyramid if you have a dedicated chapter-->, they give you the most amount of confidence but they are super expensive in terms of writing, maintenance, and stability.</p>
+<p>Going down with the testing pyramid<!--TODO: link the pyramid if you have a dedicated chapter--> we can find the integration tests, a kind of tests where a part of the application is tested, a middle ground between E2E testing (whole front-end+back-end app) and unit testing (single unit/module test). Cypress allows us to write &quot;one more&quot; type of test easily: <strong>UI Integration Tests</strong>. The goal is to test the whole front-end app but without a real back-end. All the <strong>AJAX requests are stubbed with static responses</strong>. The main advantages are:</p>
 <ul>
-<li><p>if the tests fail, they must give useful feedback. They must tell you what failed and why, without re-launching or debugging them (example: <code>expect([1, 2, 3]).toHaveLength(3);</code> instead of <code>expect([1, 2, 3].length === 3).toBe(true);</code>)</p>
+<li><p>extreme speed: Cypress respond to the front-end AJAX requests in hundredths of a second</p>
 </li>
-<li><p>the tests must be deterministic: if you run them hundred times, the result must be the same. If they are not deterministic, you must think what influences them and how to write better tests (example: testing a unit based on date?)</p>
+<li><p>front-end testing independence: we test the front-end while developing the front-end, we are no more tied to the back-end so we do not need to delay the front-end testing anymore</p>
 </li>
-<li><p>determinist tests means that you can not rely on their execution order. Otherwise, you have extremely brittle tests that need to be run in a specific order (example: a test based on the mutation of the previous test)</p>
+<li><p>testing confidence: testing the whole front-end in a browser gives you more and more confidence than a JSDom test with the terminal</p>
 </li>
-<li><p>the tests must fail before you write the code and succeed when you have written the code. Otherwise, you can not be sure that the tests are testing your code and that is your code that get them pass. You could neither be sure you have sistematically replicated the bug. You risk to be have a useless test (example: Ste has an example of a coding challenge with a useless test)</p>
-</li>
-<li><p>the tests must be fast, as fast as possible. You can not sacrifice speed for reliability, but the speed is really important because the faster the tests are, the faster you have feeddback, the higher the chance you run them frequently, the sooner you discover regressions. Slow tests make you move your mind to another task, make you waste your time, make you hungry when they fail after a 30-minutes pipeline, and, sooner or later, they make you think about removing them... (example: jest/cypress clock management)</p>
-</li>
-<li><p>skip and only are good friends (jest.todo too)</p>
-</li>
-<li><p>never do whitebox testing. You have to test APIs, contracts and behaviours, not internal details. You must test as the consumer, not as the developer (example: enzyme with state tests)</p>
-</li>
-<li><p>as much as you can, you should avoid that the tests feil because of some slight code changes. Import constants (example: RTL acting on a button with an imported string)</p>
-</li>
-<li><p>the tests must be indipendent, they must not share the state (example: a shared variable)</p>
-</li>
-<li><p>you can not interact manually with the tests. It&apos;s easier when doing functional tests but it&apos;s a generic rule, the tests must not depend on human changes (example: clicking on a button in a functional test)</p>
-</li>
-<li><p>different test types provide different feedback (and cost), get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works</p>
-</li>
-<li><p>code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)</p>
-</li>
-<li><p>E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it&apos;s true, but thay are super brittle, so forget about their importance (TODO: move this part where speaking about e2e tests)</p>
-</li>
-<li><p>if you&apos;re not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them? (example: Ste while implementing the roles in the web app setting all he old tests with admin users to avoid changing them)</p>
+<li><p>corner cases replication: with static responses, you can simulate (or reproduce, if you&apos;re analyzing a bug) every corner case in a while</p>
 </li>
 </ul>
+<h3 id="implementing-the-first-ui-integration-test">Implementing the first UI Integration test</h3>
+<p>Until now, we have tested the registration flow and we have written a custom command to allow every test to consume the front-end with an authenticated user. We are going to analyze the signup flow firstly.</p>
+<p>The state of the art of our E2E signup flow is the following:</p>
+<p><i>File: <a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/ArticleList&quot;</span>;
+<span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
+    <span class="hljs-keyword">const</span> user = {
+      username: <span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>,
+      email: <span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>,
+      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+    };
+    <span class="hljs-comment">// set up AJAX call interception</span>
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+    cy.visit(paths.register);
+
+    <span class="hljs-comment">// form filling</span>
+    cy.findByPlaceholderText(strings.username).type(user.username);
+    cy.findByPlaceholderText(strings.email).type(user.email);
+    cy.findByPlaceholderText(strings.password).type(user.password);
+
+    <span class="hljs-comment">// form submit...</span>
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.findByText(strings.signUp))
+      .click();
+
+    <span class="hljs-comment">// ... and AJAX call waiting</span>
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>).should(xhr =&gt; {
+      expect(xhr.request.body).deep.equal({
+        user: {
+          username: user.username,
+          email: user.email,
+          password: user.password
+        }
+      });
+
+      expect(xhr.status).to.equal(<span class="hljs-number">200</span>);
+
+      cy.wrap(xhr.response.body)
+        .should(<span class="hljs-string">&quot;have.property&quot;</span>, <span class="hljs-string">&quot;user&quot;</span>)
+        .and(
+          user =&gt;
+            expect(user)
+              .to.have.property(<span class="hljs-string">&quot;token&quot;</span>)
+              .and.to.be.a(<span class="hljs-string">&quot;string&quot;</span>).and.not.to.be.empty
+        )
+        .and(<span class="hljs-string">&quot;deep.include&quot;</span>, {
+          username: user.username.toLowerCase(),
+          email: user.email
+        });
+    });
+
+    <span class="hljs-comment">// end of the flow</span>
+    cy.findByText(noArticles).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>now, we need to transform it into a UI Integration test, the steps are:</p>
+<ul>
+<li>we do not need a random user anymore. We randomized the user data to improve the <a href="e2e-test-defects-determinism.html">test determinism</a> and to avoid to register the same user twice</li>
+</ul>
+<pre><code class="lang-diff"><span class="hljs-deletion">-const random = Math.floor(Math.random() * 100000);</span>
+const user = {
+<span class="hljs-deletion">- username: `Tester${random}`,</span>
+<span class="hljs-addition">+ username: &quot;Tester&quot;,</span>
+<span class="hljs-deletion">- email: `user+${random}@realworld.io`,</span>
+<span class="hljs-addition">+ email: &quot;user@realworld.io&quot;,</span>
+  password: &quot;mysupersecretpassword&quot;
+};
+</code></pre>
+<ul>
+<li>we need to instrument Cypress to intercept every AJAX request and respond with a static response. We use another feature of the <code>cy.route</code> command, introduced with the <a href="waiting-for-ajax-request.html">Waiting for an AJAX request</a> chapter: passing a response</li>
+</ul>
+<pre><code class="lang-diff"><span class="hljs-deletion">-cy.route(&quot;POST&quot;, &quot;**/api/users&quot;).as(&quot;signup-request&quot;);</span>
+<span class="hljs-addition">+cy.route(&quot;POST&quot;, &quot;**/api/users&quot;, {</span>
+<span class="hljs-addition">+ user: {</span>
+<span class="hljs-addition">+   username: &quot;Tester&quot;,</span>
+<span class="hljs-addition">+   email: &quot;user@realworld.io&quot;,</span>
+<span class="hljs-addition">+   token:</span>
+<span class="hljs-addition">+     &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2ZhZjc4YTkzNGFiMDRhZjRhMzE0MCIsInVzZXJuYW1lIjoidGVzdGVyNzk1MzYiLCJleHAiOjE1NzM4MzY2ODAsImlhdCI6MTU2ODY0OTA4MH0.zcHxMz2Vx5h-EoiUZlRyUw0z_A_6AIZ0LzQgROvsPqw&quot;</span>
+<span class="hljs-addition">+ }</span>
+<span class="hljs-addition">+}).as(&quot;signup-request&quot;);</span>
+</code></pre>
+<p>  where does the <code>{user: {...}}</code> response come from? From inspecting the response of the back-end to the <code>POST</code> JAJAX call to the <code>/api/users</code> API
+  <img src="../assets/images/signup-call-response.png" alt="The signup call response"></p>
+<ul>
+<li>we need to stub (the process of intercepting and responding with static data) even more AJAX calls because, once the signup flow is complete, the home page calls some more APIs to populate the page.</li>
+</ul>
+<p><div>
+    <img src="../assets/images/integration-test-error.jpg" alt="Front-end error" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<br>
+The test Runner helps us a lot identifying the unstubbed AJAX calls</p>
+<p><div>
+    <img src="../assets/images/test-runner-ajax-requests.png" alt="Unstubbed AJAX calls" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<br></p>
+<p>as you can see:</p>
+<ul>
+<li>the first AJAX call is a <code>POST</code> to <code>/api/users</code>, it&apos;s stubbed and the alias is <code>signup-request</code></li>
+<li>the second AJAX call is a <code>GET</code> to <code>/api/tags</code> and it&apos;s unstubbed (it hits the back-end application)</li>
+<li>the third AJAX call is a <code>GET</code> to <code>/api/articles/feed</code> and it&apos;s unstubbed</li>
+</ul>
+<p>The Test Runner is a precious ally while trying to understand why the front-end behaves an unexpected way...</p>
+<p>We can stub both the second and the third AJAX calls with</p>
+<pre><code class="lang-javascript">cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/tags&quot;</span>, { tags: [] }).as(<span class="hljs-string">&quot;tags&quot;</span>);
+cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/articles/feed**&quot;</span>, { articles: [], articlesCount: <span class="hljs-number">0</span> }).as(<span class="hljs-string">&quot;feed&quot;</span>);
+</code></pre>
+<ul>
+<li>we do not need to check the AJAX response payload anymore (since it&apos;s Cypress that responds in place of the back-end app)</li>
+</ul>
+<pre><code class="lang-diff"><span class="hljs-deletion">-expect(xhr.status).to.equal(200);</span>
+
+<span class="hljs-deletion">-cy.wrap(xhr.response.body)</span>
+<span class="hljs-deletion">- .should(&quot;have.property&quot;, &quot;user&quot;)</span>
+<span class="hljs-deletion">- .and(</span>
+<span class="hljs-deletion">-   user =&gt;</span>
+<span class="hljs-deletion">-     expect(user)</span>
+<span class="hljs-deletion">-       .to.have.property(&quot;token&quot;)</span>
+<span class="hljs-deletion">-       .and.to.be.a(&quot;string&quot;).and.not.to.be.empty</span>
+<span class="hljs-deletion">- )</span>
+<span class="hljs-deletion">- .and(&quot;deep.include&quot;, {</span>
+<span class="hljs-deletion">-   username: user.username.toLowerCase(),</span>
+<span class="hljs-deletion">-   email: user.email</span>
+<span class="hljs-deletion">- });</span>
+</code></pre>
+<ul>
+<li>we should wait for the two AJAX calls<pre><code class="lang-diff">cy.wait(&quot;@signup-request&quot;)
+.should(xhr =&gt;
+expect(xhr.request.body).deep.equal({
+  user: {
+    username: user.username,
+    email: user.email,
+    password: user.password
+  }
+})
+)
+<span class="hljs-addition">+.wait([&quot;@tags&quot;, &quot;@feed&quot;]);</span>
+</code></pre>
+</li>
+</ul>
+<p>And we&apos;re done! You can take a look at the whole test and run it, it&apos;s the
+<i><a href="../cypress/integration/examples/signup-integration/signup-1.integration.spec.js" target="_blank">cypress/integration/examples/signup-integration/signup-1.integration.spec.js</a> file</i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/ArticleList&quot;</span>;
+<span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> user = {
+      username: <span class="hljs-string">&quot;Tester&quot;</span>,
+      email: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+    };
+
+    <span class="hljs-comment">// set up AJAX call interception</span>
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>, {
+      user: {
+        username: <span class="hljs-string">&quot;Tester&quot;</span>,
+        email: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+        token:
+          <span class="hljs-string">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2ZhZjc4YTkzNGFiMDRhZjRhMzE0MCIsInVzZXJuYW1lIjoidGVzdGVyNzk1MzYiLCJleHAiOjE1NzM4MzY2ODAsImlhdCI6MTU2ODY0OTA4MH0.zcHxMz2Vx5h-EoiUZlRyUw0z_A_6AIZ0LzQgROvsPqw&quot;</span>
+      }
+    }).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/tags&quot;</span>, { tags: [] }).as(<span class="hljs-string">&quot;tags&quot;</span>);
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/articles/feed**&quot;</span>, { articles: [], articlesCount: <span class="hljs-number">0</span> }).as(<span class="hljs-string">&quot;feed&quot;</span>);
+
+    cy.visit(paths.register);
+
+    <span class="hljs-comment">// form filling</span>
+    cy.findByPlaceholderText(strings.username)
+      .type(user.username)
+      .findByPlaceholderText(strings.email)
+      .type(user.email)
+      .findByPlaceholderText(strings.password)
+      .type(user.password);
+
+    <span class="hljs-comment">// form submit...</span>
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.findByText(strings.signUp))
+      .click();
+
+    <span class="hljs-comment">// ... and AJAX call waiting</span>
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>)
+      .should(xhr =&gt;
+        expect(xhr.request.body).deep.equal({
+          user: {
+            username: user.username,
+            email: user.email,
+            password: user.password
+          }
+        })
+      )
+      .wait([<span class="hljs-string">&quot;@tags&quot;</span>, <span class="hljs-string">&quot;@feed&quot;</span>]);
+
+    <span class="hljs-comment">// end of the flow</span>
+    cy.findByText(noArticles).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>The most astonishing result is the speed of the test &#x1F631;</p>
+<p><div>
+    <img src="../assets/images/integration-test-performance.png" alt="Integration test performance" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<br></p>
+<p>Now we know how to have fast tests and how to test the whole front-end application without a back-end, well done!</p>
+<!--
+fixtures
+simulazione di tutti i casi di errore
+controllo dela payload di richiesta
+e2e solo per happy path
+metti un pò di bold qui e nel capitolo precedente
+ -->
 
                                 
                                 </section>
@@ -998,12 +1197,8 @@ Think twice before DRYing a test code. While testing, you need to change more le
 
             
                 
-                <a href="testing-advantages.html" class="navigation navigation-prev " aria-label="Previous page: Testing advantages? TODO:">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="having-fun-while-testing.html" class="navigation navigation-next " aria-label="Next page: Having fun while testing TODO:">
+                <a href="fixtures.md" class="navigation navigation-next navigation-unique" aria-label="Next page: Fixtures">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1014,7 +1209,7 @@ Think twice before DRYing a test code. While testing, you need to change more le
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"next":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"previous":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/testing-rules.md","mtime":"2019-09-01T09:58:26.843Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-17T07:05:19.750Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"next":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Front-end testing","level":"4.6.4","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/stubbing-the-backend.md","mtime":"2019-09-17T07:03:44.463Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-17T07:05:19.750Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

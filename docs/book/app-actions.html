@@ -722,11 +722,82 @@
                 <span>
             
                     
-                    Other test TODO
+                    UI Integration Tests
             
                 </span>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1" data-path="stubbing-the-backend.html">
+            
+                <a href="stubbing-the-backend.html">
+            
+                    
+                    Stubbing the Back-end
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.2" data-path="fixtures.md">
+            
+                <span>
+            
+                    
+                    Fixtures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.3" data-path="fixtures.md">
+            
+                <span>
+            
+                    
+                    Custom command
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.4" data-path="fixtures.md">
+            
+                <span>
+            
+                    
+                    Front-end testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.5" data-path="fixtures.md">
+            
+                <span>
+            
+                    
+                    Cypress as a development tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -735,7 +806,7 @@
                 <span>
             
                     
-                    Register new user TODO
+                    Other test TODO
             
                 </span>
             
@@ -743,33 +814,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.8" >
-            
-                <span>
-            
-                    
-                    Login new User TODO
-            
-                </span>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.9" >
-            
-                <span>
-            
-                    
-                    App actions TODO
-            
-                </span>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.10" data-path="other-things-about-cypress.md">
+        <li class="chapter " data-level="4.8" data-path="other-things-about-cypress.md">
             
                 <span>
             
@@ -978,10 +1023,10 @@ context(<span class="hljs-string">&quot;The custom command could be customized&q
 </code></pre>
 <p>You can find the whole code of the custom command into the <code>signup-v2.js</code> custom command</p>
 <p><i>File: <a href="../cypress/support/signup/signup-v2.js" target="_blank">cypress/support/signup/signup-v2.js</a></i></p>
-<pre><code class="lang-typescript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
-<span class="hljs-keyword">import</span> { paths } from <span class="hljs-string">&quot;../../../realworld/frontend/src/components/App&quot;</span>;
-<span class="hljs-keyword">import</span> { noArticles } from <span class="hljs-string">&quot;../../../realworld/frontend/src/components/ArticleList&quot;</span>;
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../realworld/frontend/src/components/App&quot;</span>;
+<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../realworld/frontend/src/components/ArticleList&quot;</span>;
 
 Cypress.Commands.add(<span class="hljs-string">&quot;signupV2&quot;</span>, ({ email, username, password } = {}) =&gt; {
   <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
@@ -1106,7 +1151,7 @@ variables? to keep the user data stored?
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"App Actions","level":"4.5.3","depth":2,"next":{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]},"previous":{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-actions.md","mtime":"2019-09-13T14:45:00.410Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-16T08:22:11.899Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"App Actions","level":"4.5.3","depth":2,"next":{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]},"previous":{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-actions.md","mtime":"2019-09-17T06:35:14.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-17T07:05:19.750Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
