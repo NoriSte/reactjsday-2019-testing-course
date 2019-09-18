@@ -3,7 +3,7 @@
 import { newPost } from "../../../../realworld/frontend/src/components/Header";
 
 context("The custom command could be run before the test code", () => {
-  it("Should leverage the custom registration command", () => {
+  it("Should leverage the custom authentication command", () => {
     cy.authenticateIntegration().should(user => {
       expect(user).to.have.property("username").and.not.to.be.empty;
       expect(user).to.have.property("email").and.not.to.be.empty;

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Testing rules TODO: · GitBook</title>
+        <title>Custom command · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="having-fun-while-testing.html" />
+    <link rel="next" href="front-end-testing-on-steroids.html" />
     
     
-    <link rel="prev" href="testing-advantages.html" />
+    <link rel="prev" href="fixtures.html" />
     
 
     </head>
@@ -253,7 +253,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.3" data-path="testing-rules.html">
+        <li class="chapter " data-level="2.2.3" data-path="testing-rules.html">
             
                 <a href="testing-rules.html">
             
@@ -757,7 +757,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.3" data-path="integration-custom-command.html">
+        <li class="chapter active" data-level="4.6.3" data-path="integration-custom-command.html">
             
                 <a href="integration-custom-command.html">
             
@@ -910,7 +910,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Testing rules TODO:</a>
+        <a href=".." >Custom command</a>
     </h1>
 </div>
 
@@ -925,52 +925,181 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="testing-rules">Testing rules</h1>
-<p>TODO: transform this file into some slides</p>
+                                <h1 id="custom-command">Custom command</h1>
+<p>The same way we have created a custom <a href="signup-custom-command.html">signup command</a> for the E2E tests, we could create an authentication command for the UI Integration Tests too. It will be way far simpler because we do not need a real signup/authentication, obviously: we just need that the <strong>front-end thinks that it&apos;s authenticated</strong>.
+<br>
+What we have to do is essentially setting the <code>jwt</code> token into the local storage. Let&apos;s write the <code>authenticateIntegration</code> custom command.</p>
+<p>Where we can get a valid <code>jwt</code>? Well, from the <code>signup.json</code> fixture!</p>
+<p><i>File: <a href="../cypress/fixtures/users/signup.json" target="_blank">cypress/fixtures/users/signup.json</a></i></p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;user&quot;</span>: {
+    <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;tester&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+    <span class="hljs-string">&quot;token&quot;</span>: <span class="hljs-string">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2ZiNmVhZDkzZWQ5MDhiMGU3MDMzYiIsInVzZXJuYW1lIjoidGVzdGVyIiwiZXhwIjoxNTczODM4NTg3LCJpYXQiOjE1Njg2NTA5ODd9.jeAccqZi6dOqokwjRPFl4fzHE5s5p8sB32NgXwlgrxQ&quot;</span>
+  }
+}
+</code></pre>
+<p>Cypress allows us to read the fixtures using the <code>cy.fixture</code> command. All we need to do is:</p>
 <ul>
-<li><p>you must write the test as soon as you write the code. Writing the test some days after the code is useless, you have forgotten half of the choices you made (choices that you need to test)</p>
+<li><p>reading the fixture</p>
 </li>
-<li><p>a test fails is a good thing, really! Because it&apos;s preventing a regression! The important thing is that...</p>
+<li><p>reading the contained token</p>
 </li>
-<li><p>... the tests must not fail for nothing. False negative tests are the worst ones, you do not why they fail and you stop trusting them</p>
-</li>
-<li><p>obviously, the opposite is important too: the tests must fail if the app does not work, otherwise what are they testing?</p>
-</li>
-<li><p>the tests must be simple. Super simple. They must be simple to be read, simple to be understood, simple to changed. The tests must be an ally, a simple scripts that perform some checks in place of you. Complex and unclear tests are an enemy, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. Last but not least: debugging a failing test is way harder that debugging an application (example: write a test with lot of before hooks, variables outside the tests etc).
-Think twice before DRYing a test code. While testing, you need to change more less every line of code to simulate the different cases. Complex DRY increases the test complexity and makes you add a lot of conditions to the DRYed code. Wrong abstraction in tests costs more than wrong abstraction in your code. Avoid conditions too if you can, the test code must be straightforward</p>
+<li><p>setting the <code>jwt</code> token</p>
 </li>
 </ul>
-<p>cognitive load image <a href="https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/assets/headspace.png" target="_blank">https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/assets/headspace.png</a></p>
-<ul>
-<li><p>if the tests fail, they must give useful feedback. They must tell you what failed and why, without re-launching or debugging them (example: <code>expect([1, 2, 3]).toHaveLength(3);</code> instead of <code>expect([1, 2, 3].length === 3).toBe(true);</code>)</p>
-</li>
-<li><p>the tests must be deterministic: if you run them hundred times, the result must be the same. If they are not deterministic, you must think what influences them and how to write better tests (example: testing a unit based on date?)</p>
-</li>
-<li><p>determinist tests means that you can not rely on their execution order. Otherwise, you have extremely brittle tests that need to be run in a specific order (example: a test based on the mutation of the previous test)</p>
-</li>
-<li><p>the tests must fail before you write the code and succeed when you have written the code. Otherwise, you can not be sure that the tests are testing your code and that is your code that get them pass. You could neither be sure you have sistematically replicated the bug. You risk to be have a useless test (example: Ste has an example of a coding challenge with a useless test)</p>
-</li>
-<li><p>the tests must be fast, as fast as possible. You can not sacrifice speed for reliability, but the speed is really important because the faster the tests are, the faster you have feeddback, the higher the chance you run them frequently, the sooner you discover regressions. Slow tests make you move your mind to another task, make you waste your time, make you hungry when they fail after a 30-minutes pipeline, and, sooner or later, they make you think about removing them... (example: jest/cypress clock management)</p>
-</li>
-<li><p>skip and only are good friends (jest.todo too)</p>
-</li>
-<li><p>never do whitebox testing. You have to test APIs, contracts and behaviours, not internal details. You must test as the consumer, not as the developer (example: enzyme with state tests)</p>
-</li>
-<li><p>as much as you can, you should avoid that the tests feil because of some slight code changes. Import constants (example: RTL acting on a button with an imported string)</p>
-</li>
-<li><p>the tests must be indipendent, they must not share the state (example: a shared variable)</p>
-</li>
-<li><p>you can not interact manually with the tests. It&apos;s easier when doing functional tests but it&apos;s a generic rule, the tests must not depend on human changes (example: clicking on a button in a functional test)</p>
-</li>
-<li><p>different test types provide different feedback (and cost), get used with that. Following the blackbox testing rule, an E2E test can not provide useful feedback for a single function, and a unit test can not tell you if your app works</p>
-</li>
-<li><p>code coverage helps us finding what we have not tested yet, it is not an end in itself (example: test without assertions just to increase the coverage)</p>
-</li>
-<li><p>E2E tests are not so important, they need the whole stack and they give too much generic feedback. They check the whole system, it&apos;s true, but thay are super brittle, so forget about their importance (TODO: move this part where speaking about e2e tests)</p>
-</li>
-<li><p>if you&apos;re not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them? (example: Ste while implementing the roles in the web app setting all he old tests with admin users to avoid changing them)</p>
-</li>
-</ul>
+<p>The command code is the following</p>
+<p><i>File: <a href="../cypress/support/authentication/authenticate-integration.js" target="_blank">cypress/support/authentication/authenticate-integration.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+Cypress.Commands.add(<span class="hljs-string">&quot;authenticateIntegration&quot;</span>, () =&gt; {
+  cy.fixture(<span class="hljs-string">&quot;users/signup&quot;</span>)
+    .its(<span class="hljs-string">&quot;user&quot;</span>)
+    .should(
+      user =&gt;
+        expect(user)
+          .to.have.property(<span class="hljs-string">&quot;token&quot;</span>)
+          .and.to.be.a(<span class="hljs-string">&quot;string&quot;</span>).and.not.to.be.empty
+    )
+    .then(user =&gt; localStorage.setItem(<span class="hljs-string">&quot;jwt&quot;</span>, user.token));
+});
+</code></pre>
+<p>Please note that there are some assertions about the fixture content itself, the goal is always the same: getting the more out of the assertion feedback. If we change the fixture content accidentally the command is going to prompts us with a useful message.</p>
+<p>The test that navigates the home page leveraging an already &quot;authenticated&quot; is the following</p>
+<pre><code class="lang-javascript">context(<span class="hljs-string">&quot;The custom command could be run before the test code&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;Should leverage the custom authentication command&quot;</span>, () =&gt; {
+    cy.authenticateIntegration().should(user =&gt; {
+      expect(user).to.have.property(<span class="hljs-string">&quot;username&quot;</span>).and.not.to.be.empty;
+      expect(user).to.have.property(<span class="hljs-string">&quot;email&quot;</span>).and.not.to.be.empty;
+    });
+
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/tags&quot;</span>, <span class="hljs-string">&quot;fixture:tags/empty-tags&quot;</span>).as(<span class="hljs-string">&quot;get-tags&quot;</span>);
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/articles/feed**&quot;</span>, <span class="hljs-string">&quot;fixture:articles/empty-articles&quot;</span>).as(<span class="hljs-string">&quot;get-feed&quot;</span>);
+
+    cy.visit(<span class="hljs-string">&quot;/&quot;</span>);
+
+    cy.wait([<span class="hljs-string">&quot;@get-tags&quot;</span>, <span class="hljs-string">&quot;@get-feed&quot;</span>]);
+
+    cy.findByText(newPost).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>But, when running it, we get an error from Cypress</p>
+<p><div>
+    <img src="../assets/images/unstubbed-get-user.png" alt="Unstubber GET api/users" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<br><br></p>
+<p>the Test Runner speaks for itself: the <a href="the-realworld-project.html">RealWorld</a> front-end fires a <code>GET api/user</code> expecting the same data returned by the signup AJAX request (<code>POST api/users</code>), nothing that we cannot stub and wait in a while</p>
+<pre><code class="lang-diff"><span class="hljs-addition">+cy.route(&quot;GET&quot;, &quot;**/api/user&quot;, &quot;fixture:users/signup&quot;).as(&quot;get-user&quot;);</span>
+cy.route(&quot;GET&quot;, &quot;**/api/tags&quot;, &quot;fixture:tags/empty-tags&quot;).as(&quot;get-tags&quot;);
+cy.route(&quot;GET&quot;, &quot;**/api/articles/feed**&quot;, &quot;fixture:articles/empty-articles&quot;).as(&quot;get-feed&quot;);
+</code></pre>
+<pre><code class="lang-diff"><span class="hljs-deletion">-cy.wait([&quot;@get-tags&quot;, &quot;@get-feed&quot;]);</span>
+<span class="hljs-addition">+cy.wait([&quot;@get-user&quot;, &quot;@get-tags&quot;, &quot;@get-feed&quot;]);</span>
+</code></pre>
+<p>Here the full code of the test</p>
+<p><i>File: <a href="../cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js" target="_blank">cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { newPost } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Header&quot;</span>;
+
+context(<span class="hljs-string">&quot;The custom command could be run before the test code&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;Should leverage the custom authentication command&quot;</span>, () =&gt; {
+    cy.authenticateIntegration().should(user =&gt; {
+      expect(user).to.have.property(<span class="hljs-string">&quot;username&quot;</span>).and.not.to.be.empty;
+      expect(user).to.have.property(<span class="hljs-string">&quot;email&quot;</span>).and.not.to.be.empty;
+    });
+
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/user&quot;</span>, <span class="hljs-string">&quot;fixture:users/signup&quot;</span>).as(<span class="hljs-string">&quot;get-user&quot;</span>);
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/tags&quot;</span>, <span class="hljs-string">&quot;fixture:tags/empty-tags&quot;</span>).as(<span class="hljs-string">&quot;get-tags&quot;</span>);
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/articles/feed**&quot;</span>, <span class="hljs-string">&quot;fixture:articles/empty-articles&quot;</span>).as(<span class="hljs-string">&quot;get-feed&quot;</span>);
+
+    cy.visit(<span class="hljs-string">&quot;/&quot;</span>);
+
+    cy.wait([<span class="hljs-string">&quot;@get-user&quot;</span>, <span class="hljs-string">&quot;@get-tags&quot;</span>, <span class="hljs-string">&quot;@get-feed&quot;</span>]);
+
+    cy.findByText(newPost).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<h3 id="an-all-in-one-command">An all-in-one command</h3>
+<p>Since the front-end does a call to the <code>GET api/user</code> API as its very first thing, we could write a more complete command that cares about the request itself. We only have to move part of the code of the <i><a href="../cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js" target="_blank">authenticate-command-1.integration.spec.js</a></i> test to the command code.</p>
+<pre><code class="lang-diff"><span class="hljs-addition">+import { newPost } from &quot;../../../realworld/frontend/src/components/Header&quot;;</span>
+
+<span class="hljs-deletion">-Cypress.Commands.add(&quot;authenticateIntegration&quot;, () =&gt; {</span>
+<span class="hljs-addition">+Cypress.Commands.add(&quot;authenticateAndVisitIntegration&quot;, path =&gt; {</span>
+<span class="hljs-addition">+ cy.server();</span>
+<span class="hljs-addition">+ cy.route(&quot;GET&quot;, &quot;**/api/user&quot;, &quot;fixture:users/signup&quot;).as(&quot;get-user&quot;);</span>
+  cy.fixture(&quot;users/signup&quot;)
+    .its(&quot;user&quot;)
+    .should(
+      user =&gt;
+        expect(user)
+          .to.have.property(&quot;token&quot;)
+          .and.to.be.a(&quot;string&quot;).and.not.to.be.empty
+    )
+    .then(user =&gt; localStorage.setItem(&quot;jwt&quot;, user.token));
+<span class="hljs-addition">+ cy.visit(path);</span>
+<span class="hljs-addition">+ cy.wait(&quot;@get-user&quot;);</span>
+<span class="hljs-addition">+ cy.findByText(newPost).should(&quot;be.visible&quot;);</span>
+});
+</code></pre>
+<p>The new <code>authenticateAndVisitIntegration</code> command is way more complete and the previous &quot;visit the home page&quot; test could be simplified</p>
+<pre><code class="lang-diff">it(&quot;Should leverage the custom authentication command&quot;, () =&gt; {
+<span class="hljs-deletion">- cy.authenticateIntegration().should(user =&gt; {</span>
+<span class="hljs-deletion">-   expect(user).to.have.property(&quot;username&quot;).and.not.to.be.empty;</span>
+<span class="hljs-deletion">-   expect(user).to.have.property(&quot;email&quot;).and.not.to.be.empty;</span>
+<span class="hljs-deletion">- });</span>
+
+  cy.server();
+<span class="hljs-deletion">- cy.route(&quot;GET&quot;, &quot;**/api/user&quot;, &quot;fixture:users/signup&quot;).as(&quot;get-user&quot;);</span>
+  cy.route(&quot;GET&quot;, &quot;**/api/tags&quot;, &quot;fixture:tags/empty-tags&quot;).as(&quot;get-tags&quot;);
+  cy.route(&quot;GET&quot;, &quot;**/api/articles/feed**&quot;, &quot;fixture:articles/empty-articles&quot;).as(&quot;get-feed&quot;);
+
+<span class="hljs-deletion">- cy.visit(&quot;/&quot;);</span>
+<span class="hljs-addition">+ cy.authenticateAndVisitIntegration(&quot;/&quot;);</span>
+
+<span class="hljs-deletion">- cy.wait([&quot;@get-user&quot;, &quot;@get-tags&quot;, &quot;@get-feed&quot;]);</span>
+<span class="hljs-addition">+ cy.wait([&quot;@get-tags&quot;, &quot;@get-feed&quot;]);</span>
+
+<span class="hljs-deletion">- cy.findByText(newPost).should(&quot;be.visible&quot;);</span>
+});
+</code></pre>
+<p>and a generic &quot;visit and check&quot; test is something like this:</p>
+<pre><code class="lang-javascript">it(<span class="hljs-string">&quot;Should leverage the custom authentication command to navigate the editor page&quot;</span>, () =&gt; {
+  cy.authenticateAndVisitIntegration(<span class="hljs-string">&quot;/editor&quot;</span>);
+  <span class="hljs-comment">// the rest of the code</span>
+});
+</code></pre>
+<p>The complete code is the following</p>
+<p><i>File: <a href="../cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js" target="_blank">cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+context(<span class="hljs-string">&quot;The custom command could be run before the test code&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;Should leverage the custom authentication command to navigate the home page&quot;</span>, () =&gt; {
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/tags&quot;</span>, <span class="hljs-string">&quot;fixture:tags/empty-tags&quot;</span>).as(<span class="hljs-string">&quot;get-tags&quot;</span>);
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/articles/feed**&quot;</span>, <span class="hljs-string">&quot;fixture:articles/empty-articles&quot;</span>).as(<span class="hljs-string">&quot;get-feed&quot;</span>);
+
+    cy.authenticateAndVisitIntegration(<span class="hljs-string">&quot;/&quot;</span>);
+
+    cy.wait([<span class="hljs-string">&quot;@get-tags&quot;</span>, <span class="hljs-string">&quot;@get-feed&quot;</span>]);
+  });
+
+  it(<span class="hljs-string">&quot;Should leverage the custom authentication command to navigate the editor page&quot;</span>, () =&gt; {
+    cy.authenticateAndVisitIntegration(<span class="hljs-string">&quot;/editor&quot;</span>);
+    <span class="hljs-comment">// the rest of the code</span>
+  });
+});
+</code></pre>
+<p>Take a look at the duration of the second test</p>
+<p><div>
+    <img src="../assets/images/integration-testing-custom-authenticate-command.png" alt="Integration Testing, custom authenticate command" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+</div>
+<br><br></p>
+<p>it takes just three tenths of a second to have everything set up as an authenticated user, before starting to test its own flow. Just three tenths of a second! This is what we mean when we talk about the importance of fast tests!</p>
 
                                 
                                 </section>
@@ -998,12 +1127,12 @@ Think twice before DRYing a test code. While testing, you need to change more le
 
             
                 
-                <a href="testing-advantages.html" class="navigation navigation-prev " aria-label="Previous page: Testing advantages? TODO:">
+                <a href="fixtures.html" class="navigation navigation-prev " aria-label="Previous page: Fixtures">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="having-fun-while-testing.html" class="navigation navigation-next " aria-label="Next page: Having fun while testing TODO:">
+                <a href="front-end-testing-on-steroids.html" class="navigation navigation-next " aria-label="Next page: Front-end testing on steroids">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1014,7 +1143,7 @@ Think twice before DRYing a test code. While testing, you need to change more le
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"next":{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},"previous":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/testing-rules.md","mtime":"2019-09-01T09:58:26.843Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T05:16:56.510Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Custom command","level":"4.6.3","depth":2,"next":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},"previous":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/integration-custom-command.md","mtime":"2019-09-18T05:13:34.018Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T05:16:56.510Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
