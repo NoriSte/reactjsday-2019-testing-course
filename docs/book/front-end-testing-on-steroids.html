@@ -926,9 +926,248 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="front-end-testing-on-steroids">Front-end testing on steroids</h1>
+<p>Stubbing an AJAX request is easy and advantageous with Cypress, and allows us to concentrate on testing the front-end application, <strong>forgetting about the back-end</strong> one. That&apos;s really important because E2E tests are often considered the only solution to the front-end testing problem, but with so much disadvantages that they discouraged a lot of developers.</p>
+<p>Anyway, two of the three main E2E testing problems were front-end developer independence and corner case replication. We can face both of them are easy with UI Integration Testing and back-end stubs. As an example, we could test the error paths that could happen with the registration flow. At the moment, the state of the art of our integration signup flow is the following:</p>
+<p><i>File: <a href="../cypress/integration/examples/signup-integration/signup-2.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-2.integration.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/ArticleList&quot;</span>;
+<span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Register&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> user = {
+      username: <span class="hljs-string">&quot;Tester&quot;</span>,
+      email: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+    };
+
+    <span class="hljs-comment">// set up AJAX call interception</span>
+    cy.server();
+    cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>, <span class="hljs-string">&quot;fixture:users/signup&quot;</span>).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/tags&quot;</span>, <span class="hljs-string">&quot;fixture:tags/empty-tags&quot;</span>).as(<span class="hljs-string">&quot;tags&quot;</span>);
+    cy.route(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;**/api/articles/feed**&quot;</span>, <span class="hljs-string">&quot;fixture:articles/empty-articles&quot;</span>).as(<span class="hljs-string">&quot;feed&quot;</span>);
+
+    cy.visit(paths.register);
+
+    <span class="hljs-comment">// form filling</span>
+    cy.findByPlaceholderText(strings.username)
+      .type(user.username)
+      .findByPlaceholderText(strings.email)
+      .type(user.email)
+      .findByPlaceholderText(strings.password)
+      .type(user.password);
+
+    <span class="hljs-comment">// form submit...</span>
+    cy.get(<span class="hljs-string">&quot;form&quot;</span>)
+      .within(() =&gt; cy.findByText(strings.signUp))
+      .click();
+
+    <span class="hljs-comment">// ... and AJAX call waiting</span>
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>)
+      .should(xhr =&gt;
+        expect(xhr.request.body).deep.equal({
+          user: {
+            username: user.username,
+            email: user.email,
+            password: user.password
+          }
+        })
+      )
+      .wait([<span class="hljs-string">&quot;@tags&quot;</span>, <span class="hljs-string">&quot;@feed&quot;</span>]);
+
+    <span class="hljs-comment">// end of the flow</span>
+    cy.findByText(noArticles).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+});
+</code></pre>
+<p>but there are a lot of error paths that are not been covered yet. The <a href="realworld-project.md">RealWorld</a> front-end does not manage &quot;all&quot; possible paths, but then if the back-end app responds with an error &quot;email/user already registered&quot;, it prints the error as they are.</p>
+<p><img src="../assets/images/error-path-1.png" alt="email already used">
+<img src="../assets/images/error-path-2.png" alt="email and username already used"></p>
+<p>Spying the back-end response, it turns out that its something like <code>{ errors: { email: &quot;is already taken.&quot; } }</code> and the response status is <code>422</code>. We need to reproduce it with the <code>cy.route</code>, <a href="https://docs.cypress.io/api/commands/route.html#Arguments" target="_blank">its options</a> contemplate the <code>status</code> option too. All we need to do is passing all exploded options to the <code>cy.route</code> command</p>
+<pre><code class="lang-javascript">cy.route({
+  url: <span class="hljs-string">&quot;**/api/users&quot;</span>,
+  method: <span class="hljs-string">&quot;POST&quot;</span>,
+  status: <span class="hljs-number">422</span>,
+  response: { errors: { email: <span class="hljs-string">&quot;is already taken.&quot;</span> } }
+}).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+</code></pre>
+<p>the <code>url</code>, <code>method</code>, and <code>response</code> are not new, the <code>status</code> option is. With a response like this, the error reported by the front-end is &quot;email is already taken.&quot;. The test is not so many different from the old one (the happy path flow), that&apos;s the full code</p>
+<pre><code class="lang-javascript">it(<span class="hljs-string">&quot;Should show an error if the back-end report that the email has already been used&quot;</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> user = {
+    username: <span class="hljs-string">&quot;Tester&quot;</span>,
+    email: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+    password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+  };
+
+  cy.server();
+  cy.route({
+    url: <span class="hljs-string">&quot;**/api/users&quot;</span>,
+    method: <span class="hljs-string">&quot;POST&quot;</span>,
+    status: <span class="hljs-number">422</span>,
+    response: { errors: { email: <span class="hljs-string">&quot;is already taken.&quot;</span> } }
+  }).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+  cy.visit(paths.register);
+
+  cy.window()
+    .its(<span class="hljs-string">&quot;appActions&quot;</span>)
+    .invoke(<span class="hljs-string">&quot;signup&quot;</span>, user);
+
+  cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>);
+
+  cy.findByText(<span class="hljs-string">&quot;email is already taken.&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+});
+</code></pre>
+<p>We could make it even more generic testing the case of multiple errors coming from the back-end</p>
+<pre><code class="lang-diff"><span class="hljs-deletion">-it(&quot;Should show an error if the back-end report that the email has already been used&quot;, () =&gt; {</span>
+<span class="hljs-addition">+it(&quot;Should show some errors if the back-end reports that some data has already been used&quot;, () =&gt; {</span>
+<span class="hljs-addition">+ const response = { errors: { username: &quot;is already taken.&quot;, email: &quot;is already taken.&quot; } };</span>
+  const user = {
+    username: &quot;Tester&quot;,
+    email: &quot;user@realworld.io&quot;,
+    password: &quot;mysupersecretpassword&quot;
+  };
+
+  cy.server();
+  cy.route({
+    url: &quot;**/api/users&quot;,
+    method: &quot;POST&quot;,
+    status: 422,
+<span class="hljs-deletion">-   response: { errors: { email: &quot;is already taken.&quot; } }</span>
+<span class="hljs-addition">+   response</span>
+  }).as(&quot;signup-request&quot;);
+
+  cy.visit(paths.register);
+
+  cy.window()
+    .its(&quot;appActions&quot;)
+    .invoke(&quot;signup&quot;, user);
+
+  cy.wait(&quot;@signup-request&quot;);
+
+<span class="hljs-deletion">- cy.findByText(&quot;email is already taken.&quot;).should(&quot;be.visible&quot;);</span>
+<span class="hljs-addition">+ Object.entries(response.errors).map(([subject, error]) =&gt; {</span>
+<span class="hljs-addition">+   cy.findByText(`${subject} ${error}`).should(&quot;be.visible&quot;);</span>
+<span class="hljs-addition">+ });</span>
+});
+</code></pre>
+<p>Below there are both the single-error test and the multiple-errors one</p>
+<p><i>File: <a href="../cypress/integration/examples/signup-integration/signup-error-paths-1.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-error-paths-1.integration.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  it(<span class="hljs-string">&quot;Should show an error if the back-end report that the email has already been used&quot;</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> response = { errors: { email: <span class="hljs-string">&quot;is already taken.&quot;</span> } };
+    <span class="hljs-keyword">const</span> user = {
+      username: <span class="hljs-string">&quot;Tester&quot;</span>,
+      email: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+    };
+
+    cy.server();
+    cy.route({
+      url: <span class="hljs-string">&quot;**/api/users&quot;</span>,
+      method: <span class="hljs-string">&quot;POST&quot;</span>,
+      status: <span class="hljs-number">422</span>,
+      response
+    }).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+    cy.visit(paths.register);
+
+    cy.window()
+      .its(<span class="hljs-string">&quot;appActions&quot;</span>)
+      .invoke(<span class="hljs-string">&quot;signup&quot;</span>, user);
+
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>);
+
+    cy.findByText(<span class="hljs-string">`email <span class="hljs-subst">${response.errors.email}</span>`</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+
+  it(<span class="hljs-string">&quot;Should show some errors if the back-end reports that some data has already been used&quot;</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> response = { errors: { username: <span class="hljs-string">&quot;is already taken.&quot;</span>, email: <span class="hljs-string">&quot;is already taken.&quot;</span> } };
+    <span class="hljs-keyword">const</span> user = {
+      username: <span class="hljs-string">&quot;Tester&quot;</span>,
+      email: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+    };
+
+    cy.server();
+    cy.route({
+      url: <span class="hljs-string">&quot;**/api/users&quot;</span>,
+      method: <span class="hljs-string">&quot;POST&quot;</span>,
+      status: <span class="hljs-number">422</span>,
+      response
+    }).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+    cy.visit(paths.register);
+
+    cy.window()
+      .its(<span class="hljs-string">&quot;appActions&quot;</span>)
+      .invoke(<span class="hljs-string">&quot;signup&quot;</span>, user);
+
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>);
+
+    <span class="hljs-built_in">Object</span>.entries(response.errors).map(([subject, error]) =&gt; {
+      cy.findByText(<span class="hljs-string">`<span class="hljs-subst">${subject}</span> <span class="hljs-subst">${error}</span>`</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+    });
+  });
+});
+</code></pre>
+<p>Almost all the code of the tests is the same. Keeping in mind that we must resist adding complex abstractions to the code of the tests (see the <a href="testing-rules.html">testing rules</a><!--TODO: link directly the correct paragraph-->) we could separate some code to a dedicated function and leverage it from the body of the test. After all, only the response changes between the above tests... Take a look at the following code</p>
+<p><i>File: <a href="../cypress/integration/examples/signup-integration/signup-error-paths-2.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-error-paths-2.integration.spec.js</a></i></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
+
+<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/App&quot;</span>;
+
+context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> testBody = response =&gt; {
+    <span class="hljs-keyword">const</span> user = {
+      username: <span class="hljs-string">&quot;Tester&quot;</span>,
+      email: <span class="hljs-string">&quot;user@realworld.io&quot;</span>,
+      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
+    };
+
+    cy.server();
+    cy.route({
+      url: <span class="hljs-string">&quot;**/api/users&quot;</span>,
+      method: <span class="hljs-string">&quot;POST&quot;</span>,
+      status: <span class="hljs-number">422</span>,
+      response
+    }).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
+
+    cy.visit(paths.register);
+
+    cy.window()
+      .its(<span class="hljs-string">&quot;appActions&quot;</span>)
+      .invoke(<span class="hljs-string">&quot;signup&quot;</span>, user);
+
+    cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>);
+
+    <span class="hljs-built_in">Object</span>.entries(response.errors).map(([subject, error]) =&gt; {
+      cy.findByText(<span class="hljs-string">`<span class="hljs-subst">${subject}</span> <span class="hljs-subst">${error}</span>`</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+    });
+  };
+
+  it(<span class="hljs-string">&quot;Should show an error if the back-end report that the email has already been used&quot;</span>, () =&gt; {
+    testBody({ errors: { email: <span class="hljs-string">&quot;is already taken.&quot;</span> } });
+  });
+
+  it(<span class="hljs-string">&quot;Should show some errors if the back-end reports that some data has already been used&quot;</span>, () =&gt; {
+    testBody({ errors: { email: <span class="hljs-string">&quot;is already taken.&quot;</span> } });
+  });
+
+  it(<span class="hljs-string">&quot;Should show all the errors reported by the back-end as they are&quot;</span>, () =&gt; {
+    testBody({ errors: { foo: <span class="hljs-string">&quot;bar&quot;</span>, other: <span class="hljs-string">&quot;problems&quot;</span> } });
+  });
+});
+</code></pre>
+<p>The last test checks that the front-end prints the errors as they are, so we are sure that the errors showed to the user are completely driven by the back-end.</p>
+<p>Please note that Cypress has other interesting options to simulate network behaviors, like the <a href="https://docs.cypress.io/api/commands/route.html#Use-delays-for-responses" target="_blank"><code>delay</code> option</a> or using a <a href="https://docs.cypress.io/api/commands/route.html#Set-the-routing-options-using-a-callback-function" target="_blank">function as the response</a>, etc.</p>
 <!--
-simulazione di tutti i casi di errore
-controllo dela payload di richiesta
 e2e solo per happy path
  -->
 
@@ -974,7 +1213,7 @@ e2e solo per happy path
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"next":{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/front-end-testing-on-steroids.md","mtime":"2019-09-18T05:13:36.339Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T05:16:56.510Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"next":{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/front-end-testing-on-steroids.md","mtime":"2019-09-18T08:12:49.611Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T08:13:24.713Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
