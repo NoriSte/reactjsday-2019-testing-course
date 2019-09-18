@@ -4,7 +4,7 @@ What's the matter with **E2E tests**? Well, they:
 
 - are** slow**: in the previous chapter we dedicated a lot of attention to reduce the test duration but we three/four/five seconds are still too much. It's not a good result because we run just a few tests but a front-end application requires a lot more tests
 
-- do not allow the frot-ender to work without a back-ender: this is a huge limit. We all know that we can not count on all the infrastructure 24/7, nor on our devops/back-end colleagues. Often, the front-end development and the back-end one do not proceed side by side either
+- do not allow the front-ender to work without a back-ender: this is a huge limit. We all know that we can not count on all the infrastructure 24/7, nor on our devops/back-end colleagues. Often, the front-end development and the back-end one do not proceed side by side either
 
 - they make **corner cases replication hard**: if we work with real data, we are going to spend most of the time dealing with it with a 20-40% of the time remaining for the front-end tests themselves
 
@@ -135,4 +135,6 @@ The most astonishing result is the speed of the test 😱
 </div>
 <br />
 
-Now we know how to have fast tests and how to test the whole front-end application without a back-end, well done!
+Why should we test the request payload in the UI Integration Tests too? Leveraging the fact that the requests do not hit the back-end, we are going to use this kind of tests for a lot of different paths. Some of these paths will not have a corresponding E2E test because they would be too much expensive. Since **request payloads are super important**, we can not think to check only the ones included in an E2E test.
+
+A good case to think about is a searchable list, we are going to have probably ten/twenty UI Integration tests (with different request payloads) for it but just two or three E2E tests.
