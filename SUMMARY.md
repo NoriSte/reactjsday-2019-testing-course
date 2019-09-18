@@ -49,8 +49,8 @@
 - UI Integration Tests
   - [Stubbing the Back-end](book/stubbing-the-backend.md)
   - [Fixtures](book/fixtures.md)
-  - [Custom command](book/fixtures.md)
-  - [Front-end testing](book/fixtures.md)
+  - [Custom command](book/integration-custom-command.md)
+  - [Front-end testing on steroids](book/front-end-testing-on-steroids.md)
   - [Cypress as a development tool](book/fixtures.md)
 - Other test TODO
 - [Other things about Cypress TODO](book/other-things-about-cypress.md)

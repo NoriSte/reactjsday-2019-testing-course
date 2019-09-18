@@ -57,9 +57,3 @@ The result is the same but the test code is way cleaner!
 
 <i><a href="../cypress/integration/examples/signup-integration/signup-2.integration.spec.js" target="_blank">cypress/integration/examples/signup-integration/signup-2.integration.spec.js</a> file</i>
 [include](../cypress/integration/examples/signup-integration/signup-2.integration.spec.js)
-
-<!--
-simulazione di tutti i casi di errore
-controllo dela payload di richiesta
-e2e solo per happy path
- -->

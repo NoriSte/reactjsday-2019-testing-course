@@ -25,7 +25,8 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import "@testing-library/cypress/add-commands";
-import "./signup/signup-integration";
+import "./authentication/authenticate-and-visit-integration";
+import "./authentication/authenticate-integration";
 import "./signup/signup-v1";
 import "./signup/signup-v2";
 import "./signup/signup-v3";
