@@ -8,3 +8,5 @@ TODO:
   - how could write a test instead of making this check manually?
 
 - example of boeing and CLR?
+
+- e2e tests only gor happy paths

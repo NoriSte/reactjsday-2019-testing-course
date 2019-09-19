@@ -51,8 +51,8 @@
   - [Fixtures](book/fixtures.md)
   - [Custom command](book/integration-custom-command.md)
   - [Front-end testing on steroids](book/front-end-testing-on-steroids.md)
-  - [Cypress as a development tool](book/fixtures.md)
-- Other test TODO
+  - [Cypress as a development tool](book/cypress-as-a-development-tool.md)
+- Other tests etc. TODO
 - [Other things about Cypress TODO](book/other-things-about-cypress.md)
 - ***
 - [Conclusions](book/conclusions.md)

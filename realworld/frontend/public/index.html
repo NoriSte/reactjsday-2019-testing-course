@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="%PUBLIC_URL%/styles/main.css" />
     <link href="%PUBLIC_URL%/styles/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="%PUBLIC_URL%/styles/fonts.css" rel="stylesheet" type="text/css" />
+
+    <script>
+      if (window.Cypress) {
+        window["__REACT_DEVTOOLS_GLOBAL_HOOK__"] = window.parent["__REACT_DEVTOOLS_GLOBAL_HOOK__"];
+      }
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
