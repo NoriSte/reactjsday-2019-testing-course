@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="fixtures.html" />
+    <link rel="next" href="cypress-as-a-development-tool.html" />
     
     
     <link rel="prev" href="integration-custom-command.html" />
@@ -783,9 +783,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.5" data-path="fixtures.html">
+        <li class="chapter " data-level="4.6.5" data-path="cypress-as-a-development-tool.html">
             
-                <a href="fixtures.html">
+                <a href="cypress-as-a-development-tool.html">
             
                     
                     Cypress as a development tool
@@ -806,7 +806,7 @@
                 <span>
             
                     
-                    Other test TODO
+                    Other tests etc. TODO
             
                 </span>
             
@@ -1167,9 +1167,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 </code></pre>
 <p>The last test checks that the front-end prints the errors as they are, so we are sure that the errors showed to the user are completely driven by the back-end.</p>
 <p>Please note that Cypress has other interesting options to simulate network behaviors, like the <a href="https://docs.cypress.io/api/commands/route.html#Use-delays-for-responses" target="_blank"><code>delay</code> option</a> or using a <a href="https://docs.cypress.io/api/commands/route.html#Set-the-routing-options-using-a-callback-function" target="_blank">function as the response</a>, etc.</p>
-<!--
-e2e solo per happy path
- -->
+<p>With the recent examples, it should be clear that E2E testing is good but not practical at all! So, write a few E2E tests (just for the happy paths) and concentrate on the UI Integration Tests.</p>
 
                                 
                                 </section>
@@ -1202,7 +1200,7 @@ e2e solo per happy path
                 </a>
                 
                 
-                <a href="fixtures.html" class="navigation navigation-next " aria-label="Next page: Cypress as a development tool">
+                <a href="cypress-as-a-development-tool.html" class="navigation navigation-next " aria-label="Next page: Cypress as a development tool">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1213,7 +1211,7 @@ e2e solo per happy path
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"next":{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/front-end-testing-on-steroids.md","mtime":"2019-09-18T08:12:49.611Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T08:13:24.713Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"next":{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/cypress-as-a-development-tool.md","ref":"book/cypress-as-a-development-tool.md","articles":[]},"previous":{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/front-end-testing-on-steroids.md","mtime":"2019-09-19T05:20:24.620Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-19T05:35:41.250Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
