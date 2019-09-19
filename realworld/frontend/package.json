@@ -7,7 +7,7 @@
     "react-scripts": "3.1.2"
   },
   "dependencies": {
-    "history": "4.9.0",
+    "history": "4.10.1",
     "marked": "0.7.0",
     "prop-types": "15.7.2",
     "react": "16.9.0",
