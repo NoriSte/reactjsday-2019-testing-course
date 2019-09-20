@@ -26,7 +26,10 @@
     "// EXAMPLES ///////////": "",
     "run:examples": "npm-run-all -s example:**",
     "example:headless-browser": "cypress run --config video=false --spec \"cypress/integration/**/headless-browser.*\"",
-    "example:signup": "cypress run --config video=false --spec \"cypress/integration/examples/signup/*\""
+    "example:signup": "cypress run --config video=false --spec \"cypress/integration/examples/signup/*\"",
+    "example:signup-integration": "cypress run --config video=false --spec \"cypress/integration/examples/signup-integration/*\"",
+    "example:authenticate-command": "cypress run --config video=false --spec \"cypress/integration/examples/authenticate-command/*\"",
+    "example:monitoring-tests": "cypress run --config video=false --spec \"cypress/integration/examples/monitoring-tests/*\""
   },
   "repository": {
     "type": "git",

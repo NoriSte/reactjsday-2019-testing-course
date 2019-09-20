@@ -17,7 +17,7 @@ A closer look line by line:
 - about the name of the file (`signup-1.e2e.spec.js`):
 
   - `xxx.spec.js` (or `xxx.test.js`, it's the same) helps identifying in a while the purpose of the test
-  - `xxx.e2e.xxx` helps identifying the type of the test, it allows you to run only some kind of tests with a single command (ex. `npx cypress run --spec \"cypress/integration/**/*.e2e.*\"`)
+  - `xxx.e2e.xxx` helps identifying the type of the test, it allows you to run only some kind of tests with a single command (ex. `npx cypress run --spec "cypress/integration/**/*.e2e.*"`)
 
 - `cy.visit("/");` is the first line of the test itself, it visits the home page of [Conduit](the-realworld-project.md)
 
