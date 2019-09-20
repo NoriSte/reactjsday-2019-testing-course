@@ -804,6 +804,90 @@
                 <span>
             
                     
+                    Other best practices
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.7.1" data-path="dedicated-scripts.html">
+            
+                <a href="dedicated-scripts.html">
+            
+                    
+                    Dedicated scripts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.2" data-path="monitoring-tests.html">
+            
+                <a href="monitoring-tests.html">
+            
+                    
+                    Monitoring tests
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.3" data-path="controlling-the-clock.html">
+            
+                <a href="controlling-the-clock.html">
+            
+                    
+                    Controlling the clock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="continuous-integration.html">
+            
+                <a href="continuous-integration.html">
+            
+                    
+                    Continuous integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="cypress-vs-other-tools.html">
+            
+                <a href="cypress-vs-other-tools.html">
+            
+                    
+                    Cypress vs other tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" >
+            
+                <span>
+            
+                    
                     Other tests etc. TODO
             
                 </span>
@@ -812,7 +896,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.8" data-path="other-things-about-cypress.md">
+        <li class="chapter " data-level="4.11" data-path="other-things-about-cypress.md">
             
                 <span>
             
@@ -937,31 +1021,6 @@
 });
 </code></pre>
 <p>Without noting it, we&apos;ve leveraged some interesting features of Cypress.</p>
-<h3 id="automatic-scroll">Automatic scroll</h3>
-<p>When interacting with a DOM element (<code>cy.get($els[0]).type(&quot;Tester&quot;)</code>), Cypress automatically scrolls the page like the user would do before interacting with the element. You can try it changing the test code with the following changes:</p>
-<pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
-<span class="hljs-addition">+ cy.viewport(300, 300);</span>
-  cy.visit(&quot;/register&quot;);
-  cy.get(&quot;.form-control&quot;).then($els =&gt; {
-    cy.get($els[0]).type(&quot;Tester&quot;);
-<span class="hljs-addition">+   cy.pause();</span>
-    cy.get($els[1]).type(&quot;user@realworld.io&quot;);
-    cy.get($els[2]).type(&quot;mysupersecretpassword&quot;);
-    cy.get(&quot;button&quot;).click();
-    cy.contains(&quot;No articles are here&quot;).should(&quot;be.visible&quot;);
-  });
-});
-</code></pre>
-<ul>
-<li><p><code>cy.viewport(300, 300)</code> makes the window extremely small, even interacting with the first input element requires scrolling until it</p>
-</li>
-<li><p><code>cy.pause();</code> pauses the test execution (you can restore it later with the &quot;play&quot; button at the <a href="https://docs.cypress.io/api/commands/pause.html#Pause-and-step-through-each-click-command" target="_blank">top of the Test Runner</a>)</p>
-</li>
-</ul>
-<p>As you can see, Cypress scrolled the page until the username input field is at the top of the page, almost the same thing that the user would do in order to fill it.</p>
-<p><img src="../assets/images/automatic-scroll.png" alt="Cypress automatic scroll" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"></p>
-<p>This is necessary because an E2E test needs to simulate, as much as it can, the exact user behavior.</p>
-<p>Please note: automatic scrolling is a feature of almost every UI testing tool, it&apos;s not a Cypress-specific feature like the next ones.</p>
 <h3 id="automatic-waiting">Automatic waiting</h3>
 <p>This is a mind-blowing feature: did you notice that the test seems a synchronous flow? Think about what happens between a command and the next one:</p>
 <pre><code class="lang-javascript">cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
@@ -1114,7 +1173,7 @@ p.s. out of curiosity: you can log the Cypress queued commands with a slight cha
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"next":{"title":"Main E2E test defects","level":"4.2.6","depth":2,"ref":"","articles":[{"title":"Determinism","level":"4.2.6.1","depth":3,"path":"book/e2e-test-defects-determinism.md","ref":"book/e2e-test-defects-determinism.md","articles":[]},{"title":"Stability","level":"4.2.6.2","depth":3,"path":"book/e2e-test-defects-stability.md","ref":"book/e2e-test-defects-stability.md","articles":[]},{"title":"Utility in case of failure","level":"4.2.6.3","depth":3,"path":"book/utility-in-case-of-failure.md","ref":"book/utility-in-case-of-failure.md","articles":[]}]},"previous":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-waitings-and-execution-order.md","mtime":"2019-08-29T07:16:24.630Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-19T05:35:41.250Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"next":{"title":"Main E2E test defects","level":"4.2.6","depth":2,"ref":"","articles":[{"title":"Determinism","level":"4.2.6.1","depth":3,"path":"book/e2e-test-defects-determinism.md","ref":"book/e2e-test-defects-determinism.md","articles":[]},{"title":"Stability","level":"4.2.6.2","depth":3,"path":"book/e2e-test-defects-stability.md","ref":"book/e2e-test-defects-stability.md","articles":[]},{"title":"Utility in case of failure","level":"4.2.6.3","depth":3,"path":"book/utility-in-case-of-failure.md","ref":"book/utility-in-case-of-failure.md","articles":[]}]},"previous":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-waitings-and-execution-order.md","mtime":"2019-09-20T09:07:43.073Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-20T12:48:39.842Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1122,6 +1181,10 @@ p.s. out of curiosity: you can log the Cypress queued commands with a slight cha
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

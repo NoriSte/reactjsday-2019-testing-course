@@ -806,6 +806,90 @@
                 <span>
             
                     
+                    Other best practices
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.7.1" data-path="dedicated-scripts.html">
+            
+                <a href="dedicated-scripts.html">
+            
+                    
+                    Dedicated scripts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.2" data-path="monitoring-tests.html">
+            
+                <a href="monitoring-tests.html">
+            
+                    
+                    Monitoring tests
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.3" data-path="controlling-the-clock.html">
+            
+                <a href="controlling-the-clock.html">
+            
+                    
+                    Controlling the clock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="continuous-integration.html">
+            
+                <a href="continuous-integration.html">
+            
+                    
+                    Continuous integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="cypress-vs-other-tools.html">
+            
+                <a href="cypress-vs-other-tools.html">
+            
+                    
+                    Cypress vs other tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" >
+            
+                <span>
+            
+                    
                     Other tests etc. TODO
             
                 </span>
@@ -814,7 +898,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.8" data-path="other-things-about-cypress.md">
+        <li class="chapter " data-level="4.11" data-path="other-things-about-cypress.md">
             
                 <span>
             
@@ -949,7 +1033,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 <li><p>about the name of the file (<code>signup-1.e2e.spec.js</code>):</p>
 <ul>
 <li><code>xxx.spec.js</code> (or <code>xxx.test.js</code>, it&apos;s the same) helps identifying in a while the purpose of the test</li>
-<li><code>xxx.e2e.xxx</code> helps identifying the type of the test, it allows you to run only some kind of tests with a single command (ex. <code>npx cypress run --spec \&quot;cypress/integration/**/*.e2e.*\&quot;</code>)</li>
+<li><code>xxx.e2e.xxx</code> helps identifying the type of the test, it allows you to run only some kind of tests with a single command (ex. <code>npx cypress run --spec &quot;cypress/integration/**/*.e2e.*&quot;</code>)</li>
 </ul>
 </li>
 <li><p><code>cy.visit(&quot;/&quot;);</code> is the first line of the test itself, it visits the home page of <a href="the-realworld-project.html">Conduit</a></p>
@@ -1022,7 +1106,7 @@ Being able to read what&apos;s happening in the front-end app is amazing because
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Opening Cypress","level":"4.2.3","depth":2,"next":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"previous":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/opening-cypress.md","mtime":"2019-08-26T06:28:34.774Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-19T05:35:41.250Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Opening Cypress","level":"4.2.3","depth":2,"next":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"previous":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"path":"book/signup-flow-challenges.md","ref":"book/signup-flow-challenges.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/opening-cypress.md","mtime":"2019-09-20T10:01:54.880Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-20T12:48:39.842Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1030,6 +1114,10 @@ Being able to read what&apos;s happening in the front-end app is amazing because
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

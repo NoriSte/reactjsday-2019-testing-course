@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Signup · GitBook</title>
+        <title>Monitoring tests · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,8 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="custom-command-intellisense.html" />
+    <link rel="next" href="controlling-the-clock.html" />
     
+    
+    <link rel="prev" href="dedicated-scripts.html" />
     
 
     </head>
@@ -658,7 +660,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="4.5.1" data-path="signup-custom-command.html">
+        <li class="chapter " data-level="4.5.1" data-path="signup-custom-command.html">
             
                 <a href="signup-custom-command.html">
             
@@ -826,7 +828,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.7.2" data-path="monitoring-tests.html">
+        <li class="chapter active" data-level="4.7.2" data-path="monitoring-tests.html">
             
                 <a href="monitoring-tests.html">
             
@@ -992,7 +994,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Signup</a>
+        <a href=".." >Monitoring tests</a>
     </h1>
 </div>
 
@@ -1007,205 +1009,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="custom-commands">Custom commands</h1>
-<p>At least half of the <a href="the-realworld-project.html">RealWorld</a> features require the user to be authenticated. By default, Cypress forces you <a href="https://docs.cypress.io/guides/references/best-practices.html#Having-tests-rely-on-the-state-of-previous-tests" target="_blank">to not share the state between the tests</a> and it makes sense because it&apos;s a huge anti-pattern. We need to transform the signup process into something usable by every test: a <a href="https://docs.cypress.io/api/cypress-api/custom-commands.html" target="_blank">Cypress custom command</a>.</p>
-<p>A Cypress Custom Command is a function that can be called from the global <code>cy</code> object. We are going to create a <code>cy.signupV1()</code> command to be run before every other test.</p>
-<p>The steps needed to create a new Cypress custom command are the next:</p>
-<ul>
-<li><p>create a new file containing the code of the command itself into the <code>cypress/support</code> directory. The file is the <code>cypress/support/signup/signup-v1.js</code></p>
-</li>
-<li><p>add the wrapper of the code</p>
-</li>
-</ul>
-<pre><code class="lang-javascript">Cypress.Commands.add(<span class="hljs-string">&quot;signupV1&quot;</span>, (<span class="hljs-comment">/* the params of the command */</span>) =&gt; {
-  <span class="hljs-comment">/* the code of the command */</span>
-});
-</code></pre>
-<ul>
-<li>import the newly created file from the <code>cypress/support/commands.js</code> file</li>
-</ul>
-<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./signup/signup-v1&quot;</span>;
-</code></pre>
-<ul>
-<li>start writing a new test that calls the <code>cy.signupV1()</code> command</li>
-</ul>
-<pre><code class="lang-javascript">context(<span class="hljs-string">&quot;Whatever test&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;Should leverage the custom registration command&quot;</span>, () =&gt; {
-    cy.signupV1();
-  });
-});
-</code></pre>
-<ul>
-<li>run the test!</li>
-</ul>
-<p>Obviously, the new command does nothing at the moment, but this is the foundation of <code>cy.signupV1</code> command.</p>
-<h3 id="first-signup-command">First signup command</h3>
-<p>The first implementation is simple and not very smart, the core of the command is the same of the
-<i><a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">signup-8-simpler-assertions.e2e.spec.js</a></i> test.</p>
-<p>While creating reusable commands, the <a href="testing-rules.html">testing rules</a> remain the same. The most important ones for our exercise are:</p>
-<ul>
-<li><p>the commands must be as simple as possible</p>
-</li>
-<li><p>the commands must be flexible and easily customizable</p>
-</li>
-</ul>
-<p>The former is respected because we are going to copy all the code from the just written <i><a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">signup-8-simpler-assertions.e2e.spec.js</a></i> test. The latter leads us to ask a question: what could be changed with a global and reusable signup utility? Essentially, only the user data.</p>
-<p>The command must accept the user data with the usual defaults if not provided</p>
-<pre><code class="lang-javascript">Cypress.Commands.add(<span class="hljs-string">&quot;signupV1&quot;</span>, ({ email, username, password } = {}) =&gt; {
-  <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
-  <span class="hljs-keyword">const</span> user = {
-    username: username || <span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>,
-    email: email || <span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>,
-    password: password || <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
-  };
-
-  <span class="hljs-comment">// The rest of the code...</span>
-});
-</code></pre>
-<p>The rest of the code is 100% the same of the <i><a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">signup-8-simpler-assertions.e2e.spec.js</a></i> test, the only changes are placed in the end:</p>
-<ul>
-<li><p>a <code>cy.server({ enable: false });</code> to restore the original <code>cy.server</code> behavior</p>
-</li>
-<li><p>a closing <code>cy.then(() =&gt; user);</code> so the data used to register the user can be consumed by chaining a command to the <code>cy.signupV1()</code> call</p>
-</li>
-</ul>
-<p>The whole code is the following:</p>
-<p><i>File: <a href="../cypress/support/signup/signup-v1.js" target="_blank">cypress/support/signup/signup-v1.js</a></i></p>
+                                <h1 id="monitoring-tests">Monitoring tests</h1>
+<p>There is some kind of checks that we&apos;d like to perform constantly that are not related to user flows. I&apos;m speaking about back-end cache management, robots.txt, and sitemap.xml checks, assets compression, etc. Tests that check these features could be called &quot;Monitoring Tests&quot; because are <strong>little and fast tests</strong> that could be launched even once a minute. These kind of tests are usually generic or related to something that broke in the past.</p>
+<p>For example, the next test checks that the <code>main.js</code> file of the <code>https://react-redux.realworld.io</code> website is served with the correct <code>content-encoding</code> header</p>
+<p><i>File: <a href="../cypress/integration/examples/monitoring-tests/brotli.monitoring.spec.js" target="_blank">cypress/integration/examplesmonitoring-tests/brotli.monitoring.spec.js</a></i></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
-<span class="hljs-keyword">import</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../realworld/frontend/src/components/App&quot;</span>;
-<span class="hljs-keyword">import</span> { noArticles } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../realworld/frontend/src/components/ArticleList&quot;</span>;
-<span class="hljs-keyword">import</span> { strings } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../realworld/frontend/src/components/Register&quot;</span>;
-
-Cypress.Commands.add(<span class="hljs-string">&quot;signupV1&quot;</span>, ({ email, username, password } = {}) =&gt; {
-  <span class="hljs-keyword">const</span> random = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>);
-  <span class="hljs-keyword">const</span> user = {
-    username: username || <span class="hljs-string">`Tester<span class="hljs-subst">${random}</span>`</span>,
-    email: email || <span class="hljs-string">`user+<span class="hljs-subst">${random}</span>@realworld.io`</span>,
-    password: password || <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
-  };
-
-  <span class="hljs-comment">// set up AJAX call interception</span>
-  cy.server();
-  cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>).as(<span class="hljs-string">&quot;signup-request&quot;</span>);
-
-  cy.visit(paths.register);
-
-  <span class="hljs-comment">// form filling</span>
-  cy.findByPlaceholderText(strings.username).type(user.username);
-  cy.findByPlaceholderText(strings.email).type(user.email);
-  cy.findByPlaceholderText(strings.password).type(user.password);
-
-  <span class="hljs-comment">// form submit...</span>
-  cy.get(<span class="hljs-string">&quot;form&quot;</span>)
-    .within(() =&gt; cy.findByText(strings.signUp))
-    .click();
-
-  <span class="hljs-comment">// ... and AJAX call waiting</span>
-  cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>).should(xhr =&gt; {
-    expect(xhr.request.body).deep.equal({
-      user: {
-        username: user.username,
-        email: user.email,
-        password: user.password
-      }
-    });
-
-    expect(xhr.status).to.equal(<span class="hljs-number">200</span>);
-
-    cy.wrap(xhr.response.body)
-      .should(<span class="hljs-string">&quot;have.property&quot;</span>, <span class="hljs-string">&quot;user&quot;</span>)
-      .and(
-        user =&gt;
-          expect(user)
-            .to.have.property(<span class="hljs-string">&quot;token&quot;</span>)
-            .and.to.be.a(<span class="hljs-string">&quot;string&quot;</span>).and.not.to.be.empty
-      )
-      .and(<span class="hljs-string">&quot;deep.include&quot;</span>, {
-        username: user.username.toLowerCase(),
-        email: user.email
-      });
-  });
-
-  <span class="hljs-comment">// end of the flow</span>
-  cy.findByText(noArticles).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
-
-  <span class="hljs-comment">// restore the original cy.server behavior</span>
-  cy.server({ enable: <span class="hljs-literal">false</span> });
-
-  cy.then(() =&gt; user);
+it(<span class="hljs-string">&quot;The Brotli-compressed assets should be served with the correct content encoding&quot;</span>, () =&gt; {
+  cy.request({
+    url: <span class="hljs-string">&quot;https://react-redux.realworld.io/main.js&quot;</span>,
+    headers: { <span class="hljs-string">&quot;Accept-Encoding&quot;</span>: <span class="hljs-string">&quot;br&quot;</span> }
+  })
+    .should(xhr =&gt; expect(xhr.status).to.eq(<span class="hljs-number">200</span>))
+    .its(<span class="hljs-string">&quot;headers.content-encoding&quot;</span>)
+    .should(<span class="hljs-string">&quot;equal&quot;</span>, <span class="hljs-string">&quot;br&quot;</span>);
 });
 </code></pre>
-<p>and the test that leverages the custom command is:</p>
-<pre><code class="lang-javascript">context(<span class="hljs-string">&quot;Whatever test&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;Should leverage the custom registration command&quot;</span>, () =&gt; {
-    cy.signupV1();
-    cy.log(<span class="hljs-string">&quot;The user is now registered and authanticated&quot;</span>);
-    cy.findByText(<span class="hljs-string">&quot;New Post&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
-  });
-});
-</code></pre>
-<p>Please note that the new command is not a replacement for the signup tests. It allows other tests to leverage the same result but, even if they share (at the moment) almost 99% of the code, they are separated.</p>
-<p>The <code>cy.signupV1()</code> command could be consumed:</p>
-<ul>
-<li><p>calling it before your code</p>
-</li>
-<li><p>calling it from a <code>before</code>/<code>beforeEach</code> test hook, a function that is called before all the tests (<code>before</code>) or before every test (<code>beforeEach</code>)</p>
-</li>
-</ul>
-<p>and:</p>
-<ul>
-<li><p>with the default user data creation: <code>cy.signupV1()</code></p>
-</li>
-<li><p>with custom data: <code>cy.signupV1({email: &quot;foo@bar.io&quot;, username: &quot;foo&quot;, password: &quot;bar&quot;})</code></p>
-</li>
-</ul>
-<p>You can find all the combinations of them into a dedicated test
-<i>File: <a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js</a></i></p>
-<pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
-
-context(<span class="hljs-string">&quot;The custom command could be run before the test code&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;Should leverage the custom registration command&quot;</span>, () =&gt; {
-    cy.signupV1().should(user =&gt; {
-      expect(user).to.have.property(<span class="hljs-string">&quot;username&quot;</span>).and.not.to.be.empty;
-      expect(user).to.have.property(<span class="hljs-string">&quot;email&quot;</span>).and.not.to.be.empty;
-      expect(user).to.have.property(<span class="hljs-string">&quot;password&quot;</span>).and.not.to.be.empty;
-    });
-
-    cy.log(<span class="hljs-string">&quot;The user is now registered and authenticated&quot;</span>);
-    cy.findByText(<span class="hljs-string">&quot;New Post&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
-  });
-});
-
-context(<span class="hljs-string">&quot;The custom command could be run before the test code with a test hook&quot;</span>, () =&gt; {
-  beforeEach(() =&gt; {
-    cy.signupV1().should(user =&gt; {
-      expect(user).to.have.property(<span class="hljs-string">&quot;username&quot;</span>).and.not.to.be.empty;
-      expect(user).to.have.property(<span class="hljs-string">&quot;email&quot;</span>).and.not.to.be.empty;
-      expect(user).to.have.property(<span class="hljs-string">&quot;password&quot;</span>).and.not.to.be.empty;
-    });
-  });
-  it(<span class="hljs-string">&quot;Should leverage the custom registration command with a test hook&quot;</span>, () =&gt; {
-    cy.log(<span class="hljs-string">&quot;The user is now registered and authenticated&quot;</span>);
-    cy.findByText(<span class="hljs-string">&quot;New Post&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
-  });
-});
-
-context(<span class="hljs-string">&quot;The custom command could be customized&quot;</span>, () =&gt; {
-  it(<span class="hljs-string">&quot;Should leverage the custom registration command&quot;</span>, () =&gt; {
-    <span class="hljs-keyword">const</span> user = {
-      username: <span class="hljs-string">&quot;CustomTester&quot;</span>,
-      email: <span class="hljs-string">&quot;specialtester@realworld.io&quot;</span>,
-      password: <span class="hljs-string">&quot;mysupersecretpassword&quot;</span>
-    };
-    cy.signupV1(user).should(<span class="hljs-string">&quot;deep.equal&quot;</span>, user);
-    cy.log(<span class="hljs-string">&quot;The user is now registered and authenticated&quot;</span>);
-    cy.findByText(<span class="hljs-string">&quot;New Post&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
-  });
-});
-</code></pre>
-<p>The assertions about the <code>user</code> subject yielded by the custom command are just to demonstrate you what the last <code>cy.then(() =&gt; user)</code> command is useful for: to know the user data from the caling test.</p>
-<p>Cypress Custom commands have some useful options that we are not going to cover in this course, take a look at the <a href="https://docs.cypress.io/api/cypress-api/custom-commands.html#Arguments" target="_blank">official documentation</a> for them.</p>
+<p>Again: following a <a href="dedicated-scripts.html">naming convention</a> allows you to launch only the monitoring tests.</p>
 
                                 
                                 </section>
@@ -1233,8 +1053,12 @@ context(<span class="hljs-string">&quot;The custom command could be customized&q
 
             
                 
+                <a href="dedicated-scripts.html" class="navigation navigation-prev " aria-label="Previous page: Dedicated scripts">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="custom-command-intellisense.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Intellisense">
+                
+                <a href="controlling-the-clock.html" class="navigation navigation-next " aria-label="Next page: Controlling the clock">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1245,7 +1069,7 @@ context(<span class="hljs-string">&quot;The custom command could be customized&q
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Signup","level":"4.5.1","depth":2,"next":{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},"previous":{"title":"Custom Commands","level":"4.5","depth":1,"ref":"","articles":[{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/signup-custom-command.md","mtime":"2019-09-16T08:22:17.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-20T12:48:39.842Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Monitoring tests","level":"4.7.2","depth":2,"next":{"title":"Controlling the clock","level":"4.7.3","depth":2,"path":"book/controlling-the-clock.md","ref":"book/controlling-the-clock.md","articles":[]},"previous":{"title":"Dedicated scripts","level":"4.7.1","depth":2,"path":"book/dedicated-scripts.md","ref":"book/dedicated-scripts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/monitoring-tests.md","mtime":"2019-09-20T12:41:40.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-20T12:48:39.842Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
