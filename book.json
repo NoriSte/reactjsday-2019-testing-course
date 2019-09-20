@@ -1,6 +1,6 @@
 {
   "output": "docs",
-  "plugins": ["include-codeblock", "-sharing", "include"],
+  "plugins": ["include-codeblock", "-sharing", "include", "copy-code-button"],
   "links": {
     "sidebar": {
       "ReactJSDay 2019": "https://2019.reactjsday.it"
