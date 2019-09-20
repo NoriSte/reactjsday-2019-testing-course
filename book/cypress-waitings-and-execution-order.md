@@ -17,37 +17,6 @@ it("The happy path should work", () => {
 
 Without noting it, we've leveraged some interesting features of Cypress.
 
-### Automatic scroll
-
-When interacting with a DOM element (`cy.get($els[0]).type("Tester")`), Cypress automatically scrolls the page like the user would do before interacting with the element. You can try it changing the test code with the following changes:
-
-```diff
-it("The happy path should work", () => {
-+ cy.viewport(300, 300);
-  cy.visit("/register");
-  cy.get(".form-control").then($els => {
-    cy.get($els[0]).type("Tester");
-+   cy.pause();
-    cy.get($els[1]).type("user@realworld.io");
-    cy.get($els[2]).type("mysupersecretpassword");
-    cy.get("button").click();
-    cy.contains("No articles are here").should("be.visible");
-  });
-});
-```
-
-- `cy.viewport(300, 300)` makes the window extremely small, even interacting with the first input element requires scrolling until it
-
-- `cy.pause();` pauses the test execution (you can restore it later with the "play" button at the [top of the Test Runner](https://docs.cypress.io/api/commands/pause.html#Pause-and-step-through-each-click-command))
-
-As you can see, Cypress scrolled the page until the username input field is at the top of the page, almost the same thing that the user would do in order to fill it.
-
-<img src="../assets/images/automatic-scroll.png" alt="Cypress automatic scroll" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
-
-This is necessary because an E2E test needs to simulate, as much as it can, the exact user behavior.
-
-Please note: automatic scrolling is a feature of almost every UI testing tool, it's not a Cypress-specific feature like the next ones.
-
 ### Automatic waiting
 
 This is a mind-blowing feature: did you notice that the test seems a synchronous flow? Think about what happens between a command and the next one:

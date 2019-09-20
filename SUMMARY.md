@@ -52,6 +52,7 @@
   - [Custom command](book/integration-custom-command.md)
   - [Front-end testing on steroids](book/front-end-testing-on-steroids.md)
   - [Cypress as a development tool](book/cypress-as-a-development-tool.md)
+- [Cypress vs other tools](book/cypress-vs-other-tools.md)
 - Other tests etc. TODO
 - [Other things about Cypress TODO](book/other-things-about-cypress.md)
 - ***
