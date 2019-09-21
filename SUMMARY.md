@@ -57,9 +57,8 @@
   - [Monitoring tests](book/monitoring-tests.md)
   - [Controlling the clock](book/controlling-the-clock.md)
 - [Continuous integration](book/continuous-integration.md)
+- [Visual Regression Testnig](book/visual-regression-testing.md)
 - [Cypress vs other tools](book/cypress-vs-other-tools.md)
-- Other tests etc. TODO
-- [Other things about Cypress TODO](book/other-things-about-cypress.md)
 - ***
 - [Conclusions](book/conclusions.md)
 - [Resources](book/resources.md)
