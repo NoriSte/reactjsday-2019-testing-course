@@ -42,7 +42,7 @@ Launch `npm run realworld:start` in the terminal and everything is going to work
 
 Now you can see the page launched by the test
 
-<!-- TODO: replicate the same shadow of the below mac screenshot -->
+
 
 <img src="../assets/images/cypress-signup-conduit.png" alt="Cypress Conduit" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
 

@@ -1,7 +1,5 @@
 # Testing rules
 
-TODO: transform this file into some slides
-
 - you must write the test as soon as you write the code. Writing the test some days after the code is useless, you have forgotten half of the choices you made (choices that you need to test)
 
 - a test fails is a good thing, really! Because it's preventing a regression! The important thing is that...

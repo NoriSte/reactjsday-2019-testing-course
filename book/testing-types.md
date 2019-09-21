@@ -1,7 +1,5 @@
 # Testing types
 
-TODO: transform this file into some slides and complete it
-
 Unit tests
 
 Component tests

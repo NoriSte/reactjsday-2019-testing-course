@@ -20,8 +20,6 @@ You are going to break the `test b` test if
 
 summing up: every test **must be independent**.
 
-<!-- TODO: check that you explained it into the testing rules -->
-
 In the previous chapter, we improved the test performance but it's still quite slow. Every test registers a new user and it would be cool if all the tests could share the same, already registered, user... But if we only have to maintain test independence, we could write a custom command that registers a new user, store the user token and restore the token before the next step!
 
 One thing at a time:

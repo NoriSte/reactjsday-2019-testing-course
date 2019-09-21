@@ -12,8 +12,6 @@ There is a lot to tell and care when writing E2E tests, we are goign to use one 
 
 Please note: you need to have the [RealWorld](about-the-book.md#code) example running, be sure that you have `$ npm run realworld:start` running (if something does not worl, take a look at the [installation instructions](../README.md)).
 
-<!-- TODO: write the instructions in the README and point to the specific block -->
-
 ### Challenges
 
 If you want to test the signup flow we need:

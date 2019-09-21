@@ -1,7 +1,5 @@
 # Having fun while testing
 
-TODO: transform this file into some slides
-
 - testing allows you to learn, in two ways:
 
   - when you start building an application with a new framework or library, you can not be sure that what you do today does not break what you did yesterday. Afterall, you are practicing with something new, there is nothing strange. If you test your code while you write it, you avoid it (example: Vue.JS for SuperMoney)

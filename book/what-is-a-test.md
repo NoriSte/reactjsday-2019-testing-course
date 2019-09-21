@@ -1,6 +1,5 @@
 # What is a test?
 
-TODO: transform this file into some slides and complete writing it
 TODO: speak about the hooks, only, skip, the testing anatomy etc.
 
 A test is code that throws an error when the actual result of something does not match the expected output.

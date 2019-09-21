@@ -103,7 +103,7 @@ it("The happy path should work", () => {
 
 - "_No articles are here... yet._" is the string that the home pages shows when the signup flow ends. After successful registration, the user is redirected to the home page, the "Your Feed" does not contain any posts yet. Think about it as the proof that everything worked (while testing the signup flow, obviously)
 
-<!-- TODO: replicate the same shadow of the below mac screenshot -->
+
 
 <img src="../assets/images/signup-feedback.png" alt="Cypress Conduit" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
 

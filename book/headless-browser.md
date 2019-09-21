@@ -1,7 +1,5 @@
 # Headless browser
 
-TODO: transform it in slides
-
 A headless browser is a standard web browser without a GUI. You instrument it with some APIs that replicate the user actions (navigating, clicking, typing, etc.) and you can leverage it to automate everything that requires a running browser.
 
 [Selenium](https://www.seleniumhq.org/projects/webdriver/) and [Puppeteer](https://pptr.dev) are the most used browser automation tools while [Cypress](https://cypress.io), [TestCafé](TestCafé), [Protractor](https://www.protractortest.org/#/), etc. leverage the same mechanism with the purpose of testing a web app.
@@ -16,7 +14,7 @@ Cypress is going to run this test, visit the specified page and take a screensho
 And try to run it through the terminal
 
 ```
-$ npx cypress run --spec \"cypress/integration/**/headless-browser.*\"
+$ npx cypress run --spec "cypress/integration/**/headless-browser.*"
 ```
 
 what does it do?
@@ -61,7 +59,7 @@ that's the output...
 
 ... and the screenshot took by Cypress.
 
-<!-- TODO: replicate the same shadow of the below mac screenshot -->
+
 
 <div style="max-height: 500px; overflow:hidden;">
     <img src="../cypress/screenshots/examples/headless-browser.spec.js/Headless browser -- Must visit the site and take a screenshot.png" alt="Headless browser screenshot" style="width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>

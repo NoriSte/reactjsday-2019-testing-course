@@ -1,7 +1,5 @@
 # Why Testing?
 
-TODO: transform this file into some slides
-
 - to control that the code does what we expect, now and when we refactor/modify it. (exmple: `string.replace` with single occurrence to replace) At the beginning it could sounds annoying but...
 
 - but the code does not do what we expect all the times, the tests allow us to find bugs and unexpected corner cases (example: `string.replace` with multiple occurrencies but without the `g` flag)

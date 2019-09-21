@@ -3,7 +3,7 @@
 - [React Testing Course](README.md)
   - [What you are going to learn (TODO:)](book/what-are-you-going-to-learn.md)
   - [About us](book/about-us.md)
-  - [Files and directories](book/files-and-directories.md)
+  - [Files and directories TODO:](book/files-and-directories.md)
 - ***
 - Testing definitions
   - [What is a test? TODO:](book/what-is-a-test.md)
@@ -61,7 +61,7 @@
 - [Cypress vs other tools](book/cypress-vs-other-tools.md)
 - [Why is E2E testing not enough?](book/why-is-e2e-testing-not-enough.md)
 - ***
-- [Conclusions](book/conclusions.md)
+- [Conclusions TODO:](book/conclusions.md)
 - [Resources](book/resources.md)
 - ***
 - [About this book](book/about-the-book.md)

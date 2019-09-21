@@ -1,6 +1,5 @@
 # What is an E2E test?
 
-TODO: transform it in slides
 TODO: add a video of the e2e tests with the realworld app
 
 An E2E test runs the whole web app in a [headless browser](headless-browser.md) when the front-end application interacts with the back-end one, with a working database, and checks that **everything works as expected**. It checks everything: from the user interactions (one of the "end") to the business data (the other "end"): everything must work as designed.
@@ -31,7 +30,5 @@ An important note: the front-end application is not deployed in advance and then
 - everything that breaks often: weak areas of the system must be checked too
 
 In the next examples we are going to write some E2E tests and to understand why they are not feasible to be used as the only/main test type. They are pretty important because they test everything (both the front-end and the back-end) but **they must be used carefully** to avoid brittle and hour-long test suites.
-
-<!-- TODO: repeat it in the conclusions? -->
 
 At the end of our testing journey, you will think about E2E tests as "back-end tests".

@@ -1,7 +1,5 @@
 # What should I not test
 
-TODO: transform this file into some slides
-
 - external services, you should test how you consume them, not if they work (has gmail sent the email?)
 
 - anything that you do not control (cache? network? justo to make an example)

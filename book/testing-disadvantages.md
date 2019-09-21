@@ -1,7 +1,5 @@
 Testing disadvantages
 
-TODO: transform this file into some slides
-
 - the complexity of the project increases, we add one more item to the existing toolchain, it's a problem just if there is not a shared (and appreciated) testing culture
 
 - at the first time, testing could be a con instead of a pro, you could end up maintaining more on the tests than on your own code (start again)
