@@ -1,10 +1,9 @@
-| TODO: make it better | [E2E](what-is-e2e-test.md) | UI Integration | Visual | Integration | Component/Unit |
-| -------------------- | -------------------------- | -------------- | ------ | ----------- | -------------- |
-| confidence           | ✅                         | ✅             | ✅     | ✅          | ❌             |
-| context check        | ✅                         | ❌             | ❌     | ❌          | ❌             |
-| coverage             | ✅ \*                      | ✅ \*          | ❌     | ✅          | ✅             |
-| cost/speed           | ❌                         | ✅             | ❌     | ✅          | ✅             |
-| documenting          | ❌                         | ✅             | ❌     | ✅          | ✅             |
-| deterministic        | ❌                         | ✅             | ❌     | ✅          | ✅             |
-| simplicity           | ❌                         | ⚠️             | ✅     | ⚠️          | ✅             |
-| shortness            | ❌                         | ❌             | ✅     | ✅          | ✅             |
+|                              | E2E | UI Integration | Visual | Integration | Component/Unit |
+| ---------------------------- | --- | -------------- | ------ | ----------- | -------------- |
+| check the entire app         | ✅   | ❌              | ❌      | ❌           | ❌              |
+| give a good confidence       | ✅   | ✅              | ✅      | ⚠️          | ❌              |
+| have code coverage           | ✅   | ✅              | ❌      | ✅           | ✅              |
+| have a good cost/speed ratio | ❌   | ✅              | ❌      | ✅           | ✅              |
+| are deterministic            | ❌   | ✅              | ❌      | ✅           | ✅              |
+| are simple                   | ❌   | ⚠️             | ✅      | ⚠️          | ✅              |
+| are short                    | ❌   | ❌              | ✅      | ✅           | ✅              |

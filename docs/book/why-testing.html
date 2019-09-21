@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Why Testing? TODO: · GitBook</title>
+        <title>Why Testing? · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="testing-advantages.html" />
+    <link rel="next" href="testing-rules.html" />
     
     
 
@@ -128,19 +128,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.3" data-path="files-and-directories.html">
-            
-                <a href="files-and-directories.html">
-            
-                    
-                    Files and directories TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -180,25 +167,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="testing-pyramid.html">
-            
-                <a href="testing-pyramid.html">
-            
-                    
-                    Testing Pyramid TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3" data-path="testing-types.html">
+        <li class="chapter " data-level="2.1.2" data-path="testing-types.html">
             
                 <a href="testing-types.html">
             
                     
-                    Testing types TODO:
+                    Testing types
             
                 </a>
             
@@ -230,7 +204,7 @@
                 <a href="why-testing.html">
             
                     
-                    Why Testing? TODO:
+                    Why Testing?
             
                 </a>
             
@@ -238,25 +212,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.2" data-path="testing-advantages.html">
-            
-                <a href="testing-advantages.html">
-            
-                    
-                    Testing advantages? TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.3" data-path="testing-rules.html">
+        <li class="chapter " data-level="2.2.2" data-path="testing-rules.html">
             
                 <a href="testing-rules.html">
             
                     
-                    Testing rules TODO:
+                    Testing rules
             
                 </a>
             
@@ -264,7 +225,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.4" data-path="having-fun-while-testing.html">
+        <li class="chapter " data-level="2.2.3" data-path="having-fun-while-testing.html">
             
                 <a href="having-fun-while-testing.html">
             
@@ -277,7 +238,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="what-not-to-test.html">
+        <li class="chapter " data-level="2.2.4" data-path="what-not-to-test.html">
             
                 <a href="what-not-to-test.html">
             
@@ -290,7 +251,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.6" data-path="the-cost-of-testing.html">
+        <li class="chapter " data-level="2.2.5" data-path="the-cost-of-testing.html">
             
                 <a href="the-cost-of-testing.html">
             
@@ -992,7 +953,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Why Testing? TODO:</a>
+        <a href=".." >Why Testing?</a>
     </h1>
 </div>
 
@@ -1009,25 +970,25 @@
                                 
                                 <h1 id="why-testing">Why Testing?</h1>
 <ul>
-<li><p>to control that the code does what we expect, now and when we refactor/modify it. (exmple: <code>string.replace</code> with single occurrence to replace) At the beginning it could sounds annoying but...</p>
+<li><p>to control that the code does what we expect, now and when we refactor/modify it. Testing protects us from direct regressions when we break the existing code, and from indirect regressions, when something external from our code breaks it</p>
 </li>
-<li><p>but the code does not do what we expect all the times, the tests allow us to find bugs and unexpected corner cases (example: <code>string.replace</code> with multiple occurrencies but without the <code>g</code> flag)</p>
+<li><p>to reproduce some corner cases the easiest possible way</p>
 </li>
-<li><p>with the tests we fix some corner cases that, if underestimated, could lead to big headaches (example: <code>array.length &amp;&amp; array[0]</code> in jsx that could print <code>0</code>)</p>
+<li><p>to leverage the speed of an automated tool that could do the same checks that you would do manually... but at a blazing speed</p>
 </li>
-<li><p>the tests do the same things you should do manully... but at a blazing speed!...</p>
+<li><p>to leverage forever the checks, even when it becomes impossible to test everything manually</p>
 </li>
-<li><p>... And, once written, they will do that forever in your place</p>
+<li><p>to tell a story about the code, it&apos;s easier to maintain test descriptions compared to documentation. A good storytelling test suite could allow everyone to jump into the codebase easily</p>
 </li>
-<li><p>it&apos;s impossible to test everything manually everytime, incrementally written tests do!</p>
+<li><p>to avoid adding temporary (and risky) code, conditions, default state, etc. that allows you to test something</p>
 </li>
-<li><p>the tests tell a story about our code, an easier to maintain story compared to documentation and comments. A good storytelling test suite could allow everyone to jump into a project easily (example: look for a good example)</p>
+<li><p>to prevent problems instead of facing them</p>
 </li>
-<li><p>replicating some states is pretty impossible without a made on purpose environment runner. Without it you end up adding some strange conditions, returns, default states, etc. that are not reliable and that you must remember to remove (example: input field default states, simulating axios return data). With the tests, you act from the outside instead of from the inside</p>
+<li><p>to allow ourselves to refactor the code without fear, A good-tested codebase could be refactored safely</p>
 </li>
-<li><p>with tests you prevent problems, you won&apos;t face it</p>
+<li><p>to improve the quality of the code: a hard-to-be-tested code is a code smell</p>
 </li>
-<li><p>because you could have faced yourself what means to work with untested code... &#x1F60A;</p>
+<li><p>to get us working with a lower cognitive load, you can concentrate on what you are working on without thinking too much about everything surrounding it</p>
 </li>
 </ul>
 
@@ -1058,7 +1019,7 @@
             
                 
                 
-                <a href="testing-advantages.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Testing advantages? TODO:">
+                <a href="testing-rules.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Testing rules">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1069,7 +1030,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Why Testing? TODO:","level":"2.2.1","depth":2,"next":{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},"previous":{"title":"Testing introduction","level":"2.2","depth":1,"ref":"","articles":[{"title":"Why Testing? TODO:","level":"2.2.1","depth":2,"path":"book/why-testing.md","ref":"book/why-testing.md","articles":[]},{"title":"Testing advantages? TODO:","level":"2.2.2","depth":2,"path":"book/testing-advantages.md","ref":"book/testing-advantages.md","articles":[]},{"title":"Testing rules TODO:","level":"2.2.3","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},{"title":"Having fun while testing TODO:","level":"2.2.4","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},{"title":"What should I not test? TODO:","level":"2.2.5","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},{"title":"The cost of testing TODO:","level":"2.2.6","depth":2,"path":"book/the-cost-of-testing.md","ref":"book/the-cost-of-testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/why-testing.md","mtime":"2019-09-21T10:07:11.063Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-21T13:46:30.919Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Why Testing?","level":"2.2.1","depth":2,"next":{"title":"Testing rules","level":"2.2.2","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},"previous":{"title":"Testing introduction","level":"2.2","depth":1,"ref":"","articles":[{"title":"Why Testing?","level":"2.2.1","depth":2,"path":"book/why-testing.md","ref":"book/why-testing.md","articles":[]},{"title":"Testing rules","level":"2.2.2","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},{"title":"Having fun while testing TODO:","level":"2.2.3","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},{"title":"What should I not test? TODO:","level":"2.2.4","depth":2,"path":"book/what-not-to-test.md","ref":"book/what-not-to-test.md","articles":[]},{"title":"The cost of testing TODO:","level":"2.2.5","depth":2,"path":"book/the-cost-of-testing.md","ref":"book/the-cost-of-testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/why-testing.md","mtime":"2019-09-21T16:28:15.946Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-21T16:50:08.756Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
