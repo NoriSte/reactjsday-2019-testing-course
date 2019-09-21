@@ -1,18 +1,31 @@
 # Testing types
 
-Unit tests
+- Unit tests: check single units, whatever you mean by "unit"
 
-Component tests
+- Component tests: the unit tests of modern JavaScript frameworks
 
-Integration tests
+- Integration tests: check the more units work well while integrated together
 
-Functional tests
+- UI Integration tests: check the whole application works without a real back-end
 
-- [E2E](what-is-e2e-test.md)
-- UI Integration
+- E2E tests: check the the whole app, back-end and database included, works as expected
 
-Visual tests
-
-Snapshot tests
+- Visual Regression tests: check that the app looks always the same
 
 !INCLUDE "test-types-comparison.md"
+
+### Testing Pyramid
+
+The testing pyramid aims to resume the cost of every kind of test. The classic one is the following
+
+<div>
+    <img src="../assets/images/test-pyramid.png" alt="Testing pyramid" style="width: 100%; max-width: 400px; margin-left: auto; margin-right: auto;"/>
+</div>
+<br /><br />
+
+while Kent C. Dodds created a new version of the pyramid, the "the Testing Trophy". Kent created the trophy based not only on the cost of the tests but on the **return of investment**. Then, he highlighted the "Integration test" area as the most important one
+
+<div>
+    <img src="../assets/images/test-trophy.jpg" alt="Testing trophy" style="width: 100%; max-width: 400px; margin-left: auto; margin-right: auto;"/>
+</div>
+<br /><br />

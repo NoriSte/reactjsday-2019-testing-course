@@ -41,3 +41,17 @@ To watch them running on your local machine:
 - if you want to keep Jest opened you can launch `npm run test:unit:watch` and navigate the various tests leveraging the [jest-watch-typeahead](https://github.com/jest-community/jest-watch-typeahead) plugin
 
 TODO: add the part of the demo-app
+
+
+### File system
+
+```
+|-- __tests__ # example tests
+|-- book # all the chapters of the  book
+|-- cypress/integration # all the Cypress tests
+|-- demo-app # the React application used for the integration/unit tests part
+|-- docs # auto-generated directory, GitHub pages points here
+|-- realworld # both the frontend/backend RealWorld apps
+|-- slides # the GitPitch files (if used)
+|-- utils # little repository utilities
+```

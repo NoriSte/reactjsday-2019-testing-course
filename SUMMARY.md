@@ -3,16 +3,13 @@
 - [React Testing Course](README.md)
   - [What you are going to learn (TODO:)](book/what-are-you-going-to-learn.md)
   - [About us](book/about-us.md)
-  - [Files and directories TODO:](book/files-and-directories.md)
 - ***
 - Testing definitions
   - [What is a test?](book/what-is-a-test.md)
-  - [Testing Pyramid TODO:](book/testing-pyramid.md)
-  - [Testing types TODO:](book/testing-types.md)
+  - [Testing types](book/testing-types.md)
 - Testing introduction
-  - [Why Testing? TODO:](book/why-testing.md)
-  - [Testing advantages? TODO:](book/testing-advantages.md)
-  - [Testing rules TODO:](book/testing-rules.md)
+  - [Why Testing?](book/why-testing.md)
+  - [Testing rules](book/testing-rules.md)
   - [Having fun while testing TODO:](book/having-fun-while-testing.md)
   - [What should I not test? TODO:](book/what-not-to-test.md)
   - [The cost of testing TODO:](book/the-cost-of-testing.md)
