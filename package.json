@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "gitbook install && npm run realworld:install && npm run demo-app:install",
     "test": "start-server-and-test realworld:start http://localhost:4100 test:everything",
-    "test:everything": "npm run demo-app:test:nowatch && npm run cy:run && npm run run:examples",
+    "test:everything": "npm run test:unit && npm run demo-app:test:nowatch && npm run cy:run && npm run run:examples",
     "// BOOK ///////////": "",
     "book:serve": "npx gitbook serve",
     "book:build": "npx gitbook build . docs",
@@ -18,6 +18,9 @@
     "demo-app:build": "cd demo-app && npm run build",
     "demo-app:test": "cd demo-app && npm test",
     "demo-app:test:nowatch": "cd demo-app && npm run test:nowatch",
+    "// JEST ///////////": "",
+    "test:unit:watch": "jest --watchAll",
+    "test:unit": "jest",
     "// CYPRESS ///////////": "",
     "cy:open": "cypress open",
     "cy:run": "cypress run --config video=false --spec \"cypress/integration/realworld/**/*\"",
@@ -36,6 +39,16 @@
     "example:signup-integration": "cypress run --config video=false --spec \"cypress/integration/examples/signup-integration/*\"",
     "example:authenticate-command": "cypress run --config video=false --spec \"cypress/integration/examples/authenticate-command/*\"",
     "example:monitoring-tests": "cypress run --config video=false --spec \"cypress/integration/examples/monitoring-tests/*\""
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "cypress",
+      "demo-app"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
   },
   "repository": {
     "type": "git",
@@ -62,6 +75,8 @@
     "cypress-skip-and-only-ui": "1.2.1",
     "gitbook-cli": "2.3.2",
     "gitbook-plugin-copy-code-button": "0.0.2",
+    "jest": "^24.9.0",
+    "jest-watch-typeahead": "^0.4.0",
     "npm-run-all": "4.1.5",
     "start-server-and-test": "1.10.0"
   },

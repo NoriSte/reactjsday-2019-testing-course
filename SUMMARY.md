@@ -6,7 +6,7 @@
   - [Files and directories TODO:](book/files-and-directories.md)
 - ***
 - Testing definitions
-  - [What is a test? TODO:](book/what-is-a-test.md)
+  - [What is a test?](book/what-is-a-test.md)
   - [Testing Pyramid TODO:](book/testing-pyramid.md)
   - [Testing types TODO:](book/testing-types.md)
 - Testing introduction
@@ -15,7 +15,7 @@
   - [Testing rules TODO:](book/testing-rules.md)
   - [Having fun while testing TODO:](book/having-fun-while-testing.md)
   - [What should I not test? TODO:](book/what-not-to-test.md)
-  - [Testing disadvantages TODO:](book/testing-disadvantages.md)
+  - [The cost of testing TODO:](book/the-cost-of-testing.md)
 - ***
 - [An easier journey: top to bottom](book/top-to-bottom.md)
 - ***

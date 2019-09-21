@@ -1,4 +1,4 @@
-Testing disadvantages
+The cost of testing
 
 - the complexity of the project increases, we add one more item to the existing toolchain, it's a problem just if there is not a shared (and appreciated) testing culture
 
