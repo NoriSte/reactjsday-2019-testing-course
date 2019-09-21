@@ -3,7 +3,11 @@
   "automerge": true,
   "packageRules": [
     {
-      "paths": ["realworld/frontend/package.json", "realworld/backend/package.json"],
+      "paths": [
+        "realworld/frontend/package.json",
+        "realworld/backend/package.json",
+        "demo-app/package.json"
+      ],
       "extends": ["config:base"],
       "automerge": true
     }
