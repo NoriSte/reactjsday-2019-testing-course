@@ -1,5 +1,5 @@
 # ReactJSDay 2019 Testing Course
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 [![GPL 3.0 License][license-badge]][license]
 [![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
@@ -38,6 +38,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt="Stefano Magni"/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="#business-NoriSte" title="Business development">💼</a> <a href="#content-NoriSte" title="Content">🖋</a> <a href="#example-NoriSte" title="Examples">💡</a> <a href="#eventOrganizing-NoriSte" title="Event Organizing">📋</a> <a href="#ideas-NoriSte" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="http://jagascript.com"><img src="https://avatars0.githubusercontent.com/u/4562878?v=4" width="100px;" alt="Jaga Santagostino"/><br /><sub><b>Jaga Santagostino</b></sub></a><br /><a href="#business-kandros" title="Business development">💼</a> <a href="#content-kandros" title="Content">🖋</a> <a href="#example-kandros" title="Examples">💡</a> <a href="#eventOrganizing-kandros" title="Event Organizing">📋</a> <a href="#ideas-kandros" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
