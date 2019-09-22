@@ -1,6 +1,6 @@
 {
   "output": "docs",
-  "plugins": ["include-codeblock", "-sharing", "include", "copy-code-button"],
+  "plugins": ["include-codeblock", "-sharing", "include", "copy-code-button", "github"],
   "links": {
     "sidebar": {
       "ReactJSDay 2019": "https://2019.reactjsday.it"
@@ -9,5 +9,10 @@
   },
   "styles": {
     "website": "book/styles/website.css"
+  },
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/NoriSte/reactjsday-2019-testing-course"
+    }
   }
 }
