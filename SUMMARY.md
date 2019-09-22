@@ -6,7 +6,7 @@
 - ***
 - Testing definitions
   - [What is a test?](book/what-is-a-test.md)
-  - [Testing types](book/testing-types.md)
+  - [Types of Test](book/types-of-test.md)
 - Testing introduction
   - [Why Testing?](book/why-testing.md)
   - [Testing rules](book/testing-rules.md)

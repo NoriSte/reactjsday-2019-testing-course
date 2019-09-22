@@ -1,16 +1,16 @@
-# Testing types
+# Types of Test
 
-- Unit tests: check single units, whatever you mean by "unit"
+- Unit tests: check units in isolation, what is considered to be a _unit_ can change from the context
 
-- Component tests: the unit tests of modern JavaScript frameworks
+- Component tests: test of Components of modern JavaScript frameworks
 
-- Integration tests: check the more units work well while integrated together
+- Integration tests: check that multiple units behave as expected when used together
 
 - UI Integration tests: check the whole application works without a real back-end
 
 - E2E tests: check the the whole app, back-end and database included, works as expected
 
-- Visual Regression tests: check that the app looks always the same
+- Visual Regression tests: check that the app look doesn't change when not intended
 
 !INCLUDE "test-types-comparison.md"
 
