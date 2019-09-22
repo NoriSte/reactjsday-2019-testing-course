@@ -1,5 +1,4 @@
 # ReactJSDay 2019 Testing Course
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 [![GPL 3.0 License][license-badge]][license]
 [![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
