@@ -62,7 +62,7 @@ that's the output...
 
 
 <div style="max-height: 500px; overflow:hidden;">
-    <img src="../cypress/screenshots/examples/headless-browser.spec.js/Headless browser -- Must visit the site and take a screenshot.png" alt="Headless browser screenshot" style="width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../cypress/screenshots/examples/headless-browser.spec.js/Headless browser -- Must visit the site and take a screenshot.png" alt="Headless browser screenshot" style="width: 100%; max-width: 300px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 
 <br /><br />

@@ -64,13 +64,13 @@ where does the `{user: {...}}` response come from? From inspecting the response 
 - we need to stub (the process of intercepting and responding with static data) even more AJAX calls because, once the signup flow is complete, the home page calls some more APIs to populate the page.
 
 <div>
-    <img src="../assets/images/integration-test-error.jpg" alt="Front-end error" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/integration-test-error.jpg" alt="Front-end error" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br />
 The test Runner helps us a lot identifying the unstubbed AJAX calls
 
 <div>
-    <img src="../assets/images/test-runner-ajax-requests.png" alt="Unstubbed AJAX calls" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/test-runner-ajax-requests.png" alt="Unstubbed AJAX calls" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br />
 
@@ -131,7 +131,7 @@ And we're done! You can take a look at the whole test and run it, it's the
 The most astonishing result is the speed of the test 😱
 
 <div>
-    <img src="../assets/images/integration-test-performance.png" alt="Integration test performance" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/integration-test-performance.png" alt="Integration test performance" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br />
 

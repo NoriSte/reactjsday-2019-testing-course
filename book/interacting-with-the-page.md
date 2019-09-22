@@ -105,7 +105,7 @@ it("The happy path should work", () => {
 
 
 
-<img src="../assets/images/signup-feedback.png" alt="Cypress Conduit" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
+<img src="../assets/images/signup-feedback.png" alt="Cypress Conduit" class="img-border"/>
 
 - the [`cy.contains()`](https://docs.cypress.io/api/commands/contains.html#Syntax) API gets the DOM element containing the text
 

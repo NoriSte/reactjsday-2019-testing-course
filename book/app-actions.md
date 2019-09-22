@@ -3,7 +3,7 @@
 We have just written our first [Custom Command](signup-custom-command.md) that registers a new user for every test. What is its biggest problem? Well, it's **really, really, slow**. The <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> tests take twelve to fifteen seconds to run the empty tests:
 
 <div>
-    <img src="../assets/images/slow-tests.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/slow-tests.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 
@@ -78,7 +78,7 @@ You can find the whole code of the custom command into the `signup-v2.js` custom
 The `signupV2` custom command is used by the <i><a href="../cypress/integration/examples/signup-command/signup-command-2.e2e.spec.js" target="_blank">signup-command-2.e2e.spec.js</a></i> test and the performance improvement is notable compared to the previous <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> one
 
 <div>
-    <img src="../assets/images/slow-tests-improvement.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/slow-tests-improvement.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 

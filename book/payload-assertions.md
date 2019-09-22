@@ -142,7 +142,7 @@ it("The happy path should work", () => {
 We return on that later, but that's the actual feedback of the Test Runner
 
 <div>
-    <img src="../assets/images/request-payload-assertion.png" alt="Request payload assertions" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/request-payload-assertion.png" alt="Request payload assertions" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 
 
@@ -215,7 +215,7 @@ You can read more about the Cypress assertions in the [official documentation](h
 In the next screenshot you can find (one of) the result of so much assertions: a punctual feedback in case of an error with the AJAX request
 
 <div>
-    <img src="../assets/images/feedback-in-case-of-failure/request-payload-error.png" alt="Request payload error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/feedback-in-case-of-failure/request-payload-error.png" alt="Request payload error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 
 ### Smarter assertions
@@ -223,7 +223,7 @@ In the next screenshot you can find (one of) the result of so much assertions: a
 The assertions show above are precise but not so smart. Their feedback is not smart neither, take a look at the next screenshot
 
 <div>
-    <img src="../assets/images/extremely-long-feedback.png" alt="Extremely long feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/extremely-long-feedback.png" alt="Extremely long feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 We can maintain all the usefulness of the feedback while making them a little smarter leveraging one of the combinations offered by Cypress to write assertions. The next code asserts the same things in a more concise mode and with more concise feedback too
@@ -256,7 +256,7 @@ cy.wait("@signup-request").should(xhr => {
 ```
 
 <div>
-    <img src="../assets/images/concise-feedback.png" alt="More concise feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/concise-feedback.png" alt="More concise feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 
@@ -294,7 +294,7 @@ cy.wait("@signup-request").should(xhr => {
 but it's not recommended because, in case of failure, the feedback is too much generic:
 
 <div>
-    <img src="../assets/images/feedback-in-case-of-failure/chai-subset-error.png" alt="Chai subset error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/feedback-in-case-of-failure/chai-subset-error.png" alt="Chai subset error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 

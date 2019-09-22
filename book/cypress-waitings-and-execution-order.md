@@ -151,6 +151,6 @@ p.s. out of curiosity: you can log the Cypress queued commands with a slight cha
 });
 ```
 That's the result
-<img src="../assets/images/cy-commands-log.png" alt="Cypress queued commands" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
+<img src="../assets/images/cy-commands-log.png" alt="Cypress queued commands" class="img-border"/>
 
 read [here](https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Avoiding-the-use-of-this) why you need to use the standard `function() {}` syntax instead of the arrow function `() => {}` syntax.

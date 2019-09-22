@@ -187,21 +187,21 @@ if (user) {
 Take a look at the improvement in terms of test duration, we started from the original `cy.signupV1` command
 
 <div>
-    <img src="../assets/images/slow-tests.png" alt="Slow tests" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/slow-tests.png" alt="Slow tests" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 
 then, we improved that with [App Actions](app-actions.md)
 
 <div>
-    <img src="../assets/images/slow-tests-improvement.png" alt="App Actions" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/slow-tests-improvement.png" alt="App Actions" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 
 and finally, we leveraged the previously registered user
 
 <div>
-    <img src="../assets/images/slow-tests-improvement-2.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/slow-tests-improvement-2.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 

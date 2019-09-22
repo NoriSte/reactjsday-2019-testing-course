@@ -44,7 +44,7 @@ Now you can see the page launched by the test
 
 
 
-<img src="../assets/images/cypress-signup-conduit.png" alt="Cypress Conduit" style="box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);"/>
+<img src="../assets/images/cypress-signup-conduit.png" alt="Cypress Conduit" class="img-border"/>
 
 ### The Test Runner
 

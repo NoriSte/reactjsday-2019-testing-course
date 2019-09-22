@@ -8,7 +8,7 @@ We managed to have a deterministic event test like the following
 but, as we've seen, one of the defects of the above test is its uselessness while something goes wrong by retrieving the elements to interact with.
 
 <div>
-    <img src="../assets/images/feedback-in-case-of-failure/3-input-not-rendered-error.jpg" alt="Test uselessness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/feedback-in-case-of-failure/3-input-not-rendered-error.jpg" alt="Test uselessness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 
 <br /><br />
@@ -84,10 +84,10 @@ context("Signup flow", () => {
 Both of them work as expected when everything is ok, but if the email input field is not rendered they allow us to understand what's wrong
 
 <div>
-    <img src="../assets/images/feedback-in-case-of-failure/dom-element-type.png" alt="Test usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/feedback-in-case-of-failure/dom-element-type.png" alt="Test usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <div>
-    <img src="../assets/images/feedback-in-case-of-failure/dom-element-placeholder.png" alt="Test usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/feedback-in-case-of-failure/dom-element-placeholder.png" alt="Test usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 
 You get the same feedback if you run Cypress through `cypress run` (most of the times you'll find broken tests in the terminal or reading the logs)
@@ -157,7 +157,7 @@ context("Signup flow", () => {
 This way the test leverages dedicated attributes and selectors, ones that do not change for non-testing purposes. The feedback in case of failure is almost the same as the previous test (good).
 
 <div>
-    <img src="../assets/images/feedback-in-case-of-failure/dom-element-data-testid.png" alt="Attribute usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/feedback-in-case-of-failure/dom-element-data-testid.png" alt="Attribute usefulness" style="width: 100%; max-width: 576px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 The test is now resilient, well done. The following is the complete test

@@ -1,7 +1,7 @@
 # Summary
 
 - [React Testing Course](README.md)
-  - [What you are going to learn (TODO:)](book/what-are-you-going-to-learn.md)
+  - [Course description](book/course-description.md)
   - [About us](book/about-us.md)
 - ***
 - Testing definitions
@@ -10,9 +10,8 @@
 - Testing introduction
   - [Why Testing?](book/why-testing.md)
   - [Testing rules](book/testing-rules.md)
-  - [Having fun while testing TODO:](book/having-fun-while-testing.md)
-  - [What should I not test? TODO:](book/what-not-to-test.md)
-  - [The cost of testing TODO:](book/the-cost-of-testing.md)
+  - [Having fun while testing](book/having-fun-while-testing.md)
+  - [The cost of testing](book/the-cost-of-testing.md)
 - ***
 - [An easier journey: top to bottom](book/top-to-bottom.md)
 - ***

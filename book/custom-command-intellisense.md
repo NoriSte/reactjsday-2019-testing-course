@@ -14,13 +14,13 @@ We need to use a TypeScript definition file to add them, you just need to:
 and the hints that it gives you while coding your test:
 
 <div>
-    <img src="../assets/images/custom-command-intellisense/autocompletion.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/custom-command-intellisense/autocompletion.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <div>
-    <img src="../assets/images/custom-command-intellisense/suggestion.png" alt="Suggestion" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/custom-command-intellisense/suggestion.png" alt="Suggestion" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <div>
-    <img src="../assets/images/custom-command-intellisense/documentation.png" alt="Documentation" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;"/>
+    <img src="../assets/images/custom-command-intellisense/documentation.png" alt="Documentation" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
 [TypeScript](https://www.typescriptlang.org) can do more than documenting your function utilities, but for the sake of our goal just remember that:

@@ -41,3 +41,9 @@
 - if you're not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them?
 
 - last but not least: always remember that testing and TDD are two different things. TDD is a step further and requires a particular context to be practiced, you can test everything without ever applying TDD
+
+- you should not test external services, you should test how you consume them, not if they work or not
+
+- you should not test third party scripts and libraries
+
+- you should not test native APIs

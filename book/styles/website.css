@@ -5,3 +5,17 @@
   width: 300px;
   max-width: 100%;
 }
+
+/* White */
+.img-border,
+.color-theme-0 .img-border {
+  border: 3px solid #eeeeee !important;
+}
+/* Sepia */
+.color-theme-1 .img-border {
+  border: 3px solid #e6d494 !important;
+}
+/* Night */
+.color-theme-2 .img-border {
+  border: 3px solid #3c4361 !important;
+}

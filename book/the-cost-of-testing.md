@@ -1,15 +1,17 @@
-The cost of testing
+# The cost of testing
 
-- the complexity of the project increases, we add one more item to the existing toolchain, it's a problem just if there is not a shared (and appreciated) testing culture
+- the complexity of the project increases, we add more tools to the existing toolchain. If a testing culture is not appreciated, that it be a problem
 
-- at the first time, testing could be a con instead of a pro, you could end up maintaining more on the tests than on your own code (start again)
+- at the first approach, testing could add more cons than pros, you could end up maintaining more the tests your own code
 
-- tests could give you a false confidence, and you blame them when a bug hits the final users
+- tests could give you false confidence, and you blame them when a bug goes online
 
-- testing requires a mind shift, but it's easy to get accustomized if the pros are clear
+- testing requires a mind shift
 
-- you need more time. Experience will make you faster and faster but, at the beginning, you need more time
+- you need more time. The experience will make you faster and faster but, in the beginning, you cannot avoid it
 
-- testing must be part of the definition of done in your company or for your boss, otherwise it's harder to make them understand the testing process value
+- testing must be part of the definition of done in your company or team, otherwise, it's hard to make them understand the testing process value
 
-- you can think you are creating one more app to ba maintained (while the testing "app" is a soft one that allows you to maintain the main one)
+- you could think you are creating one more app to be maintained
+
+Remember to stop and start again and ask some expert developers if you end up blaming your tests, but do not give up!
