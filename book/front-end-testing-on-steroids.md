@@ -7,7 +7,7 @@ Anyway, two of the three main E2E testing problems were front-end developer inde
 <i>File: <a href="../cypress/integration/examples/signup-integration/signup-2.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-2.integration.spec.js</a></i>
 [include](../cypress/integration/examples/signup-integration/signup-2.integration.spec.js)
 
-but there are a lot of error paths that are not been covered yet. The [RealWorld](realworld-project.md) front-end does not manage "all" possible paths, but then if the back-end app responds with an error "email/user already registered", it prints the error as they are.
+but there are a lot of error paths that are not been covered yet. The [RealWorld](the-realworld-project.md) front-end does not manage "all" possible paths, but then if the back-end app responds with an error "email/user already registered", it prints the error as they are.
 
 ![email already used](../assets/images/error-path-1.png)
 ![email and username already used](../assets/images/error-path-2.png)

@@ -34,9 +34,7 @@ In order to see the test running, we must now open Cypress. Run `$ npm run cy:op
 
 If Cypress prompts you with an alert like the following one, it's because you have not the Conduit website running
 
-<!-- TODO: take a look at the image below that does not work -->
-
-<img src="../assets/images/cypress-no-working-website.png" alt="Cypress tells that the website is not running"/>
+<img src="../assets/images/cypress-no-working-website.png" alt="Cypress tells that the website is not running" class="img-border"/>
 
 Launch `npm run realworld:start` in the terminal and everything is going to work. In case of troubles take a look at the [Conduit](the-realworld-project.md) chapter.
 

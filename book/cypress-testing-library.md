@@ -59,7 +59,7 @@ Both the latter cases have not a visual correspondence (if you look at the web a
 
 `cy.findByPlaceholderText` does exactly what we're speaking about! If it fails
 
-![findByPlaceholderText usefulness](../assets/images/feedback-in-case-of-failure/findByplaceholdertext-usefulness.png)
+![findByPlaceholderText usefulness](../assets/images/feedback-in-case-of-failure/getbyplaceholdertext-usefulness.png)
 
 you just need to take a look at the Cypress screenshot (that it [saves automatically](https://docs.cypress.io/guides/guides/screenshots-and-videos.html#Screenshots)) to check if
 
