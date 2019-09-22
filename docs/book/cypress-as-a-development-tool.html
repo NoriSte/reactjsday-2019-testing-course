@@ -102,12 +102,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.1" data-path="what-are-you-going-to-learn.html">
+        <li class="chapter " data-level="1.1.1" data-path="course-description.html">
             
-                <a href="what-are-you-going-to-learn.html">
+                <a href="course-description.html">
             
                     
-                    What you are going to learn (TODO:)
+                    Course description
             
                 </a>
             
@@ -230,7 +230,7 @@
                 <a href="having-fun-while-testing.html">
             
                     
-                    Having fun while testing TODO:
+                    Having fun while testing
             
                 </a>
             
@@ -238,25 +238,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.4" data-path="what-not-to-test.html">
-            
-                <a href="what-not-to-test.html">
-            
-                    
-                    What should I not test? TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.5" data-path="the-cost-of-testing.html">
+        <li class="chapter " data-level="2.2.4" data-path="the-cost-of-testing.html">
             
                 <a href="the-cost-of-testing.html">
             
                     
-                    The cost of testing TODO:
+                    The cost of testing
             
                 </a>
             
@@ -877,25 +864,12 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="conclusions.html">
-            
-                <a href="conclusions.html">
-            
-                    
-                    Conclusions TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.2" data-path="resources.html">
+        <li class="chapter " data-level="5.1" data-path="resources.html">
             
                 <a href="resources.html">
             
                     
-                    Resources
+                    Resources TODO
             
                 </a>
             
@@ -1013,17 +987,17 @@
 <p>Do you know that Cypress could be launched in <strong>every Chrome</strong> version? Do you know that Cypress creates a dedicated (<strong>and persisted</strong>) Chrome user?</p>
 <p>Take a look at the upper right corner of the Cypress list of tests</p>
 <p><div>
-    <img src="../assets/images/chrome-instances.png" alt="A list of the available Chrome version" style="width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/chrome-instances.png" alt="A list of the available Chrome version" style="width: 100%; max-width: 500px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br></p>
 <p>Cypress allows us to choose the Chrome instances that it finds on our machine. I prefer to use Chrome Canary instead of the standard Chrome just to have a different (yellow) icon and recognize immediately the testing-dedicated browser.</p>
 <p><div>
-    <img src="../assets/images/chrome-canary.png" alt="Chrome Canary controlled by Cypress" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/chrome-canary.png" alt="Chrome Canary controlled by Cypress" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br></p>
 <p>and, with a real Google Chrome instance, we can install the React and Redux DevTools as usual (from the Chrome extension website).</p>
 <p><div>
-    <img src="../assets/images/react-and-redux-devtools.png" alt="Chrome Canary controlled by Cypress" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/react-and-redux-devtools.png" alt="Chrome Canary controlled by Cypress" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br></p>
 <p>More: the Crome user of Cypress is persisted through all the projects! So, once we installed our extensions of choice, we can use them in every project!</p>
@@ -1039,7 +1013,7 @@
 <p><img src="../assets/images/console.javascript-context-update.png" alt="Chrome DevTools context change"></p>
 <p>To avoid going back and forth from the code test to exclude/select the tests: we could add the <a href="https://github.com/bahmutov/cypress-skip-and-only-ui" target="_blank">cypress-skip-and-only-ui</a> plugin that adds some buttons to the Test Runner. These buttons allow us to run only a test, to skip some tests or to restore the standard order of the tests. It does, through some simple buttons, what we usually do manually adding <code>.only</code> or <code>.skip</code> to the tests.</p>
 <p><div>
-    <img src="../assets/images/cypress-skip-and-only-ui-plugin.png" alt="Cypress Skip And Only UI plugin" style="width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/cypress-skip-and-only-ui-plugin.png" alt="Cypress Skip And Only UI plugin" style="width: 100%; max-width: 500px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br></p>
 <p>With all the above tips you discover a new way of working... And you discover that <code>cy.findByPlaceholderText(&quot;Username&quot;).type(&quot;Foo&quot;)</code> is way faster than your manually typing. And when you finish... You have already written the tests!</p>
@@ -1083,7 +1057,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"next":{"title":"Other best practices","level":"4.7","depth":1,"ref":"","articles":[{"title":"Dedicated scripts","level":"4.7.1","depth":2,"path":"book/dedicated-scripts.md","ref":"book/dedicated-scripts.md","articles":[]},{"title":"Monitoring tests","level":"4.7.2","depth":2,"path":"book/monitoring-tests.md","ref":"book/monitoring-tests.md","articles":[]},{"title":"Controlling the clock","level":"4.7.3","depth":2,"path":"book/controlling-the-clock.md","ref":"book/controlling-the-clock.md","articles":[]}]},"previous":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-as-a-development-tool.md","mtime":"2019-09-19T05:34:45.022Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-21T16:50:08.756Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"next":{"title":"Other best practices","level":"4.7","depth":1,"ref":"","articles":[{"title":"Dedicated scripts","level":"4.7.1","depth":2,"path":"book/dedicated-scripts.md","ref":"book/dedicated-scripts.md","articles":[]},{"title":"Monitoring tests","level":"4.7.2","depth":2,"path":"book/monitoring-tests.md","ref":"book/monitoring-tests.md","articles":[]},{"title":"Controlling the clock","level":"4.7.3","depth":2,"path":"book/controlling-the-clock.md","ref":"book/controlling-the-clock.md","articles":[]}]},"previous":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-as-a-development-tool.md","mtime":"2019-09-22T13:41:18.884Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-22T14:05:01.557Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

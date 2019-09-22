@@ -102,12 +102,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.1" data-path="what-are-you-going-to-learn.html">
+        <li class="chapter " data-level="1.1.1" data-path="course-description.html">
             
-                <a href="what-are-you-going-to-learn.html">
+                <a href="course-description.html">
             
                     
-                    What you are going to learn (TODO:)
+                    Course description
             
                 </a>
             
@@ -230,7 +230,7 @@
                 <a href="having-fun-while-testing.html">
             
                     
-                    Having fun while testing TODO:
+                    Having fun while testing
             
                 </a>
             
@@ -238,25 +238,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.4" data-path="what-not-to-test.html">
-            
-                <a href="what-not-to-test.html">
-            
-                    
-                    What should I not test? TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.5" data-path="the-cost-of-testing.html">
+        <li class="chapter " data-level="2.2.4" data-path="the-cost-of-testing.html">
             
                 <a href="the-cost-of-testing.html">
             
                     
-                    The cost of testing TODO:
+                    The cost of testing
             
                 </a>
             
@@ -877,25 +864,12 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="conclusions.html">
-            
-                <a href="conclusions.html">
-            
-                    
-                    Conclusions TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.2" data-path="resources.html">
+        <li class="chapter " data-level="5.1" data-path="resources.html">
             
                 <a href="resources.html">
             
                     
-                    Resources
+                    Resources TODO
             
                 </a>
             
@@ -1124,7 +1098,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 </code></pre>
 <p>We return on that later, but that&apos;s the actual feedback of the Test Runner</p>
 <div>
-    <img src="../assets/images/request-payload-assertion.png" alt="Request payload assertions" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/request-payload-assertion.png" alt="Request payload assertions" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 
 
@@ -1245,13 +1219,13 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 <p>You can read more about the Cypress assertions in the <a href="https://docs.cypress.io/guides/references/assertions.html" target="_blank">official documentation</a>.</p>
 <p>In the next screenshot you can find (one of) the result of so much assertions: a punctual feedback in case of an error with the AJAX request</p>
 <div>
-    <img src="../assets/images/feedback-in-case-of-failure/request-payload-error.png" alt="Request payload error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/feedback-in-case-of-failure/request-payload-error.png" alt="Request payload error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 
 <h3 id="smarter-assertions">Smarter assertions</h3>
 <p>The assertions show above are precise but not so smart. Their feedback is not smart neither, take a look at the next screenshot</p>
 <p><div>
-    <img src="../assets/images/extremely-long-feedback.png" alt="Extremely long feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/extremely-long-feedback.png" alt="Extremely long feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br>
 We can maintain all the usefulness of the feedback while making them a little smarter leveraging one of the combinations offered by Cypress to write assertions. The next code asserts the same things in a more concise mode and with more concise feedback too</p>
@@ -1281,7 +1255,7 @@ We can maintain all the usefulness of the feedback while making them a little sm
 });
 </code></pre>
 <p><div>
-    <img src="../assets/images/concise-feedback.png" alt="More concise feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/concise-feedback.png" alt="More concise feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br></p>
 <p>You can find the whole test code in the <a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js">signup-8-simpler-assertions.e2e.spec.js</a> file.</p>
@@ -1312,7 +1286,7 @@ We can maintain all the usefulness of the feedback while making them a little sm
 </code></pre>
 <p>but it&apos;s not recommended because, in case of failure, the feedback is too much generic:</p>
 <p><div>
-    <img src="../assets/images/feedback-in-case-of-failure/chai-subset-error.png" alt="Chai subset error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/feedback-in-case-of-failure/chai-subset-error.png" alt="Chai subset error" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br></p>
 <p>If you&apos;d like to know how you can install a Chai plugin and use it in Cypress:</p>
@@ -1371,7 +1345,7 @@ what e2e tests do not
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Asserting on payloads","level":"4.4.2","depth":2,"next":{"title":"Custom Commands","level":"4.5","depth":1,"ref":"","articles":[{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]}]},"previous":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/payload-assertions.md","mtime":"2019-09-06T13:03:44.908Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-21T16:50:08.756Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Asserting on payloads","level":"4.4.2","depth":2,"next":{"title":"Custom Commands","level":"4.5","depth":1,"ref":"","articles":[{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]}]},"previous":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/payload-assertions.md","mtime":"2019-09-22T13:41:18.884Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-22T14:05:01.557Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

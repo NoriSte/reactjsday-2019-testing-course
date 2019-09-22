@@ -102,12 +102,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.1" data-path="what-are-you-going-to-learn.html">
+        <li class="chapter " data-level="1.1.1" data-path="course-description.html">
             
-                <a href="what-are-you-going-to-learn.html">
+                <a href="course-description.html">
             
                     
-                    What you are going to learn (TODO:)
+                    Course description
             
                 </a>
             
@@ -230,7 +230,7 @@
                 <a href="having-fun-while-testing.html">
             
                     
-                    Having fun while testing TODO:
+                    Having fun while testing
             
                 </a>
             
@@ -238,25 +238,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.4" data-path="what-not-to-test.html">
-            
-                <a href="what-not-to-test.html">
-            
-                    
-                    What should I not test? TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.5" data-path="the-cost-of-testing.html">
+        <li class="chapter " data-level="2.2.4" data-path="the-cost-of-testing.html">
             
                 <a href="the-cost-of-testing.html">
             
                     
-                    The cost of testing TODO:
+                    The cost of testing
             
                 </a>
             
@@ -877,25 +864,12 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="conclusions.html">
-            
-                <a href="conclusions.html">
-            
-                    
-                    Conclusions TODO:
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.2" data-path="resources.html">
+        <li class="chapter " data-level="5.1" data-path="resources.html">
             
                 <a href="resources.html">
             
                     
-                    Resources
+                    Resources TODO
             
                 </a>
             
@@ -1087,12 +1061,12 @@ const user = {
 <li>we need to stub (the process of intercepting and responding with static data) even more AJAX calls because, once the signup flow is complete, the home page calls some more APIs to populate the page.</li>
 </ul>
 <p><div>
-    <img src="../assets/images/integration-test-error.jpg" alt="Front-end error" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/integration-test-error.jpg" alt="Front-end error" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br>
 The test Runner helps us a lot identifying the unstubbed AJAX calls</p>
 <p><div>
-    <img src="../assets/images/test-runner-ajax-requests.png" alt="Unstubbed AJAX calls" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/test-runner-ajax-requests.png" alt="Unstubbed AJAX calls" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br></p>
 <p>as you can see:</p>
@@ -1204,7 +1178,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 </code></pre>
 <p>The most astonishing result is the speed of the test &#x1F631;</p>
 <p><div>
-    <img src="../assets/images/integration-test-performance.png" alt="Integration test performance" style="width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); display: block; margin-top: 10px;">
+    <img src="../assets/images/integration-test-performance.png" alt="Integration test performance" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br></p>
 <p>Why should we test the request payload in the UI Integration Tests too? Leveraging the fact that the requests do not hit the back-end, we are going to use this kind of tests for a lot of different paths. Some of these paths will not have a corresponding E2E test because they would be too much expensive. Since <strong>request payloads are super important</strong>, we can not think to check only the ones included in an E2E test.</p>
@@ -1248,7 +1222,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"next":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/cypress-as-a-development-tool.md","ref":"book/cypress-as-a-development-tool.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/stubbing-the-backend.md","mtime":"2019-09-21T14:05:31.161Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-21T16:50:08.756Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"next":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/cypress-as-a-development-tool.md","ref":"book/cypress-as-a-development-tool.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"include":{},"copy-code-button":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/stubbing-the-backend.md","mtime":"2019-09-22T13:41:18.877Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-22T14:05:01.557Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
