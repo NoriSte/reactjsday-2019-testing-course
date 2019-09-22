@@ -4,7 +4,7 @@
   "description": "The \\\"Testing React\\\" course of the Italian ReactJSDay 2019",
   "main": "index.js",
   "scripts": {
-    "postinstall": "gitbook install && npm run realworld:install && npm run demo-app:install",
+    "postinstall": "gitbook install && npm run realworld:install",
     "test": "start-server-and-test realworld:start http://localhost:4100 test:everything",
     "test:everything": "npm run test:unit && npm run demo-app:test:nowatch && npm run cy:run && npm run run:examples",
     "// BOOK ///////////": "",
@@ -87,6 +87,7 @@
     "start-server-and-test": "1.10.0"
   },
   "dependencies": {
+    "gitbook-plugin-github": "^2.0.0",
     "gitbook-plugin-include": "^0.1.0",
     "gitbook-plugin-include-codeblock": "^3.2.2"
   }
