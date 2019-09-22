@@ -1,4 +1,5 @@
 # ReactJSDay 2019 Testing Course
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 [![GPL 3.0 License][license-badge]][license]
 [![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
@@ -27,3 +28,19 @@ at nori.ste.magni@gmail.com.
 
 [license]: https://github.com/NoriSte/reactjsday-2019-testing-course/blob/master/README.md#license
 [license-badge]: https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt="Stefano Magni"/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="#business-NoriSte" title="Business development">💼</a> <a href="#content-NoriSte" title="Content">🖋</a> <a href="#example-NoriSte" title="Examples">💡</a> <a href="#eventOrganizing-NoriSte" title="Event Organizing">📋</a> <a href="#ideas-NoriSte" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
