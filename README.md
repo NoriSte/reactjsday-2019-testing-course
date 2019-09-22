@@ -4,19 +4,17 @@
 [![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
 [![RealWorld Backend](https://img.shields.io/badge/realworld-backend-%23783578.svg)](http://realworld.io)
 
-[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/) <-- is it working? replace it with libraries.io?
 
-TODO: additional requisites to run the tests on your local machine:
+[![Build Status](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course.svg?branch=master)](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course)
+[![Build Cron](https://img.shields.io/badge/build%20cron-weekly-44cc11.svg)](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+
+Additional requisites to run the tests on your local machine:
 
 - Node.js 10+
 - [MongoDB](https://docs.mongodb.com/manual/installation/#tutorials)
 - [Docker](https://docs.docker.com/install/)
 
-TODO:
-
-`npm install`
-
-`npm run book:serve`
 
 TODO: to run all the apps and play with the exercises...
 
