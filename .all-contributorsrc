@@ -13,7 +13,12 @@
       "contributions": [
         "code",
         "test",
-        "doc"
+        "doc",
+        "business",
+        "content",
+        "example",
+        "eventOrganizing",
+        "ideas"
       ]
     },
     {
@@ -37,7 +42,7 @@
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "cypress-wait-until",
+  "projectName": "reactjsday-2019-testing-course",
   "projectOwner": "NoriSte",
   "repoType": "github",
   "repoHost": "https://github.com"
