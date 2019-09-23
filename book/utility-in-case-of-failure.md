@@ -32,7 +32,7 @@ could be listed in the so-called "_implementation details_". We're testing the w
 
 A more practical example: if you need to test that pushing the accelerator get the car move, you push the accelerator and you check that... the car move! If the accelerator is a wired or electronic one does not matter! You will test the connection between the accelerator and the engine with other types of test.
 
-Remember that the subject under test must be treated as a black box (see the [testing rules](testing-rules.md)). About the signup flow: we are not testing why the form component did not receive the right dispatch prop or why it does not call dispatch it. We are just checking that the form works and allows the user to register! **Do the users care about Redux actions? No!** They just want to register!
+Remember that the subject under test must be treated as a black box (see the [testing rules](testing-rules.md)). About the signup flow: we are not testing why the form component do not receive the right dispatch prop or why it does not call it. We are just checking that the form works and allows the user to register! **Do the users care about Redux actions? No!** They just want to register!
 
 ### Error feedback
 

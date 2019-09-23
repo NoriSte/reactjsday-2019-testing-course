@@ -147,7 +147,7 @@ Please note: Cypress automatically [exposes jQuery through `Cypress.$`](https://
 There is an important difference between how `cy.contains` and `cy.findByText` work:
 
 - `cy.contains` retrieves DOM elements even without an exact match (`cy.contains("No articles are here")` works)
-- `cy.findByText` does not retrieve DOM elements without an exact match (`cy.findByText("No articles are here")` does not work, you need to replace it with `cy.findByText("No articles are here... yet.")`)
+- `cy.findByText` does not retrieve DOM elements without an exact match (`cy.findByText("No articles are here")` does not work, you need to replace it with `cy.findByText("No articles are here... yet.")`... Unless you pass an `exact: false` option)
 
 Using Testing Library, the test becomes the following
 

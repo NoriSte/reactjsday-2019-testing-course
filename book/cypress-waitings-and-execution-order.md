@@ -59,7 +59,7 @@ The Test Runner shows you what's happening in the front-end application, every e
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/C62rYlmKLho?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-it shows how the Test Runner allows you to "time travel" the various phases and check the state of the front-end before and after the execution of every command. As usual, take a look at the @Test Runner documentation](https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments) to discover more about it.
+it shows how the Test Runner allows you to "time travel" the various phases and check the state of the front-end before and after the execution of every command. As usual, take a look at the [Test Runner documentation](https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments) to discover more about it.
 
 ### Test code execution order
 
@@ -103,7 +103,7 @@ cy.get("button").then($button => button.click());
 cy.get("button").click();
 ```
 
-the latter is possible because every command is executed on the previous yielded value.
+the latter is possible because every command is executed on the previous yielded value/subject.
 
 Last but not least: commands can be chained on the `cy` object:
 
@@ -118,7 +118,8 @@ cy.get(".form-control").then($els => {
 });
 // is equivalent to
 cy.visit("/register")
-  .get(".form-control").then($els => {
+  .get(".form-control")
+  .then($els => {
     cy.get($els[0])
       .type("Tester")
       .get($els[1])
@@ -127,9 +128,8 @@ cy.visit("/register")
       .type("mysupersecretpassword")
       .get("button")
       .click();
-  })
-  cy.contains("No articles are here")
-    .should("be.visible");
+  });
+cy.contains("No articles are here").should("be.visible");
 ```
 
 You can choose the syntax you're more comfortable with. Read more about [the asynchronicity nature of Cypress in the official documentation](https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values).
@@ -150,6 +150,7 @@ p.s. out of curiosity: you can log the Cypress queued commands with a slight cha
   });
 });
 ```
+
 That's the result
 <img src="../assets/images/cy-commands-log.png" alt="Cypress queued commands" class="img-border"/>
 

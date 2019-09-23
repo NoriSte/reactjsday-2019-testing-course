@@ -1,6 +1,6 @@
 # Custom command
 
-The same way we have created a custom [signup command](signup-custom-command.md) for the E2E tests, we could create an authentication command for the UI Integration Tests too. It will be way far simpler because we do not need a real signup/authentication, obviously: we just need that the **front-end thinks that it's authenticated**.
+The same way we have created a custom [signup command](signup-custom-command.md) for the E2E tests, we could create an authentication command for the UI Integration Tests too. It will be way far simpler because we do not need a real signup/authentication, obviously: we just need that the **front-end thinks that's authenticated**.
 <br />
 What we have to do is essentially setting the `jwt` token into the local storage. Let's write the `authenticateIntegration` custom command.
 

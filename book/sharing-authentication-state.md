@@ -76,7 +76,7 @@ What the new code does:
 
 - waits until the `localStorage.jwt` token is available, the front-end does not set it synchronously (or, better, you should get accustomed that nothing is synchronous with E2E tests). This waiting is made easy by the inner [Cypress retry-ability](https://docs.cypress.io/guides/core-concepts/retry-ability.html) that retries the previous command (unless it could potentially change the state of the application under test like a `click` could do) until the assertions pass.
   <br />
-  So, the `jwt` retrieval (`.its("jwt")`) is retired until the next assertion `.should(jwt => expect(jwt).to.be.a("string").and.not.to.be.empty)` passes.
+  So, the `jwt` retrieval (`.its("jwt")`) is retried until the next assertion `.should(jwt => expect(jwt).to.be.a("string").and.not.to.be.empty)` passes.
 
 - once the `jwt` token is set, it stores all the user data (the token, the parameters, and the new `user` object)
 
@@ -151,7 +151,7 @@ if (!ignoreLocalStorage && previousUserData.jwt && previousUserData.email === em
 localStorage.setItem("jwt", previousUserData.jwt);
 ```
 
-- then, we must check that the token is still valid for the back-end application. It should not be a problem (unless the tests last for hours) but you never know, **test independence and stability must not be mined by a missing control**. Obviously, this check must be from the user perspective, as we read in the [cypress-testing-library](cypress-testing-library.md) chapter
+- then, we must check that the token is still valid for the back-end application. It should not be a problem (unless the tests last for hours) but you never know, **test independence and stability must not be put at risk by a missing control**. Obviously, this check must be performend from the user perspective, as we read in the [cypress-testing-library](cypress-testing-library.md) chapter
 
 ```javascript
 cy.visit("/")

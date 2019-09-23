@@ -78,13 +78,13 @@ cy.get(".form-control").then($els => {
 });
 ```
 
-- `cy.get(".form-control").then($els => ...` is necessary because almost every Cypress command can be leveraged synchronously (we are going to learn why later)
+- `cy.get(".form-control").then($els => ...` is necessary because almost every Cypress command must be leveraged asynchronously (we are going to learn why later)
 
 - `$els`, like every JQuery selector, is an array containing all the DOM elements that respond to the given selector (`.form-control`)
 
 - `cy.get($els[<INDEX>])` select the element and `.type("Tester")` types, as the user would do, into the input field
 
-Then, we can go ahead and click the buttons
+Then, we can go ahead and click the button
 
 ```js
 it("The happy path should work", () => {
@@ -101,9 +101,7 @@ it("The happy path should work", () => {
 
 - `cy.get("button").click()` speaks for itself
 
-- "_No articles are here... yet._" is the string that the home pages shows when the signup flow ends. After successful registration, the user is redirected to the home page, the "Your Feed" does not contain any posts yet. Think about it as the proof that everything worked (while testing the signup flow, obviously)
-
-
+- "_No articles are here... yet._" is the string that the home page shows when the signup flow ends. After successful registration, the user is redirected to the home page, the "Your Feed" does not contain any posts yet. Think about it as the proof that everything worked (while testing the signup flow, obviously)
 
 <img src="../assets/images/signup-feedback.png" alt="Cypress Conduit" class="img-border"/>
 

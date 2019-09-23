@@ -57,7 +57,7 @@ that's the output...
 
 ```
 
-... and the screenshot took by Cypress.
+... and the screenshot taken by Cypress.
 
 
 
