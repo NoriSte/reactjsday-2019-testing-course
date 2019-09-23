@@ -4,3 +4,4 @@ reactjsday-2019-testing-course.code-workspace
 slides
 .gitignore
 __tests__
+tests
