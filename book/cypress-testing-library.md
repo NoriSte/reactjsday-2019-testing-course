@@ -153,5 +153,3 @@ Using Testing Library, the test becomes the following
 
 <i>File: <a href="../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js</a></i>
 [include](../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js)
-
-<!-- TODO: assert about all the elemements visibility -->

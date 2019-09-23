@@ -1003,7 +1003,7 @@
 <blockquote>
 <p>The querying behavior of this command matches exactly how $(&#x2026;) works in jQuery.</p>
 </blockquote>
-<p>It sounds strange to leverage JQuery nowadays... But do not forget one of the <a href="testing-rules.html">testing rules</a>: the test must be simple. The less code the test is made of, the more the test is readable and understandable. And JQuery surely improves both the simplicity and productivity.</p>
+<p>It sounds strange to leverage JQuery nowadays... But do not forget one of the <a href="testing-rules.html#simple">testing rules</a>: the test must be simple. The less code the test is made of, the more the test is readable and understandable. And JQuery surely improves both the simplicity and productivity.</p>
 <p>What about the following snippet</p>
 <pre><code class="lang-js">cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
   cy.get($els[<span class="hljs-number">0</span>]).type(<span class="hljs-string">&quot;Tester&quot;</span>);
@@ -1012,7 +1012,7 @@
 });
 </code></pre>
 <ul>
-<li><p><code>cy.get(&quot;.form-control&quot;).then($els =&gt; ...</code> is necessary because almost every Cypress command must be leveraged asynchronously (we are going to learn why later)</p>
+<li><p><code>cy.get(&quot;.form-control&quot;).then($els =&gt; ...</code> is necessary because almost every Cypress command must be leveraged asynchronously (we are going to learn why with the <a href="cypress-waitings-and-execution-order.html">Cypress waitings and execution order</a>)</p>
 </li>
 <li><p><code>$els</code>, like every JQuery selector, is an array containing all the DOM elements that respond to the given selector (<code>.form-control</code>)</p>
 </li>
@@ -1047,7 +1047,7 @@
 </li>
 </ul>
 <p>As you can see from the screenshot above, the test worked! &#x1F389;</p>
-<p>Now: are we sure that the test follows the <a href="testing-rules.html">testing rules</a>? This test is <strong>neither deterministic nor stable nor useful</strong> if it fails! The next chapters are going to explain the reasons why.</p>
+<p>Now: are we sure that the test follows the testing rules? This test is <strong>neither deterministic nor stable nor useful</strong> if it fails! The next chapters are going to explain the reasons why.</p>
 
                                 
                                 </section>
@@ -1091,7 +1091,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.4","depth":2,"next":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"path":"book/cypress-waitings-and-execution-order.md","ref":"book/cypress-waitings-and-execution-order.md","articles":[]},"previous":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-09-23T06:06:47.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-23T07:05:10.180Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.4","depth":2,"next":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"path":"book/cypress-waitings-and-execution-order.md","ref":"book/cypress-waitings-and-execution-order.md","articles":[]},"previous":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-09-23T07:53:49.754Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-23T07:59:23.404Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
