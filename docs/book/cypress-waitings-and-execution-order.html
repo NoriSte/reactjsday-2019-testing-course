@@ -992,7 +992,7 @@ cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&g
 <p>The Test Runner shows you what&apos;s happening in the front-end application, every executed Cypress command, and the result of all the assertions. And it&apos;s interactive, too! Take a look at the following video</p>
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/C62rYlmKLho?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>it shows how the Test Runner allows you to &quot;time travel&quot; the various phases and check the state of the front-end before and after the execution of every command. As usual, take a look at the @Test Runner documentation](<a href="https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments" target="_blank">https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments</a>) to discover more about it.</p>
+<p>it shows how the Test Runner allows you to &quot;time travel&quot; the various phases and check the state of the front-end before and after the execution of every command. As usual, take a look at the <a href="https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments" target="_blank">Test Runner documentation</a> to discover more about it.</p>
 <h3 id="test-code-execution-order">Test code execution order</h3>
 <p>That&apos;s the weird thing you need to get used with Cypress. As we told in advance, every Cypress command is asynchronous by default. That means that Cypress executes the test code twice:</p>
 <ul>
@@ -1025,7 +1025,7 @@ button.click(); <span class="hljs-comment">// nope</span>
 <span class="hljs-comment">// or simply</span>
 cy.get(<span class="hljs-string">&quot;button&quot;</span>).click();
 </code></pre>
-<p>the latter is possible because every command is executed on the previous yielded value.</p>
+<p>the latter is possible because every command is executed on the previous yielded value/subject.</p>
 <p>Last but not least: commands can be chained on the <code>cy</code> object:</p>
 <pre><code class="lang-javascript">cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
 cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
@@ -1037,7 +1037,8 @@ cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&g
 });
 <span class="hljs-comment">// is equivalent to</span>
 cy.visit(<span class="hljs-string">&quot;/register&quot;</span>)
-  .get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
+  .get(<span class="hljs-string">&quot;.form-control&quot;</span>)
+  .then($els =&gt; {
     cy.get($els[<span class="hljs-number">0</span>])
       .type(<span class="hljs-string">&quot;Tester&quot;</span>)
       .get($els[<span class="hljs-number">1</span>])
@@ -1046,9 +1047,8 @@ cy.visit(<span class="hljs-string">&quot;/register&quot;</span>)
       .type(<span class="hljs-string">&quot;mysupersecretpassword&quot;</span>)
       .get(<span class="hljs-string">&quot;button&quot;</span>)
       .click();
-  })
-  cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>)
-    .should(<span class="hljs-string">&quot;be.visible&quot;</span>);
+  });
+cy.contains(<span class="hljs-string">&quot;No articles are here&quot;</span>).should(<span class="hljs-string">&quot;be.visible&quot;</span>);
 </code></pre>
 <p>You can choose the syntax you&apos;re more comfortable with. Read more about <a href="https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values" target="_blank">the asynchronicity nature of Cypress in the official documentation</a>.
 <br><br><br>
@@ -1108,7 +1108,7 @@ p.s. out of curiosity: you can log the Cypress queued commands with a slight cha
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"next":{"title":"Main E2E test defects","level":"4.2.6","depth":2,"ref":"","articles":[{"title":"Determinism","level":"4.2.6.1","depth":3,"path":"book/e2e-test-defects-determinism.md","ref":"book/e2e-test-defects-determinism.md","articles":[]},{"title":"Stability","level":"4.2.6.2","depth":3,"path":"book/e2e-test-defects-stability.md","ref":"book/e2e-test-defects-stability.md","articles":[]},{"title":"Utility in case of failure","level":"4.2.6.3","depth":3,"path":"book/utility-in-case-of-failure.md","ref":"book/utility-in-case-of-failure.md","articles":[]}]},"previous":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-waitings-and-execution-order.md","mtime":"2019-09-22T13:40:43.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-22T14:55:36.860Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"next":{"title":"Main E2E test defects","level":"4.2.6","depth":2,"ref":"","articles":[{"title":"Determinism","level":"4.2.6.1","depth":3,"path":"book/e2e-test-defects-determinism.md","ref":"book/e2e-test-defects-determinism.md","articles":[]},{"title":"Stability","level":"4.2.6.2","depth":3,"path":"book/e2e-test-defects-stability.md","ref":"book/e2e-test-defects-stability.md","articles":[]},{"title":"Utility in case of failure","level":"4.2.6.3","depth":3,"path":"book/utility-in-case-of-failure.md","ref":"book/utility-in-case-of-failure.md","articles":[]}]},"previous":{"title":"Interacting with the page","level":"4.2.4","depth":2,"path":"book/interacting-with-the-page.md","ref":"book/interacting-with-the-page.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/cypress-waitings-and-execution-order.md","mtime":"2019-09-23T06:02:56.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-23T06:06:40.124Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

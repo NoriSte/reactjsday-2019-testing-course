@@ -1012,14 +1012,14 @@
 });
 </code></pre>
 <ul>
-<li><p><code>cy.get(&quot;.form-control&quot;).then($els =&gt; ...</code> is necessary because almost every Cypress command can be leveraged synchronously (we are going to learn why later)</p>
+<li><p><code>cy.get(&quot;.form-control&quot;).then($els =&gt; ...</code> is necessary because almost every Cypress command must be leveraged asynchronously (we are going to learn why later)</p>
 </li>
 <li><p><code>$els</code>, like every JQuery selector, is an array containing all the DOM elements that respond to the given selector (<code>.form-control</code>)</p>
 </li>
 <li><p><code>cy.get($els[&lt;INDEX&gt;])</code> select the element and <code>.type(&quot;Tester&quot;)</code> types, as the user would do, into the input field</p>
 </li>
 </ul>
-<p>Then, we can go ahead and click the buttons</p>
+<p>Then, we can go ahead and click the button</p>
 <pre><code class="lang-js">it(<span class="hljs-string">&quot;The happy path should work&quot;</span>, () =&gt; {
   cy.visit(<span class="hljs-string">&quot;/register&quot;</span>);
   cy.get(<span class="hljs-string">&quot;.form-control&quot;</span>).then($els =&gt; {
@@ -1034,7 +1034,7 @@
 <ul>
 <li><p><code>cy.get(&quot;button&quot;).click()</code> speaks for itself</p>
 </li>
-<li><p>&quot;<em>No articles are here... yet.</em>&quot; is the string that the home pages shows when the signup flow ends. After successful registration, the user is redirected to the home page, the &quot;Your Feed&quot; does not contain any posts yet. Think about it as the proof that everything worked (while testing the signup flow, obviously)</p>
+<li><p>&quot;<em>No articles are here... yet.</em>&quot; is the string that the home page shows when the signup flow ends. After successful registration, the user is redirected to the home page, the &quot;Your Feed&quot; does not contain any posts yet. Think about it as the proof that everything worked (while testing the signup flow, obviously)</p>
 </li>
 </ul>
 <p><img src="../assets/images/signup-feedback.png" alt="Cypress Conduit" class="img-border"></p>
@@ -1091,7 +1091,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.4","depth":2,"next":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"path":"book/cypress-waitings-and-execution-order.md","ref":"book/cypress-waitings-and-execution-order.md","articles":[]},"previous":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-09-22T13:39:41.087Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-22T14:55:36.860Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Interacting with the page","level":"4.2.4","depth":2,"next":{"title":"Cypress waitings and execution order","level":"4.2.5","depth":2,"path":"book/cypress-waitings-and-execution-order.md","ref":"book/cypress-waitings-and-execution-order.md","articles":[]},"previous":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/interacting-with-the-page.md","mtime":"2019-09-23T06:04:24.452Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-23T06:06:40.124Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
