@@ -1,4 +1,4 @@
-# Visual Regression Testnig
+# Visual Regression Testing
 
 The contracts the front-end must adhere are more than one: from a functional contract with the user to a communication contract with the server. Another important aspect is the visual contract. We implement a visual design system and we do our best to get every view conformed with it.
 

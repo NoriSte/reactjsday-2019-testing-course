@@ -53,7 +53,7 @@
   - [Monitoring tests](book/monitoring-tests.md)
   - [Controlling the clock](book/controlling-the-clock.md)
 - [Continuous integration](book/continuous-integration.md)
-- [Visual Regression Testnig](book/visual-regression-testing.md)
+- [Visual Regression Testing](book/visual-regression-testing.md)
 - [Cypress vs other tools](book/cypress-vs-other-tools.md)
 - [Why is E2E testing not enough?](book/why-is-e2e-testing-not-enough.md)
 - ***
