@@ -24,7 +24,7 @@ When we test the front-end of our web app, we need to consider it a closed block
 
 - contract with the server
 
-The first one is the subject of the all the E2E tests, the second one is the subject for the [visual regression tests](visual-regression-testing.md) (we are going to speak about it later), but we need to concentrate on the last one. A lot of times the front-end stops working because of a misaligned communication with the back-end.
+The first one is the subject of the all the E2E tests, the second one is the subject for the [visual regression tests](visual-regression-testing.md), but we need to concentrate on the last one. A lot of times the front-end stops working because of a misaligned communication with the back-end.
 
 ### AJAX request waiting
 

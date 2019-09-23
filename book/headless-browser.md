@@ -4,7 +4,7 @@ A headless browser is a standard web browser without a GUI. You instrument it wi
 
 [Selenium](https://www.seleniumhq.org/projects/webdriver/) and [Puppeteer](https://pptr.dev) are the most used browser automation tools while [Cypress](https://cypress.io), [TestCafé](https://testcafe.devexpress.com/), [Protractor](https://www.protractortest.org/#/), etc. leverage the same mechanism with the purpose of testing a web app.
 
-Let's take a look at what a "browser without GUI" means with the first example using Cypress (we're going to speak later about why we choose Cypress).
+Let's take a look at what a "browser without GUI" means with the first example using Cypress (why Cypress? Go to the [Cypress vs other tools](cypress-vs-other-tools.md) chapter).
 
 <i>File: <a href="../cypress/integration/examples/headless-browser.spec.js" target="_blank">cypress/integration/examples/headless-browser.spec.js</a></i>
 [include](../cypress/integration/examples/headless-browser.spec.js)
@@ -58,8 +58,6 @@ that's the output...
 ```
 
 ... and the screenshot taken by Cypress.
-
-
 
 <div style="max-height: 500px; overflow:hidden;">
     <img src="../assets/images/headless-browser-screenshot-2.png" alt="Headless browser screenshot" style="width: 100%; max-width: 300px; margin-left: auto; margin-right: auto;" class="img-border"/>

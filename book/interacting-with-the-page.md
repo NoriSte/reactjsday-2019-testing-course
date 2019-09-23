@@ -78,7 +78,7 @@ cy.get(".form-control").then($els => {
 });
 ```
 
-- `cy.get(".form-control").then($els => ...` is necessary because almost every Cypress command must be leveraged asynchronously (we are going to learn why later)
+- `cy.get(".form-control").then($els => ...` is necessary because almost every Cypress command must be leveraged asynchronously (we are going to learn why with the [Cypress waitings and execution order](cypress-waitings-and-execution-order.md))
 
 - `$els`, like every JQuery selector, is an array containing all the DOM elements that respond to the given selector (`.form-control`)
 

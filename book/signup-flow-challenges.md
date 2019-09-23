@@ -8,7 +8,7 @@ There is a lot to tell and care when writing E2E tests, we are goign to use one 
 
 - it contains some error flows to be tested
 
-- most of the flows need a registered user (speaking about it later)
+- most of the flows need a registered user
 
 Please note: you need to have the [RealWorld](about-the-book.md#code) example running, be sure that you have `$ npm run realworld:start` running (if something does not work, take a look at the [installation instructions](../README.md)).
 
