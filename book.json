@@ -1,6 +1,6 @@
 {
   "output": "docs",
-  "plugins": ["include-codeblock", "-sharing", "include", "copy-code-button", "github"],
+  "plugins": ["include-codeblock", "-sharing", "include", "copy-code-button", "github", "sitemap"],
   "links": {
     "sidebar": {
       "ReactJSDay 2019": "https://2019.reactjsday.it"
@@ -13,6 +13,9 @@
   "pluginsConfig": {
     "github": {
       "url": "https://github.com/NoriSte/reactjsday-2019-testing-course"
+    },
+    "sitemap": {
+      "hostname": "https://noriste.github.io/reactjsday-2019-testing-course/"
     }
   }
 }
