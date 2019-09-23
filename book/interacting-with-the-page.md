@@ -66,7 +66,7 @@ context("Signup flow", () => {
 
 > The querying behavior of this command matches exactly how \$(…) works in jQuery.
 
-It sounds strange to leverage JQuery nowadays... But do not forget one of the [testing rules](testing-rules.md): the test must be simple. The less code the test is made of, the more the test is readable and understandable. And JQuery surely improves both the simplicity and productivity.
+It sounds strange to leverage JQuery nowadays... But do not forget one of the [testing rules](testing-rules.md#simple): the test must be simple. The less code the test is made of, the more the test is readable and understandable. And JQuery surely improves both the simplicity and productivity.
 
 What about the following snippet
 
@@ -113,4 +113,4 @@ it("The happy path should work", () => {
 
 As you can see from the screenshot above, the test worked! 🎉
 
-Now: are we sure that the test follows the [testing rules](testing-rules.md)? This test is **neither deterministic nor stable nor useful** if it fails! The next chapters are going to explain the reasons why.
+Now: are we sure that the test follows the testing rules? This test is **neither deterministic nor stable nor useful** if it fails! The next chapters are going to explain the reasons why.

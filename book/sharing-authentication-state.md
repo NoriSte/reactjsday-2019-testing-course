@@ -2,7 +2,7 @@
 
 We know that the state must not be shared between subsequent tests because it's the reason #1 for brittle tests. But when you know the rules, you know the motivations behind them and how to bend them to your needs.
 
-Citing again the [testing rules](testing-rules.md): why should we not share the state between tests? Imagine this scenario:
+Citing again the [testing rules](testing-rules.md#shared-state): why should we not share the state between tests? Imagine this scenario:
 
 - `test a` registers a new user and does actions that need the user to be registered
 

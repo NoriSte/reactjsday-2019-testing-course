@@ -94,7 +94,7 @@ Below there are both the single-error test and the multiple-errors one
 <i>File: <a href="../cypress/integration/examples/signup-integration/signup-error-paths-1.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-error-paths-1.integration.spec.js</a></i>
 [include](../cypress/integration/examples/signup-integration/signup-error-paths-1.integration.spec.js)
 
-Almost all the code of the tests is the same. Keeping in mind that we must resist adding complex abstractions to the code of the tests (see the [testing rules](testing-rules.md)<!--TODO: link directly the correct paragraph-->) we could separate some code to a dedicated function and leverage it from the body of the test. After all, only the response changes between the above tests... Take a look at the following code
+Almost all the code of the tests is the same. Keeping in mind that we must resist adding complex abstractions to the code of the tests (see the [testing rules](testing-rules.md#dry)) we could separate some code to a dedicated function and leverage it from the body of the test. After all, only the response changes between the above tests... Take a look at the following code
 
 <i>File: <a href="../cypress/integration/examples/signup-integration/signup-error-paths-2.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-error-paths-2.integration.spec.js</a></i>
 [include](../cypress/integration/examples/signup-integration/signup-error-paths-2.integration.spec.js)
