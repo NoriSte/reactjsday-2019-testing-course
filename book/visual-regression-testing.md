@@ -31,3 +31,5 @@ Professional and dedicated tools are not free but they simplify your life, they:
 - manage automatically and smartly the little differences to avoid false negatives
 
 - move the workload on their servers instead of your local machine
+
+If you want see how a professional tool could help you with Visual Regression Testing, see the [Writing Tests For CSS Is Possible! Don’t Believe The Rumors](https://www.youtube.com/watch?v=Dl_XMd_1F6E) talk by Gil Tayar.

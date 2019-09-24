@@ -8,7 +8,7 @@
 
 - obviously, the opposite is important too: the tests must fail if the app does not work, otherwise, what are they testing?
 
-- <span id="simple"></span>the tests must be simple. Simple to be read, understood, and changed. The tests must be an ally, simple scripts that perform some checks in place of you. **Complex and unclear tests are an enemy**, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. And remember that...
+- <span id="simple"></span>the tests must be simple. Simple to be read, understood, and changed. The tests must be an ally, simple scripts that perform some checks in place of you. **Complex and unclear tests are an enemy**, you write some tests to allow yourself to refactor the code, you can not spend your time refactoring the tests too. And remember that... (read the [Avoid Nesting when you're Testing](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing) article of Kent C. Dodds)
 
 - ... Debugging a failing test is way harder than debugging an application
 
@@ -26,7 +26,7 @@
 
 - **the tests must be fast, as fast as possible**. You can not sacrifice speed for reliability, but the speed is really important because the faster the tests are, the faster you have feedback, the higher the chance you run them frequently, the sooner you discover regressions. Slow tests make you move your mind to another task, make you waste your time, make you hungry when they fail after a 30-minutes pipeline, and, sooner or later, they make you think about removing them...
 
-- <span id="whitebox-testing"></span>never do white-box testing. You have to test APIs, contracts, and behaviors, not internal details. You must test as the consumer, not as the author
+- <span id="whitebox-testing"></span>never do white-box testing. You have to test APIs, contracts, and behaviors, not internal details. You must test as the consumer, not as the author ([Testing Implementation Details](https://kentcdodds.com/blog/testing-implementation-details) by Kent C. Dodds)
 
 - as much as you can, you should avoid that the tests fail because of some slight code changes
 

@@ -5,7 +5,7 @@ You have to get a bit accustomed to the logic and syntax but here are summarized
 
 - AJAX interception and stubbing is super easy: [waiting for an AJAX request](waiting-for-ajax-request.md) and [stubbing the back-end](stubbing-the-backend.md) has never been easier. Mix it with analyzable request/response payloads and you get total control over front-end/back-end communications
 
-- [automatic waitings and retry-ability](https://docs.cypress.io/guides/core-concepts/retry-ability.html) avoid you adding fixed time sleeps that are bad for test durations
+- [automatic waitings and retry-ability](https://docs.cypress.io/guides/core-concepts/retry-ability.html) avoid you adding fixed time sleeps that are bad for test durations (read more in the [Await, do not make your E2E tests sleep](https://dev.to/noriste/await-do-not-make-your-e2e-tests-sleep-4g1o) article)
 
 - no fights with test timeouts: tests have not timeouts, every single command has
 

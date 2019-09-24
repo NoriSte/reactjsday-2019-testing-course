@@ -7,4 +7,6 @@ For example, the next test checks that the `main.js` file of the `https://react-
 <i>File: <a href="../cypress/integration/examples/monitoring-tests/brotli.monitoring.spec.js" target="_blank">cypress/integration/examplesmonitoring-tests/brotli.monitoring.spec.js</a></i>
 [include](../cypress/integration/examples/monitoring-tests/brotli.monitoring.spec.js)
 
+Read more about the Monitoring tests into the [The concept of "Monitoring Tests"](https://dev.to/noriste/the-concept-of-monitoring-tests-4l5j) article.
+
 Again: following a [naming convention](dedicated-scripts.md) allows you to launch only the monitoring tests.

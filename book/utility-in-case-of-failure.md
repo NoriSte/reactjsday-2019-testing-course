@@ -28,7 +28,7 @@ First of all, we need to remove some of the possible errors since the beginning.
 5. the button does not trigger the right Redux action
 6. the functions that manage the authentication do not do the expected job
 
-could be listed in the so-called "_implementation details_". We're testing the whole front-end application from an outer perspective, not from an inner one. **We are testing that** the user signup **works**, **not how** the signup works.
+could be listed in the so-called "_implementation details_". We're testing the whole front-end application from an outer perspective, not from an inner one. **We are testing that** the user signup **works**, **not how** the signup works ([React is an implementation detail](https://kentcdodds.com/blog/react-is-an-implementation-detail) by Kent C. Dodds).
 
 A more practical example: if you need to test that pushing the accelerator get the car move, you push the accelerator and you check that... the car move! If the accelerator is a wired or electronic one does not matter! You will test the connection between the accelerator and the engine with other types of test.
 
