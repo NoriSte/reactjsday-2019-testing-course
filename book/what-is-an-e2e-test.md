@@ -1,6 +1,8 @@
 # What is an E2E test?
 
-<!-- TODO: add a video of the e2e tests with the realworld app -->
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/gdly-oU72X0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br />
 
 An E2E test runs the whole web app in a [headless browser](headless-browser.md) when the front-end application interacts with the back-end one, with a working database, and checks that **everything works as expected**. It checks everything: from the user interactions (one of the "end") to the business data (the other "end"): everything must work as designed.
 
