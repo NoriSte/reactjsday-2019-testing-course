@@ -823,7 +823,7 @@
                 <a href="visual-regression-testing.html">
             
                     
-                    Visual Regression Testnig
+                    Visual Regression Testing
             
                 </a>
             
@@ -869,7 +869,7 @@
                 <a href="resources.html">
             
                     
-                    Resources TODO
+                    Resources
             
                 </a>
             
@@ -957,6 +957,7 @@
 <li><p>Visual Regression tests: check that the app look doesn&apos;t change when not intended</p>
 </li>
 </ul>
+<p>You can read more in the <a href="https://dev.to/noriste/component-vs-ui-integration-vs-e2e-tests-3i0d" target="_blank">Component vs (UI) Integration vs E2E tests]UI tests classification</a> article.</p>
 <table>
 <thead>
 <tr>
@@ -987,8 +988,8 @@
 </tr>
 <tr>
 <td>have code coverage</td>
-<td>&#x2705;</td>
-<td>&#x2705;</td>
+<td>&#x2705;&#xA0;<sup><a href="#footnote1">1</a></sup></td>
+<td>&#x2705;&#xA0;<sup><a href="#footnote1">1</a></sup></td>
 <td>&#x274C;</td>
 <td>&#x2705;</td>
 <td>&#x2705;</td>
@@ -1027,6 +1028,7 @@
 </tr>
 </tbody>
 </table>
+<p><a id="footnote1">1</a>: read the <a href="https://docs.cypress.io/guides/tooling/code-coverage.html" target="_blank">Code Coverage guide</a> of Cypress.</p>
 <h3 id="testing-pyramid">Testing Pyramid</h3>
 <p>The &quot;Test Pyramid&quot; is a famous metaphor in the programming world about the cost-effort of diffent types of testing and how much of each should be present in a codebase (where the top very expensive and the bottom less expensive)</p>
 <p><div>
@@ -1034,7 +1036,7 @@
 </div>
 <br><br></p>
 <p>While the Testing Pyramid idea has been based on solid arguments, it&apos;s foundation considered non cost-effective UI and (most) integration tests due to high cost of development and maintainance but this idea predates most of recent discoveries and tools in testing that are now available.</p>
-<p>Kent C. Dodds created a new version of the pyramid, the &quot;the Testing Trophy&quot;. Kent created the trophy based not only on the cost of the tests but on the <strong>return of investment</strong>. He highlighted the &quot;Integration test&quot; area as the most important one</p>
+<p>Kent C. Dodds created a new version of the pyramid, the &quot;the Testing Trophy&quot;. Kent created the trophy based not only on the cost of the tests but on the <strong>return of investment</strong>. He highlighted the &quot;Integration test&quot; area as the most important one (<a href="https://kentcdodds.com/blog/write-tests/" target="_blank">Write tests. Not too many. Mostly integration.</a> by Kent C. Dodds)</p>
 <p><div>
     <img src="../assets/images/test-trophy.jpg" alt="Testing trophy" style="width: 100%; max-width: 400px; margin-left: auto; margin-right: auto;">
 </div>
@@ -1078,7 +1080,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Types of Test","level":"2.1.2","depth":2,"next":{"title":"Testing introduction","level":"2.2","depth":1,"ref":"","articles":[{"title":"Why Testing?","level":"2.2.1","depth":2,"path":"book/why-testing.md","ref":"book/why-testing.md","articles":[]},{"title":"Testing rules","level":"2.2.2","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},{"title":"Having fun while testing","level":"2.2.3","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},{"title":"The cost of testing","level":"2.2.4","depth":2,"path":"book/the-cost-of-testing.md","ref":"book/the-cost-of-testing.md","articles":[]}]},"previous":{"title":"What is a test?","level":"2.1.1","depth":2,"path":"book/what-is-a-test.md","ref":"book/what-is-a-test.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/types-of-test.md","mtime":"2019-09-23T06:06:47.533Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-23T07:59:23.404Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Types of Test","level":"2.1.2","depth":2,"next":{"title":"Testing introduction","level":"2.2","depth":1,"ref":"","articles":[{"title":"Why Testing?","level":"2.2.1","depth":2,"path":"book/why-testing.md","ref":"book/why-testing.md","articles":[]},{"title":"Testing rules","level":"2.2.2","depth":2,"path":"book/testing-rules.md","ref":"book/testing-rules.md","articles":[]},{"title":"Having fun while testing","level":"2.2.3","depth":2,"path":"book/having-fun-while-testing.md","ref":"book/having-fun-while-testing.md","articles":[]},{"title":"The cost of testing","level":"2.2.4","depth":2,"path":"book/the-cost-of-testing.md","ref":"book/the-cost-of-testing.md","articles":[]}]},"previous":{"title":"What is a test?","level":"2.1.1","depth":2,"path":"book/what-is-a-test.md","ref":"book/what-is-a-test.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/types-of-test.md","mtime":"2019-09-24T05:23:03.129Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-24T05:44:06.261Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

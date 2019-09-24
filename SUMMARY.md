@@ -57,6 +57,6 @@
 - [Cypress vs other tools](book/cypress-vs-other-tools.md)
 - [Why is E2E testing not enough?](book/why-is-e2e-testing-not-enough.md)
 - ***
-- [Resources TODO](book/resources.md)
+- [Resources](book/resources.md)
 - ***
 - [About this book](book/about-the-book.md)
