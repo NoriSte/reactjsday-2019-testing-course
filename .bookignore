@@ -5,3 +5,4 @@ slides
 .gitignore
 __tests__
 tests
+cypress

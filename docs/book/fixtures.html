@@ -945,7 +945,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="fixtures">Fixtures</h1>
-<p>In the <i><a href="../cypress/integration/examples/signup-integration/signup-1.integration.spec.js" target="_blank">signup-1.integration.spec.js</a></i> test, every back-end stub has the response set inline, like the <code>api/users</code> stub</p>
+<p>In the <i>signup-1.integration.spec.js</i> test, every back-end stub has the response set inline, like the <code>api/users</code> stub</p>
 <pre><code class="lang-javascript">cy.route(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;**/api/users&quot;</span>, {
   user: {
     username: <span class="hljs-string">&quot;Tester&quot;</span>,
@@ -963,7 +963,7 @@
 <li><p>move the above response inside it (transforming it into a valid JSON)</p>
 </li>
 </ul>
-<p><i>File: <a href="../cypress/fixtures/users/signup.json" target="_blank">cypress/fixtures/users/signup.json</a></i></p>
+<p><i>File: cypress/fixtures/users/signup.json</i></p>
 <pre><code class="lang-json">{
   <span class="hljs-string">&quot;user&quot;</span>: {
     <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;tester&quot;</span>,
@@ -988,10 +988,10 @@
 <ul>
 <li>do the same for the <code>**/api/tags</code> and <code>**/api/articles/feed**</code> stub</li>
 </ul>
-<p><i>File: <a href="../cypress/fixtures/tags/empty-tags.json" target="_blank">cypress/fixtures/tags/empty-tags.json</a></i></p>
+<p><i>File: cypress/fixtures/tags/empty-tags.json</i></p>
 <pre><code class="lang-json">{ <span class="hljs-string">&quot;tags&quot;</span>: [] }
 </code></pre>
-<p><i>File: <a href="../cypress/fixtures/articles/empty-articles.json" target="_blank">cypress/fixtures/articles/empty-articles.json</a></i></p>
+<p><i>File: cypress/fixtures/articles/empty-articles.json</i></p>
 <pre><code class="lang-json">{ <span class="hljs-string">&quot;articles&quot;</span>: [], <span class="hljs-string">&quot;articlesCount&quot;</span>: <span class="hljs-number">0</span> }
 </code></pre>
 <pre><code class="lang-diff"><span class="hljs-deletion">-cy.route(&quot;GET&quot;, &quot;**/api/tags&quot;, { tags: [] }).as(&quot;tags&quot;);</span>
@@ -1097,7 +1097,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Fixtures","level":"4.6.2","depth":2,"next":{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},"previous":{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/fixtures.md","mtime":"2019-09-17T16:39:50.289Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T08:29:17.252Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Fixtures","level":"4.6.2","depth":2,"next":{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},"previous":{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/fixtures.md","mtime":"2019-09-25T15:00:07.356Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T15:01:34.884Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

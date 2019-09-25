@@ -949,7 +949,7 @@
 <br>
 What we have to do is essentially setting the <code>jwt</code> token into the local storage. Let&apos;s write the <code>authenticateIntegration</code> custom command.</p>
 <p>Where we can get a valid <code>jwt</code>? Well, from the <code>signup.json</code> fixture!</p>
-<p><i>File: <a href="../cypress/fixtures/users/signup.json" target="_blank">cypress/fixtures/users/signup.json</a></i></p>
+<p><i>File: cypress/fixtures/users/signup.json</i></p>
 <pre><code class="lang-json">{
   <span class="hljs-string">&quot;user&quot;</span>: {
     <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;tester&quot;</span>,
@@ -968,7 +968,7 @@ What we have to do is essentially setting the <code>jwt</code> token into the lo
 </li>
 </ul>
 <p>The command code is the following</p>
-<p><i>File: <a href="../cypress/support/authentication/authenticate-integration.js" target="_blank">cypress/support/authentication/authenticate-integration.js</a></i></p>
+<p><i>File: cypress/support/authentication/authenticate-integration.js</i></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
 Cypress.Commands.add(<span class="hljs-string">&quot;authenticateIntegration&quot;</span>, () =&gt; {
@@ -1018,7 +1018,7 @@ cy.route(&quot;GET&quot;, &quot;**/api/articles/feed**&quot;, &quot;fixture:arti
 <span class="hljs-addition">+cy.wait([&quot;@get-user&quot;, &quot;@get-tags&quot;, &quot;@get-feed&quot;]);</span>
 </code></pre>
 <p>Here the full code of the test</p>
-<p><i>File: <a href="../cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js" target="_blank">cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js</a></i></p>
+<p><i>File: cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js</i></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
 <span class="hljs-keyword">import</span> { newPost } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../../realworld/frontend/src/components/Header&quot;</span>;
@@ -1044,7 +1044,7 @@ context(<span class="hljs-string">&quot;The custom command could be run before t
 });
 </code></pre>
 <h3 id="an-all-in-one-command">An all-in-one command</h3>
-<p>Since the front-end does a call to the <code>GET api/user</code> API as its very first thing, we could write a more complete command that cares about the request itself. We only have to move part of the code of the <i><a href="../cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js" target="_blank">authenticate-command-1.integration.spec.js</a></i> test to the command code.</p>
+<p>Since the front-end does a call to the <code>GET api/user</code> API as its very first thing, we could write a more complete command that cares about the request itself. We only have to move part of the code of the <i>authenticate-command-1.integration.spec.js</i> test to the command code.</p>
 <pre><code class="lang-diff"><span class="hljs-addition">+import { newPost } from &quot;../../../realworld/frontend/src/components/Header&quot;;</span>
 
 <span class="hljs-deletion">-Cypress.Commands.add(&quot;authenticateIntegration&quot;, () =&gt; {</span>
@@ -1093,7 +1093,7 @@ context(<span class="hljs-string">&quot;The custom command could be run before t
 });
 </code></pre>
 <p>The complete code is the following</p>
-<p><i>File: <a href="../cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js" target="_blank">cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js</a></i></p>
+<p><i>File: cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js</i></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">/// &lt;reference types=&quot;Cypress&quot; /&gt;</span>
 
 context(<span class="hljs-string">&quot;The custom command could be run before the test code&quot;</span>, () =&gt; {
@@ -1162,7 +1162,7 @@ context(<span class="hljs-string">&quot;The custom command could be run before t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Custom command","level":"4.6.3","depth":2,"next":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},"previous":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/integration-custom-command.md","mtime":"2019-09-23T06:06:47.748Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T08:29:17.252Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Custom command","level":"4.6.3","depth":2,"next":{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},"previous":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/integration-custom-command.md","mtime":"2019-09-25T15:00:07.356Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T15:01:34.884Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
