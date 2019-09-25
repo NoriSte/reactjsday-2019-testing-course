@@ -1101,7 +1101,6 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <img src="../assets/images/request-payload-assertion.png" alt="Request payload assertions" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 
-
 <p><br><br>Chaining the assertions this way is nice but it does not give us all the freedom we need. What I mean: I try to analyze the yielded subject for every line of code</p>
 <pre><code class="lang-javascript">cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>) <span class="hljs-comment">// yields the whole `xhr` object</span>
   .its(<span class="hljs-string">&quot;request.body&quot;</span>) <span class="hljs-comment">// yields `xhr.request.body`</span>
@@ -1143,8 +1142,7 @@ expect(payload).to.have.property(<span class="hljs-string">&quot;username&quot;<
 expect(payload).to.have.property(<span class="hljs-string">&quot;email&quot;</span>, user.email);
 expect(payload)
   .to.have.property(<span class="hljs-string">&quot;token&quot;</span>)
-  .and.to.be.a(<span class="hljs-string">&quot;string&quot;</span>)
-  .and.not.to.be.empty;
+  .and.to.be.a(<span class="hljs-string">&quot;string&quot;</span>).and.not.to.be.empty;
 </code></pre>
 <ul>
 <li>response status assertion (it&apos;s important too)</li>
@@ -1258,7 +1256,7 @@ We can maintain all the usefulness of the feedback while making them a little sm
     <img src="../assets/images/concise-feedback.png" alt="More concise feedback" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border">
 </div>
 <br><br></p>
-<p>You can find the whole test code in the <a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js">signup-8-simpler-assertions.e2e.spec.js</a> file.</p>
+<p>You can find the whole test code in the <em>signup-8-simpler-assertions.e2e.spec.js</em> file.</p>
 <h3 id="chai-plugins">Chai plugins</h3>
 <p>For the sake of curiosity, we can condense the previous assertions again. For example, with the <a href="https://www.npmjs.com/package/chai-subset" target="_blank"><code>chai-subset</code></a> plugin (<a href="https://www.chaijs.com" target="_blank">Chai</a> is a famous assertion library included by Cypress) we can write a giant assertion that checks everything: the status and the payloads</p>
 <pre><code class="lang-javascript">cy.wait(<span class="hljs-string">&quot;@signup-request&quot;</span>).should(xhr =&gt; {
@@ -1298,14 +1296,7 @@ We can maintain all the usefulness of the feedback while making them a little sm
 <li><p>add it to Chai with <code>chai.use(chaiSubset);</code></p>
 </li>
 </ul>
-<p>The test code is in the <a href="../cypress/integration/examples/signup/signup-9-chai-plugin.e2e.spec.js">signup-9-chai-plugin.e2e.spec.js</a> file.</p>
-<!-- sostituite i findByPlaceholderText -->
-<!--
-what e2e tests do not
-- slow
-- dependes on the server (😱)
-- manages data is slow and hard
- -->
+<p>The test code is in the <em>signup-9-chai-plugin.e2e.spec.js</em> file.</p>
 
                                 
                                 </section>
@@ -1345,7 +1336,7 @@ what e2e tests do not
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Asserting on payloads","level":"4.4.2","depth":2,"next":{"title":"Custom Commands","level":"4.5","depth":1,"ref":"","articles":[{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]}]},"previous":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/payload-assertions.md","mtime":"2019-09-25T14:58:33.542Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T15:01:34.884Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Asserting on payloads","level":"4.4.2","depth":2,"next":{"title":"Custom Commands","level":"4.5","depth":1,"ref":"","articles":[{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]}]},"previous":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/payload-assertions.md","mtime":"2019-09-25T15:14:58.195Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T15:26:13.155Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
