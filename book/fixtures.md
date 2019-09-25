@@ -55,5 +55,5 @@ The steps are straightforward:
 
 The result is the same but the test code is way cleaner!
 
-<i><a href="../cypress/integration/examples/signup-integration/signup-2.integration.spec.js" target="_blank">cypress/integration/examples/signup-integration/signup-2.integration.spec.js</a> file</i>
+<i>File: cypress/integration/examples/signup-integration/signup-2.integration.spec.js</i>
 [include](../cypress/integration/examples/signup-integration/signup-2.integration.spec.js)

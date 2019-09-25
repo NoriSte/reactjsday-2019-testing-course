@@ -8,9 +8,9 @@ What's the matter with **E2E tests**? Well, they:
 
 - they make **corner cases replication hard**: if we work with real data, we are going to spend most of the time dealing with it with a 20-40% of the time remaining for the front-end tests themselves
 
-So: **E2E tests are not feasible for front-end testing**. They are important, obviously, but we cannot rely on them too much. That's the reason why E2E testing is at the top of the [testing pyramid](testing-types.md#testing-pyramid), they give you the most amount of confidence but they are super expensive in terms of writing, maintenance, and stability.
+So: **E2E tests are not feasible for front-end testing**. They are important, obviously, but we cannot rely on them too much. That's the reason why E2E testing is at the top of the [testing pyramid](types-of-test.md#testing-pyramid), they give you the most amount of confidence but they are super expensive in terms of writing, maintenance, and stability.
 
-Going down with the [testing pyramid](testing-types.md#testing-pyramid) we can find the integration tests, a kind of tests where a part of the application is tested, a middle ground between E2E testing (whole front-end+back-end app) and unit testing (single unit/module test). Cypress allows us to write "one more" type of test easily: **UI Integration Tests**. The goal is to test the whole front-end app but without a real back-end. All the **AJAX requests are stubbed with static responses**. The main advantages are:
+Going down with the [testing pyramid](types-of-test.md#testing-pyramid) we can find the integration tests, a kind of tests where a part of the application is tested, a middle ground between E2E testing (whole front-end+back-end app) and unit testing (single unit/module test). Cypress allows us to write "one more" type of test easily: **UI Integration Tests**. The goal is to test the whole front-end app but without a real back-end. All the **AJAX requests are stubbed with static responses**. The main advantages are:
 
 - extreme speed: Cypress respond to the front-end AJAX requests in hundredths of a second
 
@@ -125,7 +125,7 @@ cy.wait("@signup-request")
 ```
 
 And we're done! You can take a look at the whole test and run it, it's the
-<i><a href="../cypress/integration/examples/signup-integration/signup-1.integration.spec.js" target="_blank">cypress/integration/examples/signup-integration/signup-1.integration.spec.js</a> file</i>
+<i>cypress/integration/examples/signup-integration/signup-1.integration.spec.js file</i>
 [include](../cypress/integration/examples/signup-integration/signup-1.integration.spec.js)
 
 The most astonishing result is the speed of the test 😱

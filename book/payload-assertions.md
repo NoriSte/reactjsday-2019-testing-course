@@ -145,7 +145,6 @@ We return on that later, but that's the actual feedback of the Test Runner
     <img src="../assets/images/request-payload-assertion.png" alt="Request payload assertions" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 
-
 <br /><br />Chaining the assertions this way is nice but it does not give us all the freedom we need. What I mean: I try to analyze the yielded subject for every line of code
 
 ```javascript
@@ -195,8 +194,7 @@ expect(payload).to.have.property("username", user.username.toLowerCase());
 expect(payload).to.have.property("email", user.email);
 expect(payload)
   .to.have.property("token")
-  .and.to.be.a("string")
-  .and.not.to.be.empty;
+  .and.to.be.a("string").and.not.to.be.empty;
 ```
 
 - response status assertion (it's important too)
@@ -260,7 +258,7 @@ cy.wait("@signup-request").should(xhr => {
 </div>
 <br /><br />
 
-You can find the whole test code in the [signup-8-simpler-assertions.e2e.spec.js](../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js) file.
+You can find the whole test code in the _signup-8-simpler-assertions.e2e.spec.js_ file.
 
 ### Chai plugins
 
@@ -306,13 +304,4 @@ If you'd like to know how you can install a Chai plugin and use it in Cypress:
 
 - add it to Chai with `chai.use(chaiSubset);`
 
-
-The test code is in the [signup-9-chai-plugin.e2e.spec.js](../cypress/integration/examples/signup/signup-9-chai-plugin.e2e.spec.js) file.
-
-<!-- sostituite i findByPlaceholderText -->
-<!--
-what e2e tests do not
-- slow
-- dependes on the server (😱)
-- manages data is slow and hard
- -->
+The test code is in the _signup-9-chai-plugin.e2e.spec.js_ file.
