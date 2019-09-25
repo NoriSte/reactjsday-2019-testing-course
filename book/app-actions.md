@@ -1,6 +1,6 @@
 # App Actions
 
-We have just written our first [Custom Command](signup-custom-command.md) that registers a new user for every test. What is its biggest problem? Well, it's **really, really, slow**. The <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> tests take twelve to fifteen seconds to run the empty tests:
+We have just written our first [Custom Command](signup-custom-command.md) that registers a new user for every test. What is its biggest problem? Well, it's **really, really, slow**. The <i>signup-command-1.e2e.spec.js</i> tests take twelve to fifteen seconds to run the empty tests:
 
 <div>
     <img src="../assets/images/slow-tests.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
@@ -14,7 +14,7 @@ The custom command has all the faults because the tests themselves do nothing, t
 
 How the duration could be improved? Let's introduce the concept of App Actions. The same way we leveraged and talked about [App Constants](app-constants.md), App Actions are utilities exposed directly from the front-end application. Let's work on a signup App Action.
 
-In the [RealWorld app](the-realworld-project.md) front-end app, the registration is managed by the <i><a href="../realworld/frontend/src/components/Register.js" target="_blank">Register.js</a></i> component. In its constructor, you can find the following code
+In the [RealWorld app](the-realworld-project.md) front-end app, the registration is managed by the <i>Register.js</i> component. In its constructor, you can find the following code
 
 ```javascript
 this.submitForm = (username, email, password) => ev => {
@@ -56,7 +56,7 @@ If you think that adding fictitious code to the application is not a good idea, 
 
 - test duration is more important because you are going to run the tests thousands of times
 
-What's the final goal of the `window.appActions.signup` app action? Simply, calling it from the Cypress test! We can now call it directly deleting the slow form filling. Starting from the code of the <i><a href="../cypress/support/signup/signup-v1.js" target="_blank">signup-v1.js</a></i> test, the changes are the following
+What's the final goal of the `window.appActions.signup` app action? Simply, calling it from the Cypress test! We can now call it directly deleting the slow form filling. Starting from the code of the <i>signup-v1.js</i> test, the changes are the following
 
 ```diff
 -cy.findByPlaceholderText(strings.username).type(user.username);
@@ -75,7 +75,7 @@ You can find the whole code of the custom command into the `signup-v2.js` custom
 <i>File: cypress/support/signup/signup-v2.js</i>
 [include](../cypress/support/signup/signup-v2.js)
 
-The `signupV2` custom command is used by the <i><a href="../cypress/integration/examples/signup-command/signup-command-2.e2e.spec.js" target="_blank">signup-command-2.e2e.spec.js</a></i> test and the performance improvement is notable compared to the previous <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> one
+The `signupV2` custom command is used by the <i>signup-command-2.e2e.spec.js</i> test and the performance improvement is notable compared to the previous <i>signup-command-1.e2e.spec.js</i> one
 
 <div>
     <img src="../assets/images/slow-tests-improvement.png" alt="Autocompletion" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
@@ -90,7 +90,7 @@ that's how App Actions work, they're just test-related shortcuts to perform fast
 
 Fast because:
 
-- **reaching the desired front-end state through the UI is a big and slow anti-pattern**. If you take a look at the <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> test, form filling (performed by the <i><a href="../cypress/support/signup/signup-v1.js" target="_blank">signup-v1.js</a></i> custom command) takes circa 1.5 seconds each time. We can not waste so much time for every test, what could happen when the test suite will count tens or hundreds of tests?
+- **reaching the desired front-end state through the UI is a big and slow anti-pattern**. If you take a look at the <i>signup-command-1.e2e.spec.js</i> test, form filling (performed by the <i>signup-v1.js</i> custom command) takes circa 1.5 seconds each time. We can not waste so much time for every test, what could happen when the test suite will count tens or hundreds of tests?
 
 Safe because:
 

@@ -74,7 +74,7 @@ Here the full code of the test
 
 ### An all-in-one command
 
-Since the front-end does a call to the `GET api/user` API as its very first thing, we could write a more complete command that cares about the request itself. We only have to move part of the code of the <i><a href="../cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js" target="_blank">authenticate-command-1.integration.spec.js</a></i> test to the command code.
+Since the front-end does a call to the `GET api/user` API as its very first thing, we could write a more complete command that cares about the request itself. We only have to move part of the code of the <i>authenticate-command-1.integration.spec.js</i> test to the command code.
 
 ```diff
 +import { newPost } from "../../../realworld/frontend/src/components/Header";

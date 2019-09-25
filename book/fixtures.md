@@ -1,6 +1,6 @@
 # Fixtures
 
-In the <i><a href="../cypress/integration/examples/signup-integration/signup-1.integration.spec.js" target="_blank">signup-1.integration.spec.js</a></i> test, every back-end stub has the response set inline, like the `api/users` stub
+In the <i>signup-1.integration.spec.js</i> test, every back-end stub has the response set inline, like the `api/users` stub
 
 ```javascript
 cy.route("POST", "**/api/users", {

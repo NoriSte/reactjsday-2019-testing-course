@@ -39,7 +39,7 @@ Obviously, the new command does nothing at the moment, but this is the foundatio
 ### First signup command
 
 The first implementation is simple and not very smart, the core of the command is the same of the
-<i><a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">signup-8-simpler-assertions.e2e.spec.js</a></i> test.
+<i>signup-8-simpler-assertions.e2e.spec.js</i> test.
 
 While creating reusable commands, the [testing rules](testing-rules.md#simple) remain the same. The most important ones for our exercise are:
 
@@ -47,7 +47,7 @@ While creating reusable commands, the [testing rules](testing-rules.md#simple) r
 
 - the commands must be flexible and easily customizable
 
-The former is respected because we are going to copy all the code from the just written <i><a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">signup-8-simpler-assertions.e2e.spec.js</a></i> test. The latter leads us to ask a question: what could be changed with a global and reusable signup utility? Essentially, only the user data.
+The former is respected because we are going to copy all the code from the just written <i>signup-8-simpler-assertions.e2e.spec.js</i> test. The latter leads us to ask a question: what could be changed with a global and reusable signup utility? Essentially, only the user data.
 
 The command must accept the user data with the usual defaults if not provided
 
@@ -64,7 +64,7 @@ Cypress.Commands.add("signupV1", ({ email, username, password } = {}) => {
 });
 ```
 
-The rest of the code is 100% the same of the <i><a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">signup-8-simpler-assertions.e2e.spec.js</a></i> test, the only changes are placed in the end:
+The rest of the code is 100% the same of the <i>signup-8-simpler-assertions.e2e.spec.js</i> test, the only changes are placed in the end:
 
 - a `cy.server({ enable: false });` to restore the original `cy.server` behavior
 
