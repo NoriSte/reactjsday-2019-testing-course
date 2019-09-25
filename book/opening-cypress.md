@@ -2,7 +2,7 @@
 
 Let's start with a real Cypress test:
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-1.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-1.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-1.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-1.e2e.spec.js)
 
 A closer look line by line:
@@ -23,7 +23,7 @@ A closer look line by line:
 
 How could Cypress know which is the URL of the whole site? Take a look at Cypress config file
 
-<i>File: <a href="../cypress.json" target="_blank">cypress.json</a></i>
+<i>File: cypress.json</i>
 [include](../cypress.json)
 
 the `baseUrl` property tells Cypress the domain the site is available. This property can be overwritten through the [command line](https://docs.cypress.io/guides/references/configuration.html#Command-Line) and allows the Cypress tests to load faster.

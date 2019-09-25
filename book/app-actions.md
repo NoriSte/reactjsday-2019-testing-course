@@ -9,7 +9,7 @@ We have just written our first [Custom Command](signup-custom-command.md) that r
 
 The custom command has all the faults because the tests themselves do nothing, take a look at the test code to double-check it
 
-<i>File: <a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js)
 
 How the duration could be improved? Let's introduce the concept of App Actions. The same way we leveraged and talked about [App Constants](app-constants.md), App Actions are utilities exposed directly from the front-end application. Let's work on a signup App Action.
@@ -72,7 +72,7 @@ What's the final goal of the `window.appActions.signup` app action? Simply, call
 
 You can find the whole code of the custom command into the `signup-v2.js` custom command
 
-<i>File: <a href="../cypress/support/signup/signup-v2.js" target="_blank">cypress/support/signup/signup-v2.js</a></i>
+<i>File: cypress/support/signup/signup-v2.js</i>
 [include](../cypress/support/signup/signup-v2.js)
 
 The `signupV2` custom command is used by the <i><a href="../cypress/integration/examples/signup-command/signup-command-2.e2e.spec.js" target="_blank">signup-command-2.e2e.spec.js</a></i> test and the performance improvement is notable compared to the previous <i><a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">signup-command-1.e2e.spec.js</a></i> one

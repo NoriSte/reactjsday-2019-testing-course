@@ -21,7 +21,7 @@ The steps are straightforward:
 
 - move the above response inside it (transforming it into a valid JSON)
 
-<i>File: <a href="../cypress/fixtures/users/signup.json" target="_blank">cypress/fixtures/users/signup.json</a></i>
+<i>File: cypress/fixtures/users/signup.json</i>
 [include](../cypress/fixtures/users/signup.json)
 
 - replace the static response of the code with `"fixture:users/signup"`, Cypress looks for the `users/signup.json` file starting from the `cypress/fixture` directory
@@ -40,10 +40,10 @@ The steps are straightforward:
 
 - do the same for the `**/api/tags` and `**/api/articles/feed**` stub
 
-<i>File: <a href="../cypress/fixtures/tags/empty-tags.json" target="_blank">cypress/fixtures/tags/empty-tags.json</a></i>
+<i>File: cypress/fixtures/tags/empty-tags.json</i>
 [include](../cypress/fixtures/tags/empty-tags.json)
 
-<i>File: <a href="../cypress/fixtures/articles/empty-articles.json" target="_blank">cypress/fixtures/articles/empty-articles.json</a></i>
+<i>File: cypress/fixtures/articles/empty-articles.json</i>
 [include](../cypress/fixtures/articles/empty-articles.json)
 
 ```diff

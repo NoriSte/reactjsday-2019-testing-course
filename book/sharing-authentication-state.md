@@ -37,7 +37,7 @@ One thing at a time:
 
 Let's write the `cy.signupV3` custom command, starting from the `cy.signupV2` command that's the following:
 
-<i>File: <a href="../cypress/support/signup/signup-v2.js" target="_blank">cypress/support/signup/signup-v2.js</a></i>
+<i>File: cypress/support/signup/signup-v2.js</i>
 [include](../cypress/support/signup/signup-v2.js)
 
 ### `cy.gignupV3`
@@ -207,7 +207,7 @@ and finally, we leveraged the previously registered user
 
 You find the whole command code below
 
-<i>File: <a href="../cypress/support/signup/signup-v3.js" target="_blank">cypress/support/signup/signup-v3.js</a></i>
+<i>File: cypress/support/signup/signup-v3.js</i>
 [include](../cypress/support/signup/signup-v3.js)
 
 Remember that you can implement shared utilities or the above flow the way you want, but always keep in mind that you must care as much as you can about test independency and test stability. Both of them are really important for a good testing experience, one that does not make you hate the test suite.

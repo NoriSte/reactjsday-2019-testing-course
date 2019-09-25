@@ -26,7 +26,7 @@ Until now, we have tested the registration flow and we have written a custom com
 
 The state of the art of our E2E signup flow is the following:
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js)
 
 now, we need to transform it into a UI Integration test, the steps are:

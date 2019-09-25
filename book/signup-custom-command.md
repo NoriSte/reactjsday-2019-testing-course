@@ -72,7 +72,7 @@ The rest of the code is 100% the same of the <i><a href="../cypress/integration/
 
 The whole code is the following:
 
-<i>File: <a href="../cypress/support/signup/signup-v1.js" target="_blank">cypress/support/signup/signup-v1.js</a></i>
+<i>File: cypress/support/signup/signup-v1.js</i>
 [include](../cypress/support/signup/signup-v1.js)
 
 and the test that leverages the custom command is:
@@ -102,7 +102,7 @@ and:
 - with custom data: `cy.signupV1({email: "foo@bar.io", username: "foo", password: "bar"})`
 
 You can find all the combinations of them into a dedicated test
-<i>File: <a href="../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js" target="_blank">cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup-command/signup-command-1.e2e.spec.js)
 
 The assertions about the `user` subject yielded by the custom command are just to demonstrate you what the last `cy.then(() => user)` command is useful for: to know the user data from the caling test.

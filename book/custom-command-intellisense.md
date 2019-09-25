@@ -8,7 +8,7 @@ We need to use a TypeScript definition file to add them, you just need to:
 
 - add the typing itself. We are not going to speak about TypeScript itself, just take a look at the result in terms of the file itself
 
-<i>File: <a href="../cypress/support/signup/index.d.ts" target="_blank">cypress/support/signup/index.d.ts</a></i>
+<i>File: cypress/support/signup/index.d.ts</i>
 [include,lang:"typescript"](../cypress//support/signup/index.d.ts)
 
 and the hints that it gives you while coding your test:

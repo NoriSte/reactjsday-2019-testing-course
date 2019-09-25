@@ -52,7 +52,7 @@ The right question is: does the front-end app parse and use it? **Does the front
 
 Starting from the most recent test
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js)
 
 The `cy.wait("@signup-request")` call yields the whole XHR object. We can inspect its content doing
@@ -207,7 +207,7 @@ expect(xhr.status).to.equal(200);
 
 The whole file is the following
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-7-ajax-payload-assertion.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-7-ajax-payload-assertion.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-7-ajax-payload-assertion.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-7-ajax-payload-assertion.e2e.spec.js)
 
 You can read more about the Cypress assertions in the [official documentation](https://docs.cypress.io/guides/references/assertions.html).

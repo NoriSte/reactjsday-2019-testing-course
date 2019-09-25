@@ -6,7 +6,7 @@ A headless browser is a standard web browser without a GUI. You instrument it wi
 
 Let's take a look at what a "browser without GUI" means with the first example using Cypress (why Cypress? Go to the [Cypress vs other tools](cypress-vs-other-tools.md) chapter).
 
-<i>File: <a href="../cypress/integration/examples/headless-browser.spec.js" target="_blank">cypress/integration/examples/headless-browser.spec.js</a></i>
+<i>File: cypress/integration/examples/headless-browser.spec.js</i>
 [include](../cypress/integration/examples/headless-browser.spec.js)
 
 Cypress is going to run this test, visit the specified page and take a screenshot.

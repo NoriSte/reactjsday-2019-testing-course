@@ -2,7 +2,7 @@
 
 We managed to have a deterministic event test like the following
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-2.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-2.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-2.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-2.e2e.spec.js)
 
 but, as we've seen, one of the defects of the above test is its uselessness while something goes wrong by retrieving the elements to interact with.
@@ -162,7 +162,7 @@ This way the test leverages dedicated attributes and selectors, ones that do not
 <br /><br />
 The test is now resilient, well done. The following is the complete test
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js)
 
 Compared to the previous version, in case of failures related to the DOM elements, the test helps us to identify precisely what does not work (if it's related to the DOM elements) 👍

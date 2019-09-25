@@ -4,7 +4,7 @@ There is some kind of checks that we'd like to perform constantly that are not r
 
 For example, the next test checks that the `main.js` file of the `https://react-redux.realworld.io` website is served with the correct `content-encoding` header
 
-<i>File: <a href="../cypress/integration/examples/monitoring-tests/brotli.monitoring.spec.js" target="_blank">cypress/integration/examplesmonitoring-tests/brotli.monitoring.spec.js</a></i>
+<i>File: cypress/integration/examplesmonitoring-tests/brotli.monitoring.spec.js</i>
 [include](../cypress/integration/examples/monitoring-tests/brotli.monitoring.spec.js)
 
 Read more about the Monitoring tests into the [The concept of "Monitoring Tests"](https://dev.to/noriste/the-concept-of-monitoring-tests-4l5j) article.

@@ -4,7 +4,7 @@ Stubbing an AJAX request is easy and advantageous with Cypress, and allows us to
 
 Anyway, two of the three main E2E testing problems were front-end developer independence and corner case replication. We can face both of them are easy with UI Integration Testing and back-end stubs. As an example, we could test the error paths that could happen with the registration flow. At the moment, the state of the art of our integration signup flow is the following:
 
-<i>File: <a href="../cypress/integration/examples/signup-integration/signup-2.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-2.integration.spec.js</a></i>
+<i>File: cypress/integration/examplessignup-integration/signup-2.integration.spec.js</i>
 [include](../cypress/integration/examples/signup-integration/signup-2.integration.spec.js)
 
 but there are a lot of error paths that are not been covered yet. The [RealWorld](the-realworld-project.md) front-end does not manage "all" possible paths, but then if the back-end app responds with an error "email/user already registered", it prints the error as they are.
@@ -91,12 +91,12 @@ We could make it even more generic testing the case of multiple errors coming fr
 
 Below there are both the single-error test and the multiple-errors one
 
-<i>File: <a href="../cypress/integration/examples/signup-integration/signup-error-paths-1.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-error-paths-1.integration.spec.js</a></i>
+<i>File: cypress/integration/examplessignup-integration/signup-error-paths-1.integration.spec.js</i>
 [include](../cypress/integration/examples/signup-integration/signup-error-paths-1.integration.spec.js)
 
 Almost all the code of the tests is the same. Keeping in mind that we must resist adding complex abstractions to the code of the tests (see the [testing rules](testing-rules.md#dry)) we could separate some code to a dedicated function and leverage it from the body of the test. After all, only the response changes between the above tests... Take a look at the following code
 
-<i>File: <a href="../cypress/integration/examples/signup-integration/signup-error-paths-2.integration.spec.js" target="_blank">cypress/integration/examplessignup-integration/signup-error-paths-2.integration.spec.js</a></i>
+<i>File: cypress/integration/examplessignup-integration/signup-error-paths-2.integration.spec.js</i>
 [include](../cypress/integration/examples/signup-integration/signup-error-paths-2.integration.spec.js)
 
 The last test checks that the front-end prints the errors as they are, so we are sure that the errors showed to the user are completely driven by the back-end.

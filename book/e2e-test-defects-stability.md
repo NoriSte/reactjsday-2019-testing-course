@@ -27,7 +27,7 @@ Now the test is going to succeed most of the times.
 
 The complete test is the following:
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-2.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-2.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-2.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-2.e2e.spec.js)
 
 Anyway: this test started smelling a while ago, go ahead to read why should we improve it.

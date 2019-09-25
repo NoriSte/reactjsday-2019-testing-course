@@ -4,7 +4,7 @@ When the app works but the tests fail, we have a false negative. **False negativ
 
 A lot of things can cause false negatives, one of them is the difference between the constants used by the web app and the ones used by the tests. What are the constants used by the actual test?
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js)
 
 The route and all the contents
@@ -75,7 +75,7 @@ context("Signup flow", () => {
 
 The same logic could be applied to the `/register` route and the "_No articles are here... yet._" string, the final test is the following
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-5-app-constants.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-5-app-constants.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-5-app-constants.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-5-app-constants.e2e.spec.js)
 
 The result is that if you update some of the above-cited constants because of whatever reasons... You do not have to update the test accordingly and they still work as expected, one less thing to care about.

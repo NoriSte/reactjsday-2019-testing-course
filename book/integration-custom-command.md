@@ -6,7 +6,7 @@ What we have to do is essentially setting the `jwt` token into the local storage
 
 Where we can get a valid `jwt`? Well, from the `signup.json` fixture!
 
-<i>File: <a href="../cypress/fixtures/users/signup.json" target="_blank">cypress/fixtures/users/signup.json</a></i>
+<i>File: cypress/fixtures/users/signup.json</i>
 [include](../cypress/fixtures/users/signup.json)
 
 Cypress allows us to read the fixtures using the `cy.fixture` command. All we need to do is:
@@ -19,7 +19,7 @@ Cypress allows us to read the fixtures using the `cy.fixture` command. All we ne
 
 The command code is the following
 
-<i>File: <a href="../cypress/support/authentication/authenticate-integration.js" target="_blank">cypress/support/authentication/authenticate-integration.js</a></i>
+<i>File: cypress/support/authentication/authenticate-integration.js</i>
 [include](../cypress/support/authentication/authenticate-integration.js)
 
 Please note that there are some assertions about the fixture content itself, the goal is always the same: getting the more out of the assertion feedback. If we change the fixture content accidentally the command is going to prompts us with a useful message.
@@ -69,7 +69,7 @@ cy.route("GET", "**/api/articles/feed**", "fixture:articles/empty-articles").as(
 
 Here the full code of the test
 
-<i>File: <a href="../cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js" target="_blank">cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js</a></i>
+<i>File: cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js</i>
 [include](../cypress/integration/examples/authenticate-command/authenticate-command-1.integration.spec.js)
 
 ### An all-in-one command
@@ -133,7 +133,7 @@ it("Should leverage the custom authentication command to navigate the editor pag
 
 The complete code is the following
 
-<i>File: <a href="../cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js" target="_blank">cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js</a></i>
+<i>File: cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js</i>
 [include](../cypress/integration/examples/authenticate-command/authenticate-command-2.integration.spec.js)
 
 Take a look at the duration of the second test

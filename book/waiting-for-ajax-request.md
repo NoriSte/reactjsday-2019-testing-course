@@ -108,7 +108,7 @@ it("The happy path should work", () => {
 
 and that's the test with some comments
 
-<i>File: <a href="../cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js" target="_blank">cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js</a></i>
+<i>File: cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-6-ajax-request-waiting.e2e.spec.js)
 
 The test is now way more robust because
