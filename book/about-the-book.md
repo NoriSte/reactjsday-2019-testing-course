@@ -17,7 +17,7 @@ The book can be configured with the `book.json` file, some of the options can be
 
 ### Slides
 
-We managed the slides through [GitPitch](https://gitpitch.com) and are in the `slides/` directory.
+We managed the slides through [slides.com](https://slides.com) and [are publicly available](https://slides.com/noriste/reactjsday-2019-testing-course#/).
 
 ### Code
 
