@@ -2,9 +2,18 @@
 
 <!-- TODO: add the part of Jaga -->
 
+### Cypress Docs
+
+- [E2E testing Best Practices](https://docs.cypress.io/guides/references/best-practices.html)
+- [Recipes](https://docs.cypress.io/examples/examples/recipes.html#Fundamentals)
+- [Retry-ability](https://docs.cypress.io/guides/core-concepts/retry-ability.html#Commands-vs-assertions)
+- [The Test Runner](https://docs.cypress.io/guides/core-concepts/test-runner.html#Overview)
+- [GitHub Integration](https://docs.cypress.io/guides/dashboard/github-integration.html#Install-the-Cypress-GitHub-app)
+- [Network Requests](https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies)
+- [Code Coverage](https://docs.cypress.io/guides/tooling/code-coverage.html#Introduction)
+
 ### Articles
 
-- Cypress docs: [E2E testing Best Practices](https://docs.cypress.io/guides/references/best-practices.html)
 - Stefano Magni: [Test the request and response payloads](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/test-request-and-response-payload.md)
 - Kent C. Dodds: [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests/)
 - Stefano Magni: [Component vs (UI) Integration vs E2E tests]UI tests classification](https://dev.to/noriste/component-vs-ui-integration-vs-e2e-tests-3i0d)
@@ -13,7 +22,6 @@
 - Kent C. Dodds: [Avoid Nesting when you're Testing](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing)
 - Stefano Magni: [Front-end productivity boost: Cypress as your main development browser](https://dev.to/noriste/front-end-productivity-boost-cypress-as-your-main-development-browser-5cdk)
 - Gil Tayar: [Testing Your Frontend Code: Part V (Visual Testing)](https://medium.com/@giltayar/testing-your-frontend-code-part-v-visual-testing-935864cfb5c7)
-- Cypress docs: [Code Coverage in E2E testing](https://docs.cypress.io/guides/tooling/code-coverage.html)
 - Kent C. Dodds: [How to know what to test](https://kentcdodds.com/blog/how-to-know-what-to-test)
 - Gil Tayar (talk): [Writing Tests For CSS Is Possible! Don’t Believe The Rumors](https://www.youtube.com/watch?v=Dl_XMd_1F6E)
 - Kent C. Dodds: [Common Testing Mistakes](https://kentcdodds.com/blog/common-testing-mistakes)
