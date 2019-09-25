@@ -1,6 +1,15 @@
 {
   "output": "docs",
-  "plugins": ["include-codeblock", "-sharing", "include", "copy-code-button", "github", "sitemap"],
+  "plugins": [
+    "include-codeblock",
+    "-sharing",
+    "include",
+    "copy-code-button",
+    "github",
+    "sitemap",
+    "ga",
+    "scripts"
+  ],
   "links": {
     "sidebar": {
       "ReactJSDay 2019": "https://2019.reactjsday.it"
@@ -16,6 +25,12 @@
     },
     "sitemap": {
       "hostname": "https://noriste.github.io/reactjsday-2019-testing-course/"
+    },
+    "ga": {
+      "token": "UA-142637808-2"
+    },
+    "scripts": {
+      "files": ["utils/ga-anonymize-ip.js"]
     }
   }
 }

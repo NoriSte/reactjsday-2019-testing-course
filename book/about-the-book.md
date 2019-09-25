@@ -40,7 +40,7 @@ To watch them running on your local machine:
 - launch `npm run test:unit`
 - if you want to keep Jest opened you can launch `npm run test:unit:watch` and navigate the various tests leveraging the [jest-watch-typeahead](https://github.com/jest-community/jest-watch-typeahead) plugin
 
-TODO: add the part of the demo-app
+<!-- TODO: add the part of the demo-app -->
 
 
 ### File system
