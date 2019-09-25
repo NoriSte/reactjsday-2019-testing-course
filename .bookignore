@@ -6,3 +6,10 @@ slides
 __tests__
 tests
 cypress
+cypress.json
+jest-testing-fundamentals
+react-cinema-app
+react-testing-fundamentals
+realworld
+renovate.json
+utils
