@@ -5,8 +5,8 @@
   "main": "babel.config.js",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.6.0",
-    "@babel/preset-env": "7.6.0",
+    "@babel/core": "7.6.2",
+    "@babel/preset-env": "7.6.2",
     "babel-jest": "24.9.0",
     "jest": "24.9.0",
     "ndb": "1.1.5",
