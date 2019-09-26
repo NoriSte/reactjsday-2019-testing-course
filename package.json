@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "gitbook install && npm run realworld:install",
     "test": "start-server-and-test realworld:start http://localhost:4100 test:everything",
-    "test:everything": "npm run test:unit && npm run demo-app:test:nowatch && npm run cy:run && npm run run:examples",
+    "test:everything": "npm run cy:run && npm run run:examples",
     "// BOOK ///////////": "",
     "book:serve": "npx gitbook serve",
     "book:build": "npx gitbook build . docs",
@@ -29,7 +29,7 @@
     "test:unit": "jest",
     "// CYPRESS ///////////": "",
     "cy:open": "cypress open",
-    "cy:run": "cypress run --config video=false --spec \"cypress/integration/realworld/**/*\"",
+    "cy:run": "cypress run --spec \"cypress/integration/realworld/**/*\"",
     "// REALWORLD ///////////": "",
     "realworld:install": "npm run realworld:frontend:install && npm run realworld:backend:install",
     "realworld:frontend:install": "cd realworld/frontend && npm i",
@@ -40,11 +40,11 @@
     "realworld:db:start": "cd realworld/backend && npm run mongo:start",
     "// EXAMPLES ///////////": "",
     "run:examples": "npm-run-all -s example:**",
-    "example:headless-browser": "cypress run --config video=false --spec \"cypress/integration/**/headless-browser.*\"",
-    "example:signup": "cypress run --config video=false --spec \"cypress/integration/examples/signup/*\"",
-    "example:signup-integration": "cypress run --config video=false --spec \"cypress/integration/examples/signup-integration/*\"",
-    "example:authenticate-command": "cypress run --config video=false --spec \"cypress/integration/examples/authenticate-command/*\"",
-    "example:monitoring-tests": "cypress run --config video=false --spec \"cypress/integration/examples/monitoring-tests/*\""
+    "example:headless-browser": "cypress run --spec \"cypress/integration/**/headless-browser.*\"",
+    "example:signup": "cypress run --spec \"cypress/integration/examples/signup/*\"",
+    "example:signup-integration": "cypress run --spec \"cypress/integration/examples/signup-integration/*\"",
+    "example:authenticate-command": "cypress run --spec \"cypress/integration/examples/authenticate-command/*\"",
+    "example:monitoring-tests": "cypress run --spec \"cypress/integration/examples/monitoring-tests/*\""
   },
   "jest": {
     "testPathIgnorePatterns": [

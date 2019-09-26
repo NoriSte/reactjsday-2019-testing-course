@@ -13,3 +13,5 @@ react-testing-fundamentals
 realworld
 renovate.json
 utils
+.travis.yml
+.all-contributorsrc
