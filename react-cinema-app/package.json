@@ -31,7 +31,7 @@
     "validator": "11.1.0"
   },
   "devDependencies": {
-    "@testing-library/dom": "6.4.0",
+    "@testing-library/dom": "6.4.1",
     "@testing-library/jest-dom": "4.1.0",
     "@testing-library/react": "9.1.4",
     "prettier": "1.18.2"
