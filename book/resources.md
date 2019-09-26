@@ -37,6 +37,7 @@
 
 ### Extensive resources
 
+- [Cypress documentation](https://docs.cypress.io/guides/overview/why-cypress.html)
 - Toast UI: [Pragmatic Front-End Testing Strategies](https://medium.com/@toastui/pragmatic-front-end-testing-strategies-1-4a969ab09453)
 - Yoni Goldberg: [JavaScript & Node.js Testing Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices)
 - Yoni Goldberg: [JavaScript Testing A-Z](https://github.com/goldbergyoni/javascript-testing-a-to-z) (still in private mode at the time of writing)
