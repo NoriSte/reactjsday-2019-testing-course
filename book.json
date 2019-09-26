@@ -8,7 +8,8 @@
     "github",
     "sitemap",
     "ga",
-    "scripts"
+    "scripts",
+    "anchors"
   ],
   "links": {
     "sidebar": {
