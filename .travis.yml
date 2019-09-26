@@ -19,5 +19,5 @@ cache:
 install:
   - npm install
 script:
-  - npm test --record
+  - npm test -- --record
   - npm run book:build
