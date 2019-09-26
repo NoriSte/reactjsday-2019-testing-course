@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "react-scripts": "3.1.2"
   },
   "scripts": {
@@ -29,8 +29,8 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.1.0",
-    "@testing-library/react": "^9.1.4",
-    "react-test-renderer": "^16.9.0"
+    "@testing-library/jest-dom": "4.1.0",
+    "@testing-library/react": "9.1.4",
+    "react-test-renderer": "16.9.0"
   }
 }
