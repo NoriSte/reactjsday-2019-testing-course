@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -39,6 +43,7 @@
     
 
         
+
     
     
     <meta name="HandheldFriendly" content="true"/>
@@ -52,6 +57,16 @@
     <link rel="next" href="fixtures.html" />
     
     
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#50ade5">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#50ade5">
 
     </head>
     <body>
@@ -942,7 +957,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="stubbing-the-back-end">Stubbing the back-end</h1>
+                                <h1 id="stubbing-the-back-end"><a name="stubbing-the-back-end" class="plugin-anchor" href="#stubbing-the-back-end"><i class="fa fa-link" aria-hidden="true"></i></a>Stubbing the back-end</h1>
 <p>What&apos;s the matter with <strong>E2E tests</strong>? Well, they:</p>
 <ul>
 <li><p>are<strong> slow</strong>: in the previous chapter we dedicated a lot of attention to reduce the test duration but we three/four/five seconds are still too much. It&apos;s not a good result because we run just a few tests but a front-end application requires a lot more tests</p>
@@ -964,7 +979,7 @@
 <li><p>corner cases replication: with static responses, you can simulate (or reproduce, if you&apos;re analyzing a bug) every corner case in a while</p>
 </li>
 </ul>
-<h3 id="implementing-the-first-ui-integration-test">Implementing the first UI Integration test</h3>
+<h3 id="implementing-the-first-ui-integration-test"><a name="implementing-the-first-ui-integration-test" class="plugin-anchor" href="#implementing-the-first-ui-integration-test"><i class="fa fa-link" aria-hidden="true"></i></a>Implementing the first UI Integration test</h3>
 <p>Until now, we have tested the registration flow and we have written a custom command to allow every test to consume the front-end with an authenticated user. We are going to analyze the signup flow firstly.</p>
 <p>The state of the art of our E2E signup flow is the following:</p>
 <p><i>File: cypress/integration/examples/signup/signup-8-simpler-assertions.e2e.spec.js</i></p>
@@ -1222,7 +1237,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"next":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/cypress-as-a-development-tool.md","ref":"book/cypress-as-a-development-tool.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/stubbing-the-backend.md","mtime":"2019-09-25T15:21:45.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T16:37:13.733Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"next":{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},"previous":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/cypress-as-a-development-tool.md","ref":"book/cypress-as-a-development-tool.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts","anchors","head-append"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"head-append":{"code":["<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicons/apple-touch-icon.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicons/favicon-32x32.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicons/favicon-16x16.png\">","<link rel=\"manifest\" href=\"/assets/favicons/site.webmanifest\">","<link rel=\"mask-icon\" href=\"/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">","<link rel=\"shortcut icon\" href=\"/assets/favicons/favicon.ico\">","<meta name=\"msapplication-TileColor\" content=\"#ffffff\">","<meta name=\"msapplication-config\" content=\"/assets/favicons/browserconfig.xml\">","<meta name=\"theme-color\" content=\"#50ade5\">"]},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/stubbing-the-backend.md","mtime":"2019-09-25T15:21:45.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-26T05:41:56.689Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

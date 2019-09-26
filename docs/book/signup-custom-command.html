@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -39,6 +43,7 @@
     
 
         
+
     
     
     <meta name="HandheldFriendly" content="true"/>
@@ -52,6 +57,16 @@
     <link rel="next" href="custom-command-intellisense.html" />
     
     
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#50ade5">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#50ade5">
 
     </head>
     <body>
@@ -942,7 +957,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="custom-commands">Custom commands</h1>
+                                <h1 id="custom-commands"><a name="custom-commands" class="plugin-anchor" href="#custom-commands"><i class="fa fa-link" aria-hidden="true"></i></a>Custom commands</h1>
 <p>At least half of the <a href="the-realworld-project.html">RealWorld</a> features require the user to be authenticated. By default, Cypress forces you <a href="https://docs.cypress.io/guides/references/best-practices.html#Having-tests-rely-on-the-state-of-previous-tests" target="_blank">to not share the state between the tests</a> and it makes sense because it&apos;s a huge anti-pattern. We need to transform the signup process into something usable by every test: a <a href="https://docs.cypress.io/api/cypress-api/custom-commands.html" target="_blank">Cypress custom command</a>.</p>
 <p>A Cypress Custom Command is a function that can be called from the global <code>cy</code> object. We are going to create a <code>cy.signupV1()</code> command to be run before every other test.</p>
 <p>The steps needed to create a new Cypress custom command are the next:</p>
@@ -974,7 +989,7 @@
 <li>run the test!</li>
 </ul>
 <p>Obviously, the new command does nothing at the moment, but this is the foundation of <code>cy.signupV1</code> command.</p>
-<h3 id="first-signup-command">First signup command</h3>
+<h3 id="first-signup-command"><a name="first-signup-command" class="plugin-anchor" href="#first-signup-command"><i class="fa fa-link" aria-hidden="true"></i></a>First signup command</h3>
 <p>The first implementation is simple and not very smart, the core of the command is the same of the
 <i>signup-8-simpler-assertions.e2e.spec.js</i> test.</p>
 <p>While creating reusable commands, the <a href="testing-rules.html#simple">testing rules</a> remain the same. The most important ones for our exercise are:</p>
@@ -1180,7 +1195,7 @@ context(<span class="hljs-string">&quot;The custom command could be customized&q
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Signup","level":"4.5.1","depth":2,"next":{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},"previous":{"title":"Custom Commands","level":"4.5","depth":1,"ref":"","articles":[{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/signup-custom-command.md","mtime":"2019-09-25T15:00:07.356Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T16:37:13.733Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Signup","level":"4.5.1","depth":2,"next":{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},"previous":{"title":"Custom Commands","level":"4.5","depth":1,"ref":"","articles":[{"title":"Signup","level":"4.5.1","depth":2,"path":"book/signup-custom-command.md","ref":"book/signup-custom-command.md","articles":[]},{"title":"Intellisense","level":"4.5.2","depth":2,"path":"book/custom-command-intellisense.md","ref":"book/custom-command-intellisense.md","articles":[]},{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},{"title":"Sharing authentication state","level":"4.5.4","depth":2,"path":"book/sharing-authentication-state.md","ref":"book/sharing-authentication-state.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts","anchors","head-append"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"head-append":{"code":["<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicons/apple-touch-icon.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicons/favicon-32x32.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicons/favicon-16x16.png\">","<link rel=\"manifest\" href=\"/assets/favicons/site.webmanifest\">","<link rel=\"mask-icon\" href=\"/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">","<link rel=\"shortcut icon\" href=\"/assets/favicons/favicon.ico\">","<meta name=\"msapplication-TileColor\" content=\"#ffffff\">","<meta name=\"msapplication-config\" content=\"/assets/favicons/browserconfig.xml\">","<meta name=\"theme-color\" content=\"#50ade5\">"]},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/signup-custom-command.md","mtime":"2019-09-25T15:00:07.356Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-26T05:41:56.689Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

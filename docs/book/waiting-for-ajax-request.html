@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -39,6 +43,7 @@
     
 
         
+
     
     
     <meta name="HandheldFriendly" content="true"/>
@@ -52,6 +57,16 @@
     <link rel="next" href="payload-assertions.html" />
     
     
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#50ade5">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#50ade5">
 
     </head>
     <body>
@@ -942,7 +957,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="waiting-for-an-ajax-request">Waiting for an AJAX request</h1>
+                                <h1 id="waiting-for-an-ajax-request"><a name="waiting-for-an-ajax-request" class="plugin-anchor" href="#waiting-for-an-ajax-request"><i class="fa fa-link" aria-hidden="true"></i></a>Waiting for an AJAX request</h1>
 <p>Do you remember the <a href="utility-in-case-of-failure.html#error-feedback">list of problems</a> that could make the signup flow break? We &quot;fixed&quot; the DOM-related ones by retrieving the elements based on the contents instead of the order, but there were <strong>a lot of problems related to the AJAX request</strong> itself. They were the following ones:</p>
 <ul>
 <li><p>the AJAX call does not start</p>
@@ -957,7 +972,7 @@
 </li>
 </ul>
 <p>The test still does not help us with these errors. When it fails, we need to spend some time debugging what&apos;s happening in the web app (while it&apos;s under test) to discover that the issue was related to a wrong AJAX request... Do not despair, Cypress is here to improve the E2E testing experience!</p>
-<h3 id="server-contract">Server contract</h3>
+<h3 id="server-contract"><a name="server-contract" class="plugin-anchor" href="#server-contract"><i class="fa fa-link" aria-hidden="true"></i></a>Server contract</h3>
 <p>When we test the front-end of our web app, we need to consider it a closed block (blackbox testing) and we need to check <strong>how it interacts with the external world</strong>. We need to test the contracts between the front-end and all the involved entities. What are the contracts to be respected by the front-end app?</p>
 <ul>
 <li><p>functional contract with the user</p>
@@ -968,7 +983,7 @@
 </li>
 </ul>
 <p>The first one is the subject of the all the E2E tests, the second one is the subject for the <a href="visual-regression-testing.html">visual regression tests</a>, but we need to concentrate on the last one. A lot of times the front-end stops working because of a misaligned communication with the back-end.</p>
-<h3 id="ajax-request-waiting">AJAX request waiting</h3>
+<h3 id="ajax-request-waiting"><a name="ajax-request-waiting" class="plugin-anchor" href="#ajax-request-waiting"><i class="fa fa-link" aria-hidden="true"></i></a>AJAX request waiting</h3>
 <p>If we know that an AJAX request happens systematically (it is going to happen every time) we need to consider it in our Cypress test. The signup flow is a good example. We are going to see what are the APIs that allow us to do that.</p>
 <p>First of all, we need to set up AJAX call interception:</p>
 <pre><code class="lang-diff">it(&quot;The happy path should work&quot;, () =&gt; {
@@ -1112,7 +1127,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"next":{"title":"Asserting on payloads","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]},"previous":{"title":"AJAX requests","level":"4.4","depth":1,"ref":"","articles":[{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},{"title":"Asserting on payloads","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/waiting-for-ajax-request.md","mtime":"2019-09-25T14:58:33.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T16:37:13.733Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"next":{"title":"Asserting on payloads","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]},"previous":{"title":"AJAX requests","level":"4.4","depth":1,"ref":"","articles":[{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},{"title":"Asserting on payloads","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts","anchors","head-append"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"head-append":{"code":["<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicons/apple-touch-icon.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicons/favicon-32x32.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicons/favicon-16x16.png\">","<link rel=\"manifest\" href=\"/assets/favicons/site.webmanifest\">","<link rel=\"mask-icon\" href=\"/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">","<link rel=\"shortcut icon\" href=\"/assets/favicons/favicon.ico\">","<meta name=\"msapplication-TileColor\" content=\"#ffffff\">","<meta name=\"msapplication-config\" content=\"/assets/favicons/browserconfig.xml\">","<meta name=\"theme-color\" content=\"#50ade5\">"]},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/waiting-for-ajax-request.md","mtime":"2019-09-25T14:58:33.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-26T05:41:56.689Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

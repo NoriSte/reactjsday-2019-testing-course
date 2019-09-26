@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -39,6 +43,7 @@
     
 
         
+
     
     
     <meta name="HandheldFriendly" content="true"/>
@@ -52,6 +57,16 @@
     
     <link rel="prev" href="app-actions.html" />
     
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#50ade5">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#50ade5">
 
     </head>
     <body>
@@ -942,7 +957,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sharing-authentication-state">Sharing authentication state</h1>
+                                <h1 id="sharing-authentication-state"><a name="sharing-authentication-state" class="plugin-anchor" href="#sharing-authentication-state"><i class="fa fa-link" aria-hidden="true"></i></a>Sharing authentication state</h1>
 <p>We know that the state must not be shared between subsequent tests because it&apos;s the reason #1 for brittle tests. But when you know the rules, you know the motivations behind them and how to bend them to your needs.</p>
 <p>Citing again the <a href="testing-rules.html#shared-state">testing rules</a>: why should we not share the state between tests? Imagine this scenario:</p>
 <ul>
@@ -1038,8 +1053,8 @@ Cypress.Commands.add(<span class="hljs-string">&quot;signupV2&quot;</span>, ({ e
   cy.then(() =&gt; user);
 });
 </code></pre>
-<h3 id="cygignupv3"><code>cy.gignupV3</code></h3>
-<h6 id="storing-the-token">Storing the token</h6>
+<h3 id="cygignupv3"><a name="cygignupv3" class="plugin-anchor" href="#cygignupv3"><i class="fa fa-link" aria-hidden="true"></i></a><code>cy.gignupV3</code></h3>
+<h6 id="storing-the-token"><a name="storing-the-token" class="plugin-anchor" href="#storing-the-token"><i class="fa fa-link" aria-hidden="true"></i></a>Storing the token</h6>
 <pre><code class="lang-diff">/// &lt;reference types=&quot;Cypress&quot; /&gt;
 
 import { paths } from &quot;../../../realworld/frontend/src/components/App&quot;;
@@ -1077,7 +1092,7 @@ So, the <code>jwt</code> retrieval (<code>.its(&quot;jwt&quot;)</code>) is retri
 <li><p>&quot;returns&quot; the <code>user</code> object with <code>.then(() =&gt; user)</code>. It&apos;s an asynchronous flow so it &quot;returns&quot; the object by chaining it</p>
 </li>
 </ul>
-<h6 id="initial-token-check">Initial token check</h6>
+<h6 id="initial-token-check"><a name="initial-token-check" class="plugin-anchor" href="#initial-token-check"><i class="fa fa-link" aria-hidden="true"></i></a>Initial token check</h6>
 <pre><code class="lang-diff">/// &lt;reference types=&quot;Cypress&quot; /&gt;
 
 import { paths } from &quot;../../../realworld/frontend/src/components/App&quot;;
@@ -1344,7 +1359,7 @@ Cypress.Commands.add(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sharing authentication state","level":"4.5.4","depth":2,"next":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/cypress-as-a-development-tool.md","ref":"book/cypress-as-a-development-tool.md","articles":[]}]},"previous":{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/sharing-authentication-state.md","mtime":"2019-09-25T14:58:33.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T16:37:13.733Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sharing authentication state","level":"4.5.4","depth":2,"next":{"title":"UI Integration Tests","level":"4.6","depth":1,"ref":"","articles":[{"title":"Stubbing the Back-end","level":"4.6.1","depth":2,"path":"book/stubbing-the-backend.md","ref":"book/stubbing-the-backend.md","articles":[]},{"title":"Fixtures","level":"4.6.2","depth":2,"path":"book/fixtures.md","ref":"book/fixtures.md","articles":[]},{"title":"Custom command","level":"4.6.3","depth":2,"path":"book/integration-custom-command.md","ref":"book/integration-custom-command.md","articles":[]},{"title":"Front-end testing on steroids","level":"4.6.4","depth":2,"path":"book/front-end-testing-on-steroids.md","ref":"book/front-end-testing-on-steroids.md","articles":[]},{"title":"Cypress as a development tool","level":"4.6.5","depth":2,"path":"book/cypress-as-a-development-tool.md","ref":"book/cypress-as-a-development-tool.md","articles":[]}]},"previous":{"title":"App Actions","level":"4.5.3","depth":2,"path":"book/app-actions.md","ref":"book/app-actions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts","anchors","head-append"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"head-append":{"code":["<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicons/apple-touch-icon.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicons/favicon-32x32.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicons/favicon-16x16.png\">","<link rel=\"manifest\" href=\"/assets/favicons/site.webmanifest\">","<link rel=\"mask-icon\" href=\"/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">","<link rel=\"shortcut icon\" href=\"/assets/favicons/favicon.ico\">","<meta name=\"msapplication-TileColor\" content=\"#ffffff\">","<meta name=\"msapplication-config\" content=\"/assets/favicons/browserconfig.xml\">","<meta name=\"theme-color\" content=\"#50ade5\">"]},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/sharing-authentication-state.md","mtime":"2019-09-25T14:58:33.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-26T05:41:56.689Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

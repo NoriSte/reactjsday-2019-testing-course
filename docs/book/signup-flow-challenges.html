@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -39,6 +43,7 @@
     
 
         
+
     
     
     <meta name="HandheldFriendly" content="true"/>
@@ -54,6 +59,16 @@
     
     <link rel="prev" href="the-realworld-project.html" />
     
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#50ade5">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#50ade5">
 
     </head>
     <body>
@@ -944,7 +959,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="the-first-e2e-test-signup">The first E2E test: signup</h1>
+                                <h1 id="the-first-e2e-test-signup"><a name="the-first-e2e-test-signup" class="plugin-anchor" href="#the-first-e2e-test-signup"><i class="fa fa-link" aria-hidden="true"></i></a>The first E2E test: signup</h1>
 <p>There is a lot to tell and care when writing E2E tests, we are goign to use one of the most famous examples: the signup flow. Testing this kind of flow is useful because:</p>
 <ul>
 <li><p>it fills a form</p>
@@ -957,7 +972,7 @@
 </li>
 </ul>
 <p>Please note: you need to have the <a href="about-the-book.html#code">RealWorld</a> example running, be sure that you have <code>$ npm run realworld:start</code> running (if something does not work, take a look at the <a href="../">installation instructions</a>).</p>
-<h3 id="challenges">Challenges</h3>
+<h3 id="challenges"><a name="challenges" class="plugin-anchor" href="#challenges"><i class="fa fa-link" aria-hidden="true"></i></a>Challenges</h3>
 <p>If you want to test the signup flow we need:</p>
 <ul>
 <li><p>to identify the HTML elements we need to interact with</p>
@@ -1011,7 +1026,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"next":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"previous":{"title":"Conduit: the Realworld project","level":"4.2.1","depth":2,"path":"book/the-realworld-project.md","ref":"book/the-realworld-project.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/signup-flow-challenges.md","mtime":"2019-09-23T07:38:47.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T16:37:13.733Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Testing the signup flow: challenges","level":"4.2.2","depth":2,"next":{"title":"Opening Cypress","level":"4.2.3","depth":2,"path":"book/opening-cypress.md","ref":"book/opening-cypress.md","articles":[]},"previous":{"title":"Conduit: the Realworld project","level":"4.2.1","depth":2,"path":"book/the-realworld-project.md","ref":"book/the-realworld-project.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts","anchors","head-append"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"head-append":{"code":["<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicons/apple-touch-icon.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicons/favicon-32x32.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicons/favicon-16x16.png\">","<link rel=\"manifest\" href=\"/assets/favicons/site.webmanifest\">","<link rel=\"mask-icon\" href=\"/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">","<link rel=\"shortcut icon\" href=\"/assets/favicons/favicon.ico\">","<meta name=\"msapplication-TileColor\" content=\"#ffffff\">","<meta name=\"msapplication-config\" content=\"/assets/favicons/browserconfig.xml\">","<meta name=\"theme-color\" content=\"#50ade5\">"]},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/signup-flow-challenges.md","mtime":"2019-09-23T07:38:47.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-26T05:41:56.689Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

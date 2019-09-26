@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -39,6 +43,7 @@
     
 
         
+
     
     
     <meta name="HandheldFriendly" content="true"/>
@@ -52,6 +57,16 @@
     
     <link rel="prev" href="cypress-testing-library.html" />
     
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#50ade5">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#50ade5">
 
     </head>
     <body>
@@ -942,7 +957,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sharing-app-constants">Sharing app constants</h1>
+                                <h1 id="sharing-app-constants"><a name="sharing-app-constants" class="plugin-anchor" href="#sharing-app-constants"><i class="fa fa-link" aria-hidden="true"></i></a>Sharing app constants</h1>
 <p>When the app works but the tests fail, we have a false negative. <strong>False negatives could happen</strong>, especially when the tests rely on something external (like the E2E tests do). Anyway, <strong>we must reduce them</strong> as much as possible. False negatives are a smell of bad tests and, sooner or later, is one of the reasons that make you a test-hater.</p>
 <p>A lot of things can cause false negatives, one of them is the difference between the constants used by the web app and the ones used by the tests. What are the constants used by the actual test?</p>
 <p><i>File: cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js</i></p>
@@ -1041,7 +1056,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
 });
 </code></pre>
 <p>The result is that if you update some of the above-cited constants because of whatever reasons... You do not have to update the test accordingly and they still work as expected, one less thing to care about.</p>
-<h3 id="absolute-imports">Absolute imports</h3>
+<h3 id="absolute-imports"><a name="absolute-imports" class="plugin-anchor" href="#absolute-imports"><i class="fa fa-link" aria-hidden="true"></i></a>Absolute imports</h3>
 <p>In order to leverage <a href="https://webpack.js.org/configuration/resolve/#resolvealias" target="_blank">Webpack&apos;s aliases</a> to transform the relative imports into absolute ones</p>
 <pre><code class="lang-diff"><span class="hljs-deletion">-import { strings } from &quot;../../../../realworld/frontend/src/components/Register&quot;;</span>
 <span class="hljs-addition">+import { strings } from &quot;@/components/Register&quot;;</span>
@@ -1086,7 +1101,7 @@ context(<span class="hljs-string">&quot;Signup flow&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sharing app constants","level":"4.3.2","depth":2,"next":{"title":"AJAX requests","level":"4.4","depth":1,"ref":"","articles":[{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},{"title":"Asserting on payloads","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]}]},"previous":{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"path":"book/cypress-testing-library.md","ref":"book/cypress-testing-library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-constants.md","mtime":"2019-09-25T14:58:33.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T16:37:13.733Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sharing app constants","level":"4.3.2","depth":2,"next":{"title":"AJAX requests","level":"4.4","depth":1,"ref":"","articles":[{"title":"Waiting for an AJAX request","level":"4.4.1","depth":2,"path":"book/waiting-for-ajax-request.md","ref":"book/waiting-for-ajax-request.md","articles":[]},{"title":"Asserting on payloads","level":"4.4.2","depth":2,"path":"book/payload-assertions.md","ref":"book/payload-assertions.md","articles":[]}]},"previous":{"title":"cypress-testing-library","level":"4.3.1.2","depth":3,"path":"book/cypress-testing-library.md","ref":"book/cypress-testing-library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts","anchors","head-append"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"head-append":{"code":["<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicons/apple-touch-icon.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicons/favicon-32x32.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicons/favicon-16x16.png\">","<link rel=\"manifest\" href=\"/assets/favicons/site.webmanifest\">","<link rel=\"mask-icon\" href=\"/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">","<link rel=\"shortcut icon\" href=\"/assets/favicons/favicon.ico\">","<meta name=\"msapplication-TileColor\" content=\"#ffffff\">","<meta name=\"msapplication-config\" content=\"/assets/favicons/browserconfig.xml\">","<meta name=\"theme-color\" content=\"#50ade5\">"]},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/app-constants.md","mtime":"2019-09-25T14:58:33.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-26T05:41:56.689Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

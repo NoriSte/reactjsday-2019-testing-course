@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -39,6 +43,7 @@
     
 
         
+
     
     
     <meta name="HandheldFriendly" content="true"/>
@@ -52,6 +57,16 @@
     <link rel="next" href="monitoring-tests.html" />
     
     
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#50ade5">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#50ade5">
 
     </head>
     <body>
@@ -942,7 +957,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dedicated-scripts">Dedicated scripts</h1>
+                                <h1 id="dedicated-scripts"><a name="dedicated-scripts" class="plugin-anchor" href="#dedicated-scripts"><i class="fa fa-link" aria-hidden="true"></i></a>Dedicated scripts</h1>
 <p>If you respect a naming convention like the one <a href="opening-cypress.html">proposed earlier</a> that was something like <code>cypress/integration/&lt;DIRECTORY&gt;/&lt;SUBJECT&gt;.&lt;TYPEOFTEST&gt;.spec.js</code> (where TYPEOFTEST is <code>integration</code>, <code>e2e</code>, etc.) is easy to create dedicated scripts for each kind of tests.</p>
 <p>It could be helpful even <strong>for other members of the team</strong>: imagine a back-ender that is going to release an update and want to run just the E2E tests locally to be sure that everything works as expected, a <code>npm run tests:e2e</code> script could be helpful for him. Something like the following script</p>
 <pre><code class="lang-json"><span class="hljs-string">&quot;scripts&quot;</span>: {
@@ -989,7 +1004,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dedicated scripts","level":"4.7.1","depth":2,"next":{"title":"Monitoring tests","level":"4.7.2","depth":2,"path":"book/monitoring-tests.md","ref":"book/monitoring-tests.md","articles":[]},"previous":{"title":"Other best practices","level":"4.7","depth":1,"ref":"","articles":[{"title":"Dedicated scripts","level":"4.7.1","depth":2,"path":"book/dedicated-scripts.md","ref":"book/dedicated-scripts.md","articles":[]},{"title":"Monitoring tests","level":"4.7.2","depth":2,"path":"book/monitoring-tests.md","ref":"book/monitoring-tests.md","articles":[]},{"title":"Controlling the clock","level":"4.7.3","depth":2,"path":"book/controlling-the-clock.md","ref":"book/controlling-the-clock.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/dedicated-scripts.md","mtime":"2019-09-20T12:48:47.579Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-25T16:37:13.733Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Dedicated scripts","level":"4.7.1","depth":2,"next":{"title":"Monitoring tests","level":"4.7.2","depth":2,"path":"book/monitoring-tests.md","ref":"book/monitoring-tests.md","articles":[]},"previous":{"title":"Other best practices","level":"4.7","depth":1,"ref":"","articles":[{"title":"Dedicated scripts","level":"4.7.1","depth":2,"path":"book/dedicated-scripts.md","ref":"book/dedicated-scripts.md","articles":[]},{"title":"Monitoring tests","level":"4.7.2","depth":2,"path":"book/monitoring-tests.md","ref":"book/monitoring-tests.md","articles":[]},{"title":"Controlling the clock","level":"4.7.3","depth":2,"path":"book/controlling-the-clock.md","ref":"book/controlling-the-clock.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["include-codeblock","-sharing","include","copy-code-button","github","sitemap","ga","scripts","anchors","head-append"],"styles":{"website":"book/styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/NoriSte/reactjsday-2019-testing-course"},"head-append":{"code":["<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicons/apple-touch-icon.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicons/favicon-32x32.png\">","<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicons/favicon-16x16.png\">","<link rel=\"manifest\" href=\"/assets/favicons/site.webmanifest\">","<link rel=\"mask-icon\" href=\"/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">","<link rel=\"shortcut icon\" href=\"/assets/favicons/favicon.ico\">","<meta name=\"msapplication-TileColor\" content=\"#ffffff\">","<meta name=\"msapplication-config\" content=\"/assets/favicons/browserconfig.xml\">","<meta name=\"theme-color\" content=\"#50ade5\">"]},"include":{},"scripts":{"files":["utils/ga-anonymize-ip.js"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://noriste.github.io/reactjsday-2019-testing-course/"},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-142637808-2"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"ReactJSDay 2019":"https://2019.reactjsday.it"},"sharing":{}},"gitbook":"*"},"file":{"path":"book/dedicated-scripts.md","mtime":"2019-09-20T12:48:47.579Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-26T05:41:56.689Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
