@@ -90,7 +90,7 @@
     "start-server-and-test": "1.10.0"
   },
   "dependencies": {
-    "gitbook-plugin-github": "^2.0.0",
+    "gitbook-plugin-github": "^3.0.0",
     "gitbook-plugin-include": "^0.1.0",
     "gitbook-plugin-include-codeblock": "^3.2.2"
   }
