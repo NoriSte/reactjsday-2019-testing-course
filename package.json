@@ -30,7 +30,7 @@
     "// CYPRESS ///////////": "",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy-run-record": "node utils/cypress-run-and-record.js",
+    "cy-run-record": "node utils/cy-run-record.js",
     "// REALWORLD ///////////": "",
     "realworld:install": "npm run realworld:frontend:install && npm run realworld:backend:install",
     "realworld:frontend:install": "cd realworld/frontend && npm i",
@@ -39,14 +39,14 @@
     "realworld:frontend:start": "cd realworld/frontend && npm start",
     "realworld:backend:start": "cd realworld/backend && npm start",
     "realworld:db:start": "cd realworld/backend && npm run mongo:start",
-    "realworld:cy": "cypress run --spec \"cypress/integration/realworld/**/*\"",
+    "realworld:cy": "npm run cy-run-record -- --spec \"cypress/integration/realworld/**/*\"",
     "// EXAMPLES ///////////": "",
     "run:examples": "npm-run-all -s example:**",
-    "example:headless-browser": "cypress run --spec \"cypress/integration/**/headless-browser.*\"",
-    "example:signup": "cypress run --spec \"cypress/integration/examples/signup/*\"",
-    "example:signup-integration": "cypress run --spec \"cypress/integration/examples/signup-integration/*\"",
-    "example:authenticate-command": "cypress run --spec \"cypress/integration/examples/authenticate-command/*\"",
-    "example:monitoring-tests": "cypress run --spec \"cypress/integration/examples/monitoring-tests/*\""
+    "example:headless-browser": "npm run cy-run-record -- --spec \"cypress/integration/**/headless-browser.*\"",
+    "example:signup": "npm run cy-run-record -- --spec \"cypress/integration/examples/signup/*\"",
+    "example:signup-integration": "npm run cy-run-record -- --spec \"cypress/integration/examples/signup-integration/*\"",
+    "example:authenticate-command": "npm run cy-run-record -- --spec \"cypress/integration/examples/authenticate-command/*\"",
+    "example:monitoring-tests": "npm run cy-run-record -- --spec \"cypress/integration/examples/monitoring-tests/*\""
   },
   "jest": {
     "testPathIgnorePatterns": [
