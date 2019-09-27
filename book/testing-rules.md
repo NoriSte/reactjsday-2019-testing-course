@@ -38,7 +38,7 @@
 
 - code coverage helps us find what we have not tested yet, it is not an end in itself
 
-- if you're not enough confident about your application, think twice about your tests. Why they do not give you enough confidence? How could you improve them?
+- if you're not enough confident about your application (you are not sure that it works even if the tests pass), think twice about your tests. Why they do not give you enough confidence? How could you improve them?
 
 - <span id="skip-and-only"></span>always remember the `skip` and `only` test utilities, they are super useful to run a portion of the tests
 
