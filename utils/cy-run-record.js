@@ -1,5 +1,7 @@
 const npm = require("npm");
 
+// the goal is adding the "--record <CYPRESS_RECORD_KEY>" option only if needed
+
 npm.load(() => {
   let args = process.argv;
 
