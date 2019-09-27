@@ -7,6 +7,7 @@
 [![Build Status](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course.svg?branch=master)](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course)
 [![Build Cron](https://img.shields.io/badge/build%20cron-weekly-44cc11.svg)](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+[![Cypress Dashboard](https://img.shields.io/static/v1?label=Cypress&message=Dashboard&color=00BF88)](https://dashboard.cypress.io/#/projects/jdiekj/runs)
 
 This is the [reference repository](https://github.com/NoriSte/reactjsday-2019-testing-course) with all the contents and the examples of the "[React Testing 101: component, integration, and end-to-end testing](https://2019.reactjsday.it/workshops/react-testing-101.html)" course for the [ReactJSDay 2019](https://2019.reactjsday.it/) conference.
 
