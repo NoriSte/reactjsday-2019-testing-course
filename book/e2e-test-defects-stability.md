@@ -31,3 +31,5 @@ The complete test is the following:
 [include](../cypress/integration/examples/signup/signup-2.e2e.spec.js)
 
 Anyway: this test started smelling a while ago, go ahead to read why should we improve it.
+
+Please note: you must completely avoid fixed-time waitings (`cy.wait(10000)` with Cypress) because you make the tests extremely slow! Read more about that [here](https://dev.to/noriste/await-do-not-make-your-e2e-tests-sleep-4g1o).
