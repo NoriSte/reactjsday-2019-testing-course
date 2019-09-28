@@ -80,7 +80,7 @@
     "concurrently": "4.1.2",
     "cross-env": "6.0.0",
     "cypress": "3.4.1",
-    "cypress-skip-and-only-ui": "1.2.2",
+    "cypress-skip-and-only-ui": "1.2.3",
     "gitbook-cli": "2.3.2",
     "gitbook-plugin-copy-code-button": "0.0.2",
     "jest": "24.9.0",
