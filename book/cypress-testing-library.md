@@ -2,7 +2,7 @@
 
 Have you probably heard about the amazing [Testing Library](https://testing-library.com) of [Kent C. Dodds](https://kentcdodds.com) (and if you have not, do not worry, you are in the right place). Without anticipating too much, Testing Library is based on the assumption that **the tests must consume the web app the same way the consumer does**.
 
-What does it mean? Well, try thinking about how your users consume a web app: they look for contents, labels, placeholders, buttons, etc. to interact with them. They do not care about selectors, **they care about contents**.
+What does it mean? Well, try thinking about how your users consume a web app: they look for contents, labels, placeholders, buttons, etc. to interact with them. They do not care about selectors, **they care about contents**. And if the users cannot find the elements through meaningful contents, they are not able to use the application and there are big UX problems. Testing from the user perspective allows you to find these problems early.
 
 Take a look at the test we wrote
 

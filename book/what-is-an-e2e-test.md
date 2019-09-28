@@ -4,6 +4,8 @@
 
 <br />
 
+*Remember that all the recordings of the E2E tests are publicly available and you can see them logging into the [Cypress Dashboard](https://dashboard.cypress.io/#/projects/jdiekj/runs) of the project.*
+
 An E2E test runs the whole web app in a [headless browser](headless-browser.md) when the front-end application interacts with the back-end one, with a working database, and checks that **everything works as expected**. It checks everything: from the user interactions (one of the "end") to the business data (the other "end"): everything must work as designed.
 
 E2E tests are typically slow because:

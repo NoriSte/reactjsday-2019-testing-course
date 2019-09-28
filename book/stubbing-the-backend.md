@@ -20,6 +20,12 @@ Going down with the [testing pyramid](types-of-test.md#testing-pyramid) we can f
 
 - corner cases replication: with static responses, you can simulate (or reproduce, if you're analyzing a bug) every corner case in a while
 
+Pleas note an important terminology difference:
+
+- a stub is a static response used to "replace" the server one
+
+- a mock is a simplified, yet working, version of the back-end. It has the same APIs (from a front-end perspective) but with the minimun complexity neede to simulate the real back-end functionalities
+
 ### Implementing the first UI Integration test
 
 Until now, we have tested the registration flow and we have written a custom command to allow every test to consume the front-end with an authenticated user. We are going to analyze the signup flow firstly.
