@@ -3,6 +3,7 @@
   "plugins": [
     "include-codeblock",
     "-sharing",
+    "-search",
     "include",
     "copy-code-button",
     "github",

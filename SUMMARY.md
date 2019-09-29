@@ -15,6 +15,25 @@
 - ***
 - [An easier journey: top to bottom](book/top-to-bottom.md)
 - ***
+- Jest fundamentals
+
+  - [setup](book/jest-101/setup.md)
+  - [running-jest](book/jest-101/running-jest.md)
+  - [test-case](book/jest-101/test-case.md)
+  - [watch-mode](book/jest-101/watch-mode.md)
+  - [test-filenames](book/jest-101/test-filenames.md)
+  - [editor-autocompletion](book/jest-101/editor-autocompletion.md)
+  - [built-in-matchers](book/jest-101/built-in-matchers.md)
+  - [custom-matchers](book/jest-101/custom-matchers.md)
+  - [testing-async-code](book/jest-101/testing-async-code.md)
+  - [jsdom](book/jest-101/jsdom.md)
+  - [jest-lifecycle](book/jest-101/jest-lifecycle.md)
+  - [mock-functions](book/jest-101/mock-function.md)
+  - [mock-modules](book/jest-101/mock-modules.md)
+  - [expect-object](book/jest-101/expect-object.md)
+  - [timers](book/jest-101/timers.md)
+
+- ***
 - E2E Testing
   - [Headless browser](book/headless-browser.md)
   - [What is an E2E test](book/what-is-an-e2e-test.md)
