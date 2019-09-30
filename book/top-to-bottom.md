@@ -2,7 +2,7 @@
 
 When you are an experienced tester, approaching a test suite is a nice road. But learning how to test properly, what to test and what to avoid, which kind of tests choosing etc. is not a satisfactional journey.
 
-More: **testing is expensive at the beginning**. Everything is new, the examples you are try to implement do not work, debugging a test could be hard...
+More: **testing is expensive at the beginning**. Everything is new, the examples you try to implement do not work, debugging a test could be hard...
 
 We think that **approaching a test suite from the bottom to the top does not help**. Starting with some unit tests is easy because they're a pretty simple topic, but does not help you with deadlines, nor having a good confidence about your app.
 
