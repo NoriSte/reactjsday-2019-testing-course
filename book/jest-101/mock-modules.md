@@ -5,12 +5,11 @@ this allow us to test scenarios that would otherwhise be impossible to test or v
 
 ```
 // users.js
-import axios from 'axios'
+const axios = require('axios')
 
-export default function getUsers() {
-    return axios.get('/users.json').then(resp => resp.data)
+module.exports = function getUsers() {
+  return axios.get('/users.json').then(resp => resp.data)
 }
-
 ```
 
 ```
@@ -28,7 +27,7 @@ test('should fetch users', () => {
   // or you could use the following depending on your use case:
   // axios.get.mockImplementation(() => Promise.resolve(resp))
 
-  return getUsers.then(data => expect(data).toEqual(users))
+  return getUsers().then(data => expect(data).toEqual(users))
 })
 ```
 

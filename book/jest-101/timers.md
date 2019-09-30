@@ -18,7 +18,7 @@ test('test timeout', () => {
   jest.useFakeTimers()
 
   const callback = jest.fn()
-  const spy = jest.spyOn(window, 'setTimeout')
+  jest.spyOn(window, 'setTimeout')
 
   runAfterOneSec(callback)
   expect(setTimeout).toBeCalled() // true

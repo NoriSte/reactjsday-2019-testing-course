@@ -48,10 +48,12 @@ test('does not match if received does not contain expected elements', () => {
 
 ### `expect.stringContaining(string)` and `expect.stringMatching(string | regex)`
 
+```
 test('string', () => {
-expect('im no superman').toEqual(expect.stringContaining('man'))
-expect('im no superman').toEqual(expect.stringMatching('man'))
+  expect('im no superman').toEqual(expect.stringContaining('man'))
+  expect('im no superman').toEqual(expect.stringMatching('man'))
 })
+```
 
 ### `expect.objectContaining(object)`
 
