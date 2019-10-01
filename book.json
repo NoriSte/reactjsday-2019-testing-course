@@ -9,7 +9,8 @@
     "sitemap",
     "anchors",
     "head-append",
-    "insert-logo"
+    "insert-logo",
+    "edit-link"
   ],
   "links": {
     "sidebar": {
@@ -26,6 +27,10 @@
     },
     "sitemap": {
       "hostname": "https://noriste.github.io/reactjsday-2019-testing-course/"
+    },
+    "edit-link": {
+      "base": "https://github.com/NoriSte/reactjsday-2019-testing-course/edit/master",
+      "label": ""
     },
     "head-append": {
       "code": [
