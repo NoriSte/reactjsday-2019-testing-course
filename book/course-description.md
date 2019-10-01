@@ -23,7 +23,7 @@ We will alternate theoretical explanations with live coding sessions. At the end
 
 
 #### Topics:
-- Test panorama
+- [Test panorama](types-of-test.md)
 - Jest
   - Built-in matchers
   - Create a custom matcher
@@ -45,27 +45,27 @@ We will alternate theoretical explanations with live coding sessions. At the end
   - What you should not test
 - Visual Regression Testing
 - Snapshot testing: when to avoid them and when they are useful
-- What is an E2E test
-  - Browser automation
-  - Pros and cons of E2E tests vs UI integration tests
-- Cypress
-  - The Test Runner
-  - Automatic waitings
-  - Automatic screenshots e videos
-  - Asynchronous execution
-- Cypress as your main development browser
+- [What is an E2E test](what-is-an-e2e-test.md)
+  - [Browser automation](headless-browser.md)
+  - [Pros and cons of E2E tests vs UI integration tests](stubbing-the-backend.md)
+- [Cypress](cypress-vs-other-tools.md)
+  - [The Test Runner](opening-cypress.md#the-test-runner)
+  - [Automatic waitings](cypress-waitings-and-execution-order.md#automatic-waiting)
+  - [Automatic screenshots e videos](https://docs.cypress.io/guides/guides/screenshots-and-videos.html#Screenshots)
+  - [Asynchronous execution](cypress-waitings-and-execution-order.md#test-code-execution-order)
+- [Cypress as your main development browser](cypress-as-a-development-tool.md)
 - Best practices
-  - How to identify DOM elements
-  - Waitings instead of pauses, what deterministic events are
-  - The right use of the assertions
-- Why the tests must be as simple as possible
+  - [How to identify DOM elements](cypress-testing-library.md)
+  - [Waitings instead of pauses, what deterministic events are](waiting-for-ajax-request.md#ajax-request-waiting)
+  - [The right use of the assertions](payload-assertions.md)
+- [Why the tests must be as simple as possible](testing-rules.md#simple)
 - Usefulness for all the team members
-  - Naming conventions and dedicated scripts
-  - Monitoring tests
+  - [Naming conventions and dedicated scripts](dedicated-scripts.md)
+  - [Monitoring tests](monitoring-tests.md)
 - Cypres advanced use
-  - Custom commands
-- Visual Regression Testing for the whole web app
-- Continuous Integration
+  - [Custom commands](signup-custom-command.md)
+- [Visual Regression Testing for the whole web app](visual-regression-testing.md)
+- [Continuous Integration](continuous-integration.md)
 
 #### Attendees
 
