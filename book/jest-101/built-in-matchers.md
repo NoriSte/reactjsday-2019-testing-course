@@ -148,6 +148,7 @@ const shoppingList = [
 ];
 
 test('the shopping list has beer on it', () => {
+  expect(shoppingList).toHaveLength(3)
   expect(shoppingList).toContain('beer');
   expect(shoppingList).not.toContain('water');
   expect(new Set(shoppingList)).toContain('beer');
