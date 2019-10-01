@@ -17,6 +17,7 @@
 - ***
 - Jest fundamentals
 
+  - [what-is-jest](book/jest-101/what-is-jest.md)
   - [setup](book/jest-101/setup.md)
   - [running-jest](book/jest-101/running-jest.md)
   - [test-case](book/jest-101/test-case.md)
