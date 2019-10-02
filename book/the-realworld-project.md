@@ -7,7 +7,7 @@ We cloned both the repositories and adapted them for the purpose of this course:
 - we shared some constants between the source code and the tests code
 - we delayed every backend operation to simulate E2E testing bottlenecks
 - we added the option to wipe out the entire DB
-- we made the execrices network-independent by storing all the assets locally
+- we made the exercises network-independent by storing all the assets locally
 
 The RealWorld projects are stored into the `realworld` directory. To run them you need to have installed
 
