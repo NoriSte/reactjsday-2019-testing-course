@@ -88,7 +88,7 @@ We will alternate theoretical explanations with live coding sessions, at the end
 
 #### Attendees
 
-This course is for all the developers who have already worked with React but have not yet started, or have not yet succeeded, to successfully test their React web apps. At the end of the course, you will be able to apply the fundamental principles of the test methodologies to understand what and how to test effectively.
+This course is for all the developers who have already worked with React but have not yet started, or have not yet succeeded in testing their React web applications. At the end of the course, you will be able to apply the fundamental principles of the test methodologies to understand what and how to test effectively.
 
 #### Participation requirements
 
