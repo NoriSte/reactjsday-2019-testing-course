@@ -69,6 +69,7 @@ We will alternate theoretical explanations with live coding sessions, at the end
   - [Mocking a module](book/jest-101/mock-modules.md)
   - [The Expect object](book/jest-101/expect-object.md)
   - [Timers](book/jest-101/timers.md)
+- [The many wait to test React](book/many-ways-to-test-react.md)
 - Intro to React testing
   - [What You will learn](book/intro-to-react-testing/index.md)
   - [Setup](book/intro-to-react-testing/setup.md)

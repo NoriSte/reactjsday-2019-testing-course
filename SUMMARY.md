@@ -77,6 +77,8 @@
   - [Timers](book/jest-101/timers.md)
 
 - ***
+- [The many ways to test React](book/many-ways-to-test-react.md)
+- ***
 - Intro to React testing
   - [What You will learn](book/intro-to-react-testing/index.md)
   - [Setup](book/intro-to-react-testing/setup.md)
