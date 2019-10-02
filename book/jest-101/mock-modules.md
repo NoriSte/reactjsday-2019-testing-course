@@ -1,7 +1,6 @@
-# mock modules
+# Mocking a module
 
-Jest can intercept requires and imports before they are resolved and change the modules with a custom implementation
-this allow us to test scenarios that would otherwhise be impossible to test or very difficult
+Jest can intercept `require` and `import` before they are resolved and change the modules with a custom implementation. This allows us to test scenarios that would otherwhise be impossible to test or very difficult
 
 ```js
 // users.js
@@ -31,4 +30,4 @@ test("should fetch users", () => {
 });
 ```
 
-in the code above, thanks to `jest.mock('axios')` axios is not the real axios module, but a mock function that allow us to mock the return value
+in the code above, thanks to `jest.mock('axios')` axios is not the real axios module, but a mock function that allow us to mock the return value.

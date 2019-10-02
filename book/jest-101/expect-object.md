@@ -1,10 +1,10 @@
-# Expect Object
+# The Expect object
 
-The `expect` global object is not only used to retrieve matcher for a given value, it has very handy utilities for assertion too
+The `expect` global object is not only used to retrieve matcher for a given value, but it also has very handy utilities for assertions too.
 
 ### `expect.anything`
 
-expect.anything() matches anything but null or undefined. You can use it inside toEqual or toBeCalledWith instead of a literal value. For example, if you want to check that a mock function is called with a non-null argument
+`expect.anything()` matches anything but `null` or `undefined`. You can use it inside `toEqual` or `toBeCalledWith` instead of a literal value. For example, if you want to check that a mock function is called with a non-null argument
 
 ```js
 test("anything", () => {
@@ -16,7 +16,7 @@ test("anything", () => {
 
 ### `expect.any(constructor)`
 
-expect.any matches with anything that was created with a given constructor
+`expect.any` matches with anything that was created with a given constructor
 
 ```js
 class MyClass {}
@@ -57,24 +57,25 @@ test("string", () => {
 
 ### `expect.objectContaining(object)`
 
-```js', () => {
+```js
+test("anything", () => {
   const data = {
-    name: 'bob',
+    name: "bob",
     age: 44,
     address: {
-      city: 'milan',
-    },
-  }
+      city: "milan"
+    }
+  };
   expect(data).toEqual(
     expect.objectContaining({
       address: {
-        city: expect.any(String),
-      },
-    }),
-  )
+        city: expect.any(String)
+      }
+    })
+  );
 
   expect(data).toMatchObject({
-    name: expect.any(String),
-  })
-})
+    name: expect.any(String)
+  });
+});
 ```

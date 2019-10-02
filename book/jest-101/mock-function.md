@@ -1,10 +1,8 @@
 # Mock functions
 
-A mock function is a special function that can record when it is invoked, capturing also parameters it was called with, return values and more
+A mock function is a special function that can record when it is invoked, capturing also parameters it was called with, return values and more. Built-in matchers are available to assert how the function behaved.
 
-built-in matchers are available to assert how the function behaved
-
-## basic mock function
+### Basic mock function
 
 ```js
 test("mock fn", () => {
@@ -22,9 +20,9 @@ test("mock fn", () => {
 });
 ```
 
-## mock implementation
+### Mock implementation
 
-if a function is passed to `jest.fn()` it will be use to generate the return value of the mock
+If a function is passed to `jest.fn()` it will be use to generate the return value of the mock
 
 ```js
 test("mock implementation", () => {
@@ -39,7 +37,7 @@ test("mock implementation", () => {
 });
 ```
 
-### mock return value
+### Mock return value
 
 We can set a value to be returned for the next call or for evey call afterward, by default a mock function returns `undefined`
 
