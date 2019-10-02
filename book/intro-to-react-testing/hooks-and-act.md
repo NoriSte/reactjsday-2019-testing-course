@@ -126,7 +126,7 @@ Time:        0.636s, estimated 1s
 
 why isn't the title changed?
 
-becuase in order for components that use `useEffect` and other hooks to work properly in a testing environment we have to use un utility called `act`
+because in order for components that use `useEffect` and other hooks to work properly in a testing environment we have to use un utility called `act`
 
 `import { act } from 'react-dom/test-utils`
 

@@ -8,7 +8,7 @@
 
 - UI Integration tests: check the whole application works without a real back-end
 
-- E2E tests: check the the whole app, back-end and database included, works as expected
+- E2E tests: check the whole app, back-end and database included, works as expected
 
 - Visual Regression tests: check that the app look doesn't change when not intended
 

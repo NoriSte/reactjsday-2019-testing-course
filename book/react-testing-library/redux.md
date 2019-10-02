@@ -1,6 +1,6 @@
 # Redux
 
-To Test component that uses Redux is necessary to wrap the component being tested by the the store provider
+To Test component that uses Redux is necessary to wrap the component being tested by the store provider
 
 ## create and test a component using redux
 

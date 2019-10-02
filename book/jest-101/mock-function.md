@@ -1,4 +1,4 @@
-# mock functions
+# Mock functions
 
 A mock function is a special function that can record when it is invoked, capturing also parameters it was called with, return values and more
 

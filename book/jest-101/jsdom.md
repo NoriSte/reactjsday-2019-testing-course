@@ -1,8 +1,8 @@
 # jsdom
 
-Jest by default makes available an instance of [jsdom](https://github.com/jsdom/jsdom), A JavaScript implementation of the WHATWG DOM and HTML standards, for use with node.js
+Jest by default makes available an instance of [jsdom](https://github.com/jsdom/jsdom), A JavaScript implementation of the WHATWG DOM and HTML standards, for use with node.js.
 
-## window and document object
+## Window and Document Object
 
 are available in the global scope
 
@@ -21,7 +21,7 @@ test("body", () => {
 });
 ```
 
-### using web api
+### Using Web APIs
 
 ```js
 test("change document title", () => {
@@ -34,9 +34,9 @@ test("change document title", () => {
 });
 ```
 
-### manipulating the DOM
+### Manipulating the DOM
 
-we can manipulate the dom as we were in the borwser and make assertions of the results using common web api
+We can manipulate the DOM as we were in the browser and make assertions of the results using common Web APIs
 
 ```js
 test("button element in jsdom", () => {
@@ -50,7 +50,7 @@ test("button element in jsdom", () => {
 });
 ```
 
-### interacting with the DOM
+### Interacting with the DOM
 
 ```js
 test("click button element in jsdom", () => {
@@ -74,10 +74,10 @@ test("click button element in jsdom", () => {
 });
 ```
 
-this is the foundation of testing using libraries such as `react-dom/test-utils` and `react-testing-library` that expect to have a DOM available
+this is the foundation of testing using libraries such as `react-dom/test-utils` and `react-testing-library` that expect to have a DOM available.
 
 ## Things to be aware of
 
-- every file have a different jsom instance
-- the same jsdom instance (so the window) is shared by ALL tests in a file, this can cause some tests to behave differently when run in isolation of after other tests that manipulate the DOM
-  - to avoid such kind of problems refer the the section about jest-lifecycle to undestand how to property clean the test environement on each test run
+- every file have a different jsdom instance
+- the same jsdom instance (so the Window) is shared by **all** tests in a file, this can cause some tests to behave differently when run in isolation of after other tests that manipulate the DOM
+  - to avoid such kind of problems refer to [the section about jest-lifecycle](jest-101/jest-lifecycle.md) to understand how to properly clean the test environment on each test run

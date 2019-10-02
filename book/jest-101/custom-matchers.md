@@ -1,14 +1,15 @@
-# custom matchers
+# Custom Matchers
 
-Jest offert the api `expect.extend` to create custom matchers
+Jest offers the API `expect.extend` to create custom matcher.
 
-Custom Matchers API
-Matchers should return an object (or a Promise of an object) with two keys.
+### Custom Matchers API
 
-- `pass` to indicates if the the test passed
+Matchers should return an object (or a Promise of an object) with two keys:
+
+- `pass` to indicates if the test passed
 - `message` a function with no arguments that returns an error message in case of failure.
 
-Matchers are called with the argument passed to `expect` and all arguments passed to the custom matcher
+Matchers are called with the argument passed to `expect` and all arguments passed to the custom matcher.
 
 ```js
 expect.extend({
@@ -49,12 +50,12 @@ Time:        0.471s, estimated 1s
 Ran all test suites.
 ```
 
-## complete example
+### A complete example
 
-### The custom Matcher
+The custom Matcher:
 
 ```js
-const diff = require("jest-diff"); // already available if Jest installed
+const diff = require("jest-diff"); // already available if Jest is installed
 
 expect.extend({
   toBeCompleted(project) {
@@ -81,7 +82,7 @@ expect.extend({
 });
 ```
 
-### Test
+The test;
 
 ```js
 test("custom matcher", () => {
@@ -106,7 +107,7 @@ test("custom matcher", () => {
 });
 ```
 
-### Result
+The result:
 
 ```yaml
  FAIL  ./test.js

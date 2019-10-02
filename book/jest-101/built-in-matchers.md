@@ -6,19 +6,17 @@ test("my first test", () => {
 });
 ```
 
-matchers are functions that compare two value and eventually throw an error if these values don't match showing useful informations:
+Matchers are functions that compare two value and eventually throw an error if these values don't match. They show useful informations:
 
 - which test failed
-- position of the failed assertion in the test code
-- stacktrace
+- the position of the failed assertion in the test code
+- the stacktrace
 
-Jest's expect provides a huge list of matchers and allow to add custom ones
+Jest's expect provides a huge list of matchers and allow to add custom ones.
 
-## `.not` modifier
+### `.not` modifier
 
-a matcher can be chained after an optional `.not` modifier which returns the negates the result of the matcher
-
-for examples
+A matcher can be chained after an optional `.not` modifier which negates the result of the matcher. For example:
 
 ```javascript
 test("my first test", () => {
@@ -30,7 +28,7 @@ test("my first test", () => {
 
 ### toBe
 
-it uses `Object.is(a,b)` controls the _reference_ of two object to see if they are the same
+It uses `Object.is(a,b)` controls the _reference_ of two object to see if they are the same
 
 ```javascript
 expect(window.document).toBe(document); // true
@@ -50,7 +48,7 @@ expect(a).toBe(b); // false! checking the reference not the value
 
 ### toEqual
 
-checks the equality of two _values_
+Checks the equality of two _values_:
 
 ```javascript
 const a = { text: "a" };
@@ -64,7 +62,7 @@ expect(a).toBe(b); // true
 
 ### Truthiness matchers
 
-assert that a value is truthy or falsy
+Assert that a value is _truthy_ or _falsy_
 
 - `toBeNull` matches only `null`
 - `toBeUndefined` matches only `undefined`
@@ -102,13 +100,13 @@ test("two plus two", () => {
   expect(value).toBeLessThan(5);
   expect(value).toBeLessThanOrEqual(4.5);
 
-  // toBe and toEqual are equivalent for numbers becuase are primitives (like when using ===)
+  // toBe and toEqual are equivalent for numbers because are primitives (like when using ===)
   expect(value).toBe(4);
   expect(value).toEqual(4);
 });
 ```
 
-if your test does not need to be floating-point precise you can use `toBeCloseTo` to prevent rounding errors
+If your test does not need to be floating-point precise you can use `toBeCloseTo` to prevent rounding errors
 
 ```javascript
 test("adding floating point numbers", () => {
@@ -138,7 +136,7 @@ test('but there is a "stop" in Christoph', () => {
 
 ### Arrays and iterables
 
-Array and Iterable shares the same api:
+Array and Iterable shares the same APIs:
 
 ```javascript
 const shoppingList = ["pasta", "tuna", "beer"];
@@ -184,7 +182,7 @@ test("object equal", () => {
     another: undefined
   };
 
-  expect(data).not.toStrictEqual({ name: "bob", age: 42 }); // another being presetn but undefined fail when strict matching
+  expect(data).not.toStrictEqual({ name: "bob", age: 42 }); // `another` being present but `undefined` fails when strict matching
 });
 ```
 
@@ -207,4 +205,4 @@ test("jest should not explode", () => {
 });
 ```
 
-> node: we are not calling `bomb` (it will throw and exit jest) we pass the function to jest that will call it catching the error for assertions
+> node: we are not calling `bomb` (it will throw and exit Jest) we pass the function to Jest that will call it catching the error for the sake of the assertions

@@ -1,8 +1,8 @@
-# Testing Async Code
+# Testing async code
 
-Jest needs to know if it is running async code in order to wait for it to complete
+Jest needs to know if it's running async code in order to wait for it to complete.
 
-## Callbacks
+### Callbacks
 
 ```js
 function getData(cb) {
@@ -25,7 +25,7 @@ test("using callbacks in jest", () => {
 });
 ```
 
-> note: `toMatchObject` is a built-in matcher that check for an object to be a suboject of what passed to expected
+> note: `toMatchObject` is a built-in matcher that checks for an object to be a subobject of what passed to `expect`
 
 ```yml
  PASS  ./test.js
@@ -40,10 +40,9 @@ Ran all test suites.
 Watch Usage: Press w to show more.
 ```
 
-the above test will pass making no assertions at all, because Jest does not know that has to wait for the _callback_ passed to `getData` to be called
+the above test will pass making no assertions at all, because Jest does not know that has to wait for the _callback_ passed to `getData` to be called.
 
-to overcome this we can declare that we use the `done` argument passed by Jest to our function
-this will tell Jest to wait until we call `done` explicitly
+To overcome this we can declare that we use the `done` argument passed by Jest to our function. This will tell Jest to wait until we call `done` explicitly
 
 ```js
 test("using callbacks in jest", done => {
@@ -105,7 +104,7 @@ test("using promises in jest", () => {
 });
 ```
 
-> note: using promises we cannot use the done argument but we MUST return a promise
+> Note: using promises we cannot use the `done` argument but we **must** return a promise
 
 ```yml
  FAIL  ./test.js
@@ -140,7 +139,7 @@ Time:        0.439s, estimated 1s
 Ran all test suites.
 ```
 
-ths built-in matcher modifier `resolves` is also available to make promises assetion a bit nicer
+the built-in matcher modifier `resolves` is also available to make promises assertion a bit nicer
 
 ```js
 test("using promises in jest", () => {
@@ -148,9 +147,9 @@ test("using promises in jest", () => {
 });
 ```
 
-#### rejections
+#### Rejections
 
-to test rejections `.catch` can be chained to a promise or the built-in modifier `rejects` can be use
+to test rejections `.catch` can be chained to a promise or the built-in modifier `rejects` can be used
 
 ```js
 function getData() {
@@ -185,10 +184,9 @@ Ran all test suites.
 Watch Usage: Press w to show more.
 ```
 
-#### using async await
+#### Using `async/await`
 
-to use async await is enought to change the test function to be `async`
-it also works when using `resolves`
+To use `async/await` is enough to change the test function to be `async`. It also works when using `resolves`
 
 ```js
 function getData() {
