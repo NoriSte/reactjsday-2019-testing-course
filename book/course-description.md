@@ -4,13 +4,20 @@
 
 Being able to test components and web-apps developed with React is an increasingly important requirement for a front-end developer. There are tools and libraries that simplify the testing process but the learning curve can seem daunting.
 
-- "What’s the way should I start to test my web apps?"
-- "It’s not clear to me what I have to test (and what not) and how to test it ..."
-- "My current tests fail all the time and don't help me preventing new bugs ..."
+> "What’s the right way to start testing my web applications?"
 
-The course aims to provide basic information, principles and some experience-based advice, to **enter the world of testing methodologies**. Testing your own web apps is much easier and more profitable than you might think. This course serves to overcome the initial obstacles and to understand how to take an **immediate advantage from the tests**, not only in the medium and long term.
+> "It’s unclear what I'm supposed to test (and what not) and how to do it"
+
+> "My current tests fail all the time and don't help me preventing new bugs"
+
+Does this sound familiar?
+
+This course aims to provide basic information, principles and experience-based advices, to **enter the world of testing methodologies**.
+
+Testing your own web applications is much easier and more profitable than you might think. Even if some advances concepts and benefits may only become evident in the medium to long run this course serves the purpose to overcome the initial obstacles and understand how to take actions and leverage the benefits of testing **immediatetely** .
 
 During the day, we will see all the useful tests for a web-app developed with React, dealing with the typical cases we encounter on a daily basis. During this course we will teach you:
+
 - The basics and advantages of the main testing techniques applied to React
 - How to test your React components productively
 - The best practices to follow to write useful and lasting tests
@@ -18,33 +25,12 @@ During the day, we will see all the useful tests for a web-app developed with Re
 - How to write effective end-to-end tests (E2E)
 - How to integrate tests into development and Continuous Integration pipelines
 
-We are going to use **Jest, React Testing Library, Cypress** and all their useful plugins to increase the daily productivity and test reliability.
-We will alternate theoretical explanations with live coding sessions. At the end of the course the source code of all the exercises, the material used for explanations, and other in-depth materials will be released.
-
+We are going to use **Jest, React Testing Library, Cypress** and all their useful plugins to increase our daily productivity and test reliability.
+We will alternate theoretical explanations with live coding sessions, at the end of the course the source code of all the exercises, the material used for explanations, and other in-depth materials will be made available.
 
 #### Topics:
+
 - [Test panorama](types-of-test.md)
-- Jest
-  - Built-in matchers
-  - Create a custom matcher
-  - Watch mode
-  - JSDOM
-  - How to use chrome-devtools to debug a Jest test
-- React Testing Library
-  - Enzyme comparison
-  - What are implementation details
-  - How to test what the users use
-  - How to simulate user interaction events
-  - Providers
-  - Testing hooks
-  - Shallow rendering
-- Mocking functions and modules
-- What are we trying to test?
-  - The thin line between unit tests and integration tests
-  - Why and how making a test verbose
-  - What you should not test
-- Visual Regression Testing
-- Snapshot testing: when to avoid them and when they are useful
 - [What is an E2E test](what-is-an-e2e-test.md)
   - [Browser automation](headless-browser.md)
   - [Pros and cons of E2E tests vs UI integration tests](stubbing-the-backend.md)
