@@ -9,7 +9,7 @@ We cloned both the repositories and adapted them for the purpose of this course:
 - we added the option to wipe out the entire DB
 - we made the exercises network-independent by storing all the assets locally
 
-The RealWorld projects are stored into the `realworld` directory. To run them you need to have installed
+The RealWorld projects are stored into the `realworld` directory.
 
 ###### Some notes
 
