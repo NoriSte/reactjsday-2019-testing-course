@@ -4,7 +4,7 @@
 
 <br />
 
-*Remember that all the recordings of the E2E tests are publicly available and you can see them logging into the [Cypress Dashboard](https://dashboard.cypress.io/#/projects/jdiekj/runs) of the project.*
+> note: all the recordings of the E2E tests are publicly available and you can see them logging into the [Cypress Dashboard](https://dashboard.cypress.io/#/projects/jdiekj/runs) of the project.
 
 An E2E test runs the whole web app in a [headless browser](headless-browser.md) when the front-end application interacts with the back-end one, with a working database, and checks that **everything works as expected**. It checks everything: from the user interactions (one of the "end") to the business data (the other "end"): everything must work as designed.
 
@@ -25,7 +25,7 @@ E2E tests are typically slow because:
 
 An important note: the front-end application is not deployed in advance and then tested. Instead, it needs to be built on the fly, launched (usually with Docker) and then, if the tests pass, the new front-end app is going to be deployed. That's how the CI/CD pipelines work.
 
-### What flows should be E2E tested?
+### What flows should be tested E2E?
 
 - the Happy Path flows: you need to be sure that, at least, the users are able to complete the basic operations
 

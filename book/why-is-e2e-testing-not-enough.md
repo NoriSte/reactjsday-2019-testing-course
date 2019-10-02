@@ -6,7 +6,7 @@ E2E tests and UI integration tests give us high confidence about the whole appli
 
 - so high-level tests can tell you what did not work but usually, they cannot tell you why. You know that an AJAX call has not started but why has not started?
 
-- render the application is not the always the best way to test something, a lot of parts are not related to the render phase at all, starting a real browser to test them is exaggerated
+- rendering the entire application is not always the best way to test something, a lot of parts are not related to the render phase at all, starting a real browser to test them is exaggerated
 
 - the end-user is probably the most important user of the application... But he/she is not the only one! All the components and the functions are consumed by the developer, not by the end-user. Every unit of the project has some APIs (its contract) and they need to be tested too. Testing an end-user flow does not allow you to replicate all the API cases
 
