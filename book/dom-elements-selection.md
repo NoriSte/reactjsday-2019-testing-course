@@ -106,7 +106,7 @@ Forget for a while the RealWorld form, there are a ton of selectors we can use w
 | type            | User experience     |
 | ARIA attributes | User experience     |
 
-These selectors do not have testing purposes, the more the tests use them, the more they're unstable. You could not blame yourself or a colleague of your when, after 20 minutes of watching the pipeline and debugging the app, you discover that the test broke because of a class is changed. The problem is not in the web app, the problem is in the test.
+These selectors do not have testing purposes, the more the tests use them, the more they're fragile. You could not blame yourself or a colleague of your when, after 20 minutes of watching the pipeline and debugging the app, you discover that the test broke because of a class is changed. The problem is not in the web app, the problem is in the test.
 
 You need to use a dedicated attribute, one that will not change because of other needs, and this is `data-testid` (or `data-test`, or `data-cy`, etc.). No one is going to change a `data-testid` attribute, even if he/she does not know what it means.
 
