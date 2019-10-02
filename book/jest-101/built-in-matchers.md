@@ -1,9 +1,9 @@
-# built-in-matchers
+# Built-in Matchers
 
-```
-test('my first test', () => {
-  expect(true).toBe(false) // .toBe is a matcher
-})
+```js
+test("my first test", () => {
+  expect(true).toBe(false); // .toBe is a matcher
+});
 ```
 
 matchers are functions that compare two value and eventually throw an error if these values don't match showing useful informations:
@@ -12,7 +12,7 @@ matchers are functions that compare two value and eventually throw an error if t
 - position of the failed assertion in the test code
 - stacktrace
 
-jest's expect provides a huge list of matchers and allow to add custom ones
+Jest's expect provides a huge list of matchers and allow to add custom ones
 
 ## `.not` modifier
 
@@ -20,10 +20,10 @@ a matcher can be chained after an optional `.not` modifier which returns the neg
 
 for examples
 
-```
-test('my first test', () => {
-  expect(true).not.toBe(false)
-})
+```javascript
+test("my first test", () => {
+  expect(true).not.toBe(false);
+});
 ```
 
 ## Common Matchers
@@ -32,34 +32,34 @@ test('my first test', () => {
 
 it uses `Object.is(a,b)` controls the _reference_ of two object to see if they are the same
 
-```
-expect(window.document).toBe(document) // true
+```javascript
+expect(window.document).toBe(document); // true
 
-const a = {text: 'a'}
-const b = a
-expect(a).toBe(b) // true
+const a = { text: "a" };
+const b = a;
+expect(a).toBe(b); // true
 
-const a = {text: 'a'}
-const b = {text: 'a'}
-expect(a).toBe(b) // false! checking the reference not the value
+const a = { text: "a" };
+const b = { text: "a" };
+expect(a).toBe(b); // false! checking the reference not the value
 
-const a = [0, 1, 2]
-const b = [0, 1, 2]
-expect(a).toBe(b) // false! checking the reference not the value
+const a = [0, 1, 2];
+const b = [0, 1, 2];
+expect(a).toBe(b); // false! checking the reference not the value
 ```
 
 ### toEqual
 
 checks the equality of two _values_
 
-```
-const a = { text: 'a' }
-const b = { text: 'a' }
-expect(a).toEqual(b) // true`
+```javascript
+const a = { text: "a" };
+const b = { text: "a" };
+expect(a).toEqual(b); // true`
 
-const a = [0, 1, 2]
-const b = [0, 1, 2]
-expect(a).toBe(b) // true
+const a = [0, 1, 2];
+const b = [0, 1, 2];
+expect(a).toBe(b); // true
 ```
 
 ### Truthiness matchers
@@ -72,8 +72,8 @@ assert that a value is truthy or falsy
 - `toBeTruthy` matches anything that an if statement treats as `true`
 - `toBeFalsy` matches anything that an if statement treats as `false`
 
-```
-test('null', () => {
+```javascript
+test("null", () => {
   const v = null;
   expect(v).toBeNull();
   expect(v).toBeDefined();
@@ -82,7 +82,7 @@ test('null', () => {
   expect(v).toBeFalsy();
 });
 
-test('zero', () => {
+test("zero", () => {
   const n = 0;
   expect(n).not.toBeNull();
   expect(n).toBeDefined();
@@ -94,8 +94,8 @@ test('zero', () => {
 
 ### Numbers
 
-```
-test('two plus two', () => {
+```javascript
+test("two plus two", () => {
   const value = 2 + 2;
   expect(value).toBeGreaterThan(3);
   expect(value).toBeGreaterThanOrEqual(3.5);
@@ -110,8 +110,8 @@ test('two plus two', () => {
 
 if your test does not need to be floating-point precise you can use `toBeCloseTo` to prevent rounding errors
 
-```
-test('adding floating point numbers', () => {
+```javascript
+test("adding floating point numbers", () => {
   const value = 0.1 + 0.2; // 0.30000000000000004
   expect(value).toBeCloseTo(0.3); // This works.
 });
@@ -119,96 +119,92 @@ test('adding floating point numbers', () => {
 
 ### Strings
 
-```
-test('strings', () => {
-  expect('aa').toBe('aa') // true
-  expect('aa').not.toBe('aaa') // true
-  expect('aa').toEqual('aa') // true
-  expect('aaa').toContain('aa') // true
-})
+```javascript
+test("strings", () => {
+  expect("aa").toBe("aa"); // true
+  expect("aa").not.toBe("aaa"); // true
+  expect("aa").toEqual("aa"); // true
+  expect("aaa").toContain("aa"); // true
+});
 
-test('there is no I in team', () => {
-  expect('team').not.toMatch(/I/) // true
-})
+test("there is no I in team", () => {
+  expect("team").not.toMatch(/I/); // true
+});
 
 test('but there is a "stop" in Christoph', () => {
-  expect('Christoph').toMatch(/stop/) // true
-})
+  expect("Christoph").toMatch(/stop/); // true
+});
 ```
 
 ### Arrays and iterables
 
 Array and Iterable shares the same api:
 
-```
-const shoppingList = [
-  'pasta',
-  'tuna',
-  'beer',
-];
+```javascript
+const shoppingList = ["pasta", "tuna", "beer"];
 
-test('the shopping list has beer on it', () => {
-  expect(shoppingList).toHaveLength(3)
-  expect(shoppingList).toContain('beer');
-  expect(shoppingList).not.toContain('water');
-  expect(new Set(shoppingList)).toContain('beer');
+test("the shopping list has beer on it", () => {
+  expect(shoppingList).toHaveLength(3);
+  expect(shoppingList).toContain("beer");
+  expect(shoppingList).not.toContain("water");
+  expect(new Set(shoppingList)).toContain("beer");
 });
 ```
 
 ### Objects
 
-```
-test('object matcher', () => {
+```javascript
+test("object matcher", () => {
   const data = {
-    name: 'bob',
-    age: 42,
-  }
+    name: "bob",
+    age: 42
+  };
 
-  expect(data).toMatchObject({ name: 'bob' })
-})
+  expect(data).toMatchObject({ name: "bob" });
+});
 ```
 
-```
-test('object equal', () => {
+```javascript
+test("object equal", () => {
   const data = {
-    name: 'bob',
+    name: "bob",
     age: 42,
-    another: undefined,
-  }
+    another: undefined
+  };
 
-  expect(data).toEqual({ name: 'bob', age: 42 })
-})
+  expect(data).toEqual({ name: "bob", age: 42 });
+});
 ```
 
-```
-test('object equal', () => {
+```javascript
+test("object equal", () => {
   const data = {
-    name: 'bob',
+    name: "bob",
     age: 42,
-    another: undefined,
-  }
+    another: undefined
+  };
 
-  expect(data).not.toStrictEqual({ name: 'bob', age: 42 }) // another being presetn but undefined fail when strict matching
-})
+  expect(data).not.toStrictEqual({ name: "bob", age: 42 }); // another being presetn but undefined fail when strict matching
+});
 ```
 
 ### Exceptions
 
 If we want to test that a function throws an error we can use `toThrow`
 
-```
+```javascript
 function bomb() {
-  throw new Error('Boom baby!')
+  throw new Error("Boom baby!");
 }
 
-test('jest should not explode', () => {
-  expect(bomb).toThrow()
-  expect(bomb).toThrow(Error)
+test("jest should not explode", () => {
+  expect(bomb).toThrow();
+  expect(bomb).toThrow(Error);
 
-  expect(bomb).toThrow('Boom')
-  expect(bomb).toThrow('Boom baby!')
-  expect(bomb).toThrow(/boom/i) // i for case insensitive will fail otherwhise
-})
+  expect(bomb).toThrow("Boom");
+  expect(bomb).toThrow("Boom baby!");
+  expect(bomb).toThrow(/boom/i); // i for case insensitive will fail otherwhise
+});
 ```
 
 > node: we are not calling `bomb` (it will throw and exit jest) we pass the function to jest that will call it catching the error for assertions

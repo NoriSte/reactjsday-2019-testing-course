@@ -6,29 +6,29 @@ Jest offers some utilities for the manipulation of time
 
 useful to test `setTimeout` and `setInterval` without having to actually wait
 
-```
-const TIMEOUT = 1000000
+```js
+const TIMEOUT = 1000000;
 function runAfterOneSec(cb) {
   setTimeout(() => {
-    cb()
-  }, TIMEOUT)
+    cb();
+  }, TIMEOUT);
 }
 
-test('test timeout', () => {
-  jest.useFakeTimers()
+test("test timeout", () => {
+  jest.useFakeTimers();
 
-  const callback = jest.fn()
-  jest.spyOn(window, 'setTimeout')
+  const callback = jest.fn();
+  jest.spyOn(window, "setTimeout");
 
-  runAfterOneSec(callback)
-  expect(setTimeout).toBeCalled() // true
-  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), TIMEOUT) // true
+  runAfterOneSec(callback);
+  expect(setTimeout).toBeCalled(); // true
+  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), TIMEOUT); // true
 
-  expect(callback).not.toBeCalled() // true
-  jest.runOnlyPendingTimers()
+  expect(callback).not.toBeCalled(); // true
+  jest.runOnlyPendingTimers();
 
-  expect(callback).toBeCalled() // true
-})
+  expect(callback).toBeCalled(); // true
+});
 ```
 
 more advanced functions are avaiable to only run specific timers or advance time by a certain amount

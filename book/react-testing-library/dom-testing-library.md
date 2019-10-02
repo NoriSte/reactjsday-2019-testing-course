@@ -22,24 +22,23 @@ and have two important features
 
 #### example
 
-```
-import React from 'react'
-import { render } from '@testing-library/react'
+```jsx
+import React from "react";
+import { render } from "@testing-library/react";
 
 function App() {
   return (
     <div>
       <h1>Hello!</h1>
     </div>
-  )
+  );
 }
 
-test('render app', () => {
-  const { getByText } = render(<App />)
+test("render app", () => {
+  const { getByText } = render(<App />);
 
-  getByText('Hello!')
-})
-
+  getByText("Hello!");
+});
 ```
 
 ### `queryBy` Queries
@@ -52,25 +51,25 @@ This is useful for asserting that an element is not present in the document
 
 #### example
 
-```
-import React from 'react'
-import { render } from '@testing-library/react'
+```jsx
+import React from "react";
+import { render } from "@testing-library/react";
 
 function App() {
   return (
     <div>
       <h1>Hello!</h1>
     </div>
-  )
+  );
 }
 
-test('render app', () => {
-  const { queryByText } = render(<App />)
+test("render app", () => {
+  const { queryByText } = render(<App />);
 
-  const h1 = queryByText('Hello!')
-  expect(h1).toHaveTextContent('Hello!')
-  expect(queryByText('CIAONE!')).not.toBeInTheDocument()
-})
+  const h1 = queryByText("Hello!");
+  expect(h1).toHaveTextContent("Hello!");
+  expect(queryByText("CIAONE!")).not.toBeInTheDocument();
+});
 ```
 
 ### `findBy` Queries
@@ -84,30 +83,30 @@ test('render app', () => {
 
 #### example
 
-```
-import React from 'react'
-import { render } from '@testing-library/react'
+```jsx
+import React from "react";
+import { render } from "@testing-library/react";
 
 function App() {
-  const [text, setText] = React.useState('start')
+  const [text, setText] = React.useState("start");
   React.useEffect(() => {
     setTimeout(() => {
-      setText('finish')
-    }, 500)
-  }, [text])
+      setText("finish");
+    }, 500);
+  }, [text]);
   return (
     <div>
       <h1>{text}</h1>
     </div>
-  )
+  );
 }
 
-test('render app', async () => {
-  const { getByText, findByText } = render(<App />)
+test("render app", async () => {
+  const { getByText, findByText } = render(<App />);
 
-  getByText('start')
-  await findByText('finish')
-})
+  getByText("start");
+  await findByText("finish");
+});
 ```
 
 ## other utilities
@@ -126,25 +125,25 @@ some utilites based on [MutationObserver](https://developer.mozilla.org/en-US/do
 
 #### `waitForElementToBeRemoved` example
 
-```
-import React from 'react'
-import { render, waitForElementToBeRemoved } from '@testing-library/react'
+```jsx
+import React from "react";
+import { render, waitForElementToBeRemoved } from "@testing-library/react";
 
 function App() {
-  const [show, setShow] = React.useState(true)
+  const [show, setShow] = React.useState(true);
 
   React.useEffect(() => {
     setTimeout(() => {
-      setShow(false)
-    }, 500)
-  }, [])
+      setShow(false);
+    }, 500);
+  }, []);
 
-  return <div>{show ? <h1>hello</h1> : null}</div>
+  return <div>{show ? <h1>hello</h1> : null}</div>;
 }
 
-test('render app', async () => {
-  const { getByText } = render(<App />)
+test("render app", async () => {
+  const { getByText } = render(<App />);
 
-  await waitForElementToBeRemoved(() => getByText('hello'))
-})
+  await waitForElementToBeRemoved(() => getByText("hello"));
+});
 ```

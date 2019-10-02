@@ -6,17 +6,17 @@ In this examples we will incrementally add features to a custom `Input` componen
 
 ### Empty Start
 
-```
-import React from 'react'
-import { render } from '@testing-library/react'
+```jsx
+import React from "react";
+import { render } from "@testing-library/react";
 
 function Input() {
-  return <input />
+  return <input />;
 }
 
-test('testing input', async () => {
-    render(<Input />)
-})
+test("testing input", async () => {
+  render(<Input />);
+});
 ```
 
 ### Assert input value

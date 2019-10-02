@@ -10,32 +10,31 @@ Jest providers helper functions to handle theses cases.
 
 we can use `beforeEach` to runs some code before each test
 
-```
-let users
+```js
+let users;
 
 function setup() {
-  console.log('setup')
-  users = ['jane', 'bob']
+  console.log("setup");
+  users = ["jane", "bob"];
 }
 
 beforeEach(() => {
-  setup()
-})
+  setup();
+});
 
-test('removing user', () => {
-  expect(users).toHaveLength(2)
-  users.pop()
-  expect(users).toHaveLength(1)
-})
-test('adding user', () => {
-  expect(users).toHaveLength(2)
-  users.push('mark')
-  expect(users).toHaveLength(3)
-})
-
+test("removing user", () => {
+  expect(users).toHaveLength(2);
+  users.pop();
+  expect(users).toHaveLength(1);
+});
+test("adding user", () => {
+  expect(users).toHaveLength(2);
+  users.push("mark");
+  expect(users).toHaveLength(3);
+});
 ```
 
-```
+```yml
  PASS  ./test.js
   ✓ removing user (3ms)
   ✓ adding user (1ms)
@@ -63,20 +62,19 @@ top level`before*` and `after*` blocks are run for all the tests in the file the
 
 if you want to scope `before*` or `after*` blocks to specific test, declared them inside a `describe`
 
-```
-describe('group', () => {
+```js
+describe("group", () => {
   beforeEach(() => {
-    console.log('called')
-  })
+    console.log("called");
+  });
 
-  test('test', () => {})
-})
+  test("test", () => {});
+});
 
-test('another test', () => {})
-
+test("another test", () => {});
 ```
 
-```
+```yml
  PASS  ./test.js
   ✓ another test
   group
@@ -96,20 +94,20 @@ Ran all test suites.
 
 ### multiple setup/teardown
 
-```
+```js
 beforeAll(() => {
-  console.log('called')
-})
+  console.log("called");
+});
 
 beforeAll(() => {
-  console.log('called too')
-})
+  console.log("called too");
+});
 
-test('test', () => {})
-test('another test', () => {})
+test("test", () => {});
+test("another test", () => {});
 ```
 
-```
+```yml
  PASS  ./test.js
   ✓ test
   ✓ another test
@@ -138,43 +136,43 @@ all `before*` and `after*` functions can be called multiple times and are execut
   - afterEach
 - afterAll
 
-```
+```js
 beforeAll(() => {
-  console.log('beforeAll')
-})
+  console.log("beforeAll");
+});
 
 beforeEach(() => {
-  console.log('beforeEach')
-})
+  console.log("beforeEach");
+});
 
 afterAll(() => {
-  console.log('afterAll')
-})
+  console.log("afterAll");
+});
 
 afterEach(() => {
-  console.log('afterEach')
-})
+  console.log("afterEach");
+});
 
-describe('outer', () => {
-  console.log('descibe outer')
-  describe('inner', () => {
-    console.log('descibe inner')
-    test('inner', () => {
-      console.log('outer.inner test')
-    })
-  })
+describe("outer", () => {
+  console.log("descibe outer");
+  describe("inner", () => {
+    console.log("descibe inner");
+    test("inner", () => {
+      console.log("outer.inner test");
+    });
+  });
 
-  test('outer test', () => {
-    console.log('outer test')
-  })
+  test("outer test", () => {
+    console.log("outer test");
+  });
 
-  describe('inner 2', () => {
-    console.log('descibe inner 2')
-    test('inner 2', () => {
-      console.log('outer.inner 2 test')
-    })
-  })
-})
+  describe("inner 2", () => {
+    console.log("descibe inner 2");
+    test("inner 2", () => {
+      console.log("outer.inner 2 test");
+    });
+  });
+});
 
 // descibe outer
 // descibe inner
@@ -196,23 +194,23 @@ describe('outer', () => {
 
 `describe` and `test` can make use of `.skip` to prevent the block from running or `.only` to skip all but this one
 
-```
-test('I will not run', () => {
-  ...
-})
-test.only('only me', () => {
-  ...
-})
+```js
+test("I will not run", () => {
+  // ...
+});
+test.only("only me", () => {
+  // ...
+});
 ```
 
-```
-test.skip('I will not run', () => {
-  ...
-})
-test('I will run', () => {
-  ...
-})
-test('I will run too', () => {
-  ...
-})
+```js
+test.skip("I will not run", () => {
+  // ...
+});
+test("I will run", () => {
+  // ...
+});
+test("I will run too", () => {
+  // ...
+});
 ```

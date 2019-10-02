@@ -2,23 +2,23 @@
 
 using `react-dom` we have code like this to test a react component
 
-```
-import React from 'react'
-import ReactDOM from 'react-dom'
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
 
-let container = null
+let container = null;
 beforeEach(() => {
   // setup a DOM element as a render target
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
 
 afterEach(() => {
   // cleanup on exiting
-  ReactDOM.unmountComponentAtNode(container)
-  container.remove()
-  container = null
-})
+  ReactDOM.unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
 /* ######## setup code above ######## */
 
@@ -27,14 +27,13 @@ function App() {
     <div>
       <h1>Hello!</h1>
     </div>
-  )
+  );
 }
 
-test('render app', () => {
-  ReactDOM.render(<App />, container)
-  expect(document.querySelector('h1').textContent).toBe('Hello!')
-})
-
+test("render app", () => {
+  ReactDOM.render(<App />, container);
+  expect(document.querySelector("h1").textContent).toBe("Hello!");
+});
 ```
 
 ## Rendering

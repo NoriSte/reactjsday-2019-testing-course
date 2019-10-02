@@ -2,26 +2,26 @@
 
 We can now convert the `Button` component used in the previous section into a Functional Component using `useState` hook instead of a class
 
-```
-import React from 'react'
-import ReactDOM from 'react-dom'
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
 
-let container = null
+let container = null;
 beforeEach(() => {
   // setup a DOM element as a render target
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
 
 afterEach(() => {
   // cleanup on exiting
-  ReactDOM.unmountComponentAtNode(container)
-  container.remove()
-  container = null
-})
+  ReactDOM.unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
 function Button() {
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = React.useState(0);
   return (
     <div>
       <div>
@@ -29,23 +29,22 @@ function Button() {
       </div>
       <button onClick={() => setValue(value + 1)}>increment</button>
     </div>
-  )
+  );
 }
 
-test('stateful button', () => {
-  ReactDOM.render(<Button />, container)
+test("stateful button", () => {
+  ReactDOM.render(<Button />, container);
 
-  const value = document.getElementById('value')
+  const value = document.getElementById("value");
 
-  expect(value.textContent).toBe('0')
+  expect(value.textContent).toBe("0");
 
-  const button = document.querySelector('button')
+  const button = document.querySelector("button");
 
-  Simulate.click(button)
+  Simulate.click(button);
 
-  expect(value.textContent).toBe('1')
-})
-
+  expect(value.textContent).toBe("1");
+});
 ```
 
 ## updating the title with counter value
@@ -96,7 +95,7 @@ to implement this feature we will use `useEffect` hook that will change the docu
 
 our test fails!
 
-```
+```yaml
  FAIL  src/App.test.js
   ✕ stateful button (7ms)
 
@@ -135,7 +134,7 @@ becuase in order for components that use `useEffect` and other hooks to work pro
 
 #### `act` usage
 
-```
+```js
 act(() => {
   // anything that cause a component to render/rerender
 });
@@ -144,10 +143,10 @@ act(() => {
 
 we need to wrap any interaction and operations that cause a component to render or rerender inside `act` to make it behave like it would in a real application
 
-```
+```jsx
 act(() => {
-    ReactDOM.render(<Button />, container)
-})
+  ReactDOM.render(<Button />, container);
+});
 ```
 
 ### Fixing our test to use `act`

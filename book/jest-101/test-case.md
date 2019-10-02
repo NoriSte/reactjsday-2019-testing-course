@@ -1,24 +1,24 @@
 # Adding a test case
 
-add this code to _test.js_
+Add this code to _test.js_
 
+```javascript
+test("my first test", () => {
+  expect(true).toBe(false);
+});
 ```
-test('my first test', () => {
-  expect(true).toBe(false)
-})
-```
 
-the above code is composed by `test` a function available in the global scope by jest called with two paremeters, a string used as the name of the test and a function that will containe the code that jest will run for.
+the above code is composed of `test`, a function made available in the global scope by Jest, called with two parameters, a string used as the name of the test and a function that contains the code that Jest will run.
 
-`expect` is also a global function injected by jest, is receive a parameter (in this case true) and return an object with different methods that allow to compare the value passed to expect to another value
+`expect` is also a global function injected by Jest, it receives a parameter (in this case true) and returns an object with different methods that allow comparing the value passed to expect to another value
 
 in the example above we are using the `toBe` method, which is a **matcher**
 
-> note: the function `it` is also available globally and is an alias of test
+> note: the function `it` is also available globally and is an alias of `test`
 
 run `npm test`
 
-```
+```yaml
 ➜  jest-101 npm test
 
 > jest-101@0.0.1 test /Users/jaga/coding/jest-101
@@ -50,58 +50,58 @@ Ran all test suites.
 npm ERR! Test failed.  See above for more details.
 ```
 
-it will fail because **expected** and **received** are different
+it will fail because `expected` and `received` are different,
 
-we can see that the name of the test _my first test_ is used to identity a specific test
+We can see that the name of the test _my first test_ is used to identify a specific test.
 
-this is the basic of software testing, a program is run (in this case our function) by our test runner (jest)
-we compare the result of the program with an expentation made by us, in order to verify that the program behave as we expect.
+This is the basis of software testing, a program is run (in this case our function) by the test runner (Jest).
+We compare the result of the program with an expectation made by us, in order to verify that the program behaves as we expect.
 
-## let's fix the test
+### Let's fix the test
 
-```
-test('my first test', () => {
-  expect(true).toBe(true)
-})
+```javascript
+test("my first test", () => {
+  expect(true).toBe(true);
+});
 ```
 
 run `npm test`
 
-🎉🎉🎉🎉  
-The test passes hooray  
+🎉🎉🎉🎉
+The test passes hooray
 🎉🎉🎉🎉
 
 ### Grouping tests
 
-tests can be grouped using `describe` global function
+tests can be grouped using the `describe` global function
 
-```
-describe('group', () => {
-  test('test 1', () => {
-    expect(true).toBe(true)
-  })
-})
+```javascript
+describe("group", () => {
+  test("test 1", () => {
+    expect(true).toBe(true);
+  });
+});
 ```
 
 `descibe` can be nested inside another `describe`
 
-```
-describe('outer group', () => {
-  test('outer group test', () => {
-    expect(true).toBe(true)
-  })
+```javascript
+describe("outer group", () => {
+  test("outer group test", () => {
+    expect(true).toBe(true);
+  });
 
-  describe('inner group 1', () => {
-    test('inner group test', () => {
-      expect(true).toBe(true)
-    })
-  })
-})
+  describe("inner group 1", () => {
+    test("inner group test", () => {
+      expect(true).toBe(true);
+    });
+  });
+});
 ```
 
-this hierarchy is shown in the test results and allow to have different groups with test having the same name, while possible both nesting and using the same name for different tests is discouraged when not necessary becuause it hurts readability
+this hierarchy is shown in the test results and allows to have different groups with test having the same name, while possible both nesting and using the same name for different tests is discouraged when not necessary because it hurts readability
 
-```
+```yaml
  PASS  ./test.js
   outer group
     ✓ outer group test (3ms)

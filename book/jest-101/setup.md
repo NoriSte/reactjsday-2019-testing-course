@@ -1,10 +1,10 @@
 # Setup
 
 - init npm project `npm init -y`
-- install jest `npm install -D jest`
+- install Jest `npm install -D jest`
 - add `jest` to scripts in package.json
 
-```
+```json
 {
 ...
 "scripts": {

@@ -4,7 +4,7 @@
 
 ## Create the application
 
-```
+```yaml
 npx create-react-app react-testing
 cd react-testing
 ```

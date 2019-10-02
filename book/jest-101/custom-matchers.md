@@ -1,6 +1,6 @@
 # custom matchers
 
-jest offert the api `expect.extend` to create custom matchers
+Jest offert the api `expect.extend` to create custom matchers
 
 Custom Matchers API
 Matchers should return an object (or a Promise of an object) with two keys.
@@ -10,22 +10,22 @@ Matchers should return an object (or a Promise of an object) with two keys.
 
 Matchers are called with the argument passed to `expect` and all arguments passed to the custom matcher
 
-```
+```js
 expect.extend({
   toGandalf() {
     return {
       pass: false,
-      message: () => 'you shall not pass',
-    }
-  },
-})
+      message: () => "you shall not pass"
+    };
+  }
+});
 
-test('custom matcher', () => {
-  expect(4).toGandalf()
-})
+test("custom matcher", () => {
+  expect(4).toGandalf();
+});
 ```
 
-```
+```yaml
  FAIL  ./test.js
   ✕ custom matcher (5ms)
 
@@ -53,63 +53,62 @@ Ran all test suites.
 
 ### The custom Matcher
 
-```
-const diff = require('jest-diff') // already available if jest installed
+```js
+const diff = require("jest-diff"); // already available if Jest installed
 
 expect.extend({
   toBeCompleted(project) {
-    const pass = project.tasks.every(task => task.completed)
+    const pass = project.tasks.every(task => task.completed);
 
     function makeExpected() {
       return project.tasks.map(t => {
         return {
           ...t,
-          completed: true,
-        }
-      })
+          completed: true
+        };
+      });
     }
 
     return {
       pass,
       message: () => {
-        const diffString = diff(makeExpected(), project.tasks)
+        const diffString = diff(makeExpected(), project.tasks);
 
-        return `expected all project tasks to be completed:\n ${diffString}`
-      },
-    }
-  },
-})
+        return `expected all project tasks to be completed:\n ${diffString}`;
+      }
+    };
+  }
+});
 ```
 
 ### Test
 
-```
-test('custom matcher', () => {
+```js
+test("custom matcher", () => {
   const project = {
     tasks: [
       {
         id: 1,
-        completed: true,
+        completed: true
       },
       {
         id: 2,
-        completed: false,
+        completed: false
       },
       {
         id: 2,
-        completed: true,
-      },
-    ],
-  }
+        completed: true
+      }
+    ]
+  };
 
-  expect(project).toBeCompleted()
-})
-
+  expect(project).toBeCompleted();
+});
 ```
 
 ### Result
 
-```
+```yaml
  FAIL  ./test.js
   ✕ custom matcher (2ms)
 

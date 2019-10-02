@@ -8,9 +8,9 @@ All we have to do is to wrap the tested component inside the `Context.Provider` 
 
 for example a component that usese `react-intl` can be tested like this
 
-```
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
+```jsx
+import React from "react";
+import { FormattedMessage } from "react-intl";
 
 export function UnreadMessages({ unreadCount }) {
   return (
@@ -24,16 +24,16 @@ export function UnreadMessages({ unreadCount }) {
         values={{ unreadCount }}
       />
     </p>
-  )
+  );
 }
 ```
 
 ## Normal usage
 
-```
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { UnreadMessages } from './UnreadMessages'
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+import { UnreadMessages } from "./UnreadMessages";
 
 // normal usage
 
@@ -41,30 +41,30 @@ ReactDOM.render(
   <IntlProvider locale="en">
     <UnreadMessages />
   </IntlProvider>,
-  document.getElementById('container'),
-)
+  document.getElementById("container")
+);
 ```
 
 ## while testing
 
-```
-test('100 messages', () => {
+```jsx
+test("100 messages", () => {
   const { getByText } = render(
     <IntlProvider locale="en">
       <UnreadMessages unreadCount={100} />
-    </IntlProvider>,
-  )
-  getByText('you have 100 messages')
-})
+    </IntlProvider>
+  );
+  getByText("you have 100 messages");
+});
 
-test('one message', () => {
+test("one message", () => {
   const { getByText } = render(
     <IntlProvider locale="en">
       <UnreadMessages unreadCount={1} />
-    </IntlProvider>,
-  )
-  getByText('you have 1 message')
-})
+    </IntlProvider>
+  );
+  getByText("you have 1 message");
+});
 ```
 
 ## Dealing with multiple contexts
@@ -73,16 +73,16 @@ Sometimes may not be practical to use the provier directly, for example if the p
 
 is such cases a common approach it to create a testing utility that wrap `render` with all the provider you use in your app
 
-```
-function renderWithProviders(ui, { reduxState, locale = 'en' }) {
-  const store = createStore(reducer, reduxState || initialState)
+```jsx
+function renderWithProviders(ui, { reduxState, locale = "en" }) {
+  const store = createStore(reducer, reduxState || initialState);
   return (
     <ThemeProvider>
       <ReduxProvider store={store}>
         <IntlProvider locale={locale}>{ui}</IntlProvider>
       </ReduxProvider>
     </ThemeProvider>
-  )
+  );
 }
 ```
 

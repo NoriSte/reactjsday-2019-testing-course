@@ -4,16 +4,16 @@ Using React DOM for testing means rendering you React application the same way w
 
 a basic examples of an application that renders using ReactDOM
 
-```
-import React from 'react'
-import ReactDOM from 'react-dom'
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
 
-const App = () => <h1>Hello!</h1>
+const App = () => <h1>Hello!</h1>;
 
-test('render app', () => {
- const container = document.createElement('div')
- ReactDOM.render(<App />, container)
-})
+test("render app", () => {
+  const container = document.createElement("div");
+  ReactDOM.render(<App />, container);
+});
 ```
 
 after the ReactDOM call we are able to make assertions of the content of the DOM by querying the `container` HTML node
@@ -85,13 +85,13 @@ removes the container from the DOM and set the variable back to null (should not
 
 ## Testing a Stateful Component
 
-```
+```jsx
 /* ######## setup code above ######## */
 
 class Button extends React.Component {
   state = {
-    value: 0,
-  }
+    value: 0
+  };
 
   render() {
     return (
@@ -102,29 +102,29 @@ class Button extends React.Component {
         <button
           onClick={() =>
             this.setState(state => {
-              return { value: state.value + 1 }
+              return { value: state.value + 1 };
             })
           }
         >
           increment
         </button>
       </div>
-    )
+    );
   }
 }
 
-test('stateful button', () => {
-  ReactDOM.render(<Button />, container)
+test("stateful button", () => {
+  ReactDOM.render(<Button />, container);
 
-  const value = document.getElementById('value')
+  const value = document.getElementById("value");
 
-  expect(value.textContent).toBe('0')
+  expect(value.textContent).toBe("0");
 
-  const button = document.querySelector('button')
-  button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+  const button = document.querySelector("button");
+  button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
-  expect(value.textContent).toBe('1')
-})
+  expect(value.textContent).toBe("1");
+});
 ```
 
 ### Interacting with the button

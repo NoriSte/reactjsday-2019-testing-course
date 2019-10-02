@@ -66,7 +66,7 @@ it only matches elements that can be actually be disabled by HTML specification
 + expect(button).not.toBeDisabled()
 ```
 
-```
+```jsx
 <button disabled>submit</button>
 <fieldset disabled>
     <input type="text" />
@@ -74,10 +74,10 @@ it only matches elements that can be actually be disabled by HTML specification
 <a href="https://google.com" disabled>link</a>
 ```
 
-```
-expect(document.querySelector('button')).toBeDisabled()
-expect(document.querySelector('input')).toBeDisabled()
-expect(document.querySelector('a')).not.toBeDisabled()
+```js
+expect(document.querySelector("button")).toBeDisabled();
+expect(document.querySelector("input")).toBeDisabled();
+expect(document.querySelector("a")).not.toBeDisabled();
 ```
 
 ### `toBeEnabled`
@@ -90,12 +90,12 @@ checks that an element has no content
 
 #### examples
 
-```
+```jsx
 <div id="my-div"></div>
 ```
 
-```
-expect(document.querySelector('#my-div')).toBeEmpty()
+```js
+expect(document.querySelector("#my-div")).toBeEmpty();
 ```
 
 ### `toBeInTheDocument`
@@ -104,13 +104,13 @@ checks that and element is in the document or not
 
 #### examples
 
-```
+```jsx
 <div id="my-div"></div>
 ```
 
-```
-expect(document.querySelector('#my-div')).toBeInTheDocument()
-expect(document.querySelector('input')).not.toBeInTheDocument()
+```js
+expect(document.querySelector("#my-div")).toBeInTheDocument();
+expect(document.querySelector("input")).not.toBeInTheDocument();
 ```
 
 ### `toBeVisible`
@@ -127,7 +127,7 @@ An element is visible if **all** the following conditions are met:
 
 #### examples
 
-```
+```html
 <div data-testid="zero-opacity" style="opacity: 0">Zero Opacity Example</div>
 <div data-testid="visibility-hidden" style="visibility: hidden">
   Visibility Hidden Example
@@ -140,19 +140,13 @@ An element is visible if **all** the following conditions are met:
 <div data-testid="hidden-attribute" hidden>Hidden Attribute Example</div>
 ```
 
-```
-expect(document.querySelector('[data-testid="zero-opacity"]')).not.toBeVisible()
-expect(
-  document.querySelector('[data-testid="visibility-hidden"]'),
-).not.toBeVisible()
-expect(document.querySelector('[data-testid="display-none"]')).not.toBeVisible()
-expect(
-  document.querySelector('[data-testid="hidden-parent"]'),
-).not.toBeVisible()
-expect(document.querySelector('[data-testid="visible"]')).toBeVisible()
-expect(
-  document.querySelector('[data-testid="hidden-attribute"]'),
-).not.toBeVisible()
+```js
+expect(document.querySelector('[data-testid="zero-opacity"]')).not.toBeVisible();
+expect(document.querySelector('[data-testid="visibility-hidden"]')).not.toBeVisible();
+expect(document.querySelector('[data-testid="display-none"]')).not.toBeVisible();
+expect(document.querySelector('[data-testid="hidden-parent"]')).not.toBeVisible();
+expect(document.querySelector('[data-testid="visible"]')).toBeVisible();
+expect(document.querySelector('[data-testid="hidden-attribute"]')).not.toBeVisible();
 ```
 
 ## more examples
