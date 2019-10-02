@@ -16,6 +16,8 @@
 
 - to allow ourselves to refactor the code without fear, A good-tested codebase could be refactored safely
 
-- to improve the quality of the code: a hard-to-be-tested code is a code smell
+- to improve the quality of the code: a hard-to-test code is a code smell of poor design
 
 - to get us working with a lower cognitive load, you can concentrate on what you are working on without thinking too much about everything surrounding it
+
+- to have an objective metric about the correctness of the behaviour of our software
