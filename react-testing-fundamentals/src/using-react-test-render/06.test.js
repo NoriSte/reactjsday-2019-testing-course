@@ -21,6 +21,6 @@ describe('App component', () => {
   })
 
   /**
-   * This is sometimes usefull but very fragile, what happens if we invert the order of the inputs?
+   * This is sometimes useful but very fragile, what happens if we invert the order of the inputs?
    */
 })

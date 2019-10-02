@@ -19,3 +19,9 @@
 .color-theme-2 .img-border {
   border: 3px solid #3c4361 !important;
 }
+
+[data-speaker] {
+  color: orange;
+  font-size: 3rem;
+  display: none;
+}
