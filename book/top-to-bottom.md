@@ -1,6 +1,6 @@
 # An easier journey: top to bottom
 
-When you are an experienced tester, approaching a test suite is a nice road. But learning how to test properly, what to test and what to avoid, which kind of tests choosing etc. is not a satisfactional journey.
+When you are an experienced tester, approaching a test suite is a nice road. But learning how to test properly, what to test and what to avoid, which kind of tests to choose etc. is not an easy journey.
 
 More: **testing is expensive at the beginning**. Everything is new, the examples you try to implement do not work, debugging a test could be hard...
 
@@ -12,4 +12,4 @@ Starting with the E2E tests does not only give you more confidence (and **satisf
 
 That's why we teach this course following the opposite flow: from the top (E2E tests) to the bottom (unit tests).
 
-Please note: **every kind of test is important**, but they serve a different purpose. At the beginning, choosing between them is hard, that's why we start exploring the tests that you can not miss: the E2E tests.
+Please note: **every kind of test is important**, but they serve a different purpose. At the beginning, choosing between them is hard, that's why we start exploring the tests that you can not miss(due to the best return of investment): the E2E tests.
