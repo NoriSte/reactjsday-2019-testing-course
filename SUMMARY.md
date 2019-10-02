@@ -59,6 +59,7 @@
 - ***
 - Jest fundamentals
 
+  - [What You will learn](book/jest-101/index.md)
   - [What is Jest](book/jest-101/what-is-jest.md)
   - [Setup](book/jest-101/setup.md)
   - [Running Jest](book/jest-101/running-jest.md)

@@ -53,6 +53,7 @@ We will alternate theoretical explanations with live coding sessions, at the end
 - [Visual Regression Testing for the whole web app](visual-regression-testing.md)
 - [Continuous Integration](continuous-integration.md)
 - Jest fundamentals
+  - [What You will learn](book/jest-101/index.md)
   - [What is Jest](book/jest-101/what-is-jest.md)
   - [Setup](book/jest-101/setup.md)
   - [Running Jest](book/jest-101/running-jest.md)
