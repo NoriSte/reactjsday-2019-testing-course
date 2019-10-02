@@ -45,5 +45,5 @@
 
 ### Consultants
 
-- [Jaga Sant'Agostino](https://www.jagasantagostino.com/)
+- [Jaga Santagostino](https://www.jagasantagostino.com/)
 - [Yoni Goldberg](https://goldbergyoni.com/)
