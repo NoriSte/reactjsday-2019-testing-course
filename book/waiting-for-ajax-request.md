@@ -115,4 +115,4 @@ The test is now way more robust because
 
 - we do not wait only for something that "reflects" the result of the AJAX request (the "_No articles are here_" string) but for the AJAX request itself
 
-- we do not wait up to a "random" (the previous `{timeout: 10000}`) amount of time but up to a longer time. **10 seconds could not be enough** (if you have every consumed some AWS Lambdas you know what I'm talking about) because of the back-end wakeup/caching times
+- we do not wait up to a "random" (the previous `{timeout: 10000}`) amount of time but up to a longer time. **10 seconds could not be enough** (if you have ever consumed some AWS Lambdas you know what I'm talking about) because of the back-end wakeup/caching times
