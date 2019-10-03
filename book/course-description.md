@@ -79,9 +79,9 @@ We will alternate theoretical explanations with live coding sessions, at the end
   - [jest-dom](book/intro-to-react-testing/jest-dom.md)
 - React Testing Library
   - [What You will learn](book/react-testing-library/index.md)
-  - [What is React TestingLibrary](book/react-testing-library/what.md)
-  - [Why React TestingLibrary](book/react-testing-library/why-react-testing-library.md)
-  - [Setup React TestingLibrary](book/react-testing-library/setup.md)
+  - [What is React Testing Library](book/react-testing-library/what.md)
+  - [Why React Testing Library](book/react-testing-library/why-react-testing-library.md)
+  - [Setup React Testing Library](book/react-testing-library/setup.md)
   - [Rendering using React Testing Library](book/react-testing-library/rendering.md)
   - [Using DOM testing library](book/react-testing-library/dom-testing-library.md)
   - [Implementing and Testing new features](book/react-testing-library/custom-input.md)
