@@ -81,7 +81,7 @@
 - [The many ways to test React](book/many-ways-to-test-react.md)
 - ***
 - Intro to React testing
-  - [What You will learn](book/intro-to-react-testing/index.md)
+  - [What you will learn](book/intro-to-react-testing/index.md)
   - [Setup](book/intro-to-react-testing/setup.md)
   - [react-dom-test-utils](book/intro-to-react-testing/react-dom-test-utils.md)
   - [Hooks and act](book/intro-to-react-testing/hooks-and-act.md)

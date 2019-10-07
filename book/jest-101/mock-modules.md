@@ -30,4 +30,4 @@ test("should fetch users", () => {
 });
 ```
 
-in the code above, thanks to `jest.mock('axios')` axios is not the real axios module, but a mock function that allow us to mock the return value.
+in the code above, thanks to `jest.mock('axios')` `axios` is not the real `axios` module, but a mock function that allow us to mock the return value.

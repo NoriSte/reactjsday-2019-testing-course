@@ -1,6 +1,6 @@
 # Hooks and `act`
 
-We can now convert the `Button` component used in the previous section into a Functional Component using `useState` hook instead of a class
+We can now convert the `Button` component used in the previous section into a functional component using the `useState` hook:
 
 ```jsx
 import React from "react";
@@ -36,26 +36,17 @@ test("stateful button", () => {
   ReactDOM.render(<Button />, container);
 
   const value = document.getElementById("value");
-
   expect(value.textContent).toBe("0");
 
   const button = document.querySelector("button");
-
   Simulate.click(button);
-
   expect(value.textContent).toBe("1");
 });
 ```
 
-## updating the title with counter value
+Please note that the test has not changed at all. We have refactored the whole component without changing the test! That's one of the goal of testing itself and it's made easy because we have tested the component behaviour from the external point of view (black-box testing), not from the internal one ([white-box testing](../testing-rules.md#whitebox-testing)).
 
-````
-  // ```
-  // NEW TASK: show the current counter value in the tab title
-  // ```
-````
-
-to implement this feature we will use `useEffect` hook that will change the document title every time the counter state changes
+The next task is: show the current counter value in the tab title. To implement this feature we will use `useEffect` hook that will change the document title every time the counter state changes
 
 ```diff
 /* ######## setup code above ######## */
@@ -81,19 +72,16 @@ to implement this feature we will use `useEffect` hook that will change the docu
     ReactDOM.render(<Button />, container)
 
     const value = document.getElementById('value')
-
     expect(value.textContent).toBe('0')
 +   expect(document.title).toBe('0')
 
     const button = document.querySelector('button')
-
     Simulate.click(button)
-
     expect(value.textContent).toBe('1')
   })
 ```
 
-our test fails!
+The test now fails...
 
 ```yaml
  FAIL  src/App.test.js
@@ -122,26 +110,24 @@ Snapshots:   0 total
 Time:        0.636s, estimated 1s
 ```
 
+Why isn't the title changed? Let's speak about `act`.
+
 ### `act`
 
-why isn't the title changed?
+In order for components that use `useEffect` and other hooks to work properly in a testing environment we have to use un utility called `act`: `import { act } from 'react-dom/test-utils`
 
-because in order for components that use `useEffect` and other hooks to work properly in a testing environment we have to use un utility called `act`
+> When writing UI tests, tasks like rendering, user events, or data fetching can be considered as “units” of interaction with a user interface. React provides a helper called `act()` that makes sure all updates related to these “units” have been processed and applied to the DOM before you make any assertions: [react-documentation](https://reactjs.org/docs/testing-recipes.html#act)
 
-`import { act } from 'react-dom/test-utils`
-
-> When writing UI tests, tasks like rendering, user events, or data fetching can be considered as “units” of interaction with a user interface. React provides a helper called act() that makes sure all updates related to these “units” have been processed and applied to the DOM before you make any assertions: [react-documentation](https://reactjs.org/docs/testing-recipes.html#act)
-
-#### `act` usage
+Usage:
 
 ```js
 act(() => {
-  // anything that cause a component to render/rerender
+  // anything that causes a component to render/rerender
 });
 // make assertions
 ```
 
-we need to wrap any interaction and operations that cause a component to render or rerender inside `act` to make it behave like it would in a real application
+we need to wrap every interactions and operations that cause a component to render or rerender inside `act` to make it behave as it would in a real application
 
 ```jsx
 act(() => {
@@ -149,19 +135,13 @@ act(() => {
 });
 ```
 
-### Fixing our test to use `act`
-
-in our failing examples we can wrap `ReactDOM.render` and the _click_ simulatios into `act` to see the test passing
+Now we can fix the test using `act`. In our failing example, we can wrap `ReactDOM.render` and the _click_ simulations into `act` to see the test passing
 
 ````diff
 /* ######## setup code above ######## */
 
   function Button() {
     const [value, setValue] = React.useState(0)
-
-    // ```
-    // NEW TASK: show the current counter value in the tab title
-    // ```
 
     React.useEffect(() => {
       document.title = value
@@ -200,17 +180,17 @@ in our failing examples we can wrap `ReactDOM.render` and the _click_ simulatios
   })
 ````
 
-running the button in a real application the browser will show the component working as intended with the tab's title updating according the button clicks
+If you run the button in a real application. the browser will show the component working as intended with the tab's title updating according to the button clicks.
 
-## allow clicking up to a max number
+`act` must be used multiple times in case of multiple interactions, take a look at the code of the test if you want to add one more feature, like allow clicking up to a `max` number.
 
 ```
   //
   // NEW TASK: allowing the counter only increase
   // up to a given number
   //
-  // example <Button max={10}/>
-  // after the counter has reach 10 the button should be disabled
+  // example <Button max={2}/>
+  // after the counter has reach 2 the button should be disabled
   //
 ```
 
@@ -276,5 +256,4 @@ we have been given a new feature to implement in our button.
 +   expect(value.textContent).toBe('2')
 +   expect(button.hasAttribute('disabled')).toBe(true)
   })
-+
 ```

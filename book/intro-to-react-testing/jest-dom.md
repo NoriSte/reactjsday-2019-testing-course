@@ -1,10 +1,10 @@
 # `jest-dom`
 
-`jest-dom` is a library that extends Jest using custom matchers in order to make assertion on DOM elements easier
+`jest-dom` is a library that extends Jest using custom matchers in order to make assertions on DOM elements easier.
 
 ## Utilities
 
-all the utilities offered by `jest-dom` as matchers
+All the utilities offered by `jest-dom` as matchers
 
 - toBeDisabled
 - toBeEnabled
@@ -24,29 +24,20 @@ all the utilities offered by `jest-dom` as matchers
 - toHaveTextContent
 - toHaveValue
 
-## setup
+### Setup
 
-`npm install --save-dev @testing-library/jest-dom`
+- First, you need to install it with `npm install --save-dev @testing-library/jest-dom`
+- then, add `import '@testing-library/jest-dom/extend-expect'` at the top of every file to register the matchers (or in a setup file loaded by Jest if you prefer to only import it once. When using `create-react-app` the file is `src/setupTests.js`)
 
-add at the top of every file using the matcher to register them
+> note: if you create the srtup file, remember to stop and restart Jest to load it
 
-`import '@testing-library/jest-dom/extend-expect'`
-
-or in a setup file loaded by Jest to only import it once
-
-when using `create-react-app` the file is `src/setupTests.js`
-
-> note: after creating `src/setupTests.js` stop and restart Jest to load it
-
-## some examples
+## Some examples
 
 ### `toBeDisabled`
 
-This allows you to check whether an element is disabled from the user's perspective.
+This allows you to check whether an element is disabled from the user's perspective. It only matches elements that can be actually be disabled by HTML specification, they are
 
-it only matches elements that can be actually be disabled by HTML specification
-
-- button,
+- button
 - input
 - select
 - textarea
@@ -54,7 +45,7 @@ it only matches elements that can be actually be disabled by HTML specification
 - option
 - fieldse
 
-#### examples
+Below you can find some examples using the `toBeDisabled` matcher:
 
 ```diff
 - expect(button.hasAttribute('disabled')).toBe(true)
@@ -82,13 +73,11 @@ expect(document.querySelector("a")).not.toBeDisabled();
 
 ### `toBeEnabled`
 
-checks that an element in NOT disabled, same as `not.toBeDisabled()`
+Checks that an element in NOT disabled, same as `not.toBeDisabled()`
 
 ### `toBeEmpty`
 
-checks that an element has no content
-
-#### examples
+Checks that an element has no content
 
 ```jsx
 <div id="my-div"></div>
@@ -100,9 +89,7 @@ expect(document.querySelector("#my-div")).toBeEmpty();
 
 ### `toBeInTheDocument`
 
-checks that and element is in the document or not
-
-#### examples
+Checks that and element is in the document or not
 
 ```jsx
 <div id="my-div"></div>
@@ -115,17 +102,15 @@ expect(document.querySelector("input")).not.toBeInTheDocument();
 
 ### `toBeVisible`
 
-checks that and element is currently visible to the user
+Checks that and element is currently visible to the user. An element is visible if **all** the following conditions are met:
 
-An element is visible if **all** the following conditions are met:
-
-- it does not have its css property display set to none
-- it does not have its css property visibility set to either hidden or collapse
-- it does not have its css property opacity set to 0
+- it does not have its `display `css property set to `none`
+- it does not have its `visibility `css property set to either `hidden` or `collapse`
+- it does not have its `opacity `css property set to `0`
 - its parent element is also visible (and so on up to the top of the DOM tree)
-- it does not have the hidden attribute
+- it does not have the `hidden` attribute
 
-#### examples
+Some examples:
 
 ```html
 <div data-testid="zero-opacity" style="opacity: 0">Zero Opacity Example</div>
@@ -149,6 +134,4 @@ expect(document.querySelector('[data-testid="visible"]')).toBeVisible();
 expect(document.querySelector('[data-testid="hidden-attribute"]')).not.toBeVisible();
 ```
 
-## more examples
-
-the complete descriptions of all utilities is available at `jest-dom` [github page](https://github.com/testing-library/jest-dom)
+The complete descriptions of all utilities is available at `jest-dom` [github page](https://github.com/testing-library/jest-dom).

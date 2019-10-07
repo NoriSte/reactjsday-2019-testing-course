@@ -1,15 +1,13 @@
-# Intro to React Testing
+# What you will learn
 
-In this section we will discuss the basics of testing React components using Jest and ReactDOM
-
-## What you will learn
+In this section, we will discuss the basics of testing React components using Jest and ReactDOM:
 
 - How to render a React application for testing
-- How to simulate user events such as _clicks_
-- How to test a Stateful Class component
-- How to test a component that uses `useState` hook
-- How to test a component that uses `useEffect` hook
-- How to make assertion on DOM elements status such as being `disabled`
+- How to [simulate user events such as _clicks_](react-dom-test-utils.md#interacting-with-the-button)
+- How to [test a stateful class component](react-dom-test-utils.md#testing-a-stateful-component)
+- How to [test a component that uses `useState` hook](hooks-and-act.md)
+- How to [test a component that uses `useEffect` hook](intro-to-react-testing/hooks-and-act.md#act)
+- How to make an [assertion on DOM elements status such as being `disabled`](intro-to-react-testing/hooks-and-act.md#act)
 - How to check that a DOM element is present (or not) in the DOM
 - How to register custom matchers globally using Jest setup files
 - How to check that a DOM element is visible (or not) to the final user
