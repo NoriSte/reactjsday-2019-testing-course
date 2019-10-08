@@ -8,6 +8,6 @@ In this section, we will discuss the basics of testing React components using Je
 - How to [test a component that uses `useState` hook](hooks-and-act.md)
 - How to [test a component that uses `useEffect` hook](intro-to-react-testing/hooks-and-act.md#act)
 - How to make an [assertion on DOM elements status such as being `disabled`](intro-to-react-testing/hooks-and-act.md#act)
-- How to check that a DOM element is present (or not) in the DOM
-- How to register custom matchers globally using Jest setup files
-- How to check that a DOM element is visible (or not) to the final user
+- How to check that a [DOM element is present (or not) in the DOM](intro-to-react-testing/jest-dom.md#tobeinthedocument)
+- How to [register custom matchers globally](intro-to-react-testing/jest-dom.md#setup) using Jest setup files
+- How to check that a [DOM element is visible (or not) to the final user](intro-to-react-testing/jest-dom.md#tobevisible)

@@ -1,26 +1,20 @@
 # Dom Testing library
 
-`dom-testing-library` is the project used by `react-testing-library` to query components
-
-`dom-testing-library` is a dependency of `react-testing-library`
-
-`react-testing-library` re-exports all `dom-testing-library` utilities
-
-so in these examples we will import from `@testing-library/react` instead of `@testing-library/dom`
+`dom-testing-library` is the project used by `react-testing-library` to query components. `react-testing-library` re-exports all `dom-testing-library` utilities so, in the next examples, we will import from `@testing-library/react` instead of `@testing-library/dom`.
 
 ## Queries
 
-the main concept of `dom-testing-library` are queries, a set of utilities to find elements in the dom, these are divided into 3 categories with different features, each category offert the same query in two versions, to query a _single_ element and to query _all_ matching elements
+the main concept of `dom-testing-library` are queries, a set of utilities to find elements in the DOM. The queries are divided into three categories with different features, each category offers the same query in two versions, to query a _single_ element and to query _all_ matching elements.
 
-### `getBy` Queries
+### `getBy` queries
 
 `getBy*` queries return the first matching node found
 and have two important features
 
 - throw an error if no elements match (allow to make expectations without using expect directly)
-- throw if more than one match is found (use getAllBy if you expect more elements matching).
+- throw if more than one match is found (use `getAllBy*` queries if you expect more elements matching).
 
-#### example
+An example:
 
 ```jsx
 import React from "react";
@@ -41,15 +35,13 @@ test("render app", () => {
 });
 ```
 
-### `queryBy` Queries
+### `queryBy` queries
 
-`queryBy*` queries return the first matching node found, and return null if no elements match. (like `document.querySelector`)
+`queryBy*` queries return the first matching node found, and return `null` if no elements match (like `document.querySelector`). This is useful for asserting that an element is not present in the document.
 
-This is useful for asserting that an element is not present in the document
+Remember that they throws if more than one match is found (use `queryAllBy*` queries instead).
 
-- throws if more than one match is found (use queryAllBy instead).
-
-#### example
+An example:
 
 ```jsx
 import React from "react";
@@ -68,7 +60,7 @@ test("render app", () => {
 
   const h1 = queryByText("Hello!");
   expect(h1).toHaveTextContent("Hello!");
-  expect(queryByText("CIAONE!")).not.toBeInTheDocument();
+  expect(queryByText("Goodbye!")).not.toBeInTheDocument();
 });
 ```
 
@@ -76,10 +68,10 @@ test("render app", () => {
 
 `findBy*` queries return a promise which resolves when an element is found which matches the given query
 
-- will reject after of 4500ms is no matches occur
+- will reject after 4500 ms is no matches occur
 - is the combination of `getBy` and the utility `waitForElement`
-- will rejects if no element is found
-- will rejects if more than one element is found, to find more than one element, then use findAllBy
+- will reject if no element is found
+- will reject if more than one element is found, to find more than one element, then use `findAllBy*` queries
 
 #### example
 
@@ -89,11 +81,13 @@ import { render } from "@testing-library/react";
 
 function App() {
   const [text, setText] = React.useState("start");
+
   React.useEffect(() => {
     setTimeout(() => {
       setText("finish");
     }, 500);
   }, [text]);
+
   return (
     <div>
       <h1>{text}</h1>
@@ -109,21 +103,21 @@ test("render app", async () => {
 });
 ```
 
-## other utilities
+## Other Utilities
 
 ### `wait`
 
-calling `await wait(callback)` will call the callback until the callback stops throw or the timeout fires
+Calling `await wait(callback)` will call the callback until the it resolves, rejects, or the timeout fires.
 
-### mutation api
+### Mutation API
 
-some utilites based on [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) API are available to deal with cases were whe have to wait for DOM elements to appear, disappear, or change
+Some utilities based on the [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) API are available to deal with cases were we have to wait for DOM elements to appear, disappear, or change.
 
 - `waitForElement`
 - `waitForDomChange`
 - `waitForElementToBeRemoved`
 
-#### `waitForElementToBeRemoved` example
+A `waitForElementToBeRemoved` example:
 
 ```jsx
 import React from "react";

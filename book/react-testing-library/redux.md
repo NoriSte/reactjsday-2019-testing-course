@@ -1,16 +1,14 @@
-# Redux
+# Testing Redux
 
-To Test component that uses Redux is necessary to wrap the component being tested by the store provider
+To test components that use Redux is necessary to wrap them component being tested with the store provider.
 
-## create and test a component using redux
+For the next examples we expect to have a working app created using `create-react-app` already in place.
 
-for this examples we expect to have a working app creted using `create-react-app` already in place
-
-### setup
+### Setup
 
 `npm install redux-starter-kit react-redux`
 
-### files
+### Files
 
 #### Header.js
 

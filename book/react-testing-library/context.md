@@ -1,12 +1,12 @@
 # Testing Context
 
-When using `react-testing-library` testing Components using React Context is no different that testing any other kind of component.
+When using `react-testing-library` testing components using React Context is no different than testing any other kind of component.
 
-Since we are testing the generated HTML and not how is it generated, the fact that something happens thanks to using of React Context is an implementation detail we should not be interested in
+Since we are testing the generated HTML and not how is it generated, the fact that something happens thanks to using React Context is an [implementation detail](../testing-rules.md#whitebox-testing) we should not be interested in.
 
-All we have to do is to wrap the tested component inside the `Context.Provider` it need to function property, exactly as you would in a normal application
+All we have to do is to wrap the tested component inside the `Context.Provider`, exactly as you would in a normal application.
 
-for example a component that usese `react-intl` can be tested like this
+For example, a component that uses `react-intl` can be tested like this
 
 ```jsx
 import React from "react";
@@ -45,7 +45,7 @@ ReactDOM.render(
 );
 ```
 
-## while testing
+### While testing
 
 ```jsx
 test("100 messages", () => {
@@ -67,11 +67,9 @@ test("one message", () => {
 });
 ```
 
-## Dealing with multiple contexts
+### Dealing with multiple contexts
 
-Sometimes may not be practical to use the provier directly, for example if the provider required a setup involving complex props or we have a high number of provider
-
-is such cases a common approach it to create a testing utility that wrap `render` with all the provider you use in your app
+Sometimes may not be practical to use the provider directly. For example, if the provider requires a setup involving complex props or we have a high number of providers. In such cases a common approach is to create a testing utility that wraps `render` with all the providers you use in your app
 
 ```jsx
 function renderWithProviders(ui, { reduxState, locale = "en" }) {
@@ -86,4 +84,4 @@ function renderWithProviders(ui, { reduxState, locale = "en" }) {
 }
 ```
 
-> note: protip to avoid duplication you can create a single <AppProvider/> with all the providers you can use it both in testing and React app easily
+> note: to avoid duplication, you can create a single `<AppProvider/>` with all the providers you need and ues it both in testing and React app easily.

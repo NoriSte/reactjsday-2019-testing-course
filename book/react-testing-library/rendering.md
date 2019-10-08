@@ -1,6 +1,6 @@
 # Rendering using `react-testing-library`
 
-using `react-dom` we have code like this to test a react component
+Using `react-dom` we have code like this to test a react component
 
 ```jsx
 import React from "react";
@@ -36,7 +36,7 @@ test("render app", () => {
 });
 ```
 
-## Rendering
+### Rendering
 
 when using `react-testing-library` we can start by importing `render` and use it instead of ReactDOM
 
@@ -76,9 +76,9 @@ when using `react-testing-library` we can start by importing `render` and use it
   })
 ```
 
-## Automatic cleanup
+### Automatic cleanup
 
-You may notice that `render` doesn't require us to pass container (nor to add anything to `document.body` anymore) we can remove the setup and teardown blocks
+You may notice that `render` doesn't require us to pass a container (nor to add anything to `document.body` anymore) then, we can remove the setup and teardown blocks
 
 > note: in old tutorials you may see import of `react-testing-library/cleanup` this is no longer required as the `beforeEach` and `afterEach` are automatically registered now
 

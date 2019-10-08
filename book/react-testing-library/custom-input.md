@@ -1,8 +1,6 @@
-# Custom input Component
+# Custom Input component
 
-In this examples we will incrementally add features to a custom `Input` component and see how `react-testing-library` is similar to using `ReactDOM` but with new utilities at our disposal that makes the process a lot cleaner
-
-## example
+In this examples we will incrementally add features to a custom `Input` component and see how `react-testing-library` is similar to using `ReactDOM` but with new utilities at our disposal that makes the process a lot cleaner.
 
 ### Empty Start
 
@@ -19,7 +17,7 @@ test("testing input", async () => {
 });
 ```
 
-### Assert input value
+### Assert about the input value
 
 ```diff
   import React from 'react'
@@ -36,7 +34,7 @@ test("testing input", async () => {
   })
 ```
 
-### Make it controlled by react
+### Make it controlled by React
 
 ```diff
   import React from 'react'
@@ -73,8 +71,9 @@ test("testing input", async () => {
 + })
 +
 + test('value change', () => {
-+   const { getByDisplayValue } = render(<Input />)
-+
+   const { getByDisplayValue } = render(<Input />)
+
+-   getByDisplayValue('')
 +   const input = getByDisplayValue('')
 +
 +   fireEvent.change(input, { target: { value: 'gino' } })
@@ -168,7 +167,7 @@ test("testing input", async () => {
 + })
 ```
 
-### test accessibility via label
+### Test accessibility via label
 
 ```diff
  import React from 'react'
@@ -225,7 +224,7 @@ test("testing input", async () => {
 
 ### Add Validation
 
-#### no error on render
+#### No error on render
 
 ```diff
 import React from 'react'
@@ -287,7 +286,7 @@ import React from 'react'
   })
 ```
 
-#### min length validation
+#### Min length validation
 
 ```diff
  import React from 'react'
@@ -379,7 +378,7 @@ import React from 'react'
   })
 ```
 
-#### custom validation
+#### Custom validation
 
 ```diff
   import React from 'react'
@@ -496,7 +495,7 @@ import React from 'react'
   })
 ```
 
-#### focus on mount
+#### Focus on mount
 
 ```diff
   import React from 'react'
