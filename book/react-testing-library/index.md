@@ -15,3 +15,5 @@ In this section we will focus on using [react-testin-library](https://testing-li
 - How to test [validation errors](custom-input.md#add-validation)
 - How to test [components that uses the React Context API](context.md)
 - How to test a [component that uses Redux](redux.md)
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

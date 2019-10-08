@@ -23,6 +23,8 @@ context("Signup flow", () => {
 });
 ```
 
-The above test does not wait for two seconds (a giant wasted amount of time) until the *"Please, be patient..."* text appears. Instead, it **moves the browser clock forward** and the test duration saves two precious seconds!
+The above test does not wait for two seconds (a giant wasted amount of time) until the _"Please, be patient..."_ text appears. Instead, it **moves the browser clock forward** and the test duration saves two precious seconds!
 
 Always remember: **do not sacrifice test speed for anything**! You are going to take advantage of a fast test every time you launch it (that means hundreds of times)!
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

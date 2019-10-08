@@ -54,3 +54,5 @@ test("mock fn", () => {
   console.log(myMock(), myMock(), myMock(), myMock()); // 10, 'x', true, true
 });
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

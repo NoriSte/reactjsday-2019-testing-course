@@ -28,3 +28,5 @@ You have to get a bit accustomed to the logic and syntax but here are summarized
 - some more practical advantages like avoiding single Chrome instance and auto-close management, automatic page error reports, etc.
 
 - last but not least: you can leverage tens of [Cypress plugins](https://docs.cypress.io/plugins/index.html)
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

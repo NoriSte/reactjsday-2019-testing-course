@@ -137,7 +137,7 @@ act(() => {
 
 Now we can fix the test using `act`. In our failing example, we can wrap `ReactDOM.render` and the _click_ simulations into `act` to see the test passing
 
-````diff
+```diff
 /* ######## setup code above ######## */
 
   function Button() {
@@ -178,7 +178,7 @@ Now we can fix the test using `act`. In our failing example, we can wrap `ReactD
     expect(value.textContent).toBe('1')
 +   expect(document.title).toBe('1')
   })
-````
+```
 
 If you run the button in a real application. the browser will show the component working as intended with the tab's title updating according to the button clicks.
 
@@ -257,3 +257,5 @@ we have been given a new feature to implement in our button.
 +   expect(button.hasAttribute('disabled')).toBe(true)
   })
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

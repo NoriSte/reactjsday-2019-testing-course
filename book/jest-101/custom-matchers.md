@@ -152,3 +152,5 @@ Ran all test suites.
 
 Watch Usage: Press w to show more.
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

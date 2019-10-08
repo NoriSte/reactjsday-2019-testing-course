@@ -54,3 +54,5 @@ Chainable<{
   password: string;
 }>
 ```
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

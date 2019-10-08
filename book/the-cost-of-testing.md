@@ -15,3 +15,5 @@
 - you could think you are creating one more app to be maintained
 
 Remember to stop and start again and ask some expert developers if you end up blaming your tests, but do not give up!
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

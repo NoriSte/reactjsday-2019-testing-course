@@ -35,6 +35,7 @@ After the ReactDOM call, we are able to make assertions of the content of the DO
 In order for the React event system to work, is **important** that the `container` element passed to `ReactDOM` gets appended to `document.body` (in React all event listens are attached to `document`). The example above works for a simple scenario but if the component had an event handler declared it would not work.
 
 The correct way is:
+
 - when we want to render a component
   - create a container `div`
   - append this `div` to `document.body`
@@ -138,3 +139,5 @@ test("stateful button", () => {
     expect(value.textContent).toBe('1')
   })
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

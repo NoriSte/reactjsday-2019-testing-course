@@ -144,3 +144,5 @@ Take a look at the duration of the second test
 <br /><br />
 
 it takes just three tenths of a second to have everything set up as an authenticated user, before starting to test its own flow. Just three tenths of a second! This is what we mean when we talk about the importance of fast tests!
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

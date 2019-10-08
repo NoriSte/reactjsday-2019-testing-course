@@ -15,3 +15,5 @@ The RealWorld projects are stored into the `realworld` directory.
 
 - you need to have [Docker](https://docs.docker.com/install/) and [MongoDB](https://docs.mongodb.com/manual/installation/#tutorials) installed to run the projects and the tests locally (not for the book itself)
 - the DB data could not be persisted. If you stop the Mongo process the frontend was logged in, you need to [manually delete](https://developers.google.com/web/tools/chrome-devtools/storage/localstorage) the stored JWT. Otherwise, the frontend will not work anymore. The Cypress tests already managed it by clearing every local state before every test.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

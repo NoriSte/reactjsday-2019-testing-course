@@ -144,3 +144,5 @@ The most astonishing result is the speed of the test 😱
 Why should we test the request payload in the UI Integration Tests too? Leveraging the fact that the requests do not hit the back-end, we are going to use this kind of tests for a lot of different paths. Some of these paths will not have a corresponding E2E test because they would be too much expensive. Since **request payloads are super important**, we can not think to check only the ones included in an E2E test.
 
 A good case to think about is a searchable list, we are going to have probably ten/twenty UI Integration tests (with different request payloads) for it but just two or three E2E tests.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

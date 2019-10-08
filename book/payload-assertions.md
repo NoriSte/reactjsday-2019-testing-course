@@ -305,3 +305,5 @@ If you'd like to know how you can install a Chai plugin and use it in Cypress:
 - add it to Chai with `chai.use(chaiSubset);`
 
 The test code is in the _signup-9-chai-plugin.e2e.spec.js_ file.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

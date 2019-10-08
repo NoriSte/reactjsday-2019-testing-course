@@ -116,3 +116,5 @@ You may notice that `render` doesn't require us to pass a container (nor to add 
     expect(document.querySelector('h1').textContent).toBe('Hello!')
   })
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

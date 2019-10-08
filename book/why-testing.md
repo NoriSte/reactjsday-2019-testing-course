@@ -21,3 +21,5 @@
 - to get us working with a lower cognitive load, you can concentrate on what you are working on without thinking too much about everything surrounding it
 
 - to have an objective metric about the correctness of the behaviour of our software
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

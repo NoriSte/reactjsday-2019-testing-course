@@ -85,3 +85,5 @@ function renderWithProviders(ui, { reduxState, locale = "en" }) {
 ```
 
 > note: to avoid duplication, you can create a single `<AppProvider/>` with all the providers you need and ues it both in testing and React app easily.
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

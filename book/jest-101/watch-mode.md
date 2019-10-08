@@ -38,3 +38,5 @@ Is common practice to set `npm test` script to run Jest in watch mode
 ...
 }
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

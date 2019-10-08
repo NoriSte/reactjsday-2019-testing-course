@@ -141,3 +141,5 @@ test("render app", async () => {
   await waitForElementToBeRemoved(() => getByText("hello"));
 });
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

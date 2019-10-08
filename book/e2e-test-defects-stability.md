@@ -33,3 +33,5 @@ The complete test is the following:
 Anyway: this test started smelling a while ago, go ahead to read why should we improve it.
 
 Please note: you must completely avoid fixed-time waitings (`cy.wait(10000)` with Cypress) because you make the tests extremely slow! Read more about that [here](https://dev.to/noriste/await-do-not-make-your-e2e-tests-sleep-4g1o).
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

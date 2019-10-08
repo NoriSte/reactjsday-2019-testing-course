@@ -57,3 +57,5 @@ The result is the same but the test code is way cleaner!
 
 <i>File: cypress/integration/examples/signup-integration/signup-2.integration.spec.js</i>
 [include](../cypress/integration/examples/signup-integration/signup-2.integration.spec.js)
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

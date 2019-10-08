@@ -31,7 +31,6 @@ To watch them running on your local machine:
 - you must launch the RealWorld project with `npm run realworld:start`
 - run `npm run cy:open` and launch your tests of choice
 
-
 ### Jest example tests
 
 To watch them running on your local machine:
@@ -41,7 +40,6 @@ To watch them running on your local machine:
 - if you want to keep Jest opened you can launch `npm run test:unit:watch` and navigate the various tests leveraging the [jest-watch-typeahead](https://github.com/jest-community/jest-watch-typeahead) plugin
 
 <!-- TODO: add the part of the demo-app -->
-
 
 ### File system
 
@@ -55,3 +53,5 @@ To watch them running on your local machine:
 |-- slides # the GitPitch files (if used)
 |-- utils # little repository utilities
 ```
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

@@ -31,3 +31,5 @@ test("should fetch users", () => {
 ```
 
 in the code above, thanks to `jest.mock('axios')` `axios` is not the real `axios` module, but a mock function that allow us to mock the return value.
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

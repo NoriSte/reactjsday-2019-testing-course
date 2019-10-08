@@ -92,3 +92,5 @@ Cypress launch the Electron browser and run the test inside it
 <img src="../assets/images/headless-browser-screenshot.png" alt="Headless browser"/>
 
 That's what "leveraging a headless browser" means: automating some actions inside a browser that can be launched without a GUI (or with it if needed).
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

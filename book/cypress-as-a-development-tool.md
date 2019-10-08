@@ -91,3 +91,5 @@ To avoid going back and forth from the code test to exclude/select the tests: we
 With all the above tips you discover a new way of working... And you discover that `cy.findByPlaceholderText("Username").type("Foo")` is way faster than your manually typing. And when you finish... You have already written the tests!
 
 Please note: **this is not TDD**! We have just talked about how to leverage a testing tool to improve our productivity but the aim is not to start TDDing. You should forget about TDD until you are a practiced testing-developer and you work in a team/company that creates the right environment for an approach like that.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

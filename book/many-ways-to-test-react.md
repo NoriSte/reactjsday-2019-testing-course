@@ -38,3 +38,5 @@ Snapshot testing (not to be confused with [screenshot testing](visual-regression
 ### Can we use different testing tools in the same project?
 
 Yes, they serve different purposes and can even be used together in the same file.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

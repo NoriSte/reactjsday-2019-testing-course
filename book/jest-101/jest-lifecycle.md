@@ -214,3 +214,5 @@ test("I will run too", () => {
   // ...
 });
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

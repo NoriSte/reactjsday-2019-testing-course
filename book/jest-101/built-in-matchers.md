@@ -206,3 +206,5 @@ test("jest should not explode", () => {
 ```
 
 > node: we are not calling `bomb` (it will throw and exit Jest) we pass the function to Jest that will call it catching the error for the sake of the assertions
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

@@ -104,9 +104,9 @@ expect(document.querySelector("input")).not.toBeInTheDocument();
 
 Checks that and element is currently visible to the user. An element is visible if **all** the following conditions are met:
 
-- it does not have its `display `css property set to `none`
-- it does not have its `visibility `css property set to either `hidden` or `collapse`
-- it does not have its `opacity `css property set to `0`
+- it does not have its `display`css property set to `none`
+- it does not have its `visibility`css property set to either `hidden` or `collapse`
+- it does not have its `opacity`css property set to `0`
 - its parent element is also visible (and so on up to the top of the DOM tree)
 - it does not have the `hidden` attribute
 
@@ -135,3 +135,5 @@ expect(document.querySelector('[data-testid="hidden-attribute"]')).not.toBeVisib
 ```
 
 The complete descriptions of all utilities is available at `jest-dom` [github page](https://github.com/testing-library/jest-dom).
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

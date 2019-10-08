@@ -23,3 +23,5 @@ If you want to test the signup flow we need:
 - to create a simplified and fast version of the whole signup flow, other tests will need a registered user too
 
 Let's face them one by one in the next chapters.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

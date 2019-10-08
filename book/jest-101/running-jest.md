@@ -39,3 +39,5 @@ npm ERR! Test failed.  See above for more details.
 ```
 
 this time Jest finds the file _test.js_ but the command fails with the error `Your test suite must contain at least one test.`
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

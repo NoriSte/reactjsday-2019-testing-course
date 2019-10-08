@@ -32,3 +32,5 @@ test("test timeout", () => {
 ```
 
 more advanced functions are avaiable to only run specific timers or advance time by a certain amount
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

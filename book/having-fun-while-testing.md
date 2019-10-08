@@ -8,3 +8,5 @@
 - once you start automating everything, you cannot stop
 
 - testing throw responsibility away (in good meaning) because you are no more an elephant in a glass shop. Instead, while touching some code, you are part of a protected-by-tests sandbox, working becomes easier
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

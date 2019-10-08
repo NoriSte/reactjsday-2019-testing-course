@@ -25,3 +25,5 @@ React Testing Library is a package that offers a set of utilities to makes testi
 
 - Q: Can `react-testing-library` coexist is a project using `Enzyme`?
 - A: Yes, is possible to use both in the same file
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

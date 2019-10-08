@@ -114,3 +114,5 @@ Snapshots:   0 total
 Time:        0.731s, estimated 1s
 Ran all test suites.
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

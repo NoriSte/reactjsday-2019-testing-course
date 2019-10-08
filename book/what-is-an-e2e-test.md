@@ -36,3 +36,5 @@ An important note: the front-end application is not deployed in advance and then
 In the next examples we are going to write some E2E tests and to understand why they are not feasible to be used as the only/main test type. They are pretty important because they test everything (both the front-end and the back-end) but **they must be used carefully** to avoid brittle and hour-long test suites.
 
 At the end of our testing journey, you will think about E2E tests as "back-end tests".
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

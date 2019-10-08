@@ -82,3 +82,5 @@ It's a ton of work! The test we're talking about is not helpful at all! It has n
 Footnotes:
 
 <a id="footnote1">1</a>: for visual errors, a look at the [screenshots and videos that Cypress saves automatically](https://docs.cypress.io/guides/guides/screenshots-and-videos.html#Screenshots) could be enough.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

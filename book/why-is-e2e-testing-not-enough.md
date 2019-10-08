@@ -13,3 +13,5 @@ E2E tests and UI integration tests give us high confidence about the whole appli
 - everything is integrated to compose the final application, but you need to test littler integrations to have the confidence you need
 
 Obviously, it all depends on the project size. A landing page could not need hundreds of different tests but a standard little/medium application needs them.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

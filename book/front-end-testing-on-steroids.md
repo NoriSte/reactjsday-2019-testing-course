@@ -104,3 +104,5 @@ The last test checks that the front-end prints the errors as they are, so we are
 Please note that Cypress has other interesting options to simulate network behaviors, like the [`delay` option](https://docs.cypress.io/api/commands/route.html#Use-delays-for-responses) or using a [function as the response](https://docs.cypress.io/api/commands/route.html#Set-the-routing-options-using-a-callback-function), etc.
 
 With the recent examples, it should be clear that E2E testing is good but not practical at all! So, write a few E2E tests (just for the happy paths) and concentrate on the UI Integration Tests.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

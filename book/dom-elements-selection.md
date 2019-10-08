@@ -166,3 +166,5 @@ The test is now resilient, well done. The following is the complete test
 [include](../cypress/integration/examples/signup/signup-3-data-testid.e2e.spec.js)
 
 Compared to the previous version, in case of failures related to the DOM elements, the test helps us to identify precisely what does not work (if it's related to the DOM elements) 👍
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

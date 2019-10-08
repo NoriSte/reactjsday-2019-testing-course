@@ -40,8 +40,6 @@ Launch `npm run realworld:start` in the terminal and everything is going to work
 
 Now you can see the page launched by the test
 
-
-
 <img src="../assets/images/cypress-signup-conduit.png" alt="Cypress Conduit" class="img-border"/>
 
 ### The Test Runner
@@ -55,3 +53,5 @@ On the left you can see the Test Runner, it's one of the greatest features of Cy
 Being able to read what's happening in the front-end app is amazing because you have most of the needed feedback while developing/debugging/testing. **You know all the details** about the AJAX calls the front-end is doing, you know if some errors happened in the front-end code, you know what Cypress is doing, you know the result of the assertions...
 
 We are going to deepen some of the Test Runner capabilities but we can find everything about it on the [official Cypress Documentation](https://docs.cypress.io/guides/core-concepts/test-runner.html#Running-Experiments).
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

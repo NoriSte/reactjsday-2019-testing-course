@@ -11,3 +11,5 @@ In this section we will focus on leargning the basis of [Jest](https://jestjs.io
 - How to test [asyncronous code](testing-async-code.md)
 - How Jest decides which [tests to run and in what order](jest-lifecycle.md)
 - How we can use Jest to [mock function](mock-function.md), [modules](mock-modules.md) and [timers](timers.md)
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

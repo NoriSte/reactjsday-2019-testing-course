@@ -20,3 +20,5 @@ when the Jest cli starts press `a` to run all tests
 in this case, `create-react-app` provides a single smoke test that checks that the application renders into the DOM without crashing
 
 > note: this is called a 'smoke test', a test where nothing, in particular, is being tested and we make sure that something is not noticeable broken (eg. if there are not smoke odds are it is not burning 🔥)
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

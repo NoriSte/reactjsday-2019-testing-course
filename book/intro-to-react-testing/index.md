@@ -11,3 +11,5 @@ In this section, we will discuss the basics of testing React components using Je
 - How to check that a [DOM element is present (or not) in the DOM](jest-dom.md#tobeinthedocument)
 - How to [register custom matchers globally](jest-dom.md#setup) using Jest setup files
 - How to check that a [DOM element is visible (or not) to the final user](jest-dom.md#tobevisible)
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

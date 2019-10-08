@@ -13,3 +13,5 @@ The most used package is [start-server-and-test](https://github.com/bahmutov/sta
 you can read the script as: run the `realworld:start` script and, when the `http://localhost:4100` endpoint becomes available, launch the `cy:run` script.
 
 Cypress has its own [Dashboard product](https://www.cypress.io/dashboard/) that allows easy navigation between all the test runs, the single tests, the results. It allows to parallelize the test runs and to host the test videos.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

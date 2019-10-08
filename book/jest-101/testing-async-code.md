@@ -208,3 +208,5 @@ test("using resolves with async", async () => {
   await expect(getData()).resolves.toMatchObject({ name: "bob" });
 });
 ```
+
+<p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

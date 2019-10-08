@@ -153,3 +153,5 @@ Using Testing Library, the test becomes the following
 
 <i>File: cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js</i>
 [include](../cypress/integration/examples/signup/signup-4-cypress-testing-library.e2e.spec.js)
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

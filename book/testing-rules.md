@@ -49,3 +49,5 @@
 - you should not test native APIs
 
 - last but not least: always remember that **testing and TDD are two different things**. TDD is a step further and requires a particular context to be practiced, you can test everything without ever applying TDD
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

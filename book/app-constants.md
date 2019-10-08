@@ -90,3 +90,5 @@ In order to leverage [Webpack's aliases](https://webpack.js.org/configuration/re
 ```
 
 you should install and setup the [cypress-webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor) plugin (do not forget that Cypress is all written in JavaScript and can be tweaked in a lot of different ways).
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

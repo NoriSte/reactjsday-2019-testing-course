@@ -108,3 +108,5 @@ You can find all the combinations of them into a dedicated test
 The assertions about the `user` subject yielded by the custom command are just to demonstrate you what the last `cy.then(() => user)` command is useful for: to know the user data from the caling test.
 
 Cypress Custom commands have some useful options that we are not going to cover in this course, take a look at the [official documentation](https://docs.cypress.io/api/cypress-api/custom-commands.html#Arguments) for them.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

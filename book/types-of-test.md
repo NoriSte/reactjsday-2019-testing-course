@@ -33,3 +33,5 @@ Kent C. Dodds created a new version of the pyramid, the "the Testing Trophy". Ke
     <img src="../assets/images/test-trophy.jpg" alt="Testing trophy" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-border"/>
 </div>
 <br /><br />
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

@@ -223,3 +223,5 @@ With the new `cy.signupV3` custom command we are sure that:
 In the end: every test that leverages the `cy.signupV3` command gets a registered user, the fastest possible way.
 
 Please note: the performance improvements vary for every application, we artificially slowed down the [RealWorld](the-realworld-project.md) for the sake of this course.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

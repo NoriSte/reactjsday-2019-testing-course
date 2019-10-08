@@ -10,3 +10,5 @@ For example, the next test checks that the `main.js` file of the `https://react-
 Read more about the Monitoring tests into the [The concept of "Monitoring Tests"](https://dev.to/noriste/the-concept-of-monitoring-tests-4l5j) article.
 
 Again: following a [naming convention](dedicated-scripts.md) allows you to launch only the monitoring tests.
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>

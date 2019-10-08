@@ -112,3 +112,5 @@ Tests:       2 passed, 2 total
 Snapshots:   0 total
 Time:        0.311s, estimated 1s
 ```
+
+<p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>
