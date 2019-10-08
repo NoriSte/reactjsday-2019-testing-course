@@ -8,7 +8,7 @@ In this section we will focus on using [react-testin-library](https://testing-li
 - How to [render a React application for testing](rendering.md) using `react-testing-library`
 - How to use [`dom-testing-library` utilities](dom-testing-library.md)
 - How to deal with [components being added or removed at runtime](dom-testing-library.md#mutation-api)
-- How to [simulate user typing in `input` elements](custom-input.md#test-value-change) without the need of [`act`](intro-to-react-testing/hooks-and-act.md#act)
+- How to [simulate user typing in `input` elements](custom-input.md#test-value-change) without the need of [`act`](../intro-to-react-testing/hooks-and-act.md#act)
 - How to [test a custom input component](custom-input.md)
 - How to make a [component accessible using a `label`](custom-input.md#test-accessibility-via-label)
 - How to test-drive [new features in a component](custom-input.md)

@@ -80,4 +80,4 @@ this is the foundation of testing using libraries such as `react-dom/test-utils`
 
 - every file have a different jsdom instance
 - the same jsdom instance (so the Window) is shared by **all** tests in a file, this can cause some tests to behave differently when run in isolation of after other tests that manipulate the DOM
-  - to avoid such kind of problems refer to [the section about jest-lifecycle](jest-101/jest-lifecycle.md) to understand how to properly clean the test environment on each test run
+  - to avoid such kind of problems refer to [the section about jest-lifecycle](jest-lifecycle.md) to understand how to properly clean the test environment on each test run
