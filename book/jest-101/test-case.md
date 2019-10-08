@@ -3,16 +3,16 @@
 Add this code to _test.js_
 
 ```javascript
-test("my first test", () => {
-  expect(true).toBe(false);
-});
+test('my first test', () => {
+  expect(true).toBe(false)
+})
 ```
 
 the above code is composed of `test`, a function made available in the global scope by Jest, called with two parameters, a string used as the name of the test and a function that contains the code that Jest will run.
 
-`expect` is also a global function injected by Jest, it receives a parameter (in this case true) and returns an object with different methods that allow comparing the value passed to expect to another value
+[`expect`](https://jestjs.io/docs/en/expect) is also a global function injected by Jest, it receives a parameter (in this case true) and returns an object with different methods that allow comparing the value passed to expect to another value
 
-in the example above we are using the `toBe` method, which is a **matcher**
+in the example above we are using the `toBe` method, which is a [matcher](https://jestjs.io/docs/en/using-matchers)
 
 > note: the function `it` is also available globally and is an alias of `test`
 
@@ -60,9 +60,9 @@ We compare the result of the program with an expectation made by us, in order to
 ### Let's fix the test
 
 ```javascript
-test("my first test", () => {
-  expect(true).toBe(true);
-});
+test('my first test', () => {
+  expect(true).toBe(true)
+})
 ```
 
 run `npm test`
@@ -73,30 +73,30 @@ The test passes hooray
 
 ### Grouping tests
 
-tests can be grouped using the `describe` global function
+tests can be grouped using the [`describe`](https://jestjs.io/docs/en/api#describename-fn) global function
 
 ```javascript
-describe("group", () => {
-  test("test 1", () => {
-    expect(true).toBe(true);
-  });
-});
+describe('group', () => {
+  test('test 1', () => {
+    expect(true).toBe(true)
+  })
+})
 ```
 
 `descibe` can be nested inside another `describe`
 
 ```javascript
-describe("outer group", () => {
-  test("outer group test", () => {
-    expect(true).toBe(true);
-  });
+describe('outer group', () => {
+  test('outer group test', () => {
+    expect(true).toBe(true)
+  })
 
-  describe("inner group 1", () => {
-    test("inner group test", () => {
-      expect(true).toBe(true);
-    });
-  });
-});
+  describe('inner group 1', () => {
+    test('inner group test', () => {
+      expect(true).toBe(true)
+    })
+  })
+})
 ```
 
 this hierarchy is shown in the test results and allows to have different groups with test having the same name, while possible both nesting and using the same name for different tests is discouraged when not necessary because it hurts readability
