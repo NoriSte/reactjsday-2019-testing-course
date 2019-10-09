@@ -1,6 +1,6 @@
 # Custom Input component
 
-In this examples we will incrementally add features to a custom `Input` component and see how `react-testing-library` is similar to using `ReactDOM` but with new utilities at our disposal that makes the process a lot cleaner.
+In this examples we will incrementally add features to a custom `Input` component and see how [`react-testing-library`](https://testing-library.com/docs/react-testing-library) is similar to using [`ReactDOM`](https://reactjs.org/docs/react-dom.html#overview) but with new utilities at our disposal that makes the process a lot cleaner.
 
 ### Empty Start
 

@@ -1,12 +1,12 @@
 # Testing Context
 
-When using `react-testing-library` testing components using React Context is no different than testing any other kind of component.
+When using [`react-testing-library`](https://github.com/testing-library/react-testing-library) testing components using React Context is no different than testing any other kind of component.
 
 Since we are testing the generated HTML and not how is it generated, the fact that something happens thanks to using React Context is an [implementation detail](../testing-rules.md#whitebox-testing) we should not be interested in.
 
-All we have to do is to wrap the tested component inside the `Context.Provider`, exactly as you would in a normal application.
+All we have to do is to wrap the tested component inside the [`Context.Provider`](https://reactjs.org/docs/context.html#contextprovider), exactly as you would in a normal application.
 
-For example, a component that uses `react-intl` can be tested like this
+For example, a component that uses [`react-intl`](https://github.com/formatjs/react-intl) can be tested like this
 
 ```jsx
 import React from "react";

@@ -1,18 +1,18 @@
 # Dom Testing library
 
-`dom-testing-library` is the project used by `react-testing-library` to query components. `react-testing-library` re-exports all `dom-testing-library` utilities so, in the next examples, we will import from `@testing-library/react` instead of `@testing-library/dom`.
+[`dom-testing-library`](https://testing-library.com/docs/dom-testing-library/) is the project used by [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro) to query components. `react-testing-library` re-exports all `dom-testing-library` utilities so, in the next examples, we will import from `@testing-library/react` instead of `@testing-library/dom`.
 
 ## Queries
 
-the main concept of `dom-testing-library` are queries, a set of utilities to find elements in the DOM. The queries are divided into three categories with different features, each category offers the same query in two versions, to query a _single_ element and to query _all_ matching elements.
+the main concept of `dom-testing-library` are [queries](https://testing-library.com/docs/dom-testing-library/api-queries), a set of utilities to find elements in the DOM. The queries are divided into three categories with different features, each category offers the same query in two versions, to query a _single_ element and to query _all_ matching elements.
 
 ### `getBy` queries
 
-`getBy*` queries return the first matching node found
+[`getBy*`](https://testing-library.com/docs/dom-testing-library/api-queries#getby) queries return the first matching node found
 and have two important features
 
 - throw an error if no elements match (allow to make expectations without using expect directly)
-- throw if more than one match is found (use `getAllBy*` queries if you expect more elements matching).
+- throw if more than one match is found (use [`getAllBy*`](https://testing-library.com/docs/dom-testing-library/api-queries#getallby) queries if you expect more elements matching).
 
 An example:
 
@@ -37,9 +37,9 @@ test("render app", () => {
 
 ### `queryBy` queries
 
-`queryBy*` queries return the first matching node found, and return `null` if no elements match (like `document.querySelector`). This is useful for asserting that an element is not present in the document.
+[`queryBy*`](https://testing-library.com/docs/dom-testing-library/api-queries#queryby) queries return the first matching node found, and return `null` if no elements match (like [`document.querySelector`](https://developer.mozilla.org/it/docs/Web/API/Document/querySelector)). This is useful for asserting that an element is not present in the document.
 
-Remember that they throws if more than one match is found (use `queryAllBy*` queries instead).
+Remember that they throws if more than one match is found (use [`queryAllBy*`](https://testing-library.com/docs/dom-testing-library/api-queries#queryallby) queries instead).
 
 An example:
 
@@ -66,10 +66,10 @@ test("render app", () => {
 
 ### `findBy` Queries
 
-`findBy*` queries return a promise which resolves when an element is found which matches the given query
+[`findBy*`](https://testing-library.com/docs/dom-testing-library/api-queries#findby) queries return a promise which resolves when an element is found which matches the given query
 
 - will reject after 4500 ms is no matches occur
-- is the combination of `getBy` and the utility `waitForElement`
+- is the combination of `getBy` and the utility [`waitForElement`](https://testing-library.com/docs/dom-testing-library/api-async#waitforelement)
 - will reject if no element is found
 - will reject if more than one element is found, to find more than one element, then use `findAllBy*` queries
 
@@ -105,7 +105,7 @@ test("render app", async () => {
 
 ## Other Utilities
 
-### `wait`
+### [`wait`](https://testing-library.com/docs/dom-testing-library/api-async#wait)
 
 Calling `await wait(callback)` will call the callback until the it resolves, rejects, or the timeout fires.
 
@@ -113,9 +113,9 @@ Calling `await wait(callback)` will call the callback until the it resolves, rej
 
 Some utilities based on the [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) API are available to deal with cases were we have to wait for DOM elements to appear, disappear, or change.
 
-- `waitForElement`
-- `waitForDomChange`
-- `waitForElementToBeRemoved`
+- [`waitForElement`](https://testing-library.com/docs/dom-testing-library/api-async#waitforelement)
+- [`waitForDomChange`](https://testing-library.com/docs/dom-testing-library/api-async#waitfordomchange)
+- [`waitForElementToBeRemoved`](https://testing-library.com/docs/dom-testing-library/api-async#waitforelementtoberemoved)
 
 A `waitForElementToBeRemoved` example:
 

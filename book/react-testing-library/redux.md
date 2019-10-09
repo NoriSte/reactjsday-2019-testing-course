@@ -1,6 +1,6 @@
 # Testing Redux
 
-To test components that use Redux is necessary to wrap them component being tested with the store provider.
+To test components that use [Redux](https://redux.js.org/) is necessary to wrap them component being tested with the store provider.
 
 For the next examples we expect to have a working app created using `create-react-app` already in place.
 

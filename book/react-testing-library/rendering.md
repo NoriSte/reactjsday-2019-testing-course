@@ -1,6 +1,6 @@
 # Rendering using `react-testing-library`
 
-Using `react-dom` we have code like this to test a react component
+Using [`react-dom`](https://reactjs.org/docs/react-dom.html) we have code like this to test a react component
 
 ```jsx
 import React from "react";
@@ -38,7 +38,7 @@ test("render app", () => {
 
 ### Rendering
 
-when using `react-testing-library` we can start by importing `render` and use it instead of ReactDOM
+when using [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro) we can start by importing [`render`](https://reactjs.org/docs/react-dom.html#render) and use it instead of ReactDOM
 
 ```diff
   import React from 'react'
