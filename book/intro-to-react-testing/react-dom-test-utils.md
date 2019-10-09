@@ -1,17 +1,17 @@
 # Testing with ReactDOM
 
-Using React DOM for testing means rendering you React application the same way we render it in a real browser, by calling `ReactDOM.render` with two arguments, a `React.Element` (made directly by JSX in most cases) and a `node` where to mount the application. A basic example of a test that renders using ReactDOM is the following
+Using React DOM for testing means rendering you React application the same way we render it in a real browser, by calling [`ReactDOM.render`](https://reactjs.org/docs/react-dom.html#render) with two arguments, a [`React.Element`](https://reactjs.org/docs/rendering-elements.html) (made directly by JSX in most cases) and a `node` where to mount the application. A basic example of a test that renders using ReactDOM is the following
 
 ```jsx
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const App = () => <h1>Hello!</h1>;
+const App = () => <h1>Hello!</h1>
 
-test("render app", () => {
-  const container = document.createElement("div");
-  ReactDOM.render(<App />, container);
-});
+test('render app', () => {
+  const container = document.createElement('div')
+  ReactDOM.render(<App />, container)
+})
 ```
 
 After the ReactDOM call, we are able to make assertions of the content of the DOM by querying the `container` HTML node. For example we can test that inside the DOM there's now a `h1` with content `Hello!`
@@ -73,7 +73,7 @@ Doing this inside every test would be not practical or fun, we can use Jest `bef
   })
 ```
 
-The `beforeEach` call creates a new `container` each time and appends it to `document.body`. The `afterEach` call will call `ReactDOM.unmountComponentAtNode(container)` which will trigger the unmount of components and all `componentWillUnmount` liecycle hooks, removes the container from the DOM and set the variable back to `null`. Please note that setting the `containr` variable to `null` should not be necessary due to `beforeEach` overriding it again, but this is to make sure nobody can read the state of the DOM.
+The `beforeEach` call creates a new `container` each time and appends it to `document.body`. The `afterEach` call will call [`ReactDOM.unmountComponentAtNode(container)`](https://reactjs.org/docs/react-dom.html#unmountcomponentatnode) which will trigger the unmount of components and all [`componentWillUnmount`](https://reactjs.org/docs/react-component.html#componentwillunmount) liecycle hooks, removes the container from the DOM and set the variable back to `null`. Please note that setting the `container` variable to `null` should not be necessary due to `beforeEach` overriding it again, but this is to make sure nobody can read the state of the DOM.
 
 ### Testing a stateful component
 
@@ -82,8 +82,8 @@ The `beforeEach` call creates a new `container` each time and appends it to `doc
 
 class Button extends React.Component {
   state = {
-    value: 0
-  };
+    value: 0,
+  }
 
   render() {
     return (
@@ -94,33 +94,33 @@ class Button extends React.Component {
         <button
           onClick={() =>
             this.setState(state => {
-              return { value: state.value + 1 };
+              return { value: state.value + 1 }
             })
           }
         >
           increment
         </button>
       </div>
-    );
+    )
   }
 }
 
-test("stateful button", () => {
-  ReactDOM.render(<Button />, container);
+test('stateful button', () => {
+  ReactDOM.render(<Button />, container)
 
-  const value = document.getElementById("value");
+  const value = document.getElementById('value')
 
-  expect(value.textContent).toBe("0");
+  expect(value.textContent).toBe('0')
 
-  const button = document.querySelector("button");
-  button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-  expect(value.textContent).toBe("1");
-});
+  const button = document.querySelector('button')
+  button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+  expect(value.textContent).toBe('1')
+})
 ```
 
 ### Interacting with the button
 
-`react-dom` offers a set of utilities found in the package `react-dom/test-utils` to help to interact with the React applications in a DOM environment (eg. simulating user actions). In the previous example `ReactTestUtils.Simulate.click(button)` could be used instead of `dispatchEvent`
+[`react-dom`](https://reactjs.org/docs/react-dom.html) offers a set of utilities found in the package [`react-dom/test-utils`](https://reactjs.org/docs/test-utils.html#other-utilities) to help to interact with the React applications in a DOM environment (eg. simulating user actions). In the previous example [`ReactTestUtils.Simulate.click(button)`](https://reactjs.org/docs/test-utils.html#simulate) could be used instead of [`dispatchEvent`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent)
 
 ```diff
 /* ######## setup code above ######## */

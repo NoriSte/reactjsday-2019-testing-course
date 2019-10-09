@@ -1,6 +1,6 @@
 # `jest-dom`
 
-`jest-dom` is a library that extends Jest using custom matchers in order to make assertions on DOM elements easier.
+[`jest-dom`](https://github.com/testing-library/jest-dom) is a library that extends Jest using custom matchers in order to make assertions on DOM elements easier.
 
 ## Utilities
 
@@ -27,13 +27,13 @@ All the utilities offered by `jest-dom` as matchers
 ### Setup
 
 - First, you need to install it with `npm install --save-dev @testing-library/jest-dom`
-- then, add `import '@testing-library/jest-dom/extend-expect'` at the top of every file to register the matchers (or in a setup file loaded by Jest if you prefer to only import it once. When using `create-react-app` the file is `src/setupTests.js`)
+- then, add `import '@testing-library/jest-dom/extend-expect'` at the top of every file to register the matchers (or in a setup file loaded by Jest if you prefer to only import it once. When using `create-react-app` the file is [`src/setupTests.js`](https://create-react-app.dev/docs/running-tests#src-setuptestsjs))
 
 > note: if you create the srtup file, remember to stop and restart Jest to load it
 
 ## Some examples
 
-### `toBeDisabled`
+### [`toBeDisabled`](https://github.com/testing-library/jest-dom#tobedisabled)
 
 This allows you to check whether an element is disabled from the user's perspective. It only matches elements that can be actually be disabled by HTML specification, they are
 
@@ -45,7 +45,7 @@ This allows you to check whether an element is disabled from the user's perspect
 - option
 - fieldse
 
-Below you can find some examples using the `toBeDisabled` matcher:
+Below you can find some examples using the [`toBeDisabled`](https://github.com/testing-library/jest-dom#tobedisabled) matcher:
 
 ```diff
 - expect(button.hasAttribute('disabled')).toBe(true)
@@ -66,16 +66,16 @@ Below you can find some examples using the `toBeDisabled` matcher:
 ```
 
 ```js
-expect(document.querySelector("button")).toBeDisabled();
-expect(document.querySelector("input")).toBeDisabled();
-expect(document.querySelector("a")).not.toBeDisabled();
+expect(document.querySelector('button')).toBeDisabled()
+expect(document.querySelector('input')).toBeDisabled()
+expect(document.querySelector('a')).not.toBeDisabled()
 ```
 
-### `toBeEnabled`
+### [`toBeEnabled`](https://github.com/testing-library/jest-dom#tobeenabled)
 
 Checks that an element in NOT disabled, same as `not.toBeDisabled()`
 
-### `toBeEmpty`
+### [`toBeEmpty`](https://github.com/testing-library/jest-dom#tobeempty)
 
 Checks that an element has no content
 
@@ -84,10 +84,10 @@ Checks that an element has no content
 ```
 
 ```js
-expect(document.querySelector("#my-div")).toBeEmpty();
+expect(document.querySelector('#my-div')).toBeEmpty()
 ```
 
-### `toBeInTheDocument`
+### [`toBeInTheDocument`](https://github.com/testing-library/jest-dom#tobeinthedocument)
 
 Checks that and element is in the document or not
 
@@ -96,11 +96,11 @@ Checks that and element is in the document or not
 ```
 
 ```js
-expect(document.querySelector("#my-div")).toBeInTheDocument();
-expect(document.querySelector("input")).not.toBeInTheDocument();
+expect(document.querySelector('#my-div')).toBeInTheDocument()
+expect(document.querySelector('input')).not.toBeInTheDocument()
 ```
 
-### `toBeVisible`
+### [`toBeVisible`](https://github.com/testing-library/jest-dom#tobevisible)
 
 Checks that and element is currently visible to the user. An element is visible if **all** the following conditions are met:
 
@@ -126,14 +126,14 @@ Some examples:
 ```
 
 ```js
-expect(document.querySelector('[data-testid="zero-opacity"]')).not.toBeVisible();
-expect(document.querySelector('[data-testid="visibility-hidden"]')).not.toBeVisible();
-expect(document.querySelector('[data-testid="display-none"]')).not.toBeVisible();
-expect(document.querySelector('[data-testid="hidden-parent"]')).not.toBeVisible();
-expect(document.querySelector('[data-testid="visible"]')).toBeVisible();
-expect(document.querySelector('[data-testid="hidden-attribute"]')).not.toBeVisible();
+expect(document.querySelector('[data-testid="zero-opacity"]')).not.toBeVisible()
+expect(document.querySelector('[data-testid="visibility-hidden"]')).not.toBeVisible()
+expect(document.querySelector('[data-testid="display-none"]')).not.toBeVisible()
+expect(document.querySelector('[data-testid="hidden-parent"]')).not.toBeVisible()
+expect(document.querySelector('[data-testid="visible"]')).toBeVisible()
+expect(document.querySelector('[data-testid="hidden-attribute"]')).not.toBeVisible()
 ```
 
-The complete descriptions of all utilities is available at `jest-dom` [github page](https://github.com/testing-library/jest-dom).
+The complete descriptions of all utilities is available at [`jest-dom` github page](https://github.com/testing-library/jest-dom).
 
 <p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

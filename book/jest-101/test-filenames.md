@@ -1,6 +1,6 @@
 # Valid file test names
 
-Rename the test to _abc.test.js_. Jest still find it because of the default regex. Now try all other files extention that Jest by default supports:
+Rename the test to _abc.test.js_. Jest still find it because of the default regex. Now try all other files extention that Jest by [default](https://jestjs.io/docs/en/configuration#testregex-string-array-string) supports:
 
 - `abc.spec.js`
 - `spec.js`

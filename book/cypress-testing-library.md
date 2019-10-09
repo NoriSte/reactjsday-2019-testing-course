@@ -31,7 +31,9 @@ it("The happy path should work", () => {
   cy.findByPlaceholderText("Email").type(`user+${random}@realworld.io`);
   cy.findByPlaceholderText("Password").type("mysupersecretpassword");
   cy.findByText("Sign up").click();
-  cy.findByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
+  cy.findByText("No articles are here... yet.", { timeout: 10000 }).should(
+    "be.visible"
+  );
 });
 ```
 
@@ -83,7 +85,9 @@ it("The happy path should work", () => {
   cy.findByPlaceholderText("Email").type(`user+${random}@realworld.io`);
   cy.findByPlaceholderText("Password").type("mysupersecretpassword");
   cy.findByText("Sign up").click();
-  cy.findByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
+  cy.findByText("No articles are here... yet.", { timeout: 10000 }).should(
+    "be.visible"
+  );
 });
 ```
 
@@ -136,7 +140,9 @@ cy.getAllByText("Sign up")
 
 ```javascript
 cy.getAllByText("Sign up")
-  .then($els => Cypress.$.grep($els, el => el.tagName.toLowerCase() === "button"))
+  .then($els =>
+    Cypress.$.grep($els, el => el.tagName.toLowerCase() === "button")
+  )
   .click();
 ```
 

@@ -68,7 +68,9 @@ context("Signup flow", () => {
     cy.get("form")
       .within(() => cy.findByText(strings.signUp))
       .click();
-    cy.findByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
+    cy.findByText("No articles are here... yet.", { timeout: 10000 }).should(
+      "be.visible"
+    );
   });
 });
 ```

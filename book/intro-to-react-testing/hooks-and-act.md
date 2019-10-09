@@ -1,27 +1,27 @@
 # Hooks and `act`
 
-We can now convert the `Button` component used in the previous section into a functional component using the `useState` hook:
+We can now convert the `Button` component used in the previous section into a functional component using the [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate) hook:
 
 ```jsx
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-let container = null;
+let container = null
 beforeEach(() => {
   // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
 
 afterEach(() => {
   // cleanup on exiting
-  ReactDOM.unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
+  ReactDOM.unmountComponentAtNode(container)
+  container.remove()
+  container = null
+})
 
 function Button() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
   return (
     <div>
       <div>
@@ -29,24 +29,24 @@ function Button() {
       </div>
       <button onClick={() => setValue(value + 1)}>increment</button>
     </div>
-  );
+  )
 }
 
-test("stateful button", () => {
-  ReactDOM.render(<Button />, container);
+test('stateful button', () => {
+  ReactDOM.render(<Button />, container)
 
-  const value = document.getElementById("value");
-  expect(value.textContent).toBe("0");
+  const value = document.getElementById('value')
+  expect(value.textContent).toBe('0')
 
-  const button = document.querySelector("button");
-  Simulate.click(button);
-  expect(value.textContent).toBe("1");
-});
+  const button = document.querySelector('button')
+  Simulate.click(button)
+  expect(value.textContent).toBe('1')
+})
 ```
 
 Please note that the test has not changed at all. We have refactored the whole component without changing the test! That's one of the goal of testing itself and it's made easy because we have tested the component behaviour from the external point of view (black-box testing), not from the internal one ([white-box testing](../testing-rules.md#whitebox-testing)).
 
-The next task is: show the current counter value in the tab title. To implement this feature we will use `useEffect` hook that will change the document title every time the counter state changes
+The next task is: show the current counter value in the tab title. To implement this feature we will use [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) hook that will change the document title every time the counter state changes
 
 ```diff
 /* ######## setup code above ######## */
@@ -110,7 +110,7 @@ Snapshots:   0 total
 Time:        0.636s, estimated 1s
 ```
 
-Why isn't the title changed? Let's speak about `act`.
+Why isn't the title changed? Let's speak about [`act`](https://reactjs.org/docs/test-utils.html#act).
 
 ### `act`
 
@@ -123,7 +123,7 @@ Usage:
 ```js
 act(() => {
   // anything that causes a component to render/rerender
-});
+})
 // make assertions
 ```
 
@@ -131,8 +131,8 @@ we need to wrap every interactions and operations that cause a component to rend
 
 ```jsx
 act(() => {
-  ReactDOM.render(<Button />, container);
-});
+  ReactDOM.render(<Button />, container)
+})
 ```
 
 Now we can fix the test using `act`. In our failing example, we can wrap `ReactDOM.render` and the _click_ simulations into `act` to see the test passing

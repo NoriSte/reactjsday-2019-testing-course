@@ -70,7 +70,8 @@ The only thing we have to do to get the React DevTools working is adding the fol
 ```html
 <script>
   if (window.Cypress) {
-    window["__REACT_DEVTOOLS_GLOBAL_HOOK__"] = window.parent["__REACT_DEVTOOLS_GLOBAL_HOOK__"];
+    window["__REACT_DEVTOOLS_GLOBAL_HOOK__"] =
+      window.parent["__REACT_DEVTOOLS_GLOBAL_HOOK__"];
   }
 </script>
 ```

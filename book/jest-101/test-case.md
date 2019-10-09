@@ -12,7 +12,7 @@ the above code is composed of `test`, a function made available in the global sc
 
 [`expect`](https://jestjs.io/docs/en/expect) is also a global function injected by Jest, it receives a parameter (in this case true) and returns an object with different methods that allow comparing the value passed to expect to another value
 
-in the example above we are using the `toBe` method, which is a [matcher](https://jestjs.io/docs/en/using-matchers)
+in the example above we are using the [`toBe`](https://jestjs.io/docs/en/expect#tobevalue) method, which is a [matcher](https://jestjs.io/docs/en/using-matchers)
 
 > note: the function `it` is also available globally and is an alias of `test`
 

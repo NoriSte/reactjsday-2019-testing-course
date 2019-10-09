@@ -92,7 +92,10 @@ We can stub both the second and the third AJAX calls with
 
 ```javascript
 cy.route("GET", "**/api/tags", { tags: [] }).as("tags");
-cy.route("GET", "**/api/articles/feed**", { articles: [], articlesCount: 0 }).as("feed");
+cy.route("GET", "**/api/articles/feed**", {
+  articles: [],
+  articlesCount: 0
+}).as("feed");
 ```
 
 - we do not need to check the AJAX response payload anymore (since it's Cypress that responds in place of the back-end app)

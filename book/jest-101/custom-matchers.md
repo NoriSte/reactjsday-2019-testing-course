@@ -1,6 +1,6 @@
 # Custom Matchers
 
-Jest offers the API `expect.extend` to create custom matcher.
+Jest offers the API [`expect.extend`](https://jestjs.io/docs/en/expect#expectextendmatchers) to create custom matcher.
 
 ### Custom Matchers API
 
@@ -16,14 +16,14 @@ expect.extend({
   toGandalf() {
     return {
       pass: false,
-      message: () => "you shall not pass"
-    };
-  }
-});
+      message: () => 'you shall not pass',
+    }
+  },
+})
 
-test("custom matcher", () => {
-  expect(4).toGandalf();
-});
+test('custom matcher', () => {
+  expect(4).toGandalf()
+})
 ```
 
 ```yaml
@@ -55,56 +55,56 @@ Ran all test suites.
 The custom Matcher:
 
 ```js
-const diff = require("jest-diff"); // already available if Jest is installed
+const diff = require('jest-diff') // already available if Jest is installed
 
 expect.extend({
   toBeCompleted(project) {
-    const pass = project.tasks.every(task => task.completed);
+    const pass = project.tasks.every(task => task.completed)
 
     function makeExpected() {
       return project.tasks.map(t => {
         return {
           ...t,
-          completed: true
-        };
-      });
+          completed: true,
+        }
+      })
     }
 
     return {
       pass,
       message: () => {
-        const diffString = diff(makeExpected(), project.tasks);
+        const diffString = diff(makeExpected(), project.tasks)
 
-        return `expected all project tasks to be completed:\n ${diffString}`;
-      }
-    };
-  }
-});
+        return `expected all project tasks to be completed:\n ${diffString}`
+      },
+    }
+  },
+})
 ```
 
 The test;
 
 ```js
-test("custom matcher", () => {
+test('custom matcher', () => {
   const project = {
     tasks: [
       {
         id: 1,
-        completed: true
+        completed: true,
       },
       {
         id: 2,
-        completed: false
+        completed: false,
       },
       {
         id: 2,
-        completed: true
-      }
-    ]
-  };
+        completed: true,
+      },
+    ],
+  }
 
-  expect(project).toBeCompleted();
-});
+  expect(project).toBeCompleted()
+})
 ```
 
 The result:
@@ -152,5 +152,7 @@ Ran all test suites.
 
 Watch Usage: Press w to show more.
 ```
+
+> more into at [https://jestjs.io/docs/en/expect#custom-matchers-api](https://jestjs.io/docs/en/expect#custom-matchers-api)
 
 <p style='text-align: right;'>Author: <a href="../about-us.md#jaga-santagostino">Jaga Santagostino</a></p>

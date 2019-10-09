@@ -140,7 +140,11 @@ if (previousUserData.jwt && previousUserData.email === email) {
 - the special "user restore" capability must be optional, with a new `ignoreLocalStorage` option
 
 ```javascript
-if (!ignoreLocalStorage && previousUserData.jwt && previousUserData.email === email) {
+if (
+  !ignoreLocalStorage &&
+  previousUserData.jwt &&
+  previousUserData.email === email
+) {
   // ...
 }
 ```

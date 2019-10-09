@@ -1,6 +1,6 @@
 # timers
 
-Jest offers some utilities for the manipulation of time
+Jest offers some [utilities](https://jestjs.io/docs/en/jest-object#mock-timers) for the manipulation of time
 
 <iframe src='https://gfycat.com/ifr/AlertCalmHerring' frameborder='0' scrolling='no' allowfullscreen width='640' height='412'></iframe><p> <a href="https://gfycat.com/alertcalmherring">via Gfycat</a></p>
 
