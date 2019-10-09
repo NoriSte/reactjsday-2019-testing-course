@@ -14,4 +14,6 @@ you can read the script as: run the `realworld:start` script and, when the `http
 
 Cypress has its own [Dashboard product](https://www.cypress.io/dashboard/) that allows easy navigation between all the test runs, the single tests, the results. It allows to parallelize the test runs and to host the test videos.
 
+If you want to see the Cypress Dashboard in action, [open it and watch the videos of this project](https://dashboard.cypress.io/#/projects/jdiekj/runs), they are public (GitHub/Google sign in required) and Cypress allowed us to leverage the OSS plan for this book.
+
 <p style='text-align: right;'>Author: <a href="about-us.md#stefano-magni">Stefano Magni</a></p>
