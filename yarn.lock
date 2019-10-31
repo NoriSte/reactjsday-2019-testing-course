@@ -1656,10 +1656,10 @@ cypress-skip-and-only-ui@1.2.5:
     react "16.11.0"
     react-dom "16.11.0"
 
-cypress@3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-3.5.0.tgz#e188bc8f48782953f6865d8830a4dc342334b81c"
-  integrity sha512-I1iSReD2C8CTP6s4BvQky4gEqHBnKLmhBIqFyCUZdj6BQ6ZDxGnmIbQPM5g79E2iP60KTIbTK99ZPSDVtsNUUg==
+cypress@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-3.6.0.tgz#b7c88c169970aeb74a00182a1e8dc43a355d9eea"
+  integrity sha512-ODhbOrH1XZx0DUoYmJSvOSbEQjycNOpFYe7jOnHkT1+sdsn2+uqwAjZ1x982q3H4R/5iZjpSd50gd/iw2bofzg==
   dependencies:
     "@cypress/listr-verbose-renderer" "0.4.1"
     "@cypress/xvfb" "1.2.4"
@@ -2681,6 +2681,11 @@ gitbook-plugin-copy-code-button@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/gitbook-plugin-copy-code-button/-/gitbook-plugin-copy-code-button-0.0.2.tgz#434533200b5cf596c284c14e1d8bb57772084475"
   integrity sha1-Q0UzIAtc9ZbChMFOHYu1d3IIRHU=
+
+gitbook-plugin-edit-link@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/gitbook-plugin-edit-link/-/gitbook-plugin-edit-link-2.0.2.tgz#d8fcd927eced81e7a662a72d59db609eafd7e72f"
+  integrity sha1-2PzZJ+ztgeemYqctWdtgnq/X5y8=
 
 gitbook-plugin-github@^2.0.0:
   version "2.0.0"
