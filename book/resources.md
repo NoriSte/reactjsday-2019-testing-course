@@ -18,7 +18,7 @@ Watch the videos of the tests of this project directly into the [Cypress Dashboa
 
 - Stefano Magni: [Test the request and response payloads](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/test-request-and-response-payload.md)
 - Kent C. Dodds: [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests/)
-- Stefano Magni: [Component vs (UI) Integration vs E2E tests]UI tests classification](https://dev.to/noriste/component-vs-ui-integration-vs-e2e-tests-3i0d)
+- Stefano Magni: [Component vs (UI) Integration vs E2E tests](https://dev.to/noriste/component-vs-ui-integration-vs-e2e-tests-3i0d)
 - Stefano Magni: [Await, do not make your E2E tests sleep](https://dev.to/noriste/await-do-not-make-your-e2e-tests-sleep-4g1o)
 - Kent C. Dodds: [Testing Implementation Details](https://kentcdodds.com/blog/testing-implementation-details)
 - Kent C. Dodds: [Avoid Nesting when you're Testing](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing)
