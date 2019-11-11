@@ -107,7 +107,7 @@ test("render app", async () => {
 
 ### [`wait`](https://testing-library.com/docs/dom-testing-library/api-async#wait)
 
-Calling `await wait(callback)` will call the callback until the it resolves, rejects, or the timeout fires.
+Calling `await wait(callback)` will call the callback until it resolves, rejects, or the timeout fires.
 
 ### Mutation API
 

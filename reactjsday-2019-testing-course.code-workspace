@@ -6,10 +6,12 @@
 	],
 	"settings": {
 		"workbench.colorCustomizations": {
-			"titleBar.activeBackground": "#24aae1",
-			"titleBar.inactiveBackground": "#24aae199",
-			"titleBar.activeForeground": "#15202b",
-			"titleBar.inactiveForeground": "#15202b99"
+			"activityBar.background": "#51bbe7",
+			"activityBar.activeBorder": "#c41b92",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#c41b92",
+			"activityBarBadge.foreground": "#e7e7e7"
 		},
 		"peacock.color": "#24AAE1",
 		"editor.formatOnSave": true
