@@ -2,7 +2,7 @@
 
 - to control that the code does what we expect, now and when we refactor/modify it. Testing protects us from direct regressions when we break the existing code, and from indirect regressions, when something external from our code breaks it
 
-- to reproduce some corner cases the easiest possible way
+- to reproduce some edge cases the easiest possible way
 
 - to leverage the speed of an automated tool that could do the same checks that you would do manually... but at a blazing speed
 

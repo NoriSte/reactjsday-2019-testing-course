@@ -2,7 +2,7 @@
 
 Stubbing an AJAX request is easy and advantageous with Cypress, and allows us to concentrate on testing the front-end application, **forgetting about the back-end** one. That's really important because E2E tests are often considered the only solution to the front-end testing problem, but with so much disadvantages that they discouraged a lot of developers.
 
-Anyway, two of the three main E2E testing problems were front-end developer independence and corner case replication. We can face both of them are easy with UI Integration Testing and back-end stubs. As an example, we could test the error paths that could happen with the registration flow. At the moment, the state of the art of our integration signup flow is the following:
+Anyway, two of the three main E2E testing problems were front-end developer independence and edge case replication. We can face both of them are easy with UI Integration Testing and back-end stubs. As an example, we could test the error paths that could happen with the registration flow. At the moment, the state of the art of our integration signup flow is the following:
 
 <i>File: cypress/integration/examplessignup-integration/signup-2.integration.spec.js</i>
 [include](../cypress/integration/examples/signup-integration/signup-2.integration.spec.js)

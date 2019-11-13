@@ -6,7 +6,7 @@ What's the matter with **E2E tests**? Well, they:
 
 - do not allow the front-ender to work without a back-ender: this is a huge limit. We all know that we can not count on all the infrastructure 24/7, nor on our devops/back-end colleagues. Often, the front-end development and the back-end one do not proceed side by side either
 
-- they make **corner cases replication hard**: if we work with real data, we are going to spend most of the time dealing with it with a 20-40% of the time remaining for the front-end tests themselves
+- they make **edge cases replication hard**: if we work with real data, we are going to spend most of the time dealing with it with a 20-40% of the time remaining for the front-end tests themselves
 
 So: **E2E tests are not feasible for front-end testing**. They are important, obviously, but we cannot rely on them too much. That's the reason why E2E testing is at the top of the [testing pyramid](types-of-test.md#testing-pyramid), they give you the most amount of confidence but they are super expensive in terms of writing, maintenance, and stability.
 
@@ -18,7 +18,7 @@ Going down with the [testing pyramid](types-of-test.md#testing-pyramid) we can f
 
 - testing confidence: testing the whole front-end in a browser gives you more and more confidence than a JSDom test with the terminal
 
-- corner cases replication: with static responses, you can simulate (or reproduce, if you're analyzing a bug) every corner case in a while
+- edge cases replication: with static responses, you can simulate (or reproduce, if you're analyzing a bug) every edge case in a while
 
 Pleas note an important terminology difference:
 

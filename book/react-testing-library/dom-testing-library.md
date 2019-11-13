@@ -111,7 +111,7 @@ Calling `await wait(callback)` will call the callback until it resolves, rejects
 
 ### Mutation API
 
-Some utilities based on the [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) API are available to deal with cases were we have to wait for DOM elements to appear, disappear, or change.
+Some utilities based on the [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) API are available to deal with cases where we have to wait for DOM elements to appear, disappear, or change.
 
 - [`waitForElement`](https://testing-library.com/docs/dom-testing-library/api-async#waitforelement)
 - [`waitForDomChange`](https://testing-library.com/docs/dom-testing-library/api-async#waitfordomchange)
