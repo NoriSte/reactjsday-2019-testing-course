@@ -6,9 +6,9 @@
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@postman/csv-parse/-/csv-parse-4.0.2.tgz#a6ac77240053eb0bb8123dec67c1c5dd69d223a6"
 
-"@postman/tunnel-agent@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@postman/tunnel-agent/-/tunnel-agent-0.6.2.tgz#b5c36b53696418b89642612abea1d1f3bf32d819"
+"@postman/tunnel-agent@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@postman/tunnel-agent/-/tunnel-agent-0.6.3.tgz#23048d8d8618d453c571f03189e944afdc2292b7"
   dependencies:
     safe-buffer "^5.0.1"
 
@@ -354,9 +354,9 @@ cli-boxes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
 
-cli-progress@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/cli-progress/-/cli-progress-3.3.0.tgz#e05c5080d143f609c1c091d6d0b9aa8c526e9d6f"
+cli-progress@3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/cli-progress/-/cli-progress-3.4.0.tgz#5f7459dad0258376e25149893427ba7f3a5160b4"
   dependencies:
     colors "^1.1.2"
     string-width "^2.1.1"
@@ -409,9 +409,9 @@ commander@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.1.tgz#4595aec3530525e671fb6f85fb173df8ff8bf57a"
 
-commander@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.2.tgz#6837c3fb677ad9933d1cfba42dd14d5117d6b39e"
+commander@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-4.0.1.tgz#b67622721785993182e807f4883633e6401ba53c"
 
 commander@~2.20.0:
   version "2.20.0"
@@ -973,9 +973,9 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-handlebars@4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.4.0.tgz#22e1a897c5d83023d39801f35f6b65cf97ed8b25"
+handlebars@4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.5.1.tgz#8a01c382c180272260d07f2d1aa3ae745715c7ba"
   dependencies:
     neo-async "^2.6.0"
     optimist "^0.6.1"
@@ -1734,25 +1734,25 @@ neo-async@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
 
-newman@4.5.5:
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/newman/-/newman-4.5.5.tgz#ea31c43cda6f8c6a039c8b5330e6cff38e2e2dfa"
+newman@4.5.6:
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/newman/-/newman-4.5.6.tgz#288d08e05afb8a70a43c7e95fa3dde17564a9065"
   dependencies:
     "@postman/csv-parse" "4.0.2"
     async "3.1.0"
     chardet "0.8.0"
-    cli-progress "3.3.0"
+    cli-progress "3.4.0"
     cli-table3 "0.5.1"
     colors "1.4.0"
-    commander "3.0.2"
+    commander "4.0.1"
     eventemitter3 "4.0.0"
     filesize "5.0.1"
     lodash "4.17.15"
     mkdirp "0.5.1"
     postman-collection "3.5.4"
     postman-collection-transformer "3.2.0"
-    postman-request "2.88.1-postman.15"
-    postman-runtime "7.18.0"
+    postman-request "2.88.1-postman.16"
+    postman-runtime "7.20.1"
     pretty-ms "5.0.0"
     semver "6.3.0"
     serialised-error "1.1.3"
@@ -2042,11 +2042,11 @@ postman-collection@3.5.4:
     semver "6.3.0"
     uuid "3.3.3"
 
-postman-request@2.88.1-postman.15:
-  version "2.88.1-postman.15"
-  resolved "https://registry.yarnpkg.com/postman-request/-/postman-request-2.88.1-postman.15.tgz#b55b70181549478d37737ca4cfdd00685edbd724"
+postman-request@2.88.1-postman.16:
+  version "2.88.1-postman.16"
+  resolved "https://registry.yarnpkg.com/postman-request/-/postman-request-2.88.1-postman.16.tgz#a0df93a029d60437ded6f122617c66b14b30b864"
   dependencies:
-    "@postman/tunnel-agent" "^0.6.2"
+    "@postman/tunnel-agent" "^0.6.3"
     aws-sign2 "~0.7.0"
     aws4 "^1.8.0"
     caseless "~0.12.0"
@@ -2069,16 +2069,16 @@ postman-request@2.88.1-postman.15:
     tough-cookie "~2.5.0"
     uuid "^3.3.2"
 
-postman-runtime@7.18.0:
-  version "7.18.0"
-  resolved "https://registry.yarnpkg.com/postman-runtime/-/postman-runtime-7.18.0.tgz#53aab37856345c843a2ec44c3d2113caf6e2a80e"
+postman-runtime@7.20.1:
+  version "7.20.1"
+  resolved "https://registry.yarnpkg.com/postman-runtime/-/postman-runtime-7.20.1.tgz#522d132e5026a4fd409df8466ec216f51461b889"
   dependencies:
     async "2.6.2"
     aws4 "1.8.0"
     btoa "1.2.1"
     crypto-js "3.1.9-1"
     eventemitter3 "4.0.0"
-    handlebars "4.4.0"
+    handlebars "4.5.1"
     http-reasons "0.1.0"
     httpntlm "1.7.6"
     inherits "2.0.4"
@@ -2086,20 +2086,21 @@ postman-runtime@7.18.0:
     node-oauth1 "1.2.2"
     performance-now "2.1.0"
     postman-collection "3.5.4"
-    postman-request "2.88.1-postman.15"
-    postman-sandbox "3.4.0"
-    postman-url-encoder "1.0.2"
+    postman-request "2.88.1-postman.16"
+    postman-sandbox "3.5.1"
+    postman-url-encoder "1.0.3"
     resolve-from "5.0.0"
     serialised-error "1.1.3"
     tough-cookie "3.0.1"
     uuid "3.3.3"
 
-postman-sandbox@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/postman-sandbox/-/postman-sandbox-3.4.0.tgz#9a46554370b454eecbb1837e3bafe5a7347d8bb4"
+postman-sandbox@3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/postman-sandbox/-/postman-sandbox-3.5.1.tgz#29bb805dfc6749969c0cb5046d3627df59801d05"
   dependencies:
     inherits "2.0.4"
     lodash "4.17.15"
+    teleport-javascript "1.0.0"
     tough-cookie "3.0.1"
     uuid "3.3.3"
     uvm "1.7.8"
@@ -2111,6 +2112,10 @@ postman-url-encoder@1.0.1:
 postman-url-encoder@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/postman-url-encoder/-/postman-url-encoder-1.0.2.tgz#872df3cb5f93a3590927923086161f2436e83e5e"
+
+postman-url-encoder@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/postman-url-encoder/-/postman-url-encoder-1.0.3.tgz#efca83f3f8f92b64ab6cf81a36dbf6b906647946"
 
 prepend-http@^1.0.1:
   version "1.0.4"
@@ -2669,6 +2674,10 @@ tar@^4:
     mkdirp "^0.5.0"
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
+
+teleport-javascript@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/teleport-javascript/-/teleport-javascript-1.0.0.tgz#c9397fad598d662027e4d3a5fa7e7da1c8361547"
 
 term-size@^1.2.0:
   version "1.2.0"
