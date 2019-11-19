@@ -1646,9 +1646,9 @@ mongoose-unique-validator@2.0.3:
     lodash.foreach "^4.1.0"
     lodash.get "^4.0.2"
 
-mongoose@5.7.11:
-  version "5.7.11"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.7.11.tgz#74a1293deb7a69d41abd447056f5d522e28bab64"
+mongoose@5.7.12:
+  version "5.7.12"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.7.12.tgz#ef22a0f741970b6ba504995fdbe0ac9d8289d615"
   dependencies:
     bson "~1.1.1"
     kareem "2.3.1"
