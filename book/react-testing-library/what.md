@@ -14,7 +14,7 @@ React Testing Library is a package that offers a set of utilities to makes testi
 
 ### FAQs
 
-- Q: does `react-testing-library` is a substite to Jest?
+- Q: does `react-testing-library` is a substitute to Jest?
 - A: No they complement each other
 
 - Q: can `react-testing-library` be used without Jest?
