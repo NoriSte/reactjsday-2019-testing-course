@@ -5332,10 +5332,10 @@ npm@5.1.0:
     wrappy "~1.0.2"
     write-file-atomic "~2.1.0"
 
-npm@6.13.4:
-  version "6.13.4"
-  resolved "https://registry.yarnpkg.com/npm/-/npm-6.13.4.tgz#1e95b0f311999cf682384c38865dfeb3127203bb"
-  integrity sha512-vTcUL4SCg3AzwInWTbqg1OIaOXlzKSS8Mb8kc5avwrJpcvevDA5J9BhYSuei+fNs3pwOp4lzA5x2FVDXACvoXA==
+npm@6.13.5:
+  version "6.13.5"
+  resolved "https://registry.yarnpkg.com/npm/-/npm-6.13.5.tgz#7a9e51d3cbea4752186e294ff0a51b8049d4b1a7"
+  integrity sha512-eP8ib0elCCfsmw/USfNyi8NkcAC72NDz5bMejUZ6O3Onz9ekgmyCZl+hSvojxOQYm2ttf8p9ERv9IQdVwPq15g==
   dependencies:
     JSONStream "^1.3.5"
     abbrev "~1.1.1"
