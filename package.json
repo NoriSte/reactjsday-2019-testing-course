@@ -67,7 +67,7 @@
     "chai-subset": "1.6.0",
     "concurrently": "5.0.2",
     "cross-env": "6.0.3",
-    "cypress": "3.8.2",
+    "cypress": "3.8.3",
     "cypress-skip-and-only-ui": "1.2.6",
     "gitbook-cli": "2.3.2",
     "gitbook-plugin-copy-code-button": "0.0.2",
