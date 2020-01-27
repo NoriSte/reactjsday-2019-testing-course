@@ -65,7 +65,7 @@
   "devDependencies": {
     "@testing-library/cypress": "5.0.2",
     "chai-subset": "1.6.0",
-    "concurrently": "5.0.2",
+    "concurrently": "5.1.0",
     "cross-env": "7.0.0",
     "cypress": "3.8.3",
     "cypress-skip-and-only-ui": "1.2.6",
