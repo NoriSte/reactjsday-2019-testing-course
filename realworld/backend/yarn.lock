@@ -1215,10 +1215,10 @@ mongoose-unique-validator@2.0.3:
     lodash.foreach "^4.1.0"
     lodash.get "^4.0.2"
 
-mongoose@5.8.12:
-  version "5.8.12"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.8.12.tgz#a859d9d702da2ceec39ba9b7d3b3c5275980bda7"
-  integrity sha512-PM6Ks4kIcsLiHcqskVaLj5vDE9l2PoW5foecIuUb5vIG22Gf2yCps31+U3I7Rw8UPnrnbmZvvrRgkHmZR2/Kbw==
+mongoose@5.8.13:
+  version "5.8.13"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.8.13.tgz#c4a7032940800b5c893e52ca3d0009ec7d13a296"
+  integrity sha512-YUBykYbx8/PMR1N8xAxl81PU+JQuMx5pVp7eHelifUMazshQqIwvToUtIxlinEG3NYbbS9FTSzYBrbBLDfrADQ==
   dependencies:
     bson "~1.1.1"
     kareem "2.3.1"
