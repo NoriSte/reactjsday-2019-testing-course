@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "cross-env": "7.0.1",
+    "cross-env": "7.0.2",
     "react-scripts": "3.4.0"
   },
   "dependencies": {
