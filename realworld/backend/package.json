@@ -33,7 +33,7 @@
     "passport": "0.4.1",
     "passport-local": "1.0.0",
     "request": "2.88.2",
-    "slug": "3.3.5",
+    "slug": "3.3.6",
     "underscore": "1.11.0"
   },
   "devDependencies": {
