@@ -2082,10 +2082,10 @@ sliced@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
 
-slug@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/slug/-/slug-4.0.0.tgz#5d542dd61b2cd2f59772790bbebc190851f0518c"
-  integrity sha512-niZMkmb/nVnfp0ppfIxbLoJCqWLiLa8aYsM5Sn/k0nhOHAqMfOoT2hOh2M/vaWtVaQFlnw7DF65nt07InzibJw==
+slug@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/slug/-/slug-4.0.1.tgz#24775a0fbb7fabae2f94e34bdfab0a32ed3bc1ba"
+  integrity sha512-g3eofiaQdlNRrjGSW+gtSHmAdE8Oq/tFIrFlP6oQ4AW4M3l3FegO2C4TV6MM4eHdnpllJJdgG892Vt/KqpV9kQ==
 
 source-map@^0.6.1, source-map@~0.6.1:
   version "0.6.1"
