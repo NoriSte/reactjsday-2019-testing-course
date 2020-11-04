@@ -1,5 +1,5 @@
 {
-  "name": "reactjsday-2019-testing-course",
+  "name": "educative-cypress-course",
   "version": "1.0.0",
   "description": "The \\\"Testing React\\\" course of the Italian ReactJSDay 2019",
   "main": "index.js",
@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NoriSte/reactjsday-2019-testing-course.git"
+    "url": "git+https://github.com/NoriSte/educative-cypress-course.git"
   },
   "keywords": [
     "course",
@@ -59,9 +59,9 @@
   "author": "Stefano Magni <nori.ste.magni@gmail.com> (https://github.com/NoriSte)",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/NoriSte/reactjsday-2019-testing-course/issues"
+    "url": "https://github.com/NoriSte/educative-cypress-course/issues"
   },
-  "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme",
+  "homepage": "https://github.com/NoriSte/educative-cypress-course#readme",
   "devDependencies": {
     "@testing-library/cypress": "7.0.1",
     "chai-subset": "1.6.0",

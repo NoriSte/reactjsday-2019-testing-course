@@ -2,7 +2,7 @@
 
 Cypress has a [dedicated CI page](https://docs.cypress.io/guides/guides/continuous-integration.html) on its site with configurations [for the different providers](https://docs.cypress.io/guides/guides/continuous-integration.html#Examples). Cypress can be run with its UI (`npx cypress open`) or in headless mode (`npx cypress run`), the only thing you need to do is to launch the front-end server and then, when the server is up and running, launch Cypress in headless mode.
 
-The most used package is [start-server-and-test](https://github.com/bahmutov/start-server-and-test) that allows you to do exactly what its name says. You can see it in action even in the [repository of this book](https://github.com/NoriSte/reactjsday-2019-testing-course/blob/master/package.json), take a look at the `test` script, it's something like
+The most used package is [start-server-and-test](https://github.com/bahmutov/start-server-and-test) that allows you to do exactly what its name says. You can see it in action even in the [repository of this book](https://github.com/NoriSte/educative-cypress-course/blob/master/package.json), take a look at the `test` script, it's something like
 
 ```json
 "scripts": {

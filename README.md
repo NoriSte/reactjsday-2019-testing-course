@@ -4,16 +4,16 @@
 [![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
 [![RealWorld Backend](https://img.shields.io/badge/realworld-backend-%23783578.svg)](http://realworld.io)
 
-[![Build Status](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course.svg?branch=master)](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course)
-[![Build Cron](https://img.shields.io/badge/build%20cron-weekly-44cc11.svg)](https://travis-ci.com/NoriSte/reactjsday-2019-testing-course)
+[![Build Status](https://travis-ci.com/NoriSte/educative-cypress-course.svg?branch=master)](https://travis-ci.com/NoriSte/educative-cypress-course)
+[![Build Cron](https://img.shields.io/badge/build%20cron-weekly-44cc11.svg)](https://travis-ci.com/NoriSte/educative-cypress-course)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![Cypress Dashboard](https://img.shields.io/static/v1?label=Cypress&message=Dashboard&color=00BF88)](https://dashboard.cypress.io/#/projects/jdiekj/runs)
 
 ![ReactJSDay 2019 Testing Course](assets/images/reactjsday-course.png)
 
-This is the [reference repository](https://github.com/NoriSte/reactjsday-2019-testing-course) with all the contents and the examples of the "[React Testing 101: component, integration, and end-to-end testing](https://2019.reactjsday.it/workshops/react-testing-101.html)" course for the [ReactJSDay 2019](https://2019.reactjsday.it/) conference.
+This is the [reference repository](https://github.com/NoriSte/educative-cypress-course) with all the contents and the examples of the "[React Testing 101: component, integration, and end-to-end testing](https://2019.reactjsday.it/workshops/react-testing-101.html)" course for the [ReactJSDay 2019](https://2019.reactjsday.it/) conference.
 
-The repository aims to be consumed through [the compiled GitBook](https://noriste.github.io/reactjsday-2019-testing-course/). The course starts from the peak of the testing pyramid and goes down instead of following the "standard" testing path, you can [read here](https://noriste.github.io/reactjsday-2019-testing-course/book/top-to-bottom.html) the reason why. [some introductory slides](https://slides.com/noriste/reactjsday-2019-testing-course) are also included but they're only useful for the teacher, they're a summary of the content presented before the coding session.
+The repository aims to be consumed through [the compiled GitBook](https://noriste.github.io/educative-cypress-course/). The course starts from the peak of the testing pyramid and goes down instead of following the "standard" testing path, you can [read here](https://noriste.github.io/educative-cypress-course/book/top-to-bottom.html) the reason why. [some introductory slides](https://slides.com/noriste/educative-cypress-course) are also included but they're only useful for the teacher, they're a summary of the content presented before the coding session.
 
 ---
 
@@ -30,7 +30,7 @@ This material is available for private, non-commercial use under the
 would like to use this material to conduct your own workshop, please contact me
 at nori.ste.magni@gmail.com.
 
-[license]: https://github.com/NoriSte/reactjsday-2019-testing-course/blob/master/README.md#license
+[license]: https://github.com/NoriSte/educative-cypress-course/blob/master/README.md#license
 [license-badge]: https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square
 
 ## Contributors ✨

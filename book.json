@@ -23,25 +23,25 @@
   },
   "pluginsConfig": {
     "github": {
-      "url": "https://github.com/NoriSte/reactjsday-2019-testing-course"
+      "url": "https://github.com/NoriSte/educative-cypress-course"
     },
     "sitemap": {
-      "hostname": "https://noriste.github.io/reactjsday-2019-testing-course/"
+      "hostname": "https://noriste.github.io/educative-cypress-course/"
     },
     "edit-link": {
-      "base": "https://github.com/NoriSte/reactjsday-2019-testing-course/edit/master",
+      "base": "https://github.com/NoriSte/educative-cypress-course/edit/master",
       "label": ""
     },
     "head-append": {
       "code": [
-        "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"https://noriste.github.io/reactjsday-2019-testing-course/assets/favicons/apple-touch-icon.png\">",
-        "<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"https://noriste.github.io/reactjsday-2019-testing-course/assets/favicons/favicon-32x32.png\">",
-        "<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"https://noriste.github.io/reactjsday-2019-testing-course/assets/favicons/favicon-16x16.png\">",
-        "<link rel=\"manifest\" href=\"https://noriste.github.io/reactjsday-2019-testing-course/assets/favicons/site.webmanifest\">",
-        "<link rel=\"mask-icon\" href=\"https://noriste.github.io/reactjsday-2019-testing-course/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">",
-        "<link rel=\"shortcut icon\" href=\"https://noriste.github.io/reactjsday-2019-testing-course/assets/favicons/favicon.ico\">",
+        "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"https://noriste.github.io/educative-cypress-course/assets/favicons/apple-touch-icon.png\">",
+        "<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"https://noriste.github.io/educative-cypress-course/assets/favicons/favicon-32x32.png\">",
+        "<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"https://noriste.github.io/educative-cypress-course/assets/favicons/favicon-16x16.png\">",
+        "<link rel=\"manifest\" href=\"https://noriste.github.io/educative-cypress-course/assets/favicons/site.webmanifest\">",
+        "<link rel=\"mask-icon\" href=\"https://noriste.github.io/educative-cypress-course/assets/favicons/safari-pinned-tab.svg\" color=\"#50ade5\">",
+        "<link rel=\"shortcut icon\" href=\"https://noriste.github.io/educative-cypress-course/assets/favicons/favicon.ico\">",
         "<meta name=\"msapplication-TileColor\" content=\"#ffffff\">",
-        "<meta name=\"msapplication-config\" content=\"https://noriste.github.io/reactjsday-2019-testing-course/assets/favicons/browserconfig.xml\">",
+        "<meta name=\"msapplication-config\" content=\"https://noriste.github.io/educative-cypress-course/assets/favicons/browserconfig.xml\">",
         "<meta name=\"theme-color\" content=\"#50ade5\">",
         "<!-- Global site tag (gtag.js) - Google Analytics -->",
         "<SCRIPTTAG async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142637808-2\"></SCRIPTTAG>",
