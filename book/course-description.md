@@ -25,7 +25,6 @@ During the day, we will see all the useful tests for a web-app developed with Re
 - How to write effective end-to-end tests (E2E)
 - How to integrate tests into development and Continuous Integration pipelines
 
-We are going to use **Jest, React Testing Library, Cypress** and all their useful plugins to increase our daily productivity and test reliability.
 We will alternate theoretical explanations with live coding sessions, at the end of the course the source code of all the exercises, the material used for explanations, and other in-depth materials will be made available.
 
 #### Topics:
@@ -52,41 +51,6 @@ We will alternate theoretical explanations with live coding sessions, at the end
   - [Custom commands](signup-custom-command.md)
 - [Visual Regression Testing for the whole web app](visual-regression-testing.md)
 - [Continuous Integration](continuous-integration.md)
-- Jest fundamentals
-  - [What You will learn](jest-101/index.md)
-  - [What is Jest](jest-101/what-is-jest.md)
-  - [Setup](jest-101/setup.md)
-  - [Running Jest](jest-101/running-jest.md)
-  - [What is a Test Case](jest-101/test-case.md)
-  - [Watch-mode](jest-101/watch-mode.md)
-  - [Valid file test names](jest-101/test-filenames.md)
-  - [Add Editor autocompletion](jest-101/editor-autocompletion.md)
-  - [Built-in Matchers](jest-101/built-in-matchers.md)
-  - [Custom Matchers](jest-101/custom-matchers.md)
-  - [Testing Async Code](jest-101/testing-async-code.md)
-  - [jsdom](jest-101/jsdom.md)
-  - [Jest Lifecycle](jest-101/jest-lifecycle.md)
-  - [Mock Functions](jest-101/mock-function.md)
-  - [Mocking a module](jest-101/mock-modules.md)
-  - [The Expect object](jest-101/expect-object.md)
-  - [Timers](jest-101/timers.md)
-- [The many wait to test React](many-ways-to-test-react.md)
-- Intro to React testing
-  - [What You will learn](intro-to-react-testing/index.md)
-  - [Setup](intro-to-react-testing/setup.md)
-  - [react-dom-test-utils](intro-to-react-testing/react-dom-test-utils.md)
-  - [Hooks and act](intro-to-react-testing/hooks-and-act.md)
-  - [jest-dom](intro-to-react-testing/jest-dom.md)
-- React Testing Library
-  - [What You will learn](react-testing-library/index.md)
-  - [What is React Testing Library](react-testing-library/what.md)
-  - [Why React Testing Library](react-testing-library/why-react-testing-library.md)
-  - [Setup React Testing Library](react-testing-library/setup.md)
-  - [Rendering using React Testing Library](react-testing-library/rendering.md)
-  - [Using DOM testing library](react-testing-library/dom-testing-library.md)
-  - [Implementing and Testing new features](react-testing-library/custom-input.md)
-  - [Dealing with Context Providers](react-testing-library/context.md)
-  - [Testing components using Redux](react-testing-library/redux.md)
 
 #### Attendees
 
