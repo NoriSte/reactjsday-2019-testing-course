@@ -5,17 +5,14 @@
     {
       "paths": [
         "realworld/frontend/package.json",
-        "realworld/backend/package.json",
-        "demo-app/package.json"
+        "realworld/backend/package.json"
       ],
       "extends": ["config:base"],
       "automerge": true,
       "excludePackageNames": [
-        "react-router",
-        "react-router-dom",
-        "react-router-redux",
         "react-redux"
-      ]
+      ],
+      "excludePackagePatterns": ["^react-router"]
     }
   ]
 }

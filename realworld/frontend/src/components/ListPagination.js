@@ -43,6 +43,7 @@ const ListPagination = props => {
                 onClick={onClick}
                 key={v.toString()}>
 
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className="page-link" href="">{v + 1}</a>
 
               </li>

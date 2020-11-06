@@ -14,8 +14,8 @@ const Tags = props => {
             };
 
             return (
-              <a
-                href=""
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <a href=""
                 className="tag-default tag-pill"
                 key={tag}
                 onClick={handleClick}>

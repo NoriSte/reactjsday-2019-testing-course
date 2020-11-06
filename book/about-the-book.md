@@ -37,7 +37,6 @@ To watch them running on your local machine:
 |-- __tests__ # example tests
 |-- book # all the chapters of the  book
 |-- cypress/integration # all the Cypress tests
-|-- demo-app # the React application used for the integration/unit tests part
 |-- docs # auto-generated directory, GitHub pages points here
 |-- realworld # both the frontend/backend RealWorld apps
 |-- slides # the GitPitch files (if used)

@@ -13,6 +13,7 @@ const YourFeedTab = props => {
 
     return (
       <li className="nav-item">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a  href=""
             className={ props.tab === 'feed' ? 'nav-link active' : 'nav-link' }
             onClick={clickHandler}>
@@ -31,8 +32,8 @@ const GlobalFeedTab = props => {
   };
   return (
     <li className="nav-item">
-      <a
-        href=""
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      <a href=""
         className={ props.tab === 'all' ? 'nav-link active' : 'nav-link' }
         onClick={clickHandler}>
         Global Feed
@@ -48,6 +49,7 @@ const TagFilterTab = props => {
 
   return (
     <li className="nav-item">
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <a href="" className="nav-link active">
         <i className="ion-pound"></i> {props.tag}
       </a>
