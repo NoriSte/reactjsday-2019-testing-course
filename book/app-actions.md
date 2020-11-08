@@ -63,8 +63,7 @@ What's the final goal of the `window.appActions.signup` app action? Simply, call
 -cy.findByPlaceholderText(strings.email).type(user.email);
 -cy.findByPlaceholderText(strings.password).type(user.password);
 -cy.get("form")
-- .within(() => cy.findByText(strings.signUp))
-- .click();
+- .within(() => cy.findByText(strings.signUp).click())
 +cy.window()
 + .its("appActions")
 + .invoke("signup", user);

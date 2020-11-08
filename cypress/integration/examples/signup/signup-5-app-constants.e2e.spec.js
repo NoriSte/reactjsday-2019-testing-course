@@ -12,8 +12,7 @@ context("Signup flow", () => {
     cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
     cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
     cy.get("form")
-      .within(() => cy.findByText(strings.signUp))
-      .click();
+      .within(() => cy.findByText(strings.signUp).click());
     cy.findByText(noArticles, { timeout: 10000 }).should("be.visible");
   });
 });

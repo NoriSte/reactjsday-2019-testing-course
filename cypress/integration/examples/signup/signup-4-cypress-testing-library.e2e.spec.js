@@ -8,8 +8,7 @@ context("Signup flow", () => {
     cy.findByPlaceholderText("Email").type(`user+${random}@realworld.io`);
     cy.findByPlaceholderText("Password").type("mysupersecretpassword");
     cy.get("form")
-      .within(() => cy.findByText("Sign up"))
-      .click();
+      .within(() => cy.findByText("Sign up").click())
     cy.findByText("No articles are here... yet.", { timeout: 10000 }).should("be.visible");
   });
 });

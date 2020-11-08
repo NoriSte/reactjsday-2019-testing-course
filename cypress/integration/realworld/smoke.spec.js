@@ -7,6 +7,6 @@ context("Smoke test", () => {
   it("The backend should work", () => {
     cy.request("http://localhost:3100/api/tags")
       .its("status")
-      .should("be", 200);
+      .should("equal", 200);
   });
 });

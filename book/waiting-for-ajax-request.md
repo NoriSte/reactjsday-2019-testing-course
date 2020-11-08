@@ -69,8 +69,7 @@ it("The happy path should work", () => {
   cy.visit(paths.register);
   // form filling code
   cy.get("form")
-    .within(() => cy.findByText(strings.signUp))
-    .click();
+    .within(() => cy.findByText(strings.signUp).click());
 + cy.wait("@signup-request");
   cy.findByText(noArticles, { timeout: 10000 }).should("be.visible");
 });
@@ -98,8 +97,7 @@ it("The happy path should work", () => {
   cy.findByPlaceholderText(strings.email).type(`user+${random}@realworld.io`);
   cy.findByPlaceholderText(strings.password).type("mysupersecretpassword");
   cy.get("form")
-    .within(() => cy.findByText(strings.signUp))
-    .click();
+    .within(() => cy.findByText(strings.signUp).click());
 + cy.wait("@signup-request");
 - cy.findByText(noArticles, { timeout: 10000 }).should("be.visible");
 + cy.findByText(noArticles).should("be.visible");

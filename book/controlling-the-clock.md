@@ -12,8 +12,7 @@ context("Signup flow", () => {
 
     // form submit...
     cy.get("form")
-      .within(() => cy.findByText(strings.signUp))
-      .click();
+      .within(() => cy.findByText(strings.signUp).click());
 
     // moves forward the browser clock by 2 seconds
     cy.tick(2000);

@@ -31,15 +31,14 @@ context("Signup flow", () => {
     // form filling
     cy.findByPlaceholderText(strings.username)
       .type(user.username)
-      .findByPlaceholderText(strings.email)
+    cy.findByPlaceholderText(strings.email)
       .type(user.email)
-      .findByPlaceholderText(strings.password)
+    cy.findByPlaceholderText(strings.password)
       .type(user.password);
 
     // form submit...
     cy.get("form")
-      .within(() => cy.findByText(strings.signUp))
-      .click();
+      .within(() => cy.findByText(strings.signUp).click())
 
     // ... and AJAX call waiting
     cy.wait("@signup-request")

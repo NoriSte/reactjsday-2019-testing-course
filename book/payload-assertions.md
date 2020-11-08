@@ -123,8 +123,7 @@ it("The happy path should work", () => {
 
     // form submit...
     cy.get("form")
-      .within(() => cy.findByText(strings.signUp))
-      .click();
+      .within(() => cy.findByText(strings.signUp).click());
     // ... and AJAX call waiting
 -   cy.wait("@signup-request");
 +   cy.wait("@signup-request")
