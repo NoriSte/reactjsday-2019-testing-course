@@ -12,7 +12,7 @@
 
 - Visual Regression tests: check that the app look doesn't change when not intended
 
-You can read more in the [Component vs (UI) Integration vs E2E tests]UI tests classification](https://dev.to/noriste/component-vs-ui-integration-vs-e2e-tests-3i0d) article.
+You can read more in the [Component vs (UI) Integration vs E2E tests: UI tests classification](https://dev.to/noriste/component-vs-ui-integration-vs-e2e-tests-3i0d) article.
 
 !INCLUDE "test-types-comparison.md"
 

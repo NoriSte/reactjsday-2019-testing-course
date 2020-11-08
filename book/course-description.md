@@ -18,8 +18,6 @@ Testing your own web applications is much easier and more profitable than you mi
 
 During the day, we will see all the useful tests for a web-app developed with React, dealing with the typical cases we encounter on a daily basis. During this course we will teach you:
 
-- The basics and advantages of the main testing techniques applied to React
-- How to test your React components productively
 - The best practices to follow to write useful and lasting tests
 - How to test different user flows without a working back-end
 - How to write effective end-to-end tests (E2E)
