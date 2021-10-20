@@ -63,7 +63,7 @@
   },
   "homepage": "https://github.com/NoriSte/reactjsday-2019-testing-course#readme",
   "devDependencies": {
-    "@testing-library/cypress": "7.0.1",
+    "@testing-library/cypress": "7.0.7",
     "chai-subset": "1.6.0",
     "concurrently": "5.3.0",
     "cross-env": "7.0.2",
